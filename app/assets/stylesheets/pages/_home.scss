@@ -1,0 +1,41 @@
+.home {
+  background-color: $primary;
+  min-height: 200%;
+  z-index: 0;
+  padding-top: 4rem;
+  user-select: none;
+
+  .home-watermark {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 4rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    h1 {
+      color: $blue;
+      z-index: 1;
+      font-size: clamp(12px, 25vw, 10rem);
+      display: block;
+    }
+  }
+
+  .home-intro {
+    position: relative;
+    z-index: 110;
+
+    &__title {
+      font-size: 3rem;
+      
+      p {
+        color: #fff;
+        display: block;
+        font-family: 'Source Sans Pro', sans-serif;
+        margin: 0 4rem;
+      }
+    }
+  }
+}

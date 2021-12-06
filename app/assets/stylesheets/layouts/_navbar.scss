@@ -4,6 +4,9 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1.1em 2em;
+  position: fixed;
+  z-index: 200;
+  width: 100%;
 
   & a {
     color: white;

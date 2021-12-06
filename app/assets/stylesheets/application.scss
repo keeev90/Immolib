@@ -1,6 +1,10 @@
+@charset 'utf-8';
+
 @import 'abstracts/variables';
 
 @import 'base/reset';
 @import 'base/typography';
 
 @import 'layouts/navbar';
+
+@import 'pages/home';

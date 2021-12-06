@@ -1,17 +1,28 @@
-$primary: #2EC4B6;
-$secondary: hsl(32, 45%, 76%);
-$grey: hsl(30, 2%, 45%);
-$lightgrey: hsl(34, 3%, 76%);
+$primary: hsl(174, 62%, 47%);
+$secondary: hsl(35, 100%, 55%);
 
-$desaturedBlue: hsl(199, 46%, 76%);
-$darkBlue: hsl(199, 29%, 44%);
-$gna: hsl(34, 17%, 47%);
-$gne: hsl(33, 100%, 93%);
-$violet: hsl(275, 25%, 54%);
-$spaceBlue: hsl(231, 13%, 20%);
-$gni: hsl(45, 16%, 20%);
-$danger: hsl(7, 71.6%, 42.7%);
-$success: hsl(144, 74%, 55%);
+$blue: hsl(174, 62%, 57%);
+$light-blue: hsl(176, 63%, 87%);
+$light-orange: hsl(34, 100%, 71%);
 
-$light-primary: hsl(201, 78%, 90%);
-$light-secondary: hsl(32, 45%, 90%);
+:root {
+  --shadow-color: 174deg 64% 27%;
+  --shadow-low:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
+    1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-medium:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-high:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
+    17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
+    25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+}
