@@ -25,7 +25,7 @@ count = 0
   last_name = Faker::Name.last_name
   email = "user#{count}@yopmail.com"
 
-  User.create(
+  User.create!(
     first_name: first_name,
     last_name: last_name,
     email: email,
@@ -36,7 +36,7 @@ end
 # properties
 
 2.times do
-  Property.create(
+  Property.create!(
     title: Faker::DcComics.title,
     city: Faker::Address.city,
     other_link: "https://www.pap.fr/",
@@ -50,7 +50,7 @@ end
 duration = [15, 30, 45, 60]
 
 10.times do
-  Slot.create(
+  Slot.create!(
     property_id: Property.all.sample.id,
     start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 30),
     duration: duration.sample,
@@ -61,9 +61,9 @@ end
 # appointments
 
 5.times do
-  Appointment.create(
+  Appointment.create!(
     candidate_id: User.all.sample.id,
-    slots_id: Slot.all.sample.id
+    slot_id: Slot.all.sample.id
     )
 end
 
