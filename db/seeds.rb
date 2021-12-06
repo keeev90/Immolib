@@ -17,32 +17,27 @@ Appointment.destroy_all
 
 # users
 
-count = 0
-
-5.times do
-  count += 1
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = "user#{count}@yopmail.com"
-
-  User.create!(
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
+5.times do |count|
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "user#{count}@yopmail.com",
     password: "userpwd"
     )
+    puts "User with id #{user.id} created"
 end
 
 # properties
 
 2.times do
-  Property.create!(
+  property = Property.create!(
     title: Faker::DcComics.title,
     city: Faker::Address.city,
     other_link: "https://www.pap.fr/",
     instructions: Faker::Lorem.sentence(word_count: 50 + rand(1..100)),
-    owner_id: User.all.sample.id
+    owner: User.all.sample
     )
+    puts "Property with id #{property.id} created"
 end
 
 # slots
@@ -50,20 +45,22 @@ end
 duration = [15, 30, 45, 60]
 
 10.times do
-  Slot.create!(
-    property_id: Property.all.sample.id,
+  slot = Slot.create!(
+    property: Property.all.sample,
     start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 30),
     duration: duration.sample,
     max_appointments: rand(1..10)
     )
+    puts "Slot with id #{slot.id} created"
 end
 
 # appointments
 
 5.times do
-  Appointment.create!(
-    candidate_id: User.all.sample.id,
-    slot_id: Slot.all.sample.id
+  appointment = Appointment.create!(
+    candidate: User.all.sample,
+    slot: Slot.all.sample
     )
+    puts "Appointment with id #{appointment.id} created"
 end
 
