@@ -7,6 +7,12 @@ nav {
 
   & a {
     color: white;
+    margin: 0 0.5em;
+    font-size: 1.2em;
+    transition: opacity 0.3s;
+
+    &.item:hover {
+      opacity: 0.7;
+    }
   }
 }
-
