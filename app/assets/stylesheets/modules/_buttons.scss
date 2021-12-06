@@ -1,0 +1,36 @@
+.btn {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border: 2px solid white;
+  background-color: white;
+  color: $secondary;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.big-btn {
+  padding: 1rem 1.5rem;
+}
+
+.outline-btn {
+  background-color: $primary;
+  border: 2px solid white;
+  color: #fff;
+  transition: color 0.3s, background-color 0.3s;
+
+  &:hover {
+    background-color: #fff;
+    color: $primary;
+    opacity: 1;
+  }
+}
