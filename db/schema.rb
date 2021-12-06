@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2021_12_06_134613) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "candidate_id"
-    t.bigint "slots_id"
+    t.bigint "slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["candidate_id"], name: "index_appointments_on_candidate_id"
-    t.index ["slots_id"], name: "index_appointments_on_slots_id"
+    t.index ["slot_id"], name: "index_appointments_on_slot_id"
   end
 
   create_table "properties", force: :cascade do |t|
