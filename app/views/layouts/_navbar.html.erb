@@ -7,10 +7,15 @@
     <%= link_to 'Organiser des visites', '#', class: 'item' %>
     <% if user_signed_in? %>
       <%= link_to 'Mon Profil', '#', class: 'item' %>
-      
       <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
     <% else %>
-      <%= link_to 'Connexion (mettre dropdown ici)', new_user_session_path, class: 'item' %>
+      <p class="item connexion-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
+      <div class="navbar__items__connexion__menu">
+        <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
+        <%= link_to "S'inscrire", new_user_registration_path, class: 'item primary' %>
+      </div>
     <% end %>
   </div>
 </nav>
+
+<%= javascript_include_tag 'navbar.js' %>
