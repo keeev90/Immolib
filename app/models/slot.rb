@@ -1,7 +1,8 @@
 class Slot < ApplicationRecord
   #Associations
   belongs_to :property
-  has_many :appointments
+
+  has_many :appointments, dependent: :destroy
   has_many :candidates, through: :appointments
   
   validate :start_date_cannot_be_in_the_past
