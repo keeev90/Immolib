@@ -11,6 +11,7 @@
   &__informations {
     display: flex;
     align-items: center;
+    margin-top: 0.5em;
 
     &__right {
       margin-left: 5rem;
@@ -32,7 +33,8 @@
       -moz-transition: background-color 0.3s;
       -ms-transition: background-color 0.3s;
       -o-transition: background-color 0.3s;
-      
+      box-shadow: var(--shadow-low);
+
       &:hover {
         opacity: 0.7em;
         background-color: #ddd;
