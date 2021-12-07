@@ -2,6 +2,7 @@
 
 @import 'abstracts/variables';
 @import 'abstracts/colors';
+@import 'abstracts/utilities';
 
 @import 'base/reset';
 @import 'base/typography';
@@ -14,3 +15,4 @@
 
 @import 'pages/home';
 @import 'pages/profile';
+@import 'pages/welcome_user';
