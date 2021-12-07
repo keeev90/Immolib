@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
-  get 'slots/index'
-  get 'slots/show'
-  get 'slots/new'
-  get 'slots/create'
-  get 'slots/edit'
-  get 'slots/update'
-  get 'slots/destroy'
+
+  get 'property_pictures/create'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'static_pages#home'
-  resources 'users'
+
+  resources 'users' do
+    resources 'profile_pictures', only: [:create]
+  end
+
   resources 'properties' do 
+    resources 'property_pictures', only: [:create]
     resources 'slots'
   end 
+
   resources 'appointments', except: [:edit, :update]
 
 end
