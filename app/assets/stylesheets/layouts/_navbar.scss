@@ -4,11 +4,11 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1.1em 2em;
-  position: fixed;
+  position: relative;
   z-index: 200;
   width: 100%;
 
-  & p {
+  p {
     cursor: pointer;
 
     i {
@@ -30,8 +30,9 @@ nav {
 }
   }
 
-  & a, & p {
-    color: white;
+  a,
+  p {
+    color: #fff;
     margin: 0 0.5em;
     font-size: 1.2em;
     transition: opacity 0.3s;
@@ -86,5 +87,109 @@ nav {
       -o-transition: transform 0.3s;
       transform-origin: top;
     }
+  }
+}
+
+.hamburger-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 800;
+  height: 4rem;
+  width: 4rem;
+  display: none;
+  cursor: pointer;
+  background-color: $primary;
+  border-radius: 50%;
+  opacity: .6;
+  transition: all .2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &__icon,
+  &__icon::before,
+  &__icon::after {
+    width: 2em;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    transform: rotate(0) scale(100%);
+    transition: all .4s ease;
+  }
+
+  &__icon {
+    top: calc(1rem + 4.5px);
+    left: 1rem;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      top: 20px;
+    }
+
+    &::after {
+      top: 10px;
+    }
+  }
+
+  &.is-active {
+    .hamburger-btn__icon {
+      transform: rotate(45deg);
+
+      &::after {
+        transform: rotate(45deg) scale(0);
+      }
+
+      &::before {
+        transform: rotate(90deg);
+        top: 0;
+      }
+    }
+  }
+}
+
+.hamburger-menu {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  z-index: 700;
+  background-color: $primary;
+  padding: 6rem 2rem;
+  transition: all .4s ease;
+  
+  &__brand {
+    h1 {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .3);
+      font-size: 2.5rem;
+      line-height: 1.5;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    a {
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .3);
+      line-height: 1.5;
+    }
+  }
+
+  &.is-active {
+    left: 0;
   }
 }

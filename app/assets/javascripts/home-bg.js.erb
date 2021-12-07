@@ -4,31 +4,31 @@ const house = document.querySelector('.house-fill');
 
 window.addEventListener('scroll', () => {
   const scroll = window.scrollY || window.pageYOffset
-  let y = 1 + scroll / 500;
-  let lightness = 47 * y < 100 ? 47 * y : 100;
+  let y = 1 + scroll / 1000;
+  let lightness = 71 * y < 100 ? 71 * y : 100;
 
-  home.setAttribute('style', `background-color: hsl(174, 62%, ${lightness}%)`);
+  home.setAttribute('style', `background-color: hsl(210, 100%, ${lightness}%)`);
 
   house.parentNode.setAttribute(
       'style',
       `-webkit-mask: url(<%= asset_path 'house.svg' %>); 
       mask: url(<%= asset_path 'house.svg' %>); 
-      background-color: #4dd5c8`
+      background-color: hsl(210, 100%, 81%)`
     );
 
-  house.setAttribute('style', `right: ${100 - (y * 75 - 75)}%`);
+  house.setAttribute('style', `right: ${100 - (y * 125 - 125)}%`);
 
   if (scroll > (window.innerHeight)) {
     y = (scroll - (window.innerHeight)) / 500;
-    lightness = 100 / y > 71 ? 100 / y : 71;
+    lightness = 100 / y > 90 ? 100 / y : 90;
 
-    home.setAttribute('style', `background-color: hsl(34, 100%, ${lightness}%)`);
+    home.setAttribute('style', `background-color: hsl(39, 100%, ${lightness}%)`);
 
     house.parentNode.setAttribute(
       'style', 
       `-webkit-mask: url(<%= asset_path 'building.svg' %>); 
       mask: url(<%= asset_path 'building.svg' %>); 
-      background-color: #ff9f1a`
+      background-color: hsl(39, 100%, 80%)`
     );
 
     house.setAttribute('style', `right: 0; top: ${y * 125 - 125}%`)
