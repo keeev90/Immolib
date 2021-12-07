@@ -20,7 +20,14 @@
     </div>
     <div class="home-buttons">
       <p>Notre outil de prise de rendez-vous en ligne vous permet de rapidement organiser vos visites et collecter les dossiers des candidats.</p>
-      <%= link_to "Organisez vos visites", "#", class: "btn big-btn primary" %>
+      
+      <% if user_signed_in? %>
+        <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
+      <% else %>
+          <%= link_to 'Organiser des visites', new_user_session_path, class: "btn big-btn primary" %>
+      <% end %>
+      
+
       <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
     </div>
   </div>
