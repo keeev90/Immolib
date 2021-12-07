@@ -3,33 +3,7 @@ require 'faker'
 
 RSpec.describe Slot, type: :model do
   before(:each) do 
-    @owner = User.create(
-      email: Faker::Internet.email,
-      password: Faker::Internet.password
-    )
-
-    @property = Property.create(
-      title: Faker::Beer.brand,
-      owner: @owner
-    )
-
-    @slot = Slot.create(
-      property: @property,
-      start_date: Faker::Time.between(
-        from: DateTime.now + 1,
-        to: DateTime.now + 30
-      )
-    )
-
-    @candidate = User.create(
-      email: Faker::Internet.email,
-      password: Faker::Internet.password
-    )
-
-    @appointment = Appointment.create(
-      candidate: @candidate,
-      slot: @slot
-    )
+    @slot = FactoryBot.create(:slot)
   end
 
   context "validations" do
@@ -39,48 +13,31 @@ RSpec.describe Slot, type: :model do
     end
 
     describe "#start_date" do
-      it 'should not be valid without start_date' do
-        bad_slot = Slot.create(property: @property)
-        expect(bad_slot).not_to be_valid
-        expect(bad_slot.errors.include?(:start_date)).to eq(true)
-      end
+      it { expect(@slot).to validate_presence_of(:start_date) }
 
       it 'should not be in the past' do
-        bad_slot = Slot.create(
-          property: @property,
-          start_date: DateTime.now - 1
-        )
+        bad_slot = FactoryBot.build(:slot, start_date: DateTime.now - 1)
         expect(bad_slot).not_to be_valid
         expect(bad_slot.errors.include?(:start_date)).to eq(true)
       end
     end
 
     describe '#property' do
-      it 'should not be valid without property' do
-        bad_slot = Slot.create(start_date: DateTime.now + 1)
-        expect(bad_slot).not_to be_valid
-        expect(bad_slot.errors.include?(:property)).to eq(true)
-      end
+      it { expect(@slot).to validate_presence_of(:property) }
     end
   end
 
   context "associations" do
     describe "property" do
-      it 'should have a property' do
-        expect(@slot.property == @property).to eq(true)
-      end
+      it { expect(@slot).to belong_to(:property) }
     end
 
     describe 'appointments' do
-      it 'should have many appointments' do
-        expect(@slot.appointments.include?(@appointment)).to eq(true)
-      end
+      it { expect(@slot).to have_many(:appointments) }
     end
 
     describe 'candidates' do
-      it 'should have many candidates' do
-        expect(@slot.candidates.include?(@candidate)).to eq(true)
-      end
+      it { expect(@slot).to have_many(:candidates) }
     end
   end
 

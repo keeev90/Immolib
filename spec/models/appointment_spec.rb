@@ -3,33 +3,7 @@ require 'faker'
 
 RSpec.describe Appointment, type: :model do
   before(:each) do 
-    @owner = User.create(
-      email: Faker::Internet.email,
-      password: Faker::Internet.password
-    )
-
-    @property = Property.create(
-      title: Faker::Beer.brand,
-      owner: @owner
-    )
-
-    @slot = Slot.create(
-      property: @property,
-      start_date: Faker::Time.between(
-        from: DateTime.now + 1,
-        to: DateTime.now + 30
-      )
-    )
-
-    @candidate = User.create(
-      email: Faker::Internet.email,
-      password: Faker::Internet.password
-    )
-
-    @appointment = Appointment.create(
-      candidate: @candidate,
-      slot: @slot
-    )
+    @appointment = FactoryBot.create(:appointment)
   end
 
   context "validations" do
@@ -39,39 +13,25 @@ RSpec.describe Appointment, type: :model do
     end
 
     describe "#candidate" do
-      it 'should not be valid without candidate' do
-        bad_appointment = Appointment.create(slot: @slot)
-        expect(bad_appointment).not_to be_valid
-        expect(bad_appointment.errors.include?(:candidate)).to eq(true)
-      end
+      it { expect(@appointment).to validate_presence_of(:candidate) }
     end
 
     describe '#slot' do
-      it 'should not be valid without slot' do
-        bad_appointment = Appointment.create(candidate: @candidate)
-        expect(bad_appointment).not_to be_valid
-        expect(bad_appointment.errors.include?(:slot)).to eq(true)
-      end
+      it { expect(@appointment).to validate_presence_of(:slot) }
     end
   end
 
   context "associations" do
     describe "property" do
-      it 'should have a property' do
-        expect(@appointment.property == @property).to eq(true)
-      end
+      it { expect(@appointment).to have_one(:property) }
     end
 
     describe 'candidate' do
-      it 'should have a candidate' do
-        expect(@appointment.candidate == @candidate).to eq(true)
-      end
+      it { expect(@appointment).to belong_to(:candidate) }
     end
 
     describe 'slot' do
-      it 'should have a slot' do
-        expect(@appointment.slot == @slot).to eq(true)
-      end
+      it { expect(@appointment).to belong_to(:slot) }
     end
   end
 

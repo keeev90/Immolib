@@ -3,10 +3,11 @@ require 'faker'
 
 RSpec.describe User, type: :model do
   before(:each) do 
-    @user = User.create(
-      email: Faker::Internet.email,
-      password: Faker::Internet.password
-    )
+    @user = FactoryBot.create(:user)
+  end
+
+  it 'has a valid factory' do
+    expect(build(:user)).to be_valid
   end
 
   context "validations" do
@@ -16,62 +17,31 @@ RSpec.describe User, type: :model do
     end
 
     describe "#email" do
-      it 'should not be valid without email' do
-        bad_user = User.create(password: Faker::Internet.password)
-        expect(bad_user).not_to be_valid
-        expect(bad_user.errors.include?(:email)).to eq(true)
-      end
+      it { expect(@user).to validate_presence_of(:email) }
 
       it 'should be a valid email address' do
-        bad_user = User.create(
-          email: 'coucou',
-          password: Faker::Internet.password
-        )
+        bad_user = FactoryBot.build(:user, email: 'coucou')
         expect(bad_user).not_to be_valid
         expect(bad_user.errors.include?(:email)).to eq(true)
       end
     end
 
     describe '#password' do
-      it 'should not be valid without password' do
-        bad_user = User.create(email: Faker::Internet.email)
-        expect(bad_user).not_to be_valid
-        expect(bad_user.errors.include?(:password)).to eq(true)
-      end
+      it { expect(@user).to validate_length_of(:password).is_at_least(6) }
+    end
 
-      it 'should be bigger than 6 characters' do
-        bad_user = User.create(password: '12345')
-        expect(bad_user).not_to be_valid
-        expect(bad_user.errors.include?(:password)).to eq(true)
-      end
+    describe User do
+      it { should validate_presence_of(:password) }
     end
   end
 
   context "associations" do
     describe "properties" do
-      it 'should have many properties' do
-        property = Property.create(owner: @user, title: Faker::Beer.brand)
-        expect(@user.properties.include?(property)).to eq(true)
-      end
+      it { expect(@user).to have_many(:properties) }
     end
 
     describe 'appointments' do
-      it 'should have many appointments' do
-        owner = User.create(
-          email: Faker::Internet.email,
-          password: Faker::Internet.password
-        )
-        property = Property.create(owner: owner, title: Faker::Beer.brand)
-        slot = Slot.create(
-          property: property,
-          start_date: Faker::Time.between(
-            from: DateTime.now + 1,
-            to: DateTime.now + 30
-          )
-        )
-        appointment = Appointment.create(candidate: @user, slot: slot)
-        expect(@user.appointments.include?(appointment)).to eq(true)
-      end
+      it { expect(@user).to have_many(:appointments) }
     end
   end
 
