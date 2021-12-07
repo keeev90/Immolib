@@ -1,5 +1,4 @@
 env:
-  RUBY_VERSION: 2.7
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ''
   POSTGRES_DB: postgres
@@ -18,8 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
       - name: Install postgres client
         run: sudo apt install libpq-dev
       - name: Install dependencies
