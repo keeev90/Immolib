@@ -1,0 +1,36 @@
+const home = document.querySelector('.home');
+const watermark = document.querySelector('.home-watermark h1');
+const house = document.querySelector('.house-fill');
+
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY || window.pageYOffset
+  let y = 1 + scroll / 500;
+  let lightness = 47 * y < 100 ? 47 * y : 100;
+
+  home.setAttribute('style', `background-color: hsl(174, 62%, ${lightness}%)`);
+
+  house.parentNode.setAttribute(
+      'style', 
+      `-webkit-mask: url(<%= asset_path 'house.svg' %>); 
+      mask: url(<%= asset_path 'house.svg' %>); 
+      background-color: #4dd5c8`
+    );
+
+  house.setAttribute('style', `right: ${100 - (y * 75 - 75)}%`);
+
+  if (scroll > (window.innerHeight)) {
+    y = (scroll - (window.innerHeight)) / 500;
+    lightness = 100 / y > 71 ? 100 / y : 71;
+
+    home.setAttribute('style', `background-color: hsl(34, 100%, ${lightness}%)`);
+
+    house.parentNode.setAttribute(
+      'style', 
+      `-webkit-mask: url(<%= asset_path 'building.svg' %>); 
+      mask: url(<%= asset_path 'building.svg' %>); 
+      background-color: #ff9f1a`
+    );
+
+    house.setAttribute('style', `right: 0; top: ${y * 125 - 125}%`)
+  }
+});

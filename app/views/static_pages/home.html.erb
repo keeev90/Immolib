@@ -1,0 +1,107 @@
+<div class="home">
+  <div class="home-watermark">
+    <div class="house">
+      <div class="house-fill"></div>
+    </div>
+  </div>
+  <div class="home-intro">
+    <div class="home-intro__title">
+      <h2>Fini la galère.</h2>
+      <h2>Bonjour l'organisation de vos visites simple et efficace.</h2>
+      <p class="typewriter-container">
+        Fini
+        <span
+          class="typewriter"
+          data-type='["les échanges fastidieux avec vos candidats.", "de jongler entre les appels téléphoniques, emails et SMS."]'
+        >
+          <span class="wrapper"></span>
+        </span>
+      </p>
+    </div>
+    <div class="home-buttons">
+      <p>Notre outil de prise de rendez-vous en ligne vous permet de rapidement organiser vos visites et collecter les dossiers des candidats.</p>
+      <%= link_to "Organisez vos visites", "#", class: "btn big-btn primary" %>
+      <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
+    </div>
+  </div>
+
+  <section class="benefits-section" id='benefits-1'>
+    <h2 class="benefits-section__title">
+      Organisez vos visites en toute simplicité
+    </h2>
+    <!-- <p>
+      Fini les échanges d'emails et appels téléphoniques fastidieux.
+    </p>  Sous-titre : J'attends de voir avec toi pour intégrer le style en sass --> 
+    <div class="benefits-section__body">
+      <div class="item">
+        <%= image_tag 'approval.svg' %>
+        <p class="item__title">Gardez le contrôle de votre agenda</p>
+        <p class="item__content">
+          Vous déterminez les créneaux de visites et le nombre de candidats maximum par visite.
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'alarm_clock.svg' %>
+        <p class="item__title">Accédez en un clin d'œil</p>
+        <p class="item__content">
+          à la liste des candidats pour chaque rendez-vous
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'assistant.svg' %>
+        <p class="item__title">Évitez les rendez-vous manqués</p>
+        <p class="item__content">
+          grâce à des relances automatiques envoyées à vos candidats
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'share.svg' %>
+        <p class="item__title">Intégrez votre URL Immolib directement dans vos annonces</p>
+        <p class="item__content">
+          Les candidats n'ont plus qu'à suivre un parcours simple et rapide !
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits-section">
+    <h2 class="benefits-section__title">
+      Collectez et gérez les dossiers candidats en quelques clics
+    </h2>
+    <!-- <p>
+      Fini l'archivage chaotique et les dossiers incomplets.
+    </p>  Sous-titre : J'attends de voir avec toi pour intégrer le style en sass --> 
+    <div class="benefits-section__body" id='benefits-2'>
+      <div class="item">
+        <%= image_tag 'import.svg' %>
+        <p class="item__title">Un dépôt des pièces simple et guidé pour vos candidats</p>
+        <p class="item__content">
+          adapté à la fois pour la location et la vente immobilière
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'inspection.svg' %>
+        <p class="item__title">Un suivi en ligne de l'état d'avancée des candidatures</p>
+        <p class="item__content">
+          via un % d'avancement de chaque dossier
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'refresh.svg' %>
+        <p class="item__title">Des relances automatiques pour un dossier complet</p>
+        <p class="item__content">
+          Notre outil informe les candidats sur le pourcentage de complétude de leur dossier
+        </p>
+      </div>
+    </div>
+    <!-- Manque un justify-content:center, mais pareil je ne sais pas comment toucher au sass pour le moment -->
+  </section>
+</div>
+
+<%= javascript_include_tag 'typewriter.js' %>
+<%= javascript_include_tag 'home-bg.js' %>
