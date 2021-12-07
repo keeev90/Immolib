@@ -1,0 +1,32 @@
+<h1>Etape 1/3 : présentation de votre logement</h1>
+<h3>Renseignez les informations clés de votre annonce</h3>
+<p>Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce. Vous pourrez les modifier à tout moment dans votre espace "Mes logement".</p>
+
+<%= form_with model: property, url: properties_path, local: true, class: "form", id: "item-form", multipart: true do |f| %>
+  <div class="form-group">
+    <%= f.label "Titre du logement", class: "form-label" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Donnez un titre à votre logement", required: true %>
+  </div>
+  <br/>
+  <div class="form-group">
+    <%= f.label "Ville", class: "form-label" %>
+    <%= f.text_field :city, class: "form-control", placeholder: "Indiquez la ville de votre logement", required: true %>
+  </div>
+  <br/>
+  <div class="form-group text-center my-3">
+    <%= f.label "Ajouter une photo de votre logement", class: "form-label" %>
+    <%= f.file_field :property_picture, is: "drop-files", label: "Déposer la photo de votre logement", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+  </div>
+  <br/>
+  <div class="form-group">
+    <%= f.label "URL d'une annonce en ligne", class: "form-label" %>
+    <%= f.text_field :other_link, class: "form-control", placeholder: "Copiez-collez l'URL d'une annonce en ligne (ex : PaP.fr)" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Instructions pour les visites", class: "form-label" %>
+    <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez des instructions pour guider vos futurs candidats lors de la visite (ex : adresse exacte ou lieu de rendez-vous, digicode, interphone, etc.). Ces informations ne seront transmises aux candidats qu'après validation d'une inscription à un créneau de visite." %>
+  </div>
+  <div class="text-center">
+    <%= f.submit "Valider et passer à l'étape suivante", class: "btn primary" %>
+  </div>
+<%end%>
