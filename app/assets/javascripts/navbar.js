@@ -19,7 +19,12 @@ if (connexionBtn) {
 hamburgerBtn.addEventListener('click', () => {
   hamburgerBtn.classList.toggle('is-active');
   hamburgerMenu.classList.toggle('is-active');
-  console.log('coucou')
+  
+  if (hamburgerMenu.classList.contains('is-active')) {
+    document.body.setAttribute('style', 'overflow: hidden')
+  } else {
+    document.body.setAttribute('style', 'overflow: auto')
+  }
 });
 
 window.addEventListener('scroll', () => {
