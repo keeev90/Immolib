@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'property_pictures/create'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'static_pages#home'
+
+  get "welcome_user", to: "static_pages#welcome_user"
 
   resources 'users' do
     resources 'profile_pictures', only: [:create]
