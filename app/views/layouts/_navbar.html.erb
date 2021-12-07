@@ -1,0 +1,16 @@
+<nav class='navbar'>
+  <%= link_to root_path, class: 'navbar__brand' do %>
+    <div class='logo'></div>
+    <h1 class='title'>Immolib</h1>
+  <% end %>
+  <div class='navbar__items'>
+    <%= link_to 'Organiser des visites', '#', class: 'item' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Mon Profil', '#', class: 'item' %>
+      
+      <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
+    <% else %>
+      <%= link_to 'Connexion (mettre dropdown ici)', new_user_session_path, class: 'item' %>
+    <% end %>
+  </div>
+</nav>
