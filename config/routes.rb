@@ -4,4 +4,9 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   resources 'users'
+  resources 'properties' do 
+    resources 'slots'
+  end 
+  resources 'appointments', except: [:edit, :update]
+
 end

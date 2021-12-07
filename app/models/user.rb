@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #Associations
-  has_many :properties, foreign_key: 'owner_id' #, class_name: "Property"
-  has_many :appointments, foreign_key: 'candidate_id' #, class_name: "Appointment"
+  has_many :properties, foreign_key: 'owner_id', dependent: :destroy
+  has_many :appointments, foreign_key: 'candidate_id', dependent: :destroy
   
   #Validations
   # validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Merci de renseigner une adresse email valide." }
