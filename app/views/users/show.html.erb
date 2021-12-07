@@ -16,7 +16,13 @@
     <h2> Mes logements </h2>
 
     <% if current_user.properties.count > 0 %>
-      <%# Ajouter ici l'affichage des propriétés (Jolie card si possible) %>
+      <div class="properties-wrapper">
+        <% current_user.properties.each do |p| %>
+          <%# Insérer ci-dessous le lien le property#show /!\ %>
+          <%= link_to render(partial: 'property-card', locals: {property: p}), root_path %>
+        <% end %>
+      </div>
+
     <% else %>
       <p> Vous n'avez pas de logement ajouté sur Immolib. </p>
     <% end %>

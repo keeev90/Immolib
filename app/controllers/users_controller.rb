@@ -38,9 +38,8 @@ class UsersController < ApplicationController
   def is_same_user
     @user = User.find(params[:id])
     if @user == current_user
-      # Ajouter flash success
     else
-      # Ajouter flash alert
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page."
       redirect_to root_path
     end
   end
