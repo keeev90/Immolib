@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'faker'
 
-RSpec.describe User, type :model do
+RSpec.describe User, type: :model do
   before(:each) do 
     @user = User.create(
       email: Faker::Internet.email,
@@ -50,7 +50,7 @@ RSpec.describe User, type :model do
   context "associations" do
     describe "properties" do
       it 'should have many properties' do
-        property = Property.create(owner: @user)
+        property = Property.create(owner: @user, title: Faker::Beer.brand)
         expect(@user.properties.include?(property)).to eq(true)
       end
 
@@ -59,9 +59,16 @@ RSpec.describe User, type :model do
           email: Faker::Internet.email,
           password: Faker::Internet.password
         )
-        property = Property.create(owner: owner)
-        slot = Slot.create(property: property)
-        appointment = Appointment.create(candidate: @user, )
+        property = Property.create(owner: owner, title: Faker::Beer.brand)
+        slot = Slot.create(
+          property: property,
+          start_date: Faker::Time.between(
+            from: DateTime.now + 1,
+            to: DateTime.now + 30
+          )
+        )
+        appointment = Appointment.create(candidate: @user, slot: slot)
+        expect(@user.appointments.include?(appointment)).to eq(true)
       end
     end
   end
