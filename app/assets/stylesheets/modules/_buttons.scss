@@ -41,7 +41,7 @@
 
 .return-link {
   color: black;
-  display: block;
+  display: inline-block;
   margin-bottom: 1em;
 
   i {
@@ -51,6 +51,7 @@
     -moz-transition: transform 0.3s;
     -ms-transition: transform 0.3s;
     -o-transition: transform 0.3s;
+    margin-right: 0.5em;
   }
 
   &:hover i {

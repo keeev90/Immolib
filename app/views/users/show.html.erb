@@ -1,7 +1,12 @@
 <div class="profile-wrapper">
-  <%= link_to raw("<i class='fas fa-chevron-left'></i> Accueil "), root_path, class: "return-link" %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retourner à l'accueil "), root_path, class: "return-link" %>
   <h2> Mes informations personnelles </h2>
+    <p> Prénom : <%= current_user.first_name %>
+    <p> Nom : <%= current_user.last_name %>
+    <p> Adresse mail : <%= current_user.email %>
+    <p><%= link_to "Éditer mon profil", "#", class: "btn white-btn bg-primary" %></p>
 
+    <h2> Mes propriétés </h2>
 
 
 </div>

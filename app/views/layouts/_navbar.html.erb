@@ -18,4 +18,6 @@
   </div>
 </nav>
 
-<%= javascript_include_tag 'navbar.js' %>
+<% if !user_signed_in? %>
+  <%= javascript_include_tag 'navbar.js' %>
+<% end %>
