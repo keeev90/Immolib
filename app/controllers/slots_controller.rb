@@ -7,6 +7,8 @@ class SlotsController < ApplicationController
   end
 
   def new
+    @slot = Slot.new
+    @property = Property.find(params[:property_id])
   end
 
   def create
