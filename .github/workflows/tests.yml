@@ -33,7 +33,7 @@ jobs:
       - name: Run tests
         run: bundler exec rake
       - name: Upload coverage results
-        uses: actions/upload-artifact@development
+        uses: actions/upload-artifact@master
         if: always()
         with:
           name: coverage-report
