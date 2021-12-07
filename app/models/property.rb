@@ -4,5 +4,5 @@ class Property < ApplicationRecord
   has_many :slots
   has_many :appointments, through: :slots
   has_many :candidates, class_name: "User", through: :appointments
-
+ 
 end
