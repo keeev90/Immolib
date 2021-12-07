@@ -1,0 +1,39 @@
+<div class="profile-wrapper">
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retourner à l'accueil "), root_path, class: "return-link" %>
+  <h2> Mes informations personnelles </h2>
+    <div class="profile-wrapper__informations">
+      <div class="profile-wrapper__informations__left">
+        <p> Prénom : <%= @user.first_name %>
+        <p> Nom : <%= @user.last_name %>
+        <p> Adresse mail : <%= @user.email %>
+      </div>
+      <div class="profile-wrapper__informations__right nopic">
+        Ajouter une photo de profil
+      </div>
+    </div>
+    <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
+
+    <h2> Mes logements </h2>
+
+    <% if current_user.properties.count > 0 %>
+      <div class="properties-wrapper">
+        <% current_user.properties.each do |p| %>
+          <%# Insérer ci-dessous le lien le property#show /!\ %>
+          <%= link_to render(partial: 'property-card', locals: {property: p}), root_path %>
+        <% end %>
+      </div>
+
+    <% else %>
+      <p> Vous n'avez pas de logement ajouté sur Immolib. </p>
+    <% end %>
+
+    <h2> Mes visites </h2>
+
+    <% if current_user.appointments.count > 0 %>
+      <%# Ajouter ici l'affichage des RDV %>
+    <% else %>
+      <p> Vous n'avez pas de visite programmée sur Immolib. </p>
+    <% end %>
+
+
+</div>
