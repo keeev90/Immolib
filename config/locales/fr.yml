@@ -70,3 +70,24 @@ fr:
               blank: "Merci de renseigner une adresse email valide 🙏"
             password:
               blank: "Merci de renseigner un mot de passe valide (6 caractères minimum) 🙏"
+        property:
+          attributes:
+            title:
+              too_short: "Le nombre de caractères doit être compris entre 3 et 140"
+              too_long: "Le nombre de caractères doit être compris entre 3 et 140"
+            owner:
+              blank: "Impossible de créer une propriété sans propriétaire !"
+              required: "Impossible de créer une propriété sans propriétaire !"
+        slot:
+          attributes:
+            property:
+              blank: "Impossible de faire une visite d'un bien qui n'existe pas !"
+              required: "Impossible de faire une visite d'un bien qui n'existe pas !"
+        appointment:
+          attributes:
+            candidate:
+              blank: "Impossible de faire une visite sans visiteur !"
+              required: "Impossible de faire une visite sans visiteur !"
+            slot:
+              blank: "Impossible de faire une visite sans horaires !"
+              required: "Impossible de faire une visite sans horaires !"
