@@ -68,19 +68,25 @@ RSpec.describe Property, type: :model do
   end
 
   context "associations" do
-    describe "properties" do
+    describe "owner" do
       it 'should have a owner' do
         expect(@property.owner == @owner).to eq(true)
       end
+    end
 
+    describe 'slots' do
       it 'should have many slots' do
         expect(@property.slots.include?(@slot)).to eq(true)
       end
+    end
 
+    describe 'appointments' do
       it 'should have many appointments' do
         expect(@property.appointments.include?(@appointment)).to eq(true)
       end
+    end
 
+    describe 'candidates' do
       it 'should have many candidates' do
         expect(@property.candidates.include?(@candidate)).to eq(true)
       end

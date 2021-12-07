@@ -53,7 +53,9 @@ RSpec.describe User, type: :model do
         property = Property.create(owner: @user, title: Faker::Beer.brand)
         expect(@user.properties.include?(property)).to eq(true)
       end
+    end
 
+    describe 'appointments' do
       it 'should have many appointments' do
         owner = User.create(
           email: Faker::Internet.email,
