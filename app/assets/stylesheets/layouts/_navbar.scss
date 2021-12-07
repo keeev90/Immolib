@@ -1,0 +1,21 @@
+nav {
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1em 2em;
+  position: fixed;
+  z-index: 200;
+  width: 100%;
+
+  & a {
+    color: white;
+    margin: 0 0.5em;
+    font-size: 1.2em;
+    transition: opacity 0.3s;
+
+    &.item:hover {
+      opacity: 0.7;
+    }
+  }
+}
