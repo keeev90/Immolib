@@ -12,6 +12,16 @@ class SlotsController < ApplicationController
   end
 
   def create
+    @property = Property.find(params[:property_id])
+    @slot = Slot.new(slot_params)
+    @slot.property = @property
+    if @slot.save
+      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
+      redirect_to(property_slots_path(@property))
+    else
+      flash.now[:warning] = @slot.errors.full_messages
+      render :new
+    end
   end
 
   def edit
@@ -22,4 +32,11 @@ class SlotsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def slot_params
+    params.require(:slot).permit(:start_date, :duration, :max_appointments)
+  end
+
 end
