@@ -17,6 +17,7 @@
       <div class="field">
         <%= f.label "Editer ma photo de profil" %><br />
         <%= f.file_field :profile_picture, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+        <%= link_to "Supprimer la photo de profil", user_profile_picture_path(current_user), method: "delete" %>
       </div>
 
       <div class="actions">

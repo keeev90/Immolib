@@ -1,0 +1,13 @@
+<div class="picture-profile-modal-wrapper">
+  <i class="fas fa-times modal-close primary"></i>
+  <%= form_with url: user_profile_pictures_path(@user), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+    <div class="field">
+      <%= f.file_field :profile_picture, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+    </div>
+    <div class="text-center">
+      <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+    </div>
+  <%end%>
+
+  <%= link_to "Supprimer la photo de profil", user_profile_pictures_path(current_user), method: "delete" %>
+</div>

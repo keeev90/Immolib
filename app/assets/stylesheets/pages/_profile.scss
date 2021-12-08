@@ -17,12 +17,12 @@
       margin-left: 5rem;
       width: 10rem;
       height: 10rem;
-      border-radius: 1rem;
-      -webkit-border-radius: 1rem;
-      -moz-border-radius: 1rem;
-      -ms-border-radius: 1rem;
-      -o-border-radius: 1rem;
-      background-color: #ccc;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      background-color: $primary;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -35,9 +35,24 @@
       -o-transition: background-color 0.3s;
       box-shadow: var(--shadow-low);
 
-      &:hover {
-        opacity: 0.7em;
-        background-color: #ddd;
+      p {
+        color: white;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        cursor: default;
+      }
+
+      &.nopic:hover {
+        background-color: #B5DAFF;
       }
     }
   }
@@ -48,4 +63,59 @@
   flex-wrap: wrap;
   gap: 2em;
   margin: 1em 0;
+}
+
+.picture-profile-modal {
+  padding: 2.5rem 1.5rem 1rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.1);
+  background-color: #fff;
+  position: absolute;
+  top: 10rem;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  -moz-transition: opacity 0.3s, transform 0.3s;
+  -ms-transition: opacity 0.3s, transform 0.3s;
+  -o-transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.picture-profile-modal.hidden {
+  opacity: 0;
+  transform: translateY(-20rem);
+  -webkit-transform: translateY(-20rem);
+  -moz-transform: translateY(-20rem);
+  -ms-transform: translateY(-20rem);
+  -o-transform: translateY(-20rem);
+  pointer-events: none;
+}
+
+.picture-profile-modal-wrapper {
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: -2rem;
+  right: -0.5rem;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+.delete-profile-picture {
+  color: black;
+  display: block;
+  text-align: right;
+  margin-top: 0.5em;
 }
