@@ -1,4 +1,8 @@
 fr:
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: Semaine
   devise:
     confirmations:
       confirmed: "✔️ Votre compte a été validé."
