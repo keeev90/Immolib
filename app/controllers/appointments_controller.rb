@@ -6,6 +6,10 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    puts params
+    puts "la titi"
+    puts "#" * 50
+    redirect_to root_path
   end
 
   def show

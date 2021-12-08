@@ -15,16 +15,28 @@ class Slot < ApplicationRecord
   # useful methods now or later
 
   def end_date
-     start_date + duration.minutes
+    start_date + duration.minutes
   end
 
   def period
     start_date..end_date
   end
 
-   def duration? #converts seconds into minutes
-     (end_date - start_date).to_i/(60) #https://stackoverflow.com/questions/4502245/how-can-i-find-the-number-of-days-between-two-date-objects-in-ruby
-   end
+  def duration? #converts seconds into minutes
+    (end_date - start_date).to_i/(60) #https://stackoverflow.com/questions/4502245/how-can-i-find-the-number-of-days-between-two-date-objects-in-ruby
+  end
+
+  def availability
+    return (self.max_appointments - self.appointments.size)
+  end
+  
+  def available?
+    if self.availability > 0
+      return true
+    else
+      return false
+    end
+  end
 
   private
 

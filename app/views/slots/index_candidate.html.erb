@@ -5,10 +5,13 @@ Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de m
 </p>
 <ul>
   <% @slots.each do |slot| %>
-    <li>
-      Le <%=slot.start_date.day%> <%=slot.start_date.strftime('%B')%> à <%=slot.start_date.hour%> h :
-      <%= link_to "Reserver", "#", class: ""  %>
-    </li>
-    
+  
+    <% if slot.available? %>
+      <li>
+        Le <%=slot.start_date.day%> <%=slot.start_date.strftime('%B')%> à <%=slot.start_date.hour%> h :
+        <%= link_to "Reserver", appointments_path, :method => :post %>
+        Nombre de places disponible : <%=slot.availability%>
+      </li>
+    <% end %>
   <% end %>
 </ul>
