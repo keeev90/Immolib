@@ -7,14 +7,8 @@
     
     <%= link_to "Ajoutez un créneau", new_property_slot_path, class: "btn big-btn white-btn bg-primary" %>
     
-    <% if ( @slots.count > 0 ) %>
-      <%= render( 
-        partial: 'created_property_slots', 
-        locals: { slots: @slots } 
-        ) %>
-      <%= link_to "Valider et passer à l'étape suivante", "#", class: "btn big-btn white-btn bg-primary" %>
-      <small>En cliquant sur « valider et passer à l’étape suivante », vous allez être redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong> pour finaliser votre inscription.<small>
-      <small>L’accès à notre service est au tarif fixe de 50€ par logement enregistré.<small>
+    <% if @slots.count > 0 %>
+      <%= render( partial: 'created_property_slots', locals: { slots: @slots, property: @property } ) %>
     <% end %>
   </div>
 </div>
