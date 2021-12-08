@@ -11,10 +11,17 @@ Rails.application.routes.draw do
     resources 'profile_pictures', only: [:create, :destroy]
   end
 
+
   resources 'properties' do 
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots'
+    member do
+      get 'go-visit', to: "properties#show_candidate"
+      get 'book-now', to: "slots#index_candidate"
+    end
   end 
+# get '/properties/:id/test', to: "properties#show_candidate"
+
 
   resources 'appointments', except: [:edit, :update]
 
