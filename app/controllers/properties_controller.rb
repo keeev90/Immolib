@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
     @property.owner = current_user
     #@property.property_picture.attach(params[:property_picture])
     if @property.save
-      flash[:success] = "La présentation de votre logement a été créée avec succès 😎"
+      flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
       redirect_to(property_slots_path(@property))
     else
       flash.now[:warning] = @property.errors.full_messages
