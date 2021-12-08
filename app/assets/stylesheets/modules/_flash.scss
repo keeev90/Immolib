@@ -12,7 +12,7 @@
     background-color: $success;
   }
 
-  &.alert-warning {
+  &.alert-warning, &.alert-alert {
     background-color: $warning;
   }
 
