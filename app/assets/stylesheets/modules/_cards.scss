@@ -27,6 +27,19 @@
       height: 100%;
     }
 
+    &__no-picture {
+      background-color: $primary-light;
+      height: 100%;
+      width: 100%;
+      border-radius: 0.4em 0.4em 0 0;
+      -webkit-border-radius: 0.4em 0.4em 0 0;
+      -moz-border-radius: 0.4em 0.4em 0 0;
+      -ms-border-radius: 0.4em 0.4em 0 0;
+      -o-border-radius: 0.4em 0.4em 0 0;
+      text-align: center;
+      padding-top: 0.5em;
+    }
+
     &:after {
       position: absolute;
       content: "Voir le détail";
