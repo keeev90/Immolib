@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     
     edited_user = params[:user]
 
-    if @user.update(first_name: edited_user[:first_name], last_name: edited_user[:last_name], profile_picture: edited_user[:profile_picture])
-      flash[:success] = "Votre profil a été édité avec succès."
+    if @user.update(first_name: edited_user[:first_name], last_name: edited_user[:last_name])
+      flash[:success] = "Votre profil a été édité avec succès 👌"
       redirect_to user_path(@user)
     else
       flash.now[:warning] = @user.errors.full_messages
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "Votre compte a été supprimé avec succès."
+    flash[:success] = "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt 👋"
     redirect_to root_path
   end
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user == current_user
     else
-      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page."
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
       redirect_to root_path
     end
   end
