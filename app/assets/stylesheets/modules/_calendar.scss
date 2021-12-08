@@ -3,4 +3,17 @@
   .today {
     background-color: $primary-light;
   }
+
+  .week {
+    width: 100%;
+  }
+
+  .past {
+    background-color: #ccc;
+    pointer-events: none;
+  }
+
+  .day {
+    height: 400px;
+  }
 }

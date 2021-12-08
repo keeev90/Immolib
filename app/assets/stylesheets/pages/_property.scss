@@ -11,7 +11,19 @@
   }
 
   &__right {
-  // Calendar
+    flex-grow: 1;
+    
+    &__slot {
+      padding: 0.4rem;
+      background-color: $primary;
+      margin: 0.3em 0;
+      border-radius: 0.2em;
+      -webkit-border-radius: 0.2em;
+      -moz-border-radius: 0.2em;
+      -ms-border-radius: 0.2em;
+      -o-border-radius: 0.2em;
+      color: white;
+    }
   }
 }
 

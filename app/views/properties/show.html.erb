@@ -23,12 +23,14 @@
     </div>
   </div>
   <div class="property-wrapper__right pl4">
-    <%# Afficher ici le calendrier de créneaux %>
     <%= week_calendar(events:@property.slots, attribute: :start_date) do |date, slots| %>
       <%= date.strftime("%d-%m-%Y") %>
       <% slots.each do |slot| %>
-        <p> <%= slot.duration %> minutes </p>
-        <p> <%= slot.max_appointments %> <%= slot.max_appointments>1 ? "places" : "place" %> </p>
+        <div class="property-wrapper__right__slot">
+          <p> Début : <%= slot.start_date.strftime("%H:%M") %> </p>
+          <p> <%= slot.duration %> minutes </p>
+          <p> <%= slot.max_appointments %> <%= slot.max_appointments>1 ? "places" : "place" %> </p>
+        </div>
       <% end %>
     <% end %>
   </div>
