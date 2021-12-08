@@ -22,9 +22,9 @@ class Slot < ApplicationRecord
     start_date..end_date
   end
 
-  def duration #converts seconds into minutes
-    # (end_date - start_date).to_i/(60) #https://stackoverflow.com/questions/4502245/how-can-i-find-the-number-of-days-between-two-date-objects-in-ruby
-  end
+   def duration? #converts seconds into minutes
+     (end_date - start_date).to_i/(60) #https://stackoverflow.com/questions/4502245/how-can-i-find-the-number-of-days-between-two-date-objects-in-ruby
+   end
 
   private
 
@@ -39,7 +39,8 @@ class Slot < ApplicationRecord
   end
 
   def overlaps_with_other? # https://railsguides.net/date-ranges-overlap/
-    other_slots = Property.find(params[:property_id]).slots
+    # other_slots = Property.find(params[:property_id]).slots
+    other_slots = self.property.slots
     is_overlapping = other_slots.any? do |other_slot| # any? method >>> https://www.geeksforgeeks.org/ruby-enumerable-any-function/#:~:text=The%20any%3F()%20of%20enumerable,condition%2C%20else%20it%20returns%20false.&text=Parameters%3A%20The%20function%20takes%20two,the%20other%20is%20the%20pattern.
       period.overlaps?(other_slot.period) # overlaps? method >>> https://www.rubydoc.info/docs/rails/Range:overlaps%3F
     end
