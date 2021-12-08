@@ -12,7 +12,12 @@
 
   &__right {
     flex-grow: 1;
-    
+
+    &__date {
+      text-align: center;
+      border-bottom: 1px solid black;
+    }
+
     &__slot {
       padding: 0.4rem;
       background-color: $primary;

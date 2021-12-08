@@ -105,23 +105,15 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    - jan.
-    - fév.
-    - mar.
-    - avr.
+    - jan
+    - fév
+    - mar
+    - avr
     - mai
     - juin
-    - juil.
+    - juil
     - août
-    - sept.
-    - oct.
-    - nov.
-    - déc.
-    formats:
-      default: "%d/%m/%Y"
-      long: "%e %B %Y"
-      short: "%e %b"
-    order:
-    - :day
-    - :month
-    - :year
+    - sept
+    - oct
+    - nov
+    - déc

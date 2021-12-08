@@ -1,4 +1,8 @@
 .simple-calendar {
+  th {
+    text-align: center;
+    border-bottom: none;
+  }
 
   .today {
     background-color: $primary-light;
