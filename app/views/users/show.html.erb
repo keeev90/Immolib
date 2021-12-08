@@ -31,7 +31,7 @@
       <div class="properties-wrapper">
         <% current_user.properties.each do |p| %>
           <%# Insérer ci-dessous le lien le property#show /!\ %>
-          <%= link_to render(partial: 'property-card', locals: {property: p}), root_path %>
+          <%= link_to render(partial: 'property-card', locals: {property: p}), property_path(p) %>
         <% end %>
       </div>
 
