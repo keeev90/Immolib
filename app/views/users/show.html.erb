@@ -43,6 +43,10 @@
 
     <% if current_user.appointments.count > 0 %>
       <%# Ajouter ici l'affichage des RDV %>
+      <% current_user.appointments.each do |appointment| %>
+        <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment}), appointment_path(appointment) %>
+      <% end %>
+      
     <% else %>
       <p> Vous n'avez pas de visite programmée sur Immolib. </p>
     <% end %>
