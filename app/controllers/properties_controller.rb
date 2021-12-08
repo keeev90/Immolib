@@ -8,6 +8,10 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
   end 
+  
+  def show_candidate
+    @property = Property.find(params[:id])
+  end 
 
   def new
     @property = Property.new

@@ -1,0 +1,15 @@
+<h1>SHOW PROPERTY CANDIDATE</h1>
+<div class="welcome-page">
+  <h1 class="primary"> Bienvenue ! </h1>
+  <div class="welcome_user-wrapper">
+    <div class="welcome_user-wrapper__left">
+      <p class="bolder">Rappel de l'annonce</p>
+      <p><%= @property.title%></p>
+      
+    </div>
+    <div class="welcome_user-wrapper__right">
+      <p>Je vous invite à sélectionner un créneau de visite disponible, à me transmettre les documents administratifs demandés, et si vous le souhaitez à m’écrire quelques lignes sur vous et votre projet.</p>
+      <%= link_to "C'est parti !",  book_now_property_path, class: "btn big-btn bg-primary white-btn" %>
+    </div>
+  </div>
+</div>

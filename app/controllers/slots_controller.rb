@@ -3,6 +3,10 @@ class SlotsController < ApplicationController
     @slots = Property.find(params[:property_id]).slots
   end
 
+  def index_candidate
+    @slots = Property.find(params[:id]).slots
+  end
+
   def show
   end
 
