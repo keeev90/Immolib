@@ -20,6 +20,7 @@
       <p> <%= @property.city %> </p>
       <p> Liens : <%= @property.other_link %> </p>
       <p> Instructions : <%= @property.instructions %> </p>
+      <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
     </div>
   </div>
   <div class="property-wrapper__right pl4">
