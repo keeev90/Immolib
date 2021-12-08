@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/unprocessacle_entity'
+  get 'errors/server_error'
   get 'slots/index'
   get 'slots/show'
   get 'slots/new'

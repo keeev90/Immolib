@@ -16,8 +16,12 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <%= yield %>
 
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= render 'layouts/footer' %>
     <script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
   </body>
 </html>

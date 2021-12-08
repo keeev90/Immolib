@@ -1,43 +1,45 @@
-<nav class='navbar'>
-  <%= link_to root_path, class: 'navbar__brand' do %>
-    <div class='logo'></div>
-    <h1 class='title'>Immolib</h1>
-  <% end %>
-  <div class='navbar__items'>
-    <%= link_to 'Organiser des visites', '#', class: 'item' %>
-    <% if user_signed_in? %>
-      <%= link_to 'Mon Profil', user_path(current_user), class: 'item' %>
-      <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
-    <% else %>
-      <p class="item connexion-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
-      <div class="navbar__items__connexion__menu">
-        <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
-        <%= link_to "S'inscrire", new_user_registration_path, class: 'item primary' %>
-      </div>
+<header>
+  <nav class='navbar'>
+    <%= link_to root_path, class: 'navbar__brand' do %>
+      <div class='logo'></div>
+      <h1 class='title'>Immolib</h1>
     <% end %>
+    <div class='navbar__items'>
+      <%= link_to 'Organiser des visites', '#', class: 'item' %>
+      <% if user_signed_in? %>
+        <%= link_to 'Mon Profil', user_path(current_user), class: 'item' %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
+      <% else %>
+        <p class="item connexion-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
+        <div class="navbar__items__connexion__menu">
+          <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'item primary' %>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+  <div class="hamburger-btn">
+    <span class='hamburger-btn__icon'></span>
   </div>
-</nav>
-<div class="hamburger-btn">
-  <span class='hamburger-btn__icon'></span>
-</div>
-<nav class='hamburger-menu'>
-  <%= link_to root_path, class: 'navbar__brand' do %>
-    <div class='logo'></div>
-    <h1 class='title'>Immolib</h1>
-  <% end %>
-  <div class='navbar__items'>
-    <%= link_to 'Organiser des visites', '#', class: 'item' %>
-    <% if user_signed_in? %>
-      <%= link_to 'Mon Profil', user_path(current_user), class: 'item' %>
-      <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
-    <% else %>
-      <p class="item connexion-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
-      <div class="navbar__items__connexion__menu">
-        <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
-        <%= link_to "S'inscrire", new_user_registration_path, class: 'item primary' %>
-      </div>
+  <nav class='hamburger-menu'>
+    <%= link_to root_path, class: 'navbar__brand' do %>
+      <div class='logo'></div>
+      <h1 class='title'>Immolib</h1>
     <% end %>
-  </div>
-</nav>
+    <div class='navbar__items'>
+      <%= link_to 'Organiser des visites', '#', class: 'item' %>
+      <% if user_signed_in? %>
+        <%= link_to 'Mon Profil', user_path(current_user), class: 'item' %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
+      <% else %>
+        <p class="item connexion-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
+        <div class="navbar__items__connexion__menu">
+          <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'item primary' %>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+</header>
 
 <%= javascript_include_tag 'navbar.js' %>
