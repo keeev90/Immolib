@@ -1,0 +1,36 @@
+<div class="form-page">
+  <div class="form-page__form">
+    <h2>Éditer mon annonce</h2>
+
+    <%= form_with model: @property, url: property_path(@property), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+    
+      <div class="field">
+        <%= f.label 'Titre' %><br />
+        <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Ville' %><br />
+        <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Lien vers l\'annonce' %><br />
+        <%= f.text_field :other_link, autofocus: true, autocomplete: "other_link" %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Instructions' %><br />
+        <%= f.text_field :instructions, autofocus: true, autocomplete: "instructions" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Enregistrer les changements", class:"btn white-btn bg-primary" %>
+      </div>
+    <% end %>
+
+    <div class="form-page__form--links">
+      <p><%= link_to 'Retour', property_path(@property) %></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="property-card">
+  <div class="property-card__picture">
+    <%if appointment.slot.property.property_picture.attached?%>
+      <%= image_tag appointment.slot.property.property_picture, alt: 'property_picture' %>
+    <%else%>
+      <div class="property-card__picture__no-picture">
+        <p>Pas de photo du logement</p>
+      </div>
+    <%end%>
+  </div>
+  <div class="property-card__text">
+    <p>Heure du RDV : <%= appointment.slot.start_date %></p>
+    <p>Durée de la visite : <%= appointment.slot.duration %></p>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="primary">
+  <h1>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu. Merci pour votre confiance !</h1>
+  <small>Un email de confirmation a été envoyé sur <%= current_user.email %></small>
+  <br/>
+  <h2>Dernière étape : intégrer votre URL Immolib dans vos annonces en ligne</h2>
+</div>
+
+<div>
+  <p class="bolder">Intégrez votre URL Immolib directement dans vos annonces en ligne (ex : PaP, Leboncoin, SeLoger…). Les candidats n'auront plus qu'à suivre un parcours simple et rapide !</p>
+  <p>A vous de jouer 😉</p>
+</div>
+
+<div>
+  <p>Votre lien Immolib à copier-coller dans vos annonces en ligne :</p>
+  <p>A FAIRE >>> insérer ici un champs texte avec l'URL Immolib (avec un property.id modifié) qui redirige vers properties#show_candidate</p>
+</div>
+
+<div>
+  <p>N'oubliez pas de compléter votre Profil et votre espace Visites pour personnaliser les emails automatiques qui seront envoyés à vos candidats (confirmation d’inscription à un créneau de visite, envoi des modalités logistiques pour les visites...)​ !</p>
+</div>
+
+<div>
+  <%= link_to "Compléter mes infos", "#", class: 'btn' %>
+  <%= link_to "Découvrir mon espace logements", "#", class: 'btn' %>
+</div>
