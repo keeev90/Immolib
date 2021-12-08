@@ -1,5 +1,6 @@
 class SlotsController < ApplicationController
   def index
+    @property = Property.find(params[:property_id]) # for Stripe
     @slots = Property.find(params[:property_id]).slots
   end
 

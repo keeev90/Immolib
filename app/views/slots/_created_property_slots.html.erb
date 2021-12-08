@@ -2,4 +2,11 @@
   <p><%= slot.start_date %></p>
   <p><%= slot.duration %></p>
   <p><%= slot.max_appointments %></p>
+  <br/>
 <% end %>
+
+<br/>
+<%= link_to "Valider et passer à l'étape suivante", checkout_create_path(price: 49.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
+<br/>
+<small>En cliquant sur « valider et passer à l’étape suivante », vous allez être redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong> pour finaliser l'organisation de vos visites.<small>
+<small>L’accès à notre service est au tarif fixe de 50€ par logement.<small>
