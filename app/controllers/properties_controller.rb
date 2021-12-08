@@ -7,6 +7,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end 
   
   def show_candidate
@@ -29,6 +30,30 @@ class PropertiesController < ApplicationController
       render :new
     end
   end 
+
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    
+    edited_property = params[:property]
+
+    if @property.update(title: edited_property[:title], city: edited_property[:city], other_link: edited_property[:other_link], instructions: edited_property[:instructions])
+      flash[:success] = "Votre annonce a été éditée avec succès 👌"
+      redirect_to property_path(@property)
+    else
+      flash.now[:warning] = @property.errors.full_messages
+      render edit_property_path(@property)
+    end
+  end
+
+  def destroy
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect_to user_path(current_user)
+  end
 
   private
 

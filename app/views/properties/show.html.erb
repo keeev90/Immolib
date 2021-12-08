@@ -1,5 +1,6 @@
 <div class="property-wrapper pl4 pr4 pt1">
   <div class="property-wrapper__left pr4">
+    <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
     <h1 class="primary pb4"> Mon annonce </h1>
 
     <%if @property.property_picture.attached?%>
@@ -20,10 +21,25 @@
       <p> <%= @property.city %> </p>
       <p> Liens : <%= @property.other_link %> </p>
       <p> Instructions : <%= @property.instructions %> </p>
+      <p> URL Immolib  : http://immolib.com/properties/<%= @property.id %>/go-visit </p>
+      <p> URL Immolib test : <%=link_to "lien", book_now_property_path(@property.id)%></p>
+      <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
+      <p><%= link_to "Supprimer mon annonce", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
     </div>
   </div>
   <div class="property-wrapper__right pl4">
-    <%# Afficher ici le calendrier de créneaux %>
+    <%= week_calendar(events:@property.slots, attribute: :start_date) do |date, slots| %>
+      <div class="property-wrapper__right__date">
+        <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
+      </div>
+      <% slots.each do |slot| %>
+        <div class="property-wrapper__right__slot">
+          <p> Début : <%= slot.start_date.strftime("%H:%M") %> </p>
+          <p> <%= slot.duration %> minutes </p>
+          <p> <%= slot.max_appointments %> <%= slot.max_appointments>1 ? "places" : "place" %> </p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
 </div>
