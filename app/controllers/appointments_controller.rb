@@ -6,10 +6,8 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    puts params
-    puts "la titi"
-    puts "#" * 50
-    redirect_to root_path
+    appointment = Appointment.create(candidate: current_user, slot: Slot.find(params[:param1]))
+    redirect_to appointment_path(appointment.id)
   end
 
   def show
