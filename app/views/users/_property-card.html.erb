@@ -3,7 +3,9 @@
     <%if property.property_picture.attached?%>
       <%= image_tag property.property_picture, alt: 'property_picture' %>
     <%else%>
-      Ajoutez une photo en éditant votre logement
+      <div class="property-card__picture__no-picture">
+        <p>Ajoutez une photo en éditant votre logement</p>
+      </div>
     <%end%>
   </div>
   <div class="property-card__text">

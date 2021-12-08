@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   get "welcome_user", to: "static_pages#welcome_user"
 
   resources 'users' do
-    resources 'profile_pictures', only: [:create]
+    resources 'profile_pictures', only: [:create, :destroy]
   end
 
   resources 'properties' do 
-    resources 'property_pictures', only: [:create]
+    resources 'property_pictures', only: [:create, :destroy]
     resources 'slots'
   end 
 

@@ -8,19 +8,19 @@
         <p> Adresse mail : <%= @user.email %>
       </div>
       <%if @user.profile_picture.attached?%>
-        <div class="profile-wrapper__informations__right nopic">
-          <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
+        <div>
+          <div class="profile-wrapper__informations__right">
+            <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
+          </div>
+          <%= link_to "Supprimer la photo de profil", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
         </div>
       <%else%>
-        <%= form_with url: user_profile_pictures_path(@user), local: true, class: "form", id: "item-form", multipart: true do |f| %>
-          <div class="field">
-            <%= f.label "Ajouter une photo de profil" %><br />
-            <%= f.file_field :profile_picture, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
-          </div>
-          <div class="text-center">
-            <%= f.submit "Valider", class: "btn" %>
-          </div>
-        <%end%>
+        <div class="profile-wrapper__informations__right nopic">
+          <p> Ajouter une photo de profil </p>
+        </div>
+        <div class="picture-profile-modal hidden">
+          <%= render "profile-picture-form" %>
+        </div>
       <%end%>
     </div>
     <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
@@ -31,7 +31,7 @@
       <div class="properties-wrapper">
         <% current_user.properties.each do |p| %>
           <%# Insérer ci-dessous le lien le property#show /!\ %>
-          <%= link_to render(partial: 'property-card', locals: {property: p}), root_path %>
+          <%= link_to render(partial: 'property-card', locals: {property: p}), property_path(p) %>
         <% end %>
       </div>
 
@@ -47,5 +47,7 @@
       <p> Vous n'avez pas de visite programmée sur Immolib. </p>
     <% end %>
 
-
+<%if !@user.profile_picture.attached?%>
+  <%= javascript_include_tag 'profile-pic.js' %>
+<% end %>
 </div>

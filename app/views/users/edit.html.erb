@@ -14,11 +14,6 @@
         <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
       </div>
 
-      <div class="field">
-        <%= f.label "Editer ma photo de profil" %><br />
-        <%= f.file_field :profile_picture, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
-      </div>
-
       <div class="actions">
         <%= f.submit "Enregistrer les changements", class:"btn white-btn bg-primary" %>
       </div>
