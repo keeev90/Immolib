@@ -37,7 +37,9 @@ class SlotsController < ApplicationController
   def destroy
   end
 
+
   private
+
 
   def slot_params
     params.require(:slot).permit(:start_date, :duration, :max_appointments)

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'book-now', to: "slots#index_candidate"
     end
   end 
+
 # get '/properties/:id/test', to: "properties#show_candidate"
 
 
