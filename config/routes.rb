@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources 'properties' do 
-    resources 'property_pictures', only: [:create]
+    resources 'property_pictures', only: [:create, :destroy]
     resources 'slots'
   end 
 

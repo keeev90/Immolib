@@ -14,4 +14,10 @@ class PropertyPicturesController < ApplicationController
     redirect_to(property_path(@property))
   end
 
+  def destroy
+    @property = Property.find(params[:id])
+    @property.property_picture.purge
+    redirect_to property_path(@property)
+  end
+
 end
