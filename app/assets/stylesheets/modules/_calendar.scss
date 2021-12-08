@@ -1,0 +1,30 @@
+.simple-calendar {
+  th {
+    text-align: center;
+    border-bottom: none;
+  }
+
+  .today {
+    background-color: $primary-light;
+  }
+
+  .week {
+    width: 100%;
+  }
+
+  .past {
+    background-color: #ccc;
+    pointer-events: none;
+  }
+
+  .day {
+    height: 400px;
+  }
+
+  .calendar-navigation {
+    font-weight: bolder;
+    color: $primary;
+    font-size: 1.1em;
+    margin: 0 0.4rem;
+  }
+}

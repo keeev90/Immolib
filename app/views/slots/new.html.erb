@@ -4,7 +4,7 @@
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <div class="form-group">
         <%= f.label "Date et heure de début", class: "form-label" %>
-        <%= f.datetime_field :start_date, min: Date.today, minute_step: 15, class: "form-control", required: true %>
+        <%= f.datetime_field :start_date, min: Date.today, step: 900, class: "form-control", required: true %>
       </div>
       <br/>
       <div class="form-group">
