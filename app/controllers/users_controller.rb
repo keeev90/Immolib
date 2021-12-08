@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     
     edited_user = params[:user]
 
-    if @user.update(first_name: edited_user[:first_name], last_name: edited_user[:last_name])
+    if @user.update(first_name: edited_user[:first_name], last_name: edited_user[:last_name], profile_picture: edited_user[:profile_picture])
       flash[:success] = "Votre profil a été édité avec succès."
       redirect_to user_path(@user)
     else

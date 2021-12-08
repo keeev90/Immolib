@@ -7,9 +7,21 @@
         <p> Nom : <%= @user.last_name %>
         <p> Adresse mail : <%= @user.email %>
       </div>
-      <div class="profile-wrapper__informations__right nopic">
-        Ajouter une photo de profil
-      </div>
+      <%if @user.profile_picture.attached?%>
+        <div class="profile-wrapper__informations__right nopic">
+          <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
+        </div>
+      <%else%>
+        <%= form_with url: user_profile_pictures_path(@user), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+          <div class="field">
+            <%= f.label "Ajouter une photo de profil" %><br />
+            <%= f.file_field :profile_picture, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "Valider", class: "btn" %>
+          </div>
+        <%end%>
+      <%end%>
     </div>
     <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
 

@@ -16,6 +16,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.owner = current_user
+    #@property.property_picture.attach(params[:property_picture])
     if @property.save
       flash[:success] = "La présentation de votre logement a été créée avec succès 😎"
       redirect_to(property_slots_path(@property))
@@ -28,7 +29,7 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:title, :city, :other_link, :instructions)
+    params.require(:property).permit(:title, :city, :property_picture, :other_link, :instructions)
   end
 
 end
