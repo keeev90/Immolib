@@ -78,4 +78,6 @@ gem 'devise'
 gem 'faker'
 gem 'table_print'
 gem 'stripe'
+gem 'jquery-rails'
 gem "simple_calendar", "~> 2.4"
+gem 'pickadate-rails'

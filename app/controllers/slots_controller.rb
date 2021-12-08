@@ -43,7 +43,11 @@ class SlotsController < ApplicationController
 
 
   def slot_params
-    params.require(:slot).permit(:start_date, :duration, :max_appointments)
+    params.require(:slot).permit(
+      :start_date,
+      :duration,
+      :max_appointments
+    )
   end
 
 end
