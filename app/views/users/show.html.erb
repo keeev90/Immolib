@@ -32,9 +32,9 @@
         <% current_user.properties.each do |p| %>
           <% if p.is_paid %>
             <%# Insérer ci-dessous le lien le property#show /!\ %>
-            <%= link_to render(partial: 'property-card', locals: {property: p}), property_path(p) %>
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
           <% else %>
-            <%= link_to render(partial: 'property-card', locals: {property: p}), checkout_create_path(price: 49.99, property: p), remote: true, method: :post %>
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_create_path(price: 49.99, property: p), remote: true, method: :post %>
           <% end %>
         <% end %>
       </div>

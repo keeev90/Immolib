@@ -1,5 +1,5 @@
 <div class="property-card">
-  <div class="property-card__picture">
+  <div class="property-card__picture <%= unpaid ? ('unpaid') : nil %>">
     <%if property.property_picture.attached?%>
       <%= image_tag property.property_picture, alt: 'property_picture' %>
     <%else%>

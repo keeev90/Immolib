@@ -63,7 +63,11 @@
       -moz-transition: opacity 0.3s;
       -ms-transition: opacity 0.3s;
       -o-transition: opacity 0.3s;
-}
+    }
+
+    &.unpaid:after {
+      content: "Procéder au paiement";
+    }
 
     &:hover:after {
       opacity: 1;
