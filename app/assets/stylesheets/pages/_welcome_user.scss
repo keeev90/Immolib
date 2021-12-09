@@ -68,6 +68,18 @@
   justify-self: center;
 }
 
+.slot-candidate-wrapper {
+  &__title {
+    text-align: center;
+  }
+  
+  &__calendar {
+    padding: 0 2rem;
+  }
+}
+
+
+
 @media screen and (max-width: 925px) {
   .welcome_user-wrapper {
     font-size: 1.4em;
