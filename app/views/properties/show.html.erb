@@ -42,7 +42,11 @@
         <%= link_to render(partial: "slot-card", locals: { slot: slot }), property_slot_path(@property, slot) %>
       <% end %>
     <% end %>
+    <div>
+      <%= link_to 'Ajoutez un créneau de visite', new_property_slot_path(@property) %>
+    </div>
   </div>
+  
 
 </div>
 

@@ -4,6 +4,11 @@ class SlotsController < ApplicationController
     @slots = Property.find(params[:property_id]).slots
   end
 
+  def index_first
+    @property = Property.find(params[:id]) # for Stripe
+    @slots = Property.find(params[:id]).slots
+  end
+
   def index_candidate
     @slots = Property.find(params[:id]).slots
   end
@@ -19,13 +24,23 @@ class SlotsController < ApplicationController
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
   end
 
+  def new_first
+    @slot = Slot.new
+    @property = Property.find(params[:id])
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+  end
+
   def create
     @property = Property.find(params[:property_id])
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
       flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
-      redirect_to(property_slots_path(@property))
+      if redirect_path[:redirect_path]
+        redirect_to(first_slots_property_path(@property))
+      else
+        redirect_to(property_path(@property))
+      end
     else
       flash.now[:warning] = @slot.errors.full_messages
       render :new
@@ -51,6 +66,10 @@ class SlotsController < ApplicationController
       :duration,
       :max_appointments
     )
+  end
+
+  def redirect_path
+    params.require(:slot).permit(:redirect_path)
   end
 
 end
