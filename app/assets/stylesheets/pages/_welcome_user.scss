@@ -1,3 +1,4 @@
+// Welcome User General
 .welcome-page {
 
   h1 {
@@ -28,6 +29,44 @@
   }
 }
 
+// Welcome User Candidate
+.welcome-page.candidate {
+  padding-bottom: 1rem;
+
+  h1 {
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .welcome_user-wrapper {
+    font-size: 1.4em;
+
+    &__right p, &__left p {
+      max-width: 60em;
+    }
+
+    &__right p {
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  .welcome_user-wrapper__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.house-picture {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  justify-self: center;
+}
 
 @media screen and (max-width: 925px) {
   .welcome_user-wrapper {
@@ -46,5 +85,4 @@
       margin-bottom: 1em;
     }
   }
-  
 }
