@@ -1,4 +1,7 @@
 class Property < ApplicationRecord
+  #Callbacks
+  before_create :randomize_property_id
+
   #Associations
   belongs_to :owner, class_name: "User"
   has_many :slots, dependent: :destroy
@@ -8,4 +11,29 @@ class Property < ApplicationRecord
   
   #Validations
   validates :title, presence: true, length: { in: 3..140, message: "Le nombre de caractères doit être compris entre 3 et 140" }
+
+  def go_visit_url
+    @id = self.id
+    return "https://immolib.herokuapp.com/properties/#{@id}/go-visit"
+  end
+
+  def go_visit_url_dev
+    @id = self.id
+    return "https://immolib-dev.herokuapp.com/properties/#{@id}/go-visit"
+  end
+
+  def go_visit_url_local
+    @id = self.id
+    return "http://localhost:3000/properties/#{@id}/go-visit"
+  end
+
+  private
+
+  def randomize_property_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000)
+    end while Property.where(id: self.id).exists?
+    #self.id = 5.times.map { rand(1..9) }.join.to_i
+  end
+
 end

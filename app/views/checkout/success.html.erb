@@ -12,7 +12,9 @@
 
 <div>
   <p>Votre lien Immolib à copier-coller dans vos annonces en ligne :</p>
-  <p>A FAIRE >>> insérer ici un champs texte avec l'URL Immolib (avec un property.id modifié) qui redirige vers properties#show_candidate</p>
+  <p>Prod : <%= @property.go_visit_url %></p>
+  <p>Dev : <%= @property.go_visit_url_dev %></p>
+  <p>Local : <%= @property.go_visit_url_local %></p>
 </div>
 
 <div>
