@@ -35,7 +35,7 @@ class SlotsController < ApplicationController
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
-      flash[:success] = "Le créneau de visite a été édité avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été créé avec succès ✌️"
       if redirect_path[:redirect_path]
         redirect_to(first_slots_property_path(@property))
       else
