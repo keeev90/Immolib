@@ -9,7 +9,7 @@
     <%end%>
   </div>
   <div class="property-card__text">
-    <p>Heure du RDV : <%= appointment.slot.start_date %></p>
-    <p>Durée de la visite : <%= appointment.slot.duration %></p>
+    <p>RDV : <%= appointment.slot.start_date.strftime("%d/%_m/%Y %H:%M") %></p>
+    <p>Durée : <%= appointment.slot.duration %> minutes</p>
   </div>
 </div>
