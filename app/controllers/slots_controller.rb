@@ -16,6 +16,7 @@ class SlotsController < ApplicationController
   def new
     @slot = Slot.new
     @property = Property.find(params[:property_id])
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
   end
 
   def create
@@ -45,7 +46,11 @@ class SlotsController < ApplicationController
 
 
   def slot_params
-    params.require(:slot).permit(:start_date, :duration, :max_appointments)
+    params.require(:slot).permit(
+      :start_date,
+      :duration,
+      :max_appointments
+    )
   end
 
 end

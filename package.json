@@ -1,5 +1,7 @@
 {
   "name": "immolib",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "pickadate": "5.0.0-alpha.2"
+  }
 }

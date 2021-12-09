@@ -83,3 +83,15 @@
     }
   }
 }
+
+.slot-summary {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: .5em;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -ms-border-radius: 0.5em;
+  -o-border-radius: 0.5em;
+  box-shadow: 0 0 12px 2px rgba(0,0,0,0.1);
+  width: fit-content
+}

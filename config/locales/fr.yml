@@ -72,6 +72,7 @@ fr:
           attributes:
             email:
               blank: "Merci de renseigner une adresse email valide 🙏"
+              taken: "Cette adresse mail est déjà prise, veuillez en renseigner une autre 🙏"
             password:
               blank: "Merci de renseigner un mot de passe valide (6 caractères minimum) 🙏"
         property:
