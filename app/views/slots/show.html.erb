@@ -1,2 +1,20 @@
-<h1>Slots#show</h1>
-<p>Find me in app/views/slots/show.html.erb</p>
+<div class="slot-wrapper pl4 pr4 pt1">
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), :back, class: "return-link" %>
+  <div class="slot-wrapper__title">
+    <h1 class="primary">Mes candidats</h1>
+    <p> Créneau du <%= @slot.start_date.strftime("%d") %> <%= @date_arr[@slot.start_date.strftime("%m").to_i] %> <%= @slot.start_date.strftime("%Y") %></p>
+    <p> <%= @slot.start_date.strftime("%H:%M") %> - <%= @slot.end_date.strftime("%H:%M") %></p>
+  </div>
+  <div class="slot-wrapper__content pt4">
+    <% if @slot.candidates.size > 0 %>
+      <% @slot.candidates.each do |c| %>
+        <div class="slot-wrapper__content__candidate">
+          <h3> <%= c.first_name %> <%= c.last_name %></h3>
+        </div>
+      <% end %>
+    <% else %>
+      <p> Vous n'avez pas de candidat inscrit sur ce créneau. </p>
+    <% end %>
+  </div>
+
+</div>

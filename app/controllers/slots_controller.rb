@@ -9,6 +9,8 @@ class SlotsController < ApplicationController
   end
 
   def show
+    @slot = Slot.find(params[:id])
+    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
   end
 
   def new
