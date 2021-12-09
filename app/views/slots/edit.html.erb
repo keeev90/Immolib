@@ -1,2 +1,31 @@
-<h1>Slots#edit</h1>
-<p>Find me in app/views/slots/edit.html.erb</p>
+<div class="form-page">
+  <div class="form-page__form">
+    <h3>Editez ce créneau de visite</h3>
+    <br/>
+    <div class='form-group'>
+      <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
+    </div>
+    <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
+      <%= f.hidden_field :start_date, value: DateTime.new, id: 'start_date' %>
+      <br/>
+      <div class="form-group">
+        <%= f.label "Durée (en minutes)", class: "form-label" %>
+        <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
+      </div>
+      <br/>
+      <div class="form-group">
+        <%= f.label "Nombre de visiteurs maximum", class: "form-label" %>
+        <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
+      </div>
+      <br/>
+      <%= f.hidden_field :redirect_path, :value => true %>
+      <div class="form-group"> 
+        <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<%= text_field_tag 'test', 'coucou', id:'pickadate' %>
+
+<%= javascript_include_tag 'datepicker' %>
