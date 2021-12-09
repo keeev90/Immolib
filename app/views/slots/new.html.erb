@@ -1,6 +1,8 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), :back, class: "return-link" %>
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
+    <h6><em>Vous pourrez modifier ces modalités de visite depuis votre espace perso.</em></h6>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
@@ -9,12 +11,12 @@
       <%= f.hidden_field :start_date, value: DateTime.new, id: 'start_date' %>
       <br/>
       <div class="form-group">
-        <%= f.label "Durée (en minutes)", class: "form-label" %>
+        <%= f.label "Durée (en minutes) *", class: "form-label" %>
         <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum", class: "form-label" %>
+        <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
         <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
       </div>
       <br/>
