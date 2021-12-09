@@ -6,11 +6,12 @@ class Slot < ApplicationRecord
   has_many :candidates, through: :appointments
   
   #Validations
-  validate :start_date_cannot_be_in_the_past
-  validate :overlaps_with_other?
+  #validate :start_date_cannot_be_in_the_past
+  #validate :overlaps_with_other?
 
   validates :start_date, presence: true
   validates :duration, presence: true
+  validates :max_appointments, presence: true, numericality: { only_integer: true }
 
   # useful methods now or later
 
@@ -52,7 +53,7 @@ class Slot < ApplicationRecord
 
   def overlaps_with_other? # https://railsguides.net/date-ranges-overlap/
     # other_slots = Property.find(params[:property_id]).slots
-    other_slots = self.property.slots
+    other_slots = property.slots
     is_overlapping = other_slots.any? do |other_slot| # any? method >>> https://www.geeksforgeeks.org/ruby-enumerable-any-function/#:~:text=The%20any%3F()%20of%20enumerable,condition%2C%20else%20it%20returns%20false.&text=Parameters%3A%20The%20function%20takes%20two,the%20other%20is%20the%20pattern.
       period.overlaps?(other_slot.period) # overlaps? method >>> https://www.rubydoc.info/docs/rails/Range:overlaps%3F
     end

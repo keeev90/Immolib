@@ -10,13 +10,14 @@ class PropertyPicturesController < ApplicationController
       return
     end
     @property.property_picture.attach(params[:property_picture])
-    flash[:success] = "La photo a bien été ajoutée."
+    flash[:success] = "La photo a bien été ajoutée 👌"
     redirect_to(property_path(@property))
   end
 
   def destroy
     @property = Property.find(params[:id])
     @property.property_picture.purge
+    flash[:success] = "La photo a bien été supprimée 👌"
     redirect_to property_path(@property)
   end
 
