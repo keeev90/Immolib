@@ -79,4 +79,3 @@ gem 'faker'
 gem 'table_print'
 gem 'stripe'
 gem "simple_calendar", "~> 2.4"
-gem 'pickadate-rails'
