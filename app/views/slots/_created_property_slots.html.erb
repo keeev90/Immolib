@@ -1,12 +1,14 @@
 <% slots.each do |slot| %>
-  <p><%= slot.start_date %></p>
-  <p><%= slot.duration %></p>
-  <p><%= slot.max_appointments %></p>
-  <br/>
+  <div class='slot-summary'>
+    <p><%= slot.start_date.strftime(
+      "Le %d/%m/%Y de %H:%M à #{slot.end_date.strftime('%H:%M')}"
+      ) %></p>
+    <p>Durée : <%= slot.duration %> minutes</p>
+    <p>Nombre de visiteurs maximum : <%= slot.max_appointments %></p>
+  </div>
 <% end %>
 
-<br/>
 <%= link_to "Valider et passer à l'étape suivante", checkout_create_path(price: 49.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
-<br/>
+
 <small>En cliquant sur « valider et passer à l’étape suivante », vous allez être redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong> pour finaliser l'organisation de vos visites.</small>
 <small>L’accès à notre service est au tarif fixe de 50€ par logement.</small>

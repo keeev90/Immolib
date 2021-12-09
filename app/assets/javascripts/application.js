@@ -12,3 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require pickadate/builds/index
+//= require pickadate/builds/translations/fr_FR

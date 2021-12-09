@@ -8,6 +8,7 @@
 @import 'abstracts/utilities';
 
 @import 'base/reset';
+@import 'base/base';
 @import 'base/typography';
 
 @import 'modules/buttons';
@@ -23,4 +24,4 @@
 @import 'pages/profile';
 @import 'pages/property';
 @import 'pages/welcome_user';
-
+@import 'pages/slots';
