@@ -3,7 +3,7 @@
     <h3>Ajoutez un nouveau créneau de visite</h3>
     <br/>
     <div class='form-group'>
-      <%= text_field_tag :start_date, '', id:'pickadate' %> 
+      <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
     </div>
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
       <%= f.hidden_field :start_date, value: '', id: 'start_date' %>
