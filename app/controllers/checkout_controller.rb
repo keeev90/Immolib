@@ -31,20 +31,13 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @property = Property.find(@session.metadata["0"].to_i)
-    # TO DO : 
-
-    #migrations : 
-    #add "payment_success" (boolean) to Property model
-    #add "stripe_customer_id" (integer) to User model
 
     if @session.payment_status = "paid"
       Property.find(@session.metadata["0"].to_i).update(is_paid: true) 
+      #TO UNCOMMENT AFTER ADDING "stripe_customer_id" ATTRIBUTE IN USER MODEL :
       #User.find(current_user).update(stripe_customer_id: @session.customer) if @session.payment_status = "paid"
     end
 
-    #if @session.payment_status = "unpaid"
-    # destroy property ? specific URL immolib redirection view ?
-    #end
   end
 
   def cancel
