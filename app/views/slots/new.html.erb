@@ -20,13 +20,11 @@
         <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
       </div>
       <br/>
-      <div class="form-group">
-        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
+      <div class="form-group"> 
+    <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
       </div>
     <%end%>
   </div>
 </div>
-
-<%= text_field_tag 'test', 'coucou', id:'pickadate' %>
 
 <%= javascript_include_tag 'datepicker' %>

@@ -1,6 +1,6 @@
 <div class="form-page">
   <div class="form-page__form">
-    <h3>Editez ce créneau de visite</h3>
+    <h3>Ajoutez un nouveau créneau de visite</h3>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
@@ -20,8 +20,7 @@
       <br/>
       <%= f.hidden_field :redirect_path, :value => true %>
       <div class="form-group"> 
-        <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
-        <%= link_to 'Delete', property_slot_path(@slot), :confirm => 'Are you sure?', :method => :delete %>
+        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
       </div>
     <%end%>
   </div>
