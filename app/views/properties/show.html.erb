@@ -20,7 +20,7 @@
       <h2> <%= @property.title %> </h2>
       <p> <%= @property.city %> </p>
       <p>Liens : <%= @property.other_link %> </p>
-      <p>Instructions : <%= @property.instructions %> </p>
+      <p class="mb1">Instructions : <%= @property.instructions %> </p>
       <p>Mon URL Immolib :</p>
       <p>Voir le rendu : <%=link_to "Mon lien Immolib", go_visit_property_path(@property.id)%></p>
       <p>Copier-coller dans mes annonces en ligne : <%= @property.go_visit_url %></p>
@@ -38,11 +38,7 @@
         <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
       </div>
       <% slots.each do |slot| %>
-        <div class="property-wrapper__right__slot">
-          <p> Début : <%= slot.start_date.strftime("%H:%M") %> </p>
-          <p> <%= slot.duration %> minutes </p>
-          <p> <%= slot.max_appointments %> <%= slot.max_appointments>1 ? "places" : "place" %> </p>
-        </div>
+        <%= link_to render(partial: "slot-card", locals: { slot: slot }), property_slot_path(@property, slot) %>
       <% end %>
     <% end %>
   </div>
