@@ -1,3 +1,7 @@
+html {
+  font-size: 18px;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -5,4 +9,14 @@ body {
 
 main {
   flex: 1;
+}
+
+hr {
+  border-top: 1px solid #ccc;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+a {
+  color: $primary;
 }
