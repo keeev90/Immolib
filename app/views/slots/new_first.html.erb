@@ -18,8 +18,9 @@
         <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
       </div>
       <br/>
+      <%= f.hidden_field :redirect_path, :value => true %>
       <div class="form-group"> 
-    <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
+        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
       </div>
     <%end%>
   </div>
