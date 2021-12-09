@@ -1,0 +1,30 @@
+.fa-copy {
+  font-size: inherit;
+  margin-left: .5em;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+
+  .copy-text {
+    visibility: hidden;
+    width: 140px;
+    background-color: $primary;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    border-radius: 6px;
+    padding: .5em;
+    position: absolute;
+    bottom: 115%;
+    left: -425%;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+
+  &:hover {
+    .copy-text {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
