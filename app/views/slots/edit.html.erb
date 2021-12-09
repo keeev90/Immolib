@@ -21,6 +21,7 @@
       <%= f.hidden_field :redirect_path, :value => true %>
       <div class="form-group"> 
         <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
+        <%= link_to 'Delete', property_slot_path(@slot), :confirm => 'Are you sure?', :method => :delete %>
       </div>
     <%end%>
   </div>

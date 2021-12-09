@@ -56,10 +56,10 @@ class SlotsController < ApplicationController
 
   def update
     @property = Property.find(params[:property_id])
-    @slot = Slot.new(slot_params)
-    @slot.property = @property
+    @slot = Slot.find(params[:id])
+    @slot.update(slot_params)
     if @slot.save
-      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été edité avec succès ✌️"
         redirect_to(property_path(@property))
     else
       flash.now[:warning] = @slot.errors.full_messages
@@ -68,6 +68,10 @@ class SlotsController < ApplicationController
   end
 
   def destroy
+    slot = Slot.find(params[:id])
+    property = slot.property
+    slot.destroy
+    redirect_to(property_path(property))
   end
 
 

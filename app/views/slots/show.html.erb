@@ -2,7 +2,7 @@
   <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), :back, class: "return-link" %>
   <div class="slot-wrapper__title">
     <h1 class="primary">Mes candidats</h1>
-    <%= link_to 'Editer', edit_property_slot_path(@slot) ,class:"btn"%>
+    <%= link_to 'Editer', edit_property_slot_path(@slot) ,class:"btn white-btn bg-primary"%>
     <p> Créneau du <%= @slot.start_date.strftime("%d") %> <%= @date_arr[@slot.start_date.strftime("%m").to_i] %> <%= @slot.start_date.strftime("%Y") %></p>
     <p> <%= @slot.start_date.strftime("%H:%M") %> - <%= @slot.end_date.strftime("%H:%M") %></p>
   </div>
