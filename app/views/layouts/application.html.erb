@@ -17,7 +17,12 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= render 'layouts/flash' %>
-    <%= yield %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= render 'layouts/footer' %>
 
     <script src="https://js.stripe.com/v3/"></script>
     <script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
