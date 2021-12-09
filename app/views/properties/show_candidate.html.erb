@@ -1,23 +1,24 @@
-<div class="welcome-page">
+<div class="welcome-page candidate">
   <h1 class="primary"> Bienvenue ! </h1>
   <div class="welcome_user-wrapper">
     <div class="welcome_user-wrapper__left">
-      <p class="bolder">Rappel de l'annonce</p>
+      <p class="bolder primary">Rappel de l'annonce</p>
       <p><%= @property.title%></p>
-      <p><%= @property.city%></p>
+      <small><p><%= @property.city%></p></small>
       <small><%= @property.other_link%></small>
       <%if @property.property_picture.attached?%>
-        <%= image_tag @property.property_picture, alt: 'property picture' %>
+        <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
       <% end %>
     </div>
     <div class="welcome_user-wrapper__right">
-      <p>Je vous invite à sélectionner un créneau de visite disponible, à me transmettre les documents administratifs demandés, et si vous le souhaitez à m’écrire quelques lignes sur vous et votre projet.</p>
-      <small>A très bientôt</small>
-      <small>
-        <%if @property.owner.first_name?%>
-          <%= @property.owner.first_name %>
-        <% end %>
-      </small>
+      <p>Je vous invite à sélectionner un créneau de visite disponible, à me transmettre les documents administratifs demandés, 
+        et à m’écrire, si vous le souhaitez, quelques lignes à propos de vous et de votre projet.</p>
+      <p>
+        A très bientôt<%=@property.owner.first_name? ? ',' : '.' %>
+      </p>
+      <%if @property.owner.first_name?%>
+        <p><%= @property.owner.first_name %></p>
+      <% end %>
       <%= link_to "C'est parti !",  book_now_property_path, class: "btn big-btn bg-primary white-btn" %>
     </div>
   </div>
