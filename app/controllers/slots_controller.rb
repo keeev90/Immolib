@@ -35,7 +35,7 @@ class SlotsController < ApplicationController
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
-      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été édité avec succès ✌️"
       if redirect_path[:redirect_path]
         redirect_to(first_slots_property_path(@property))
       else
@@ -48,12 +48,30 @@ class SlotsController < ApplicationController
   end
 
   def edit
+    @slot = Slot.find(params[:id])
+    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+    @property = @slot.property
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
   end
 
   def update
+    @property = Property.find(params[:property_id])
+    @slot = Slot.find(params[:id])
+    @slot.update(slot_params)
+    if @slot.save
+      flash[:success] = "Le créneau de visite a été edité avec succès ✌️"
+        redirect_to(property_path(@property))
+    else
+      flash.now[:warning] = @slot.errors.full_messages
+      render :new
+    end
   end
 
   def destroy
+    slot = Slot.find(params[:id])
+    property = slot.property
+    slot.destroy
+    redirect_to(property_path(property))
   end
 
 
