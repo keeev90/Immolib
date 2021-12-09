@@ -6,7 +6,7 @@
       Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de modification ou annulation de candidats.
     </p>
   </div>
-  <div class="slot-candidate-wrapper__calendar mt4">
+  <div class="slot-candidate-wrapper__calendar mt2">
     <% if @property.already_has_appointment?(current_user) %>
       <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
         <div class="property-wrapper__right__date">
@@ -16,7 +16,7 @@
           <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
         <% end %>
       <% end %>
-        <div class="slot-candidate-wrapper__calendar__title pt1 text-center"> 
+        <div class="slot-candidate-wrapper__calendar__title text-center"> 
           <p> Vous avez un créneau réservé pour le <%= @property.appointments.find_by(candidate: current_user).slot.start_date.strftime("%d/%m/%Y %H:%M") %> </p>
           <p><%= link_to "Choisir un autre créneau", appointment_path(id:@property.appointments.find_by(candidate: current_user), property:@property), method: "delete" %> </p>
         </div>

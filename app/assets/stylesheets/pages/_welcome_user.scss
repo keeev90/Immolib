@@ -75,6 +75,17 @@
   
   &__calendar {
     padding: 0 2rem;
+
+    &__title {
+      border: 1px solid $primary;
+      padding: 0.5rem 0;
+      margin-top: 0.25rem;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+}
   }
 }
 
