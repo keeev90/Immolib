@@ -10,7 +10,7 @@
   -o-border-radius: 0.5em;
   position: relative;
   box-shadow: var(--shadow-low);
-  border: 1px solid hsl(210, 100%, 85%);
+  border: 1px solid $primary-light;
 
   &__picture {
     height: 75%;
