@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   #Callbacks
-  after_create :update_property_id
+  before_create :randomize_property_id
 
   #Associations
   belongs_to :owner, class_name: "User"
@@ -19,8 +19,11 @@ class Property < ApplicationRecord
 
   private
 
-  def update_property_id
-    self.id = 5.times.map { rand(1..9) }.join.to_i
+  def randomize_property_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000)
+    end while Property.where(id: self.id).exists?
+    #self.id = 5.times.map { rand(1..9) }.join.to_i
   end
 
 end
