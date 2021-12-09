@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     member do
       get 'go-visit', to: "properties#show_candidate"
       get 'book-now', to: "slots#index_candidate"
-      get 'first-slots', to: "slots#index_first"
-      get 'first-new', to: "slots#new_first"
+      get 'new-slots', to: "slots#index_first"
+      get 'new-slot', to: "slots#new_first"
     end
   end 
 

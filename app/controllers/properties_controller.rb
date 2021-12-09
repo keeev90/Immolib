@@ -24,7 +24,7 @@ class PropertiesController < ApplicationController
     #@property.property_picture.attach(params[:property_picture])
     if @property.save
       flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
-      redirect_to(first_slots_property_path(@property))
+      redirect_to(new_slots_property_path(@property))
     else
       flash.now[:warning] = @property.errors.full_messages
       render :new
