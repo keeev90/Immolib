@@ -10,7 +10,7 @@
       <br/>
       <div class="form-group">
         <%= f.label "Durée (en minutes)", class: "form-label" %>
-        <%= f.number_field :duration, class: "form-control", in: 15..180, step: 15, required: true %>
+        <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
       </div>
       <br/>
       <div class="form-group">

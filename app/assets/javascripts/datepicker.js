@@ -1,8 +1,17 @@
 const element = document.getElementById('pickadate');
 const hiddenInput = document.getElementById('start_date');
 
+const roundDate = date => {
+
+  minutes = Math.ceil(date.getMinutes() / 15) * 15;
+
+  date.setMinutes(minutes, 0, 0);
+
+  return date;
+}
+
 const initialState = {
-  selected: new Date(),
+  selected: roundDate(new Date()),
   template: 'DD MMMM YYYY - HH:mm'
 }
 

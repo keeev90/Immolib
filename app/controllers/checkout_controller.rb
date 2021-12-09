@@ -19,7 +19,7 @@ class CheckoutController < ApplicationController
       ],
       mode: 'payment',
       metadata: [@property.to_s],
-      success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
+      success_url: checkout_success_url + "?property=#{@property}&session_id={CHECKOUT_SESSION_ID}",
       cancel_url: checkout_cancel_url
     )
     respond_to do |format|
@@ -30,6 +30,7 @@ class CheckoutController < ApplicationController
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    @property = Property.find(params[:property])
 
     puts "#" * 60
     puts @property
