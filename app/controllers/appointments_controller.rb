@@ -6,8 +6,9 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.create(candidate: current_user, slot: Slot.find(params[:param1]))
-    redirect_to appointment_path(appointment.id)
+    @appointment = Appointment.create(candidate: current_user, slot: Slot.find(params[:param1]))
+    @property = Property.find(params[:property])
+    redirect_to book_now_property_path(@property)
   end
 
   def show
@@ -21,5 +22,9 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
+    @property = Property.find(params[:property])
+    @appointment.destroy
+    redirect_to book_now_property_path(@property)
   end
 end

@@ -31,6 +31,16 @@ class Property < ApplicationRecord
     return "http://localhost:3000/properties/#{@id}/go-visit"
   end
 
+  def already_has_appointment?(user)
+    result = false
+    self.candidates.each do |cand|
+      if cand == user
+        result = true
+      end
+    end
+    return result
+  end
+
   private
 
   def randomize_property_id

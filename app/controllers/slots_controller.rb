@@ -11,6 +11,8 @@ class SlotsController < ApplicationController
 
   def index_candidate
     @slots = Property.find(params[:id]).slots
+    @property = Property.find(params[:id])
+    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
   def show

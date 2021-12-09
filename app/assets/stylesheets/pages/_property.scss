@@ -42,6 +42,10 @@
       &.full {
         background-color: $warning;
       }
+
+      &.current {
+        background-color: green;
+      }
     }
   }
 }
