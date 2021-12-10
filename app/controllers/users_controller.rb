@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
   before_action :is_same_user, :authenticate_user!
-  def index
-
-  end
 
   def show
     @user = User.find(params[:id])
