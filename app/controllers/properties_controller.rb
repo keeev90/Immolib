@@ -45,7 +45,7 @@ class PropertiesController < ApplicationController
       redirect_to property_path(@property)
     else
       flash.now[:warning] = @property.errors.full_messages
-      render edit_property_path(@property)
+      render :edit
     end
   end
 

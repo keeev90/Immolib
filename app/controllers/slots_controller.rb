@@ -42,15 +42,15 @@ class SlotsController < ApplicationController
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
-      flash[:success] = "Le créneau de visite a été édité avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
       if redirect_path[:redirect_path]
         redirect_to(first_slots_property_path(@property))
       else
         redirect_to(property_path(@property))
       end
     else
-      flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      flash[:warning] = @slot.errors.full_messages
+      redirect_to new_property_slot_path
     end
   end
 
