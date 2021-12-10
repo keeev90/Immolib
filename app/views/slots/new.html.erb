@@ -1,21 +1,31 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(@property), class: "return-link pt1 pl4" %>
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
+    <h6><em>Vous pourrez modifier ces modalités de visite depuis votre espace perso.</em></h6>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
     </div>
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
+<<<<<<< HEAD
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
         <%= f.label "Durée (en minutes)", class: "form-label" %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
+=======
+      <%= f.hidden_field :start_date, value: DateTime.now, id: 'start_date' %>
+      <br/>
+      <div class="form-group">
+        <%= f.label "Durée (en minutes) *", class: "form-label" %>
+        <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
+>>>>>>> development
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum", class: "form-label" %>
-        <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
+        <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
+        <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 0, max: 50, required: true %>
       </div>
       <br/>
       <div class="form-group"> 

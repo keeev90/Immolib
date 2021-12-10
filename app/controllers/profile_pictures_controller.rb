@@ -10,13 +10,14 @@ class ProfilePicturesController < ApplicationController
       return
     end
     @user.profile_picture.attach(params[:profile_picture])
-    flash[:success] = "La photo a bien été ajoutée."
+    flash[:success] = "La photo a bien été ajoutée 👌"
     redirect_to(user_path(@user))
   end
 
   def destroy
     @user = User.find(params[:user_id])
     @user.profile_picture.purge
+    flash[:success] = "La photo a bien été supprimée 👌"
     redirect_to user_path(@user)
   end
 

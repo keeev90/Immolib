@@ -78,8 +78,15 @@ fr:
         property:
           attributes:
             title:
+              blank: "Merci de donner un titre à votre logement 🙏"
+              required: "Merci de donner un titre à votre logement 🙏"
               too_short: "Le nombre de caractères doit être compris entre 3 et 140"
               too_long: "Le nombre de caractères doit être compris entre 3 et 140"
+            city:
+              blank: "Merci d'indiquer la ville de votre logement 🙏"
+              required: "Merci d'indiquer la ville de votre logement 🙏"
+            other_link:
+              invalid: "Le lien de votre annonce doit commencer par 'http://' ou 'https://'"
             owner:
               blank: "Impossible de créer une propriété sans propriétaire !"
               required: "Impossible de créer une propriété sans propriétaire !"
@@ -88,6 +95,8 @@ fr:
             property:
               blank: "Impossible de faire une visite d'un bien qui n'existe pas !"
               required: "Impossible de faire une visite d'un bien qui n'existe pas !"
+            max_appointments:
+              only_integer: "Veuillez indiquer un nombre entier."
         appointment:
           attributes:
             candidate:
