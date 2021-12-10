@@ -2,6 +2,7 @@
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
+    <h6><em>Vous pourrez modifier ou supprimer ce créneau à tout moment.</em></h6>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
@@ -10,7 +11,7 @@
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
-        <%= f.label "Durée (en minutes)", class: "form-label" %>
+        <%= f.label "Durée (en minutes) *", class: "form-label" %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
       </div>
       <br/>
@@ -19,7 +20,6 @@
         <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 0, max: 50, required: true %>
       </div>
       <br/>
-      <%= f.hidden_field :redirect_path, :value => false %>
       <div class="form-group"> 
         <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
       </div>

@@ -7,22 +7,22 @@
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
     </div>
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
-      <%= f.hidden_field :start_date, value: DateTime.new, id: 'start_date' %>
+      <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
-        <%= f.label "Durée (en minutes)", class: "form-label" %>
-        <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
+        <%= f.label "Durée (en minutes) *", class: "form-label" %>
+        <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum", class: "form-label" %>
-        <%= f.text_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
+        <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
+        <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", required: true %>
       </div>
       <br/>
       <%= f.hidden_field :redirect_path, :value => true %>
       <div class="form-group"> 
         <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
-        <%= link_to 'Delete', property_slot_path(@slot), :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Supprimer', property_slot_path(@slot), method: :delete, data: { confirm: "Etes-vous sûr de supprimer ce créneau ?" } %>
       </div>
     <%end%>
   </div>
