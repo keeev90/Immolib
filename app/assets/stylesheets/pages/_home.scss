@@ -124,6 +124,29 @@
       font-weight: 600;
       color: #fff;
     }
+
+    &.last-section {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .short {
+        max-width: 800px;
+      }
+      
+      .subtitle {
+        font-size: 1.8em;
+      }
+
+      .last-text {
+        font-size: 1.3em;
+      }
+
+      .benefits-section__title {
+        padding-bottom: 0.5rem;
+      }
+    }
   }
   
   @media screen and (max-width: 938px) {
