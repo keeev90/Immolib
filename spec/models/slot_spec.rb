@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe Slot, type: :model do
-  before(:each) do 
+  before(:each) do
     @slot = FactoryBot.create(:slot)
   end
 
@@ -19,6 +19,12 @@ RSpec.describe Slot, type: :model do
         bad_slot = FactoryBot.build(:slot, start_date: DateTime.now - 1)
         expect(bad_slot).not_to be_valid
         expect(bad_slot.errors.include?(:start_date)).to eq(true)
+        bad_slot_2 = FactoryBot.build(
+          :slot,
+          start_date: DateTime.now.change(hour: DateTime.now.hour - 1)
+        )
+        expect(bad_slot_2).not_to be_valid
+        expect(bad_slot_2.errors.include?(:start_date)).to eq(true)
       end
     end
 

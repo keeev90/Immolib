@@ -5,8 +5,8 @@ class PropertyPicturesController < ApplicationController
     @property = Property.find(params[:property_id])
     unless params[:property_picture]
       @property.errors.add(:property_picture, 'Fichier non reconnu')
-      flash.now[:warning] = "Fichier non reconnu. Essayez à nouveau."
-      render :create
+      flash[:warning] = "Fichier non reconnu. Essayez à nouveau."
+      redirect_to property_path(@property)
       return
     end
     @property.property_picture.attach(params[:property_picture])
