@@ -23,7 +23,14 @@
       <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
     </div>
     <% slots.each do |slot| %>
+    
+    <% if slot.candidates.include?(current_user) %>
+      <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
+      <% else %>
       <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property), method: "post" %>
+    <% end %>
+    
+
     <% end %>
   <% end %>
 <% end %>
