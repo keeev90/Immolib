@@ -47,7 +47,7 @@ nav {
   display: flex;
   align-items: center;
 
-  &__connexion {
+  &__connection {
     position: relative;
 
     &__menu {
@@ -193,6 +193,24 @@ nav {
 
   &.is-active {
     left: 0;
+  }
+
+  .connection-btn {
+    margin: 0;
+  }
+
+  .navbar__items__connection__menu {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+
+    .item {
+      text-shadow: none;
+      color: #fff;
+    }
   }
 }
 
