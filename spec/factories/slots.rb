@@ -6,5 +6,6 @@ FactoryBot.define do
       to: DateTime.now + 30
     ) }
     duration { 15 * rand(1..12) }
+    max_appointments { rand(1..100000) }
   end
 end
