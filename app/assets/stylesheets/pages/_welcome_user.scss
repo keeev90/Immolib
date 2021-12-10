@@ -2,26 +2,35 @@
 .welcome-page {
 
   h1 {
-    padding-top: 7rem;
     font-size: 3.5rem;
     text-align: center;
-    margin-bottom: 9rem;
+    margin: 7rem 0;
   }
 }
 
 .welcome_user-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 1.6em;
+  align-items: flex-start;
+  margin-bottom: 4rem;
 
   &__left, &__right {
     text-align: center;
     padding: 0 1em;
-  }
+    width: 50%;
+    padding: 0 2em;
 
-  &__right p, &__left p {
-    max-width: 30em;
+    p {
+      font-size: 1.2rem;
+      min-height: 6em;
+    }
+
+    .bolder {
+      color: $primary;
+      font-size: 1.6rem;
+      margin-bottom: 1em;
+      min-height: auto;
+    }
   }
 
   &__left {
@@ -100,12 +109,18 @@
 @media screen and (max-width: 925px) {
   .welcome_user-wrapper {
     flex-direction: column;
+    align-items: center;
 
     &__left {
       border-right:none;
       border-bottom: 1px solid $primary;
       padding-bottom: 1em;
       margin-bottom: 1em;
+
+      p {
+        min-height: auto;
+        margin-bottom: 1em;
+      }
     }
   }
 }
