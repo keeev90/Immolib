@@ -41,7 +41,7 @@ class Slot < ApplicationRecord
   private
 
   def start_date_cannot_be_in_the_past
-    if start_date.present? && start_date < Date.today
+    if start_date.present? && start_date < DateTime.now
       errors.add(:start_date, "Impossible de créer ou modifier un créneau de visite dans le passé.")
     end
   end
