@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end 
   
-  def show_candidate
+  def welcome_candidate
     @property = Property.find(params[:id])
   end 
 

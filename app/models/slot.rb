@@ -6,8 +6,8 @@ class Slot < ApplicationRecord
   has_many :candidates, through: :appointments
   
   #Validations
-  validate :start_date_cannot_be_in_the_past
-  validate :overlaps_with_other?
+  #validate :start_date_cannot_be_in_the_past
+  #validate :overlaps_with_other?
 
   validates :start_date, presence: true
   validates :duration, presence: true
@@ -42,9 +42,7 @@ class Slot < ApplicationRecord
   private
 
   def start_date_cannot_be_in_the_past
-    if start_date.present? && start_date < Date.today
-      errors.add(:start_date, "Impossible de créer ou modifier un créneau de visite dans le passé.")
-    end
+    errors.add(:start_date, "Impossible de créer ou modifier un créneau de visite dans le passé.") if start_date.present? && start_date < Date.today
   end
 
   def start_must_be_before_end_date #https://stackoverflow.com/questions/6401374/rails-validation-method-comparing-two-fields

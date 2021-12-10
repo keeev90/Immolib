@@ -1,3 +1,4 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_slot_path(@property, @slot), class: "return-link pt1 pl4" %>
 <div class="form-page">
   <div class="form-page__form">
     <h3>Editez ce créneau de visite</h3>
@@ -26,7 +27,5 @@
     <%end%>
   </div>
 </div>
-
-<%= text_field_tag 'test', 'coucou', id:'pickadate' %>
 
 <%= javascript_include_tag 'datepicker' %>
