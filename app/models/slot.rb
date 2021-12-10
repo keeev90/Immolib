@@ -39,7 +39,7 @@ class Slot < ApplicationRecord
     end
   end
 
- 
+  private
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && start_date < Date.today
