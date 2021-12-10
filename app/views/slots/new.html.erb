@@ -10,7 +10,6 @@
       <br/>
       <div class="form-group">
         <%= f.label "Durée (en minutes)", class: "form-label" %>
-        <% puts @start_date %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
       </div>
       <br/>
