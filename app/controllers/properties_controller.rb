@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show_candidate]
+  before_action :is_owner?, only: [:show]
 
   def index
     @properties = current_user.properties
@@ -59,6 +60,14 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:title, :city, :property_picture, :other_link, :instructions)
+  end
+
+  def is_owner?
+    @property = Property.find(params[:id])
+    if @property.owner != current_user
+      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci."
+      redirect_to root_path
+    end
   end
 
 end
