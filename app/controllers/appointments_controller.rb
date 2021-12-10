@@ -8,19 +8,24 @@ class AppointmentsController < ApplicationController
   def create
     slot = Slot.find(params[:param1])
     redirect_to_book_now = params[:redirect_to_book_now]
-    @property = Property.find(params[:property])
-    user_appointments = Appointment.where(candidate: current_user)
-    @appointment = Appointment.new(candidate: current_user, slot: slot)
-    if @appointment.save #Si la sauvegarde du RDV fonctionne bien
-      user_appointments.each do |appointment| #Pour chaque RDV du candidat
-        if appointment.property == @property && appointment != @appointment #Si le rdv correspond à un rdv sur cette property et que ce n'est pas le rdv actuel
-          appointment.destroy # alors je suprimme le rdv
-        end
+    property = Property.find(params[:property])
+    user_appointments = Appointment.where(candidate: current_user) # on stock les rdv du user
+    already_an_appointment = false
+    new_appointment = Appointment.new(candidate: current_user, slot: slot)
+    user_appointments.each do |appointment| #on parcourt les rdv du user
+      if appointment.property == property #si on en trouve un pour la meme property
+        new_appointment =  appointment #on stock le rdv
+        new_appointment.slot = slot #on update le slot
+        already_an_appointment = true #on dit que le candidat avait déja un rdv sur ce logement
       end
+    end
+
+
+    if new_appointment.save #Si la sauvegarde du RDV fonctionne bien
       if redirect_to_book_now == "true"
-        redirect_to book_now_property_path(@property)
+        redirect_to book_now_property_path(property)
       else
-        redirect_to appointment_path(@appointment)
+        redirect_to appointment_path(new_appointment)
       end
     else
     end
