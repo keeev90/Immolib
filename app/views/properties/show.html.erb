@@ -1,7 +1,7 @@
 <div class="property-wrapper pl4 pr4 pt1">
   <div class="property-wrapper__left pr4">
     <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
-    <h1 class="primary pb4"> Mon annonce </h1>
+    <h1 class="primary pb4"> Mon logement Immolib </h1>
 
     <%if @property.property_picture.attached?%>
       <div class="property-picture">
@@ -11,7 +11,7 @@
       <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture"  %>
     <%else%>
       <div class="property-picture no-picture">
-        <p>Ajouter une photo à mon annonce</p>
+        <p>Ajouter une photo à mon logement</p>
       </div>
     <%end%>
     <div class="picture-profile-modal hidden">
@@ -19,15 +19,14 @@
     </div>
     <div class="property-wrapper__left__infos">
       <h2> <%= @property.title %> </h2>
-      <p> <%= @property.city %> </p>
-      <p>Liens : <%= @property.other_link %> </p>
-      <p class="mb1">Instructions : <%= @property.instructions %> </p>
-      <p>Mon URL Immolib :</p>
-      <p>Voir le rendu : <%=link_to "Mon lien Immolib", go_visit_property_path(@property.id)%></p>
-      <p>Copier-coller dans mes annonces en ligne : <%= @property.go_visit_url %></p>
+      <h3 class="mb1"> <%= @property.city %> </h3>
+      <p class="mb1">Lien vers mon annonce en ligne : <%= @property.other_link %> </p>
+      <p class="mb1">Mes instructions de visite : <%= @property.instructions %> </p>
+      <p class="mb1">Mon URL Immolib (à partager sur vos annonces en ligne) : <%= @property.go_visit_url %></p>
+      <p class="mb1">Visualiser le parcours candidat : <%=link_to "mon parcours candidat Immolib", go_visit_property_path(@property.id)%></p>
       <!-- A supprimer en production -->
-      <p>Copier-coller dans mes annonces en ligne (dev) : <%= @property.go_visit_url_dev %></p>
-      <p>Copier-coller dans mes annonces en ligne (local) : <%= @property.go_visit_url_local %></p>
+      <p>URL Immolib (dev) : <%= @property.go_visit_url_dev %></p>
+      <p>URL Immolib (local) : <%= @property.go_visit_url_local %></p>
       <!-- end -->
       <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
       <p><%= link_to "Supprimer mon annonce", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
@@ -51,4 +50,4 @@
 
 </div>
 
-  <%= javascript_include_tag 'property-pic.js' %>
+<%= javascript_include_tag 'property-pic.js' %>
