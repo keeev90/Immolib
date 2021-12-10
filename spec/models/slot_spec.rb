@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe Slot, type: :model do
-  before(:each) do 
+  before(:each) do
     @slot = FactoryBot.create(:slot)
   end
 
@@ -25,6 +25,15 @@ RSpec.describe Slot, type: :model do
         )
         expect(bad_slot_2).not_to be_valid
         expect(bad_slot_2.errors.include?(:start_date)).to eq(true)
+      end
+
+      it 'should not overlap with other slots' do
+        bad_slot = @slot.dup
+        bad_slot.update_attribute(
+          start_date: bad_slot.start_date.change({
+            min: bad_slot.start_date.minute + 10
+          })
+        )
       end
     end
 
