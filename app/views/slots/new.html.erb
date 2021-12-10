@@ -8,19 +8,11 @@
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
     </div>
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
-<<<<<<< HEAD
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
         <%= f.label "Durée (en minutes)", class: "form-label" %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
-=======
-      <%= f.hidden_field :start_date, value: DateTime.now, id: 'start_date' %>
-      <br/>
-      <div class="form-group">
-        <%= f.label "Durée (en minutes) *", class: "form-label" %>
-        <%= f.select :duration, @minutes.select { |n| [n, n] }, include_blank: false %>
->>>>>>> development
       </div>
       <br/>
       <div class="form-group">
