@@ -1,18 +1,27 @@
-.checkout-success {
+.checkout-status {
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
 
-  .fa-check-circle {
-    color: darken($success, 25%);
+  .fas {
     font-size: 10rem;
     margin-bottom: 2rem;
+    &.fa-check-circle {
+      color: darken($success, 25%);
+    }
+    &.fa-times-circle {
+      color: darken($warning, 25%);
+    }
   }
 
   h2 {
     color: $primary;
     margin: 2rem 0;
+
+    &.failed {
+      color: darken($warning, 25%);
+    }
   }
 
   .bolder {
@@ -41,5 +50,9 @@
 
   .btn {
     margin-top: 3rem;
+  }
+
+  .big-btn {
+    margin-bottom: 2rem;
   }
 }
