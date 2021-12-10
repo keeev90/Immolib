@@ -15,6 +15,10 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    .footicon {
+      font-size: 1.3em;
+    }
   }
 
   a, .love {

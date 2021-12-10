@@ -6,9 +6,8 @@
     été reçu. Merci pour votre confiance&nbsp;!
   </h1>
   <hr/>
-  <p>Un email de confirmation a été envoyé sur <%= current_user.email %></p>
   <h2>
-    Dernière étape&nbsp;: intégrer votre URL Immolib dans vos annonces en ligne Leboncoin, SeLoger…)
+    Dernière étape&nbsp;: intégrer votre URL Immolib dans vos annonces en ligne (PaP, Leboncoin…)
   </h2>
   <p class="bolder">
     Les candidats n'auront plus qu'à suivre un parcours
@@ -19,7 +18,7 @@
   <div class="links">
     <p class='instruction'>Votre lien Immolib à copier-coller dans vos annonces en ligne&nbsp;:</p>
     <p class="link">
-      <%= link_to 'Lien en production', @property.go_visit_url %>
+      <%= link_to @property.go_visit_url, @property.go_visit_url %>
       <i class="far fa-copy">
         <span class="copy-text">
           Copier l'URL
@@ -27,7 +26,7 @@
       </i>
     </p>
     <p class="link">
-      <%= link_to 'Lien en développement', @property.go_visit_url_dev %>
+      <%= link_to @property.go_visit_url_dev, @property.go_visit_url_dev %>
       <i class="far fa-copy">
         <span class="copy-text">
           Copier l'URL
@@ -35,7 +34,7 @@
       </i>
     </p>
     <p class="link">
-      <%= link_to 'Lien en local', @property.go_visit_url_local %>
+      <%= link_to  @property.go_visit_url_local, @property.go_visit_url_local %>
       <i class="far fa-copy">
         <span class="copy-text">
           Copier l'URL
@@ -46,12 +45,12 @@
 
   <div class="profile-cta">
     <p>
-      N'oubliez pas de compléter votre Profil et votre espace Visites pour
+      N'oubliez pas de compléter votre espace immolib pour
       personnaliser les emails automatiques qui seront envoyés à vos candidats
       (confirmation d’inscription à un créneau de visite, envoi des modalités
       logistiques pour les visites...)​&nbsp;!
     </p>
-    <%= link_to "Découvrir mon espace perso", user_path(current_user), class:
+    <%= link_to "Découvrir mon espace immolib", user_path(current_user), class:
     'btn white-btn bg-primary' %>
   </div>
 </div>
