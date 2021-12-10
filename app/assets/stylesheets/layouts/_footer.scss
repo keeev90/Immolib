@@ -12,6 +12,9 @@ footer {
 
   .row {
     margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   a, .love {
@@ -38,5 +41,28 @@ footer {
 
   to {
     transform: scale(1.4);
+  }
+}
+
+@media screen and (max-width: 526px) {
+  .footer {
+    .row:nth-child(2) {
+      .item {
+        margin: .3em 1em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    .row:nth-child(2) {
+      flex-direction: column;
+      align-items: center;
+
+      .item {
+        margin: .1em 0;
+      }
+    }
   }
 }
