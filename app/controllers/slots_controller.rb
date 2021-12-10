@@ -9,7 +9,7 @@ class SlotsController < ApplicationController
     @slots = Property.find(params[:id]).slots
   end
 
-  def index_candidate
+  def book_candidate
     @slots = Property.find(params[:id]).slots
     @property = Property.find(params[:id])
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
@@ -50,18 +50,23 @@ class SlotsController < ApplicationController
 
   def create
     @property = Property.find(params[:property_id])
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
       flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
-      if redirect_path[:redirect_path]
-        redirect_to(first_slots_property_path(@property))
-      else
+      if redirect_path[:redirect_path] #when new immolib property process
         redirect_to(property_path(@property))
+      else #when immolib property is already created
+        redirect_to(property_slots_path(@property))
       end
     else
       flash[:warning] = @slot.errors.full_messages
-      redirect_to new_property_slot_path
+      if redirect_path[:redirect_path] #when new immolib property process
+        redirect_to(new_slot_property_path(@property))
+      else #when immolib property is already created
+        render :new
+      end
     end
   end
 

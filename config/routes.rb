@@ -10,13 +10,12 @@ Rails.application.routes.draw do
     resources 'profile_pictures', only: [:create, :destroy]
   end
 
-
   resources 'properties' do 
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots'
     member do
-      get 'go-visit', to: "properties#show_candidate"
-      get 'book-now', to: "slots#index_candidate"
+      get 'go-visit', to: "properties#welcome_candidate"
+      get 'book-now', to: "slots#book_candidate"
       get 'new-slots', to: "slots#index_first"
       get 'new-slot', to: "slots#new_first"
     end
