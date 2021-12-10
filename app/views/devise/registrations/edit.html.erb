@@ -6,7 +6,7 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label "Email" %><br />
+        <%= f.label "Email" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
@@ -15,7 +15,7 @@
       <% end %>
 
       <div class="field">
-        <%= f.label "Nouveau mot de passe" %> <small><i>(laisser vide si vous ne souhaitez pas le modifier)</i></small><br />
+        <%= f.label "Nouveau mot de passe" %> <small><i>(laisser vide si vous ne souhaitez pas le modifier)</i></small>
         <% if @minimum_password_length %>
           <small><em><%= @minimum_password_length %> caractères minimum</em></small><br />
         <% end %>
@@ -23,12 +23,12 @@
       </div>
 
       <div class="field">
-        <%= f.label "Confirmation du nouveau mot de passe" %><br />
+        <%= f.label "Confirmation du nouveau mot de passe" %>
         <%= f.password_field :password_confirmation, autocomplete: "nouveau-mot-de-passe" %>
       </div>
 
       <div class="field">
-        <%= f.label "Mot de passe actuel" %> <small><i>(par sécurité, votre mot de passe actuel est requis pour confirmer vos changements)</i></small><br />
+        <%= f.label "Mot de passe actuel" %> <small><i>(par sécurité, votre mot de passe actuel est requis pour confirmer vos changements)</i></small>
         <%= f.password_field :current_password, autocomplete: "mot-de-passe-actuel" %>
       </div>
 

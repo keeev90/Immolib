@@ -19,6 +19,10 @@
   -o-border-radius: 4px;
   box-shadow: 0 6px 12px 2px rgba(0,0,0,0.1);
 
+  h2 {
+    margin-bottom: 2rem;
+  }
+
   input:not([type='submit'], [type='checkbox'], .pickadate--element), select, textarea {
     border: 2px solid #9A98A2;
     outline: none;
@@ -80,5 +84,19 @@ form {
 
   & label {
     padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .form-page__form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .form-page__form {
+    em {
+      display: block;
+    }
   }
 }
