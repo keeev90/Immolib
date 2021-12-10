@@ -50,6 +50,7 @@
       -o-transition: background-color 0.3s;
       box-shadow: var(--shadow-low);
       aspect-ratio: 1/1;
+      position: relative;
 
       p {
         color: white;
@@ -89,7 +90,7 @@
       }
 
       &:hover {
-        filter: brightness(.9);
+        background-color: #000;
 
         img {
           filter: blur(1px);
