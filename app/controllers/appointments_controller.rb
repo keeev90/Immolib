@@ -6,9 +6,18 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.create(candidate: current_user, slot: Slot.find(params[:param1]))
+    slot = Slot.find(params[:param1])
     @property = Property.find(params[:property])
-    redirect_to book_now_property_path(@property)
+    user_appointments = Appointment.where(candidate: current_user)
+    @appointment = Appointment.new(candidate: current_user, slot: slot)
+    if @appointment.save
+      user_appointments.each do |appointment|
+        if appointment.property == @property && appointment != @appointment then appointment.destroy end
+      end
+      redirect_to appointment_path(@appointment)
+    else
+      redirect_to appointment_path(old_appointment)
+    end
   end
 
   def show
