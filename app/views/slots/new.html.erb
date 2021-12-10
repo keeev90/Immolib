@@ -2,7 +2,6 @@
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
-    <h6><em>Vous pourrez modifier ces modalités de visite depuis votre espace perso.</em></h6>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
@@ -20,8 +19,9 @@
         <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 0, max: 50, required: true %>
       </div>
       <br/>
+      <%= f.hidden_field :redirect_path, :value => false %>
       <div class="form-group"> 
-    <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
+        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
       </div>
     <%end%>
   </div>
