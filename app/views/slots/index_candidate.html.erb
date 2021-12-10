@@ -7,30 +7,7 @@
     </p>
   </div>
   <div class="slot-candidate-wrapper__calendar mt2">
-    <% if @property.already_has_appointment?(current_user) %>
-      <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
-        <div class="property-wrapper__right__date">
-          <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
-        </div>
-        <% slots.each do |slot| %>
-          <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
-        <% end %>
-      <% end %>
-        <div class="slot-candidate-wrapper__calendar__title text-center"> 
-          <p> Vous avez un créneau réservé pour le <%= @property.appointments.find_by(candidate: current_user).slot.start_date.strftime("%d/%m/%Y %H:%M") %> </p>
-          <p><%= link_to "Choisir un autre créneau", appointment_path(id:@property.appointments.find_by(candidate: current_user), property:@property), method: "delete" %> </p>
-        </div>
-
-    <% else %>    
-      <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
-        <div class="property-wrapper__right__date">
-          <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
-        </div>
-        <% slots.each do |slot| %>
-          <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:@property), method: "post" %>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render "candidate_calendar", property: @property %>
 
     <% if !current_user %>
       <div class="slot-candidate-wrapper__calendar__title text-center"> 
