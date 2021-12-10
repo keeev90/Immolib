@@ -5,8 +5,8 @@ class ProfilePicturesController < ApplicationController
     @user = User.find(params[:user_id])
     unless params[:profile_picture]
       @user.errors.add(:profile_picture, 'Fichier non reconnu')
-      flash.now[:warning] = "Fichier non reconnu. Essayez à nouveau."
-      render :create
+      flash[:warning] = "Fichier non reconnu. Essayez à nouveau."
+      redirect_to user_path(@user)
       return
     end
     @user.profile_picture.attach(params[:profile_picture])
