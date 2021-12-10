@@ -1,0 +1,58 @@
+.checkout-status {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+
+  .fas {
+    font-size: 10rem;
+    margin-bottom: 2rem;
+    &.fa-check-circle {
+      color: darken($success, 25%);
+    }
+    &.fa-times-circle {
+      color: darken($warning, 25%);
+    }
+  }
+
+  h2 {
+    color: $primary;
+    margin: 2rem 0;
+
+    &.failed {
+      color: darken($warning, 25%);
+    }
+  }
+
+  .bolder {
+    margin-bottom: 1rem;
+  }
+
+  .links {
+    margin-bottom: 2rem;
+
+    .instruction {
+      margin: 1rem 0;
+    }
+
+    .link {
+      padding: .5em;
+      background-color: #eee;
+      border-radius: 3px;
+      margin: .3rem;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  .btn {
+    margin-top: 3rem;
+  }
+
+  .big-btn {
+    margin-bottom: 2rem;
+  }
+}

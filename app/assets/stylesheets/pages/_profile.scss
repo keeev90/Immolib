@@ -1,0 +1,168 @@
+.profile-wrapper {
+  width: 80%;
+  max-width: 1000px;
+  margin: 1rem auto;
+  p, h2 {
+    color: black;
+  }
+
+  h2 {
+    margin: 2rem 0;
+  }
+
+  &__informations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5em;
+    flex-wrap: wrap-reverse;
+
+    div:nth-child(2) {
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0;
+
+      a:hover {
+        color: darken($warning, 35%);
+      }
+    }
+
+    &__right {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      background-color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      box-shadow: var(--shadow-low);
+      aspect-ratio: 1/1;
+      position: relative;
+
+      p {
+        color: white;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        transition: opacity 0.3s;
+        -webkit-transition: opacity 0.3s;
+        -moz-transition: opacity 0.3s;
+        -ms-transition: opacity 0.3s;
+        -o-transition: opacity 0.3s;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
+      &--change {
+        position: absolute;
+        bottom: .5em;
+        font-size: 1.6em;
+        color: white;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &.nopic:hover {
+        background-color: $primary-light;
+      }
+
+      &:hover {
+        background-color: #000;
+
+        img {
+          filter: blur(1px);
+        }
+
+        .profile-wrapper__informations__right--change {
+          opacity: 1
+        }
+      }
+    }
+  }
+}
+
+.properties-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin: 1rem 0;
+  margin-bottom: 3rem;
+}
+
+.picture-profile-modal {
+  padding: 2.5rem 1.5rem 1rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.1), 0 0 0 9999em rgba(0,0,0,0.5);
+  background-color: #fff;
+  position: absolute;
+  top: 10rem;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transition: opacity 0.3s, transform 0.3s;
+  -moz-transition: opacity 0.3s, transform 0.3s;
+  -ms-transition: opacity 0.3s, transform 0.3s;
+  -o-transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.picture-profile-modal.hidden {
+  opacity: 0;
+  transform: translateY(-20rem);
+  -webkit-transform: translateY(-20rem);
+  -moz-transform: translateY(-20rem);
+  -ms-transform: translateY(-20rem);
+  -o-transform: translateY(-20rem);
+  pointer-events: none;
+}
+
+.picture-profile-modal-wrapper {
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: -2rem;
+  right: -0.5rem;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+.delete-profile-picture {
+  color: black;
+  display: block;
+  text-align: right;
+  margin-top: 0.5em;
+}

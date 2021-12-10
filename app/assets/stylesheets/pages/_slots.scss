@@ -1,0 +1,8 @@
+.new-slot-wrapper__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .slot-summary {
+    margin: 1rem 0;
+  }
+}

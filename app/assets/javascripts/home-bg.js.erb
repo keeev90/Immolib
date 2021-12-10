@@ -1,0 +1,35 @@
+const home = document.querySelector('.home');
+const watermark = document.querySelector('.home-watermark h1');
+const house = document.querySelector('.house-fill');
+
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY || window.pageYOffset
+  let y = 1 + scroll / 500;
+  let lightness = 42 * y < 100 ? 42 * y : 100;
+
+  home.setAttribute('style', `background-color: hsl(210, 100%, ${lightness}%)`);
+
+  house.parentNode.setAttribute(
+      'style',
+      `-webkit-mask: url(<%= asset_path 'house.svg' %>); 
+      mask: url(<%= asset_path 'house.svg' %>);`
+    );
+
+  house.setAttribute('style', `right: ${100 - (y * 125 - 125)}%`);
+
+  if (scroll > (window.innerHeight)) {
+    y = (scroll - (window.innerHeight)) / 500;
+    lightness = 100 / y > 42 ? 100 / y : 42;
+
+    home.setAttribute('style', `background-color: hsl(210, 100%, ${lightness}%)`);
+
+    house.parentNode.setAttribute(
+      'style', 
+      `-webkit-mask: url(<%= asset_path 'building.svg' %>); 
+      mask: url(<%= asset_path 'building.svg' %>);
+      clip-path: inset(${100 - (y * 125 - 125)}% 0 0 0)`
+    );
+
+    house.setAttribute('style', `background-color: transparent`)
+  }
+});

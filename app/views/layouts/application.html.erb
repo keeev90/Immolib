@@ -4,12 +4,29 @@
     <title>Immolib</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8e2a5370b3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <noscript> <meta HTTP-EQUIV="Refresh" CONTENT="0;URL=/no_js.html"> </noscript>
+
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flash' %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= render 'layouts/footer' %>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="module" src="//unpkg.com/@grafikart/drop-files-element"></script>
   </body>
 </html>

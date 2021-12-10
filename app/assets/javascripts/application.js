@@ -12,5 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require pickadate/builds/index
+//= require pickadate/builds/translations/fr_FR

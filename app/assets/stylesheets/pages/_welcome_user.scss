@@ -1,0 +1,125 @@
+// Welcome User General
+.welcome-page {
+
+  h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 7rem 0;
+  }
+}
+
+.welcome_user-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+
+  &__left, &__right {
+    text-align: center;
+    padding: 0 2em;
+    width: 100%;
+
+    p {
+      font-size: 1.2rem;
+      min-height: 6em;
+    }
+
+    .bolder {
+      color: $primary;
+      font-size: 1.6rem;
+      margin-bottom: 1em;
+      min-height: auto;
+    }
+  }
+
+  &__left {
+    border-right: 1px solid $primary;
+  }
+}
+
+// Welcome User Candidate
+.welcome-page.candidate {
+  padding-bottom: 1rem;
+
+  h1 {
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .welcome_user-wrapper {
+    font-size: 1.4em;
+
+    &__right p, &__left p {
+      max-width: 60em;
+    }
+
+    &__right p {
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  .welcome_user-wrapper__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.house-picture {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  justify-self: center;
+}
+
+.slot-candidate-wrapper {
+  &__title {
+    text-align: center;
+  }
+  
+  &__calendar {
+    padding: 0 2rem;
+
+    &__title {
+      border: 1px solid $primary;
+      padding: 0.5rem 0;
+      margin-top: 0.25rem;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+}
+  }
+}
+
+
+
+@media screen and (max-width: 925px) {
+  .welcome_user-wrapper {
+    font-size: 1.4em;
+  }
+}
+
+@media screen and (max-width: 925px) {
+  .welcome_user-wrapper {
+    flex-direction: column;
+    align-items: center;
+
+    &__left {
+      border-right:none;
+      border-bottom: 1px solid $primary;
+      padding-bottom: 1em;
+      margin-bottom: 1em;
+
+      p {
+        min-height: auto;
+        margin-bottom: 1em;
+      }
+    }
+  }
+}

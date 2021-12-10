@@ -1,0 +1,30 @@
+@charset 'utf-8';
+
+// Calendar gem
+@import "simple_calendar";
+
+@import 'abstracts/variables';
+@import 'abstracts/colors';
+@import 'abstracts/utilities';
+
+@import 'base/reset';
+@import 'base/base';
+@import 'base/typography';
+
+@import 'modules/buttons';
+@import 'modules/forms';
+@import 'modules/cards';
+@import 'modules/flash';
+@import 'modules/calendar';
+@import 'modules/copy_icon';
+
+@import 'layouts/navbar';
+@import 'layouts/footer';
+
+@import 'pages/home';
+@import 'pages/profile';
+@import 'pages/property';
+@import 'pages/welcome_user';
+@import 'pages/slots';
+@import 'pages/appointment_show';
+@import 'pages/checkout_status';

@@ -1,0 +1,59 @@
+<div class="container checkout-status">
+  <i class="fas fa-check-circle"></i>
+  <h1>
+    Votre paiement de <%= number_to_currency(@payment_intent.amount_received /
+    100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien
+    été reçu. Merci pour votre confiance&nbsp;!
+  </h1>
+  <hr/>
+  <p>Un email de confirmation a été envoyé sur <%= current_user.email %></p>
+  <h2>
+    Dernière étape&nbsp;: intégrer votre URL Immolib dans vos annonces en ligne Leboncoin, SeLoger…)
+  </h2>
+  <p class="bolder">
+    Les candidats n'auront plus qu'à suivre un parcours
+    simple et rapide&nbsp;!
+  </p>
+  <p>A vous de jouer 😉</p>
+
+  <div class="links">
+    <p class='instruction'>Votre lien Immolib à copier-coller dans vos annonces en ligne&nbsp;:</p>
+    <p class="link">
+      <%= link_to 'Lien en production', @property.go_visit_url %>
+      <i class="far fa-copy">
+        <span class="copy-text">
+          Copier l'URL
+        </span>
+      </i>
+    </p>
+    <p class="link">
+      <%= link_to 'Lien en développement', @property.go_visit_url_dev %>
+      <i class="far fa-copy">
+        <span class="copy-text">
+          Copier l'URL
+        </span>
+      </i>
+    </p>
+    <p class="link">
+      <%= link_to 'Lien en local', @property.go_visit_url_local %>
+      <i class="far fa-copy">
+        <span class="copy-text">
+          Copier l'URL
+        </span>
+      </i>
+    </p>
+  </div>
+
+  <div class="profile-cta">
+    <p>
+      N'oubliez pas de compléter votre Profil et votre espace Visites pour
+      personnaliser les emails automatiques qui seront envoyés à vos candidats
+      (confirmation d’inscription à un créneau de visite, envoi des modalités
+      logistiques pour les visites...)​&nbsp;!
+    </p>
+    <%= link_to "Découvrir mon espace perso", user_path(current_user), class:
+    'btn white-btn bg-primary' %>
+  </div>
+</div>
+
+<%= javascript_include_tag 'clipboard' %>

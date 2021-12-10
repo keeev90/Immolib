@@ -1,0 +1,129 @@
+fr:
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: Semaine
+  devise:
+    confirmations:
+      confirmed: "✔️ Votre compte a été validé."
+      send_instructions: "Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes."
+      send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte."
+    failure:
+      already_authenticated: "Vous êtes déjà connecté(e)."
+      inactive: "Votre compte n'est pas encore activé."
+      invalid: "Email et/ou mot de passe incorrect(s)."
+      last_attempt: "Vous avez droit à une tentative avant que votre compte ne soit verrouillé."
+      locked: "Votre compte est verrouillé."
+      not_found_in_database: "Email et/ou mot de passe incorrect(s)."
+      timeout: "Votre session est expirée. Veuillez vous reconnecter pour continuer."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
+      unconfirmed: "Vous devez valider votre compte pour continuer."
+    mailer:
+      confirmation_instructions:
+        subject: "Instructions pour confirmer votre compte ✌️"
+      reset_password_instructions:
+        subject: "Instructions pour changer votre mot de passe ✌️"
+      unlock_instructions:
+        subject: "Instructions pour déverrouiller votre compte ✌️"
+      email_changed:
+        subject: "Votre adresse e-mail a été modifiée avec succès 👌"
+      password_change:
+        subject: "Votre mot de passe a été modifié avec succès 👌"
+    omniauth_callbacks:
+      failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
+      success: "Authentifié avec succès via %{kind}."
+    passwords:
+      no_token: "Vous ne pouvez accéder à cette page sans passer par un e-mail de réinitialisation de mot de passe. Si vous êtes passé par un e-mail de ce type, assurez-vous d'utiliser l'URL complète."
+      send_instructions: "Vous allez recevoir les instructions de réinitialisation du mot de passe dans quelques instants."
+      send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail."
+      updated: "✔️ Votre mot de passe a été modifié avec succès, vous êtes maintenant connecté(e)."
+      updated_not_active: "✔️ Votre mot de passe a été modifié avec succès."
+    registrations:
+      destroyed: "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt 👋"
+      signed_up: "👋 Bienvenue, vous êtes connecté(e)."
+      signed_up_but_inactive: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte n'est pas encore activé."
+      signed_up_but_locked: "Vous êtes bien enregistré. Vous ne pouvez cependant pas vous connecter car votre compte est verrouillé."
+      signed_up_but_unconfirmed: "Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour activer votre compte."
+      update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
+      updated: "✔️ Votre compte a été modifié avec succès."
+      updated_but_not_signed_in: "✔️ Votre compte a été modifié avec succès. Merci de vous reconnecter."
+    sessions:
+      signed_in: "👋 Bienvenue, vous êtes connecté(e)"
+      signed_out: "Vous êtes déconnecté(e). A bientôt ! 👋"
+      already_signed_out: "Vous êtes déjà déconnecté(e)."
+    unlocks:
+      send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants."
+      send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
+      unlocked: "✔️ Votre compte a été déverrouillé avec succès, vous êtes maintenant connecté(e)."
+  errors:
+    messages:
+      already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"
+      confirmation_period_expired: "à confirmer dans les %{period}, merci de faire une nouvelle demande"
+      expired: "a expiré, merci d'en faire une nouvelle demande"
+      not_found: "n'a pas été trouvé(e)"
+      not_locked: "n'était pas verrouillé(e)"
+      not_saved:
+        one: "1 erreur détectée :"
+        other: "%{count} erreurs détectées :"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Merci de renseigner une adresse email valide 🙏"
+              taken: "Cette adresse mail est déjà prise, veuillez en renseigner une autre 🙏"
+            password:
+              blank: "Merci de renseigner un mot de passe valide (6 caractères minimum) 🙏"
+        property:
+          attributes:
+            title:
+              blank: "Merci de donner un titre à votre logement 🙏"
+              required: "Merci de donner un titre à votre logement 🙏"
+              too_short: "Le nombre de caractères doit être compris entre 3 et 140"
+              too_long: "Le nombre de caractères doit être compris entre 3 et 140"
+            city:
+              blank: "Merci d'indiquer la ville de votre logement 🙏"
+              required: "Merci d'indiquer la ville de votre logement 🙏"
+            other_link:
+              invalid: "Le lien de votre annonce doit commencer par 'http://' ou 'https://'"
+            owner:
+              blank: "Impossible de créer une propriété sans propriétaire !"
+              required: "Impossible de créer une propriété sans propriétaire !"
+        slot:
+          attributes:
+            property:
+              blank: "Impossible de faire une visite d'un bien qui n'existe pas !"
+              required: "Impossible de faire une visite d'un bien qui n'existe pas !"
+            max_appointments:
+              only_integer: "Veuillez indiquer un nombre entier."
+        appointment:
+          attributes:
+            candidate:
+              blank: "Impossible de faire une visite sans visiteur !"
+              required: "Impossible de faire une visite sans visiteur !"
+            slot:
+              blank: "Impossible de faire une visite sans horaires !"
+              required: "Impossible de faire une visite sans horaires !"
+  date:
+    abbr_day_names:
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
+    abbr_month_names:
+    - jan
+    - fév
+    - mar
+    - avr
+    - mai
+    - juin
+    - juil
+    - août
+    - sept
+    - oct
+    - nov
+    - déc

@@ -1,0 +1,33 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+hr {
+  border-top: 1px solid #ccc;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+a {
+  color: $primary;
+}
+
+strong {
+  color: $primary;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 561px) {
+  html {
+    font-size: 16px;
+  }
+}

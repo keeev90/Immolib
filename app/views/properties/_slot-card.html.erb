@@ -1,0 +1,17 @@
+<% if slot.available? %>
+  <div class="property-wrapper__right__slot <%= slot.candidates && slot.candidates.include?(current_user) ? ("current") : (nil) %>">
+    <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
+    <p> <%= slot.availability %> <%= slot.availability>1 ? "places" : "place" %> </p>
+    <% if slot.candidates && slot.candidates.include?(current_user)%>
+      <p> Vous participez à cette visite. </p>
+    <% end %>
+  </div>
+<% else %>
+  <div class="property-wrapper__right__slot full <%= slot.candidates && slot.candidates.include?(current_user) ? ("current") : (nil) %>">
+    <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
+    <p> Ce créneau est complet. </p>
+    <% if slot.candidates && slot.candidates.include?(current_user) && slot.property.owner != current_user %>
+      <p> Vous participez à cette visite. </p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="form-page">
+  <div class="form-page__form">
+    <h2>Connexion</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label "Email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Mot de passe" %>
+        <%= f.password_field :password, autocomplete: "mot-de-passe" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label "Se souvenir de moi" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Me connecter", class: "btn white-btn bg-primary" %>
+      </div>
+    <% end %>
+
+    <div class="form-page__form--links">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.alert {
+  padding: 0.8em;
+  font-size: 1.1em;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  color: black;
+  text-align: center;
+  z-index: 9999;
+
+  &.alert-success, &.alert-notice {
+    background-color: $success;
+  }
+
+  &.alert-warning, &.alert-alert {
+    background-color: $warning;
+  }
+
+  animation: fadeOut 0.5s 3s ease-out forwards;
+  -webkit-animation: fadeOut 0.5s 3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    z-index: 100;
+    display: block;
+  }
+  99% {
+    opacity: 0;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+    display: none!important;
+  }
+
+}
