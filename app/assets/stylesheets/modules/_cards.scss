@@ -10,7 +10,7 @@
   -o-border-radius: 0.5em;
   position: relative;
   box-shadow: var(--shadow-low);
-  border: 1px solid hsl(210, 100%, 85%);
+  border: 1px solid $primary-light;
 
   &__picture {
     height: 75%;
@@ -63,7 +63,11 @@
       -moz-transition: opacity 0.3s;
       -ms-transition: opacity 0.3s;
       -o-transition: opacity 0.3s;
-}
+    }
+
+    &.unpaid:after {
+      content: "Procéder au paiement";
+    }
 
     &:hover:after {
       opacity: 1;

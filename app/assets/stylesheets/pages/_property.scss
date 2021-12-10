@@ -42,6 +42,10 @@
       &.full {
         background-color: $warning;
       }
+
+      &.current {
+        background-color: green;
+      }
     }
   }
 }
@@ -53,6 +57,7 @@
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
   width: 100%;
+  position: relative;
 
   img {
     border-radius: 1rem;
@@ -61,6 +66,30 @@
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
     object-fit: cover;
+    transition: opacity 0.3s;
+    -webkit-transition: opacity 0.3s;
+    -moz-transition: opacity 0.3s;
+    -ms-transition: opacity 0.3s;
+    -o-transition: opacity 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &--change {
+    position: absolute;
+    font-size: 1.6em;
+    color: black!important;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
   }
 
   &.no-picture {
