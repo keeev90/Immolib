@@ -36,9 +36,9 @@
     <h2 class="benefits-section__title">
       Organisez vos visites en toute simplicité
     </h2>
-    <!-- <p>
+    <h3 class="bolder text-center">
       Fini les échanges d'emails et appels téléphoniques fastidieux.
-    </p>  Sous-titre : J'attends de voir avec toi pour intégrer le style en sass --> 
+    </h3>
     <div class="benefits-section__body">
       <div class="item">
         <%= image_tag 'approval.svg' %>
@@ -78,9 +78,9 @@
     <h2 class="benefits-section__title">
       Collectez et gérez les dossiers candidats en quelques clics
     </h2>
-    <!-- <p>
+    <h3 class="bolder text-center">
       Fini l'archivage chaotique et les dossiers incomplets.
-    </p>  Sous-titre : J'attends de voir avec toi pour intégrer le style en sass --> 
+    </h3>
     <div class="benefits-section__body" id='benefits-2'>
       <div class="item">
         <%= image_tag 'import.svg' %>
@@ -108,6 +108,24 @@
     </div>
     <!-- Manque un justify-content:center, mais pareil je ne sais pas comment toucher au sass pour le moment -->
   </section>
+
+  <section class="benefits-section bg-white">
+    <h2 class="benefits-section__title">
+      Une agence immobilière ? Et pourquoi faire ?!
+    </h2>
+    <h3 class="bolder text-center">
+      Economisez les frais d'agence tout en simplifiant vos démarches de vente ou location immobilière.
+    </h3>
+    <div class="home-buttons">
+      <p>L’accès à notre outil est au prix fixe de 50€ par bien à vendre ou à louer… soit 100 fois moins cher qu’une agence traditionnelle pour vous aider à réaliser vous-mêmes 80% de leur valeur ajoutée : l’organisation des visites et la collecte des dossiers ! </p>
+      <% if user_signed_in? %>
+        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn primary" %>
+      <% else %>
+          <%= link_to 'Organisez vos visites dès maintenant', new_user_session_path, class: "btn big-btn primary" %>
+      <% end %>
+    </div>
+  </section>
+
 </div>
 
 <%= javascript_include_tag 'typewriter.js' %>
