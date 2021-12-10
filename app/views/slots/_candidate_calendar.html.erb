@@ -10,6 +10,7 @@
     <div class="slot-candidate-wrapper__calendar__title text-center"> 
       <p> Vous avez un créneau réservé pour le <%= property.appointments.find_by(candidate: current_user).slot.start_date.strftime("%d/%m/%Y %H:%M") %> </p>
       <p><%= link_to "Choisir un autre créneau", appointment_path(id:property.appointments.find_by(candidate: current_user), property:property), method: "delete" %> </p>
+      <p><%= link_to "Finaliser ma candidature", appointment_path(property.appointments.find_by(candidate: current_user)), class: "btn white-btn bg-primary" %> </p>
     </div>
 
 <% else %>    
