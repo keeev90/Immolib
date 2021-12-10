@@ -1,9 +1,9 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), new_property_path, class: "return-link ml4 pt1" %>
 <div class="new-slot-wrapper pt7 pl4 pr4">
-  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), new_property_path, class: "return-link" %>
   <div class="new-slot-wrapper__content text-center">
     <h1>Etape 2/3 : sélection des créneaux et modalités des visites</h1>
     <h3>Renseignez les créneaux de visites que vous souhaitez proposer à vos candidats</h3>
-    <p>Les créneaux disponibles seront mis à jour automatiquement après chaque candidature. Vous pourrez les modifier à tout moment dans votre espace "Mes logement".</p>
+    <p>Les créneaux disponibles seront mis à jour automatiquement après chaque candidature. Vous pourrez les modifier à tout moment dans votre espace perso.</p>
     
     <%= link_to "Ajoutez un créneau", new_slot_property_path(@property), class: "btn big-btn white-btn bg-primary" %>
     
