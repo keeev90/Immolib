@@ -24,12 +24,28 @@ class SlotsController < ApplicationController
     @slot = Slot.new
     @property = Property.find(params[:property_id])
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+    now = DateTime.now
+    min = now.minute / 15 * 15 + 15
+    @date = now.change(
+      {
+        hour: min >= 60 ? now.hour + 1 : now.hour,
+        min: min % 60
+      }
+    )
   end
 
   def new_first
     @slot = Slot.new
     @property = Property.find(params[:id])
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+    now = DateTime.now
+    min = now.minute / 15 * 15 + 15
+    @date = now.change(
+      {
+        hour: min >= 60 ? now.hour + 1 : now.hour,
+        min: min % 60
+      }
+    )
   end
 
   def create
@@ -37,15 +53,15 @@ class SlotsController < ApplicationController
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
-      flash[:success] = "Le créneau de visite a été édité avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
       if redirect_path[:redirect_path]
         redirect_to(first_slots_property_path(@property))
       else
         redirect_to(property_path(@property))
       end
     else
-      flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      flash[:warning] = @slot.errors.full_messages
+      redirect_to new_property_slot_path
     end
   end
 
