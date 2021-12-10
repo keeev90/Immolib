@@ -26,8 +26,10 @@
     
     <% if slot.candidates.include?(current_user) %>
       <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
-      <% else %>
-      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property), method: "post" %>
+    <% elsif @redirect_to_book_now == true %>
+      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property, redirect_to_book_now: true), method: "post" %>
+    <% else %>
+        <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property, redirect_to_book_now: false), method: "post" %>
     <% end %>
     
 
