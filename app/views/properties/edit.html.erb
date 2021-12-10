@@ -1,26 +1,28 @@
 <div class="form-page">
   <div class="form-page__form">
-    <h2>Éditer mon annonce</h2>
+    <h2>Éditer mon logement Immolib</h2>
+    <p class="mb2">Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce en ligne.</p>
 
     <%= form_with model: @property, url: property_path(@property), local: true, class: "form", id: "item-form", multipart: true do |f| %>
     
       <div class="field">
-        <%= f.label 'Titre' %><br />
+        <%= f.label 'Titre *' %><br />
         <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Ville' %><br />
+        <%= f.label 'Ville *' %><br />
         <%= f.text_field :city, autofocus: true, autocomplete: "city", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Lien vers l\'annonce' %><br />
+        <%= f.label 'Lien vers l\'annonce en ligne' %><br />
         <%= f.text_field :other_link, autofocus: true, autocomplete: "other_link" %>
       </div>
 
       <div class="field">
-        <%= f.label 'Instructions' %><br />
+        <%= f.label 'Instructions pour les visites' %>
+        <p><small>Ces instructions permettront de guider vos visiteurs (ex : lieu de rendez-vous, digicode, interphone, etc.). Elles ne seront transmises aux visiteurs qu'après inscription à un créneau de visite.</small></p>
         <%= f.text_field :instructions, autofocus: true, autocomplete: "instructions" %>
       </div>
 
