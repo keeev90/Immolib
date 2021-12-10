@@ -1,6 +1,8 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), new_slots_property_path(@property), class: "return-link" %>
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
+    <h6><em>Vous pourrez modifier ces modalités de visite depuis votre espace perso.</em></h6>
     <br/>
     <div class='form-group'>
       <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
@@ -25,7 +27,5 @@
     <%end%>
   </div>
 </div>
-
-<%= text_field_tag 'test', 'coucou', id:'pickadate' %>
 
 <%= javascript_include_tag 'datepicker' %>

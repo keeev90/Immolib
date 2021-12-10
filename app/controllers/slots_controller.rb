@@ -34,18 +34,23 @@ class SlotsController < ApplicationController
 
   def create
     @property = Property.find(params[:property_id])
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
     @slot = Slot.new(slot_params)
     @slot.property = @property
     if @slot.save
       flash[:success] = "Le créneau de visite a été créé avec succès ✌️"
       if redirect_path[:redirect_path]
-        redirect_to(first_slots_property_path(@property))
+        redirect_to(new_slots_property_path(@property))
       else
         redirect_to(property_path(@property))
       end
     else
       flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      if redirect_path[:redirect_path]
+        render new_slot_property_path(@property)
+      else
+        render new_property_slot_path(@property)
+      end
     end
   end
 

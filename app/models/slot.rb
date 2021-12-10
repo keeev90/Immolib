@@ -6,7 +6,7 @@ class Slot < ApplicationRecord
   has_many :candidates, through: :appointments
   
   #Validations
-  #validate :start_date_cannot_be_in_the_past
+  validate :start_date_cannot_be_in_the_past
   #validate :overlaps_with_other?
 
   validates :start_date, presence: true
