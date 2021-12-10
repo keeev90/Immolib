@@ -11,7 +11,7 @@
       <p> Vous avez un créneau réservé pour le <%= property.appointments.find_by(candidate: current_user).slot.start_date.strftime("%d/%m/%Y %H:%M") %> </p>
       
       <% if false %>
-              <p><%= link_to "Choisir un autre créneau", appointment_path(id:property.appointments.find_by(candidate: current_user), property:property), method: "delete" %> </p>
+        <p><%= link_to "Choisir un autre créneau", appointment_path(id:property.appointments.find_by(candidate: current_user), property:property), method: "delete" %> </p>
       <% end %>
       
 
