@@ -84,7 +84,7 @@
   
     &__title {
       text-align: center;
-      padding: 5rem 0;
+      padding: 5rem 0 0.5rem;
       font-size: 4rem;
     }
   
@@ -134,10 +134,6 @@
       .short {
         max-width: 800px;
       }
-      
-      .subtitle {
-        font-size: 1.8em;
-      }
 
       .last-text {
         font-size: 1.3em;
@@ -147,6 +143,10 @@
         padding-bottom: 0.5rem;
       }
     }
+  }
+
+  .subtitle {
+    font-size: 1.8em;
   }
   
   @media screen and (max-width: 938px) {
