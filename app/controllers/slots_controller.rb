@@ -17,6 +17,11 @@ class SlotsController < ApplicationController
     @slot = Slot.new
     @property = Property.find(params[:property_id])
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+    now = DateTime.now
+    min = now.minute / 15 * 15 + 15
+    @date = now.change(
+      { min: min >= 60 ? 0 : min }
+    )
   end
 
   def create
