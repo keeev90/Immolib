@@ -3,7 +3,7 @@
   <h2 class='failed'>Le paiement n'a pas été effectué</h2>
   <hr/>
   <p>Les informations de votre logement ont été conservées.</p>
-  <p>Pour finaliser la création de votre logement Immolib, nous vous invitons à <strong>finaliser le paiement</strong> :</p>
+  <p>Pour finaliser la création de votre logement Immolib, nous vous invitons à <strong>finaliser le paiement</strong>&nbsp;:</p>
   <%= link_to "Finaliser le paiement", checkout_create_path(price: 49.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
 
   <p>En cliquant sur « Finaliser le paiement », vous serez redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong> et vous pourrez ensuite finaliser l'organisation de vos visites.</p>
