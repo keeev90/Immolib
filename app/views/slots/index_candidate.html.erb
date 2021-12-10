@@ -32,5 +32,12 @@
       <% end %>
     <% end %>
 
+    <% if !current_user %>
+      <div class="slot-candidate-wrapper__calendar__title text-center"> 
+        <p> Inscrivez-vous pour sélectionner un créneau. </p>
+        <%= link_to "M'inscrire", new_user_registration_path, class:"btn white-btn bg-primary" %>
+      </div>
+    <% end %>
+
   </div>
 </div>
