@@ -44,8 +44,8 @@ class SlotsController < ApplicationController
         redirect_to(property_path(@property))
       end
     else
-      flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      flash[:warning] = @slot.errors.full_messages
+      redirect_to new_property_slot_path
     end
   end
 

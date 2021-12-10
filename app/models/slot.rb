@@ -39,7 +39,7 @@ class Slot < ApplicationRecord
     end
   end
 
-  private
+ 
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && start_date < Date.today
@@ -57,7 +57,7 @@ class Slot < ApplicationRecord
     is_overlapping = other_slots.any? do |other_slot| # any? method >>> https://www.geeksforgeeks.org/ruby-enumerable-any-function/#:~:text=The%20any%3F()%20of%20enumerable,condition%2C%20else%20it%20returns%20false.&text=Parameters%3A%20The%20function%20takes%20two,the%20other%20is%20the%20pattern.
       period.overlaps?(other_slot.period) # overlaps? method >>> https://www.rubydoc.info/docs/rails/Range:overlaps%3F
     end
-    errors.add(:overlaps_with_other?, "Un créneau de visite existe déjà sur cette période") if is_overlapping
+    errors.add(:slot, "Un créneau de visite existe déjà sur cette période") if is_overlapping
   end
   
   
