@@ -5,5 +5,6 @@ FactoryBot.define do
       from: DateTime.now + 1,
       to: DateTime.now + 30
     ) }
+    duration { 15 * rand(1..12) }
   end
 end
