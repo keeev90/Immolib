@@ -3,9 +3,18 @@
   <h2> Mes informations personnelles </h2>
     <div class="profile-wrapper__informations">
       <div class="profile-wrapper__informations__left">
-        <p> Prénom : <%= @user.first_name %>
-        <p> Nom : <%= @user.last_name %>
-        <p> Adresse mail : <%= @user.email %>
+        <p>
+          <span class='text-muted'>Prénom&nbsp;:</span>
+          <%= @user.first_name %>
+        </p>
+        <p>
+          <span class='text-muted'>Nom&nbsp;:</span>
+          <%= @user.last_name %>
+        </p>
+        <p>
+          <span class='text-muted'>Adresse mail&nbsp;:</span>
+          <%= @user.email %>
+        </p>
       </div>
       <%if @user.profile_picture.attached?%>
         <div>
