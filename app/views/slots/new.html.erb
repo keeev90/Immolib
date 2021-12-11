@@ -5,7 +5,7 @@
     <h6><em>Vous pourrez modifier ou supprimer ce créneau à tout moment.</em></h6>
     <br/>
     <div class='form-group'>
-      <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
+      <input type='text' id='pickadate', class='form-control'></input>
     </div>
     <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
