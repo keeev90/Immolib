@@ -69,7 +69,7 @@ end
   appointment = Appointment.create!(
     candidate: candidate,
     slot: Slot.all.sample,
-    candidate_message: Faker::Lorem.sentence(word_count: 50 + rand(1..200))
+    candidate_message: Faker::Lorem.sentence(number: 50 + rand(1..200))
     )
     puts "Appointment with id #{appointment.id} created"
 end
