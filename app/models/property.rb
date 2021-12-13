@@ -14,6 +14,7 @@ class Property < ApplicationRecord
   validates :city, presence: true
   #validates :zip_code, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "Veuillez entrer un code postal valide" } 
   validates :other_link, format: URI::regexp(%w[http https]), allow_blank: true
+  validates :owner_project, presence: true, allow_blank: false
 
 
   def go_visit_url
@@ -41,6 +42,25 @@ class Property < ApplicationRecord
     return result
   end
 
+  def has_available_slot?
+    ans = false
+    self.slots.each do |slot|
+      unless slot.is_past?
+        slot.available? ? (return ans = true) : nil
+      end
+    end
+    return ans
+  end
+
+  def can_book?(candidate)
+    self.slots.each do |slot|
+      unless slot.is_past? 
+        slot.candidates.include?(candidate) ? (return false) : nil
+      end
+    end
+    return true
+  end
+#slot.candidates.include?(current_user)
   private
 
   def randomize_property_id

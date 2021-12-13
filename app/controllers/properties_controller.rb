@@ -1,19 +1,8 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!, except: [:show_candidate]
+  before_action :authenticate_user!, except: [:welcome_candidate]
   before_action :is_owner?, only: [:show]
 
-  def index
-    @properties = current_user.properties
-  end
-
-  def show
-    @property = Property.find(params[:id])
-    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
-  end 
-  
-  def welcome_candidate
-    @property = Property.find(params[:id])
-  end 
+  # user as potential ower
 
   def new
     @property = Property.new
@@ -23,6 +12,7 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.owner = current_user
     #@property.property_picture.attach(params[:property_picture])
+    #raise 'coucou'
     if @property.save
       flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
       redirect_to(new_slots_property_path(@property))
@@ -30,6 +20,17 @@ class PropertiesController < ApplicationController
       flash.now[:warning] = @property.errors.full_messages
       render :new
     end
+  end 
+
+  # user as owner
+
+  def index
+    @properties = current_user.properties
+  end
+
+  def show
+    @property = Property.find(params[:id])
+    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end 
 
   def edit
@@ -56,16 +57,22 @@ class PropertiesController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  # user as potential candidate
+
+  def welcome_candidate
+    @property = Property.find(params[:id])
+  end
+
   private
 
   def property_params
-    params.require(:property).permit(:title, :city, :property_picture, :other_link, :instructions)
+    params.require(:property).permit(:owner_project, :title, :city, :property_picture, :other_link, :instructions)
   end
 
   def is_owner?
     @property = Property.find(params[:id])
     if @property.owner != current_user
-      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci."
+      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci ⛔"
       redirect_to root_path
     end
   end

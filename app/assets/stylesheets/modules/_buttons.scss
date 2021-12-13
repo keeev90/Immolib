@@ -12,9 +12,16 @@
   color: $secondary;
   text-transform: uppercase;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &.disabled {
+    background-color: #eee;
+    color: #ccc;
+    pointer-events: none;
   }
 }
 
@@ -24,6 +31,11 @@
 
 .white-btn {
   color: white;
+}
+
+.center-btn { // Apply it on a div wrapping the button
+  display: flex;
+  justify-content: center;
 }
 
 .outline-btn {
@@ -60,5 +72,19 @@
     -moz-transform: translateX(-6px);
     -ms-transform: translateX(-6px);
     -o-transform: translateX(-6px);
+  }
+}
+
+.icon-btn {
+  padding-left: 2.25em;
+  text-transform: none;
+
+  img {
+    display: inline-block;
+    height: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.75rem;
   }
 }

@@ -82,6 +82,11 @@ input:not([type='submit'], [type='checkbox'], .pickadate--element), select, text
   &:focus {
     border-color: $primary;
   }
+
+  .delete {
+    text-align: center;
+    display: block;
+  }
 }
 
 input[type="file"],

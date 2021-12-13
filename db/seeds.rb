@@ -57,9 +57,19 @@ end
 # appointments
 
 5.times do
+
+  # to avoid owner = candidate
+  owner = User.all.sample
+  candidate = User.all.sample
+
+  while owner == candidate
+    candidate = User.all.sample
+  end
+
   appointment = Appointment.create!(
-    candidate: User.all.sample,
-    slot: Slot.all.sample
+    candidate: candidate,
+    slot: Slot.all.sample,
+    candidate_message: Faker::Lorem.sentence(number: 50 + rand(1..200))
     )
     puts "Appointment with id #{appointment.id} created"
 end

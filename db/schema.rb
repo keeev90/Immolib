@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_102210) do
+ActiveRecord::Schema.define(version: 2021_12_13_152404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_102210) do
     t.bigint "slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "candidate_message"
     t.index ["candidate_id"], name: "index_appointments_on_candidate_id"
     t.index ["slot_id"], name: "index_appointments_on_slot_id"
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_102210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_paid", default: false
+    t.string "owner_project"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
   end
 

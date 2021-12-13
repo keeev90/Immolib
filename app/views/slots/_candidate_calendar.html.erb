@@ -1,38 +1,19 @@
-<% if false %>
-  <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
-    <div class="property-wrapper__right__date">
-      <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
-    </div>
-    <% slots.each do |slot| %>
-      <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
-    <% end %>
-  <% end %>
-    <div class="slot-candidate-wrapper__calendar__title text-center"> 
-      <p> Vous avez un créneau réservé pour le <%= property.appointments.find_by(candidate: current_user).slot.start_date.strftime("%d/%m/%Y %H:%M") %> </p>
-      
-      <% if false %>
-        <p><%= link_to "Choisir un autre créneau", appointment_path(id:property.appointments.find_by(candidate: current_user), property:property), method: "delete" %> </p>
-      <% end %>
-      
-      <p><%= link_to "Finaliser ma candidature", appointment_path(property.appointments.find_by(candidate: current_user)), class: "btn white-btn bg-primary" %> </p>
-    </div>
+<% if !property.candidates.include?(current_user) && !property.has_available_slot? %>
+  <p class="text-center">Aucun rendez-vous n'est disponible actuellement, merci de réessayer ultérieurement.</p>
+<% end %>
+<%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
+  <div class="property-wrapper__right__date">
+    <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
+  </div>
 
-<% else %>    
-  <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>
-    <div class="property-wrapper__right__date">
-      <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
-    </div>
-    <% slots.each do |slot| %>
-    
-    <% if slot.candidates.include?(current_user) %>
+  <% slots.each do |slot| %>
+    <% if slot.candidates.include?(current_user) || !slot.available?%>
       <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
     <% elsif @redirect_to_book_now == true %>
       <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property, redirect_to_book_now: true), method: "post" %>
     <% else %>
         <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property:property, redirect_to_book_now: false), method: "post" %>
-    <% end %>
-    
+    <% end %>  
 
-    <% end %>
   <% end %>
 <% end %>

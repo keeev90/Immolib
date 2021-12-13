@@ -1,5 +1,5 @@
 <div class="slot-wrapper pl4 pr4 pt1">
-  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), :back, class: "return-link" %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(params[:property_id]), class: "return-link" %>
   <div class="slot-wrapper__title">
     <h1 class="primary">Mes candidats</h1>
     <p> Créneau du <%= @slot.start_date.strftime("%d") %> <%= @date_arr[@slot.start_date.strftime("%m").to_i] %> <%= @slot.start_date.strftime("%Y") %></p>
@@ -7,15 +7,19 @@
     <%= link_to 'Editer le créneau', edit_property_slot_path(@slot) ,class:"btn white-btn bg-primary"%>
   </div>
   <div class="slot-wrapper__content pt4">
-    <% if @slot.candidates.size > 0 %>
-      <% @slot.candidates.each do |c| %>
+    <% if @slot.appointments.size > 0 %>
+      <% @slot.appointments.each do |a| %>
         <div class="slot-wrapper__content__candidate">
-          <h3> <%= c.first_name %> <%= c.last_name %></h3>
+          <h3> <%= a.candidate.first_name %> <%= a.candidate.last_name %></h3>
+          <%if a.candidate_message %>
+            <p><em><%= a.candidate_message %></em></p>
+          <%else%>
+            <p>Le candidat n'a pas envoyé de message.</p>
+          <%end%>
         </div>
       <% end %>
     <% else %>
       <p> Vous n'avez pas de candidat inscrit sur ce créneau. </p>
     <% end %>
   </div>
-
 </div>

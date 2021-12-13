@@ -77,6 +77,9 @@ fr:
               blank: "Merci de renseigner un mot de passe valide (6 caractères minimum) 🙏"
         property:
           attributes:
+            owner_project:
+              blank: "Merci de renseigner si vous souhaitez vendre ou louer votre logement 🙏"
+              required: "Merci de renseigner si vous souhaitez vendre ou louer votre logement 🙏"
             title:
               blank: "Merci de donner un titre à votre logement 🙏"
               required: "Merci de donner un titre à votre logement 🙏"
