@@ -28,6 +28,7 @@
       <p>URL Immolib (dev) : <%= @property.go_visit_url_dev %></p>
       <p>URL Immolib (local) : <%= @property.go_visit_url_local %></p>
       <!-- end -->
+
       <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
       <p><%= link_to "Supprimer mon annonce", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
     </div>

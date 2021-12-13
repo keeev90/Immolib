@@ -2,10 +2,12 @@
   <h1 class="primary"> Mon rendez-vous </h1>
   <div class="welcome_user-wrapper">
     <div class="welcome_user-wrapper__left appointment-show">
+      <div>
       <p class="bolder primary">Rappel de l'annonce</p>
       <p><%= @appointment.property.title%></p>
       <small><p><%= @appointment.property.city%></p></small>
       <small><%= @appointment.property.other_link%></small>
+      </div>
       <%if @appointment.property.property_picture.attached?%>
         <%= image_tag @appointment.property.property_picture, alt: 'property picture', class: "house-picture" %>
       <% end %>
@@ -14,4 +16,13 @@
       <%= render partial:"slots/candidate_calendar", locals: {property: @appointment.property} %>
     </div>
   </div>
+</div>
+<div class="candidate-message">
+  <p class="bolder primary">Mon message adressé au propriétaire</p>
+  <%if @appointment.candidate_message %>
+    <p><%= @appointment.candidate_message %></p>
+  <%else%>
+    <p>Vous n'avez pas encore envoyé un message au propriétaire.</p>
+  <%end%>
+  <%= link_to "Modifier mon message", edit_appointment_path(params[:id]), class: "btn white-btn bg-primary" %>
 </div>

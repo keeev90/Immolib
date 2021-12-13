@@ -1,3 +1,31 @@
 .welcome_user-wrapper__left.appointment-show {
   max-width: 25%;
+  border: none;
+}
+
+.welcome_user-wrapper__right.appointment-show {
+  border-left: 1px solid $primary;
+}
+
+.welcome_user-wrapper__left.appointment-show p {
+  min-height: 0;
+  padding-bottom: 0.5rem;
+}
+
+.candidate-message {
+  padding: 1rem;
+  border: 1px solid $primary;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  text-align: center;
+  margin: 0 2rem 1rem;
+
+  .primary {
+    margin: -1.9rem auto 1.9rem;
+    background-color: #fff;
+    max-width: 350px;
+  }
 }

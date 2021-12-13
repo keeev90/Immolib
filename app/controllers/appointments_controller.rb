@@ -38,9 +38,20 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @appointment = Appointment.find(params[:id])
   end
 
   def update
+    @appointment = Appointment.find(params[:id])
+    @property = @appointment.slot.property.id
+
+    if @appointment.update(candidate_message: params[:appointment][:candidate_message])
+      flash[:success] = "Votre candidature a été enregistrée avec succès 👌"
+      redirect_to appointment_path(@appointment)
+    else
+      flash[:warning] = @appointment.errors.full_messages
+      redirect_to send_message_property_path(@property)
+    end
   end
 
   def destroy
