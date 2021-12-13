@@ -1,6 +1,6 @@
 <div class="pt4 text-center">
-  <h1>Etape 3/3 : parlez-moi de votre projet 🙂 (optionnel)</h1>
-  <h3>Ecrivez-moi quelques lignes pour me parler de vous et de votre projet</h3>
+  <h1>Étape 3/3 : Parlez-moi de votre projet 🙂 (optionnel)</h1>
+  <h3>Écrivez-moi quelques lignes pour me parler de vous et de votre projet</h3>
 </div>
 <div class="form-page">
   <div class="form-page__form">
@@ -8,19 +8,18 @@
     <p class="mb2"><em>Vous pourrez le modifier ou le supprimer à tout moment depuis votre espace immolib.</em></p>
     <%= form_with model: @appointment, url: appointment_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <div class="form-group">
-        <%= f.label "Instructions pour les visites :", class: "form-label" %>
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message au propriétaire" %>
       </div>
       <div>
         <%= f.submit "Finaliser ma candidature", class: "btn white-btn bg-primary" %>
       </div>
     <%end%>
+    <div class="text-center pt1">
+      <p>
+        <em>Un email de confirmation vous sera envoyé avec toutes les modalités logistiques pour la visite. 
+        Je vous invite à <span class="bolder">compléter votre profil</span> : avec une photo c’est toujours plus sympa !
+        En cas d’imprévu, merci de bien vouloir modifier ou annuler votre inscription directement depuis votre espace en ligne.</em>
+      </p>
+    </div>
   </div>
-</div>
-<div class="profile-cta">
-  <p>
-    Un email de confirmation vous sera envoyé avec toutes les modalités logistiques pour la visite. 
-    Je vous invite à compléter votre profil : avec une photo c’est toujours plus sympa !
-    <em>En cas d’imprévu, merci de bien vouloir modifier ou annuler votre inscription directement depuis votre espace en ligne.</em>
-  </p>
 </div>

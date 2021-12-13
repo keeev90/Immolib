@@ -1,5 +1,5 @@
 <div class="slot-wrapper pl4 pr4 pt1">
-  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), :back, class: "return-link" %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(params[:property_id]), class: "return-link" %>
   <div class="slot-wrapper__title">
     <h1 class="primary">Mes candidats</h1>
     <p> Créneau du <%= @slot.start_date.strftime("%d") %> <%= @date_arr[@slot.start_date.strftime("%m").to_i] %> <%= @slot.start_date.strftime("%Y") %></p>

@@ -41,9 +41,7 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    # @property = Property.find(params[:id])
-    @appointment = current_user.appointments.last
-    #@appointment = params[:appointment]
+    @appointment = Appointment.find(params[:id])
 
     if @appointment.update(candidate_message: params[:appointment][:candidate_message])
       flash[:success] = "Votre candidature a été enregistrée avec succès 👌"
