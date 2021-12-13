@@ -92,6 +92,11 @@
 
 form {
   width: 100%;
+
+  .delete {
+    text-align: center;
+    display: block;
+  }
 }
 
 .form-group__checkboxes {

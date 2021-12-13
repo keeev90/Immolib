@@ -16,6 +16,12 @@
   &:hover {
     opacity: 0.8;
   }
+
+  &.disabled {
+    background-color: #eee;
+    color: #ccc;
+    pointer-events: none;
+  }
 }
 
 .big-btn {
@@ -24,6 +30,11 @@
 
 .white-btn {
   color: white;
+}
+
+.center-btn { // Apply it on a div wrapping the button
+  display: flex;
+  justify-content: center;
 }
 
 .outline-btn {

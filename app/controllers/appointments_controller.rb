@@ -1,4 +1,7 @@
 class AppointmentsController < ApplicationController
+
+  # user as potential candidate
+
   def index
   end
 
@@ -31,6 +34,13 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def message_candidate
+    @property = Property.find(params[:id])
+    @appointment = current_user.appointments.last
+  end
+
+  # user as candidate
+
   def show
     @appointment = Appointment.find(params[:id])
     @slots = @appointment.property.slots
@@ -38,15 +48,53 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
+    @appointment = Appointment.find(params[:id])
   end
 
   def update
+    @appointment = Appointment.find(params[:id])
+    @property = @appointment.slot.property.id
+
+    if @appointment.update(candidate_message: params[:appointment][:candidate_message])
+      if redirect_path[:redirect_path] == "check if new immolib appointment process" #when in new immolib appointment process
+        flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
+      else #when in "mon espace immolib"
+        flash[:success] = "Votre message a été édité avec succès 👌"
+      end
+      redirect_to appointment_path(@appointment)
+    else
+      flash[:warning] = @appointment.errors.full_messages
+      if redirect_path[:redirect_path] == "check if new immolib appointment process" #when in new immolib appointment process
+        redirect_to send_message_property_path(@property)
+      else #when in "mon espace immolib"
+        render :edit
+      end
+    end
   end
 
+  # def destroy
+  #   redirect_to_book_now = params[:redirect_to_book_now]
+  #   @appointment = Appointment.find(params[:id])
+  #   @property = Property.find(params[:property])
+  #   @appointment.destroy
+  #   if redirect_to_book_now == "true"
+  #     redirect_to book_now_property_path(property)
+  #   else
+  #     redirect_to appointment_path(new_appointment)
+  #   end
+  # end
+
   def destroy
-    @appointment = Appointment.find(params[:id])
-    @property = Property.find(params[:property])
-    @appointment.destroy
-    redirect_to book_now_property_path(@property)
+    appointment = Appointment.find(params[:id])
+    user = appointment.candidate
+    appointment.destroy
+    redirect_to user_path(user)
   end
+
+  private
+
+  def redirect_path
+    params.require(:appointment).permit(:redirect_path)
+  end
+
 end

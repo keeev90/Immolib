@@ -23,6 +23,11 @@
       <p class="mb1">Lien vers mon annonce en ligne : <%= @property.other_link %> </p>
       <p class="mb1">Mes instructions de visite : <%= @property.instructions %> </p>
       <p class="mb1">Mon URL Immolib (à partager sur vos annonces en ligne) : <%= @property.go_visit_url %></p>
+      <p class="mb1">Visualiser le parcours candidat : <%=link_to "mon parcours candidat Immolib", go_visit_property_path(@property.id)%></p>
+      <!-- A supprimer en production -->
+      <p>URL Immolib (dev) : <%= @property.go_visit_url_dev %></p>
+      <p>URL Immolib (local) : <%= @property.go_visit_url_local %></p>
+      <!-- end -->
 
       <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
       <p><%= link_to "Supprimer mon annonce", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>

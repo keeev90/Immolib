@@ -14,17 +14,20 @@ Rails.application.routes.draw do
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots'
     member do
-      get 'go-visit', to: "properties#welcome_candidate"
-      get 'book-now', to: "slots#book_candidate"
+      #user new property slots process
       get 'new-slots', to: "slots#index_first"
       get 'new-slot', to: "slots#new_first"
+      #user new property appointment process
+      get 'go-visit', to: "properties#welcome_candidate"
+      get 'book-now', to: "slots#book_candidate"
+      get 'send-message', to: "appointments#message_candidate"
     end
   end 
 
 # get '/properties/:id/test', to: "properties#show_candidate"
 
 
-  resources 'appointments', except: [:edit, :update]
+  resources 'appointments' #, except: [:edit, :update]
 
   scope '/checkout' do
     post 'create', to: 'checkout#create', as: 'checkout_create'
