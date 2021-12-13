@@ -10,6 +10,7 @@
       <div class="form-group">
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message au propriétaire", maxlength: "1000" %>
       </div>
+      <%= f.hidden_field :redirect_path, :value => "check if new immolib appointment process" %>
       <div>
         <%= f.submit "Finaliser ma candidature", class: "btn white-btn bg-primary" %>
       </div>
