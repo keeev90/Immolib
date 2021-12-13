@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!, except: [:show_candidate]
+  before_action :authenticate_user!, except: [:welcome_candidate]
   before_action :is_owner?, only: [:show]
 
   # user as potential ower

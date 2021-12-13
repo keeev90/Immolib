@@ -16,7 +16,11 @@
       </div>
     <% end %>
 
-    <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary" %>
+    <% if current_user && @property.candidates.include?(current_user) %>
+      <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary" %>
+    <% else %>
+      <%= link_to "Sélectionnez un créneau", send_message_property_path(@property), class: "btn disabled"%>
+    <% end %>
 
   </div>
 </div>

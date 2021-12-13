@@ -16,6 +16,12 @@
   &:hover {
     opacity: 0.8;
   }
+
+  &.disabled {
+    background-color: #eee;
+    color: #ccc;
+    pointer-events: none;
+  }
 }
 
 .big-btn {
