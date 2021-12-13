@@ -5,6 +5,6 @@ class Appointment < ApplicationRecord
   has_one :property, through: :slot
 
   #Validations
-  validates :candidate_message, length: { in: 10..300 }, allow_blank: true
+  validates :candidate_message, length: { in: 10..1000 }, allow_blank: true
 
 end
