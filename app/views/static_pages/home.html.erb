@@ -99,7 +99,7 @@
 
   <section class="benefits-section last-section">
     <h2 class="benefits-section__title mt4 primary">
-      Une agence immobilière ? Et pourquoi faire ?!
+      Une agence immobilière&nbsp;?<br/>Et pour quoi faire&nbsp;?!
     </h2>
     <h3 class="bolder text-center subtitle">
       Economisez les frais d'agence tout en simplifiant vos démarches de vente ou location immobilière.
@@ -109,9 +109,12 @@
     </div>
     <div class="text-center mt4 mb4">
       <% if user_signed_in? %>
-        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary" %>
+        <%= link_to "Organisez vos visites dès maintenant", user_registration_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
-          <%= link_to 'Organisez vos visites dès maintenant', new_user_session_path, class: "btn big-btn bg-primary" %>
+        <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
+          <%= f.email_field :email, placeholder: "Adresse Mail" %>
+          <%= f.submit 'Créer un compte et organiser mes visites !', class: "btn big-btn bg-primary white-btn" %>
+        <% end %>
       <% end %>
     </div>
   </section>

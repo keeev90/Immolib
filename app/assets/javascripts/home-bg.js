@@ -10,9 +10,9 @@ const controller = new ScrollMagic.Controller();
 
 gsap.registerPlugin(ScrollToPlugin);
 
-videoDuration = 3000;
+videoDuration = 3800;
 
-const videoScene = new ScrollMagic.Scene({
+let videoScene = new ScrollMagic.Scene({
   duration: videoDuration,
   triggerElement: intro,
   triggerHook: 0
@@ -26,7 +26,7 @@ const textAnim = gsap.to(text, {
   opacity: 0
 });
 
-const textScene = new ScrollMagic.Scene({
+let textScene = new ScrollMagic.Scene({
   duration: 1000,
   triggerElement: intro,
   triggerHook: 0
@@ -34,7 +34,7 @@ const textScene = new ScrollMagic.Scene({
   .setTween(textAnim)
   .addTo(controller);
 
-let accelAmount = 0.4;
+let accelAmount = 0.3;
 let scroll = 0;
 let delay = 0;
 
@@ -50,11 +50,11 @@ setInterval(() => {
 
     if (delay >= 0.6) delay = 0;
   } else {
-    delay += (scroll - delay) * accelAmount + 0.6;
+    delay += (scroll - delay) * accelAmount;
   }
 
   video.currentTime = delay;
-}, 50);
+}, 120);
 
 sections.forEach(section => {
   new ScrollMagic.Scene({
@@ -74,12 +74,16 @@ const resetDuration = () => {
 
 controller.scrollToBenefits = () => {
   document.body.setAttribute('style', 'overflow: hidden');
-  videoScene.duration(10000);
+  videoScene.duration(videoDuration * 2);
 
   gsap.to(window, {
-    duration: 1.5,
-    scrollTo: videoDuration + window.innerHeight + nav.clientHeight,
-    ease: Power3.EaseOut,
+    duration: 3,
+    scrollTo: 
+      videoDuration
+      + window.innerHeight
+      + nav.clientHeight
+      + 50,
+    ease: 'none',
     onComplete: resetDuration
   });
 };
