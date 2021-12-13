@@ -41,7 +41,7 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    @property = Property.find(params[:id])
+    # @property = Property.find(params[:id])
     @appointment = current_user.appointments.last
     #@appointment = params[:appointment]
 
