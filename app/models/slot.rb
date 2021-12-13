@@ -38,6 +38,10 @@ class Slot < ApplicationRecord
     end
   end
 
+  def is_past?
+    self.start_date < DateTime.now
+  end
+
   private
 
   def start_date_cannot_be_in_the_past

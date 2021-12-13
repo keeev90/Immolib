@@ -1,6 +1,6 @@
 <div class="slot-candidate-wrapper">
   <div class="slot-candidate-wrapper__title pt1">
-    <h1>Etape 1/2 : sélection d'un créneau disponible</h1>
+    <h1>Étape 1/2 : sélection d'un créneau disponible</h1>
     <h2>Sélectionnez un créneau de visite parmi les propositions disponibles.</h2>
     <p>Les créneaux disponibles sont mis à jour automatiquement. 
       Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de modification ou annulation de candidats.
@@ -17,9 +17,13 @@
     <% end %>
 
     <% if current_user && @property.candidates.include?(current_user) %>
-      <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary" %>
+      <div class="center-btn">
+        <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary center-btn" %>
+      </div>
     <% else %>
-      <%= link_to "Sélectionnez un créneau", send_message_property_path(@property), class: "btn disabled"%>
+      <div class="center-btn">
+        <%= link_to "Merci de sélectionner un créneau", send_message_property_path(@property), class: "btn disabled center-btn"%>
+      </div>
     <% end %>
 
   </div>

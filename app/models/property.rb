@@ -41,6 +41,16 @@ class Property < ApplicationRecord
     return result
   end
 
+  def has_available_slot?
+    ans = false
+    self.slots.each do |slot|
+      unless slot.is_past?
+        slot.available? ? (return ans = true) : nil
+      end
+    end
+    return ans
+  end
+
   private
 
   def randomize_property_id
