@@ -6,6 +6,7 @@
       <p><%= @appointment.property.title%></p>
       <small><p><%= @appointment.property.city%></p></small>
       <small><%= @appointment.property.other_link%></small>
+            <p><%= link_to "Supprimer mon RDV", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
       <%if @appointment.property.property_picture.attached?%>
         <%= image_tag @appointment.property.property_picture, alt: 'property picture', class: "house-picture" %>
       <% end %>
