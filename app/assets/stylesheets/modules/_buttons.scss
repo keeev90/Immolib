@@ -12,6 +12,7 @@
   color: $secondary;
   text-transform: uppercase;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     opacity: 0.8;
@@ -60,5 +61,19 @@
     -moz-transform: translateX(-6px);
     -ms-transform: translateX(-6px);
     -o-transform: translateX(-6px);
+  }
+}
+
+.icon-btn {
+  padding-left: 2.25em;
+  text-transform: none;
+
+  img {
+    display: inline-block;
+    height: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.75rem;
   }
 }
