@@ -1,4 +1,4 @@
-<div class="property-card">
+<div class="property-card <%= past ? "past" : nil %>">
   <div class="property-card__picture">
     <%if appointment.slot.property.property_picture.attached?%>
       <%= image_tag appointment.slot.property.property_picture, alt: 'property_picture' %>

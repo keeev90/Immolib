@@ -61,9 +61,21 @@
     <h2> Mes visites </h2>
 
     <% if current_user.appointments.count > 0 %>
+      <h3> À venir </h3>
       <div class="properties-wrapper">
-        <% current_user.appointments.each do |appointment| %>
-          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment}), appointment_path(appointment) %>
+        <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+          <% if appointment.slot.start_date > DateTime.now %>
+            <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <h3> Terminées </h3>
+      <div class="properties-wrapper">
+        <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+          <% if appointment.slot.start_date <= DateTime.now %>
+            <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
+          <% end %>
         <% end %>
       </div>
       
