@@ -109,7 +109,7 @@
     </div>
     <div class="text-center mt4 mb4">
       <% if user_signed_in? %>
-        <%= link_to "Organisez vos visites dès maintenant", user_registration_path, class: "btn big-btn bg-primary white-btn" %>
+        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
           <%= f.email_field :email, placeholder: "Adresse Mail" %>
