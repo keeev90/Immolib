@@ -51,6 +51,15 @@ class Property < ApplicationRecord
     return ans
   end
 
+  def can_book?(candidate)
+    self.slots.each do |slot|
+      unless slot.is_past? 
+        slot.candidates.include?(candidate) ? (return false) : nil
+      end
+    end
+    return true
+  end
+#slot.candidates.include?(current_user)
   private
 
   def randomize_property_id

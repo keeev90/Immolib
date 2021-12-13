@@ -7,4 +7,5 @@ class Appointment < ApplicationRecord
   #Validations
   validates :candidate_message, length: { in: 10..1000 }, allow_blank: true
 
+
 end

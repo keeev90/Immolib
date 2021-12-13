@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
     already_an_appointment = false
     new_appointment = Appointment.new(candidate: current_user, slot: slot)
     user_appointments.each do |appointment| #on parcourt les rdv du user
-      if appointment.property == property #si on en trouve un pour la meme property
+      if appointment.property == property && !appointment.slot.is_past? #si on en trouve un pour la meme property
         new_appointment =  appointment #on stock le rdv
         new_appointment.slot = slot #on update le slot
         already_an_appointment = true #on dit que le candidat avait déja un rdv sur ce logement
