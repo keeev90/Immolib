@@ -12,10 +12,17 @@ const roundDate = date => {
 
 const initialState = {
   selected: roundDate(new Date()),
-  template: 'DD MMMM YYYY - HH:mm'
-}
+  firstDayOfWeek: 1,
+  template: 'DD MMMM YYYY - HH:mm',
+  templateHookWords: {
+    MMM: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+    MMMM: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    DDD: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+    DDDD: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+  }
+};
 
-const picker = pickadate.create(initialState, pickadate.translations.fr_FR);
+const picker = pickadate.create(initialState);
 
 pickadate.render(element, picker);
 
