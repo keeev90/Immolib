@@ -1,4 +1,4 @@
-<% if !@property.has_available_slot? %>
+<% if !property.candidates.include?(current_user) && !property.has_available_slot? %>
   <p class="text-center">Aucun rendez-vous n'est disponible actuellement, merci de réessayer ultérieurement.</p>
 <% end %>
 <%= week_calendar(events:@slots, attribute: :start_date) do |date, slots| %>

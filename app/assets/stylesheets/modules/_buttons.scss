@@ -32,6 +32,11 @@
   color: white;
 }
 
+.center-btn { // Apply it on a div wrapping the button
+  display: flex;
+  justify-content: center;
+}
+
 .outline-btn {
   background-color: $primary;
   border: 2px solid white;
