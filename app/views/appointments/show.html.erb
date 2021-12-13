@@ -15,3 +15,11 @@
     </div>
   </div>
 </div>
+<div>
+  <p class="bolder primary">Mon message adressé au propriétaire</p>
+  <%if @appointment.candidate_message %>
+    <p><%= @appointment.candidate_message %></p>
+  <%else%>
+    <p>Vous n'avez pas encore envoyé un message au propriétaire.</p>
+  <%end%>
+</div>
