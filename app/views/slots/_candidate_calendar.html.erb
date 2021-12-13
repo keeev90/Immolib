@@ -5,6 +5,7 @@
   <div class="property-wrapper__right__date">
     <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
   </div>
+
   <% slots.each do |slot| %>
     <% if slot.candidates.include?(current_user) || !slot.available?%>
       <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
