@@ -49,8 +49,6 @@ class SlotsController < ApplicationController
 
   def show_candidate_details
     @appointment = Appointment.find(params[:appointment])
-    puts "*************************************"
-    puts @appointment
     respond_to do |format|
       format.js {}
     end
