@@ -64,3 +64,34 @@
 .candidate-document i {
   margin: 0 0.5em;
 }
+
+.option1-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2rem 0 1rem;
+}
+
+.option1-wrapper__left, .option1-wrapper__right {
+  text-align: left;
+}
+
+.option1-wrapper__left {
+  padding-right: 0.25rem;
+  margin-right: 1rem;
+  border-right: 1px solid rgba(0,0,0,0.2);
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 745px) {
+  .option1-wrapper {
+    flex-direction: column;
+  }
+
+  .option1-wrapper__left, .option1-wrapper__right {
+    text-align: center;
+    border-right: none;
+  }
+}
