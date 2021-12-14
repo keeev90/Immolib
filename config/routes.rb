@@ -31,8 +31,9 @@ Rails.application.routes.draw do
 
 # get '/properties/:id/test', to: "properties#show_candidate"
 
-
-  resources 'appointments' #, except: [:edit, :update]
+  resources 'appointments' do
+    resources 'candidate_documents', only: [:create, :destroy]
+  end
 
   scope '/checkout' do
     post 'create', to: 'checkout#create', as: 'checkout_create'

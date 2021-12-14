@@ -1,8 +1,48 @@
 <p class="bolder primary">Mon dossier de location</p>
 
-<h3>Option 1 : téléchargez directement les documents demandés</h3>
-<small>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</small> 
-<p>insérer les textes et champs ici >>> cf maquette slide 26</p>
+<div>
+  <h3>Option 1 : téléchargez directement les documents demandés</h3>
+  <small>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</small> 
+  <br/>
+  <div>
+    <br/>
+    <p>Conseils pour booster votre dossier de location</p>
+    <ul>
+      <li>Présentez un dossier complet, clair et lisible</li>
+      <li>Assurez-vous que vos documents soient signés et datés de moins de 3 mois</li>
+      <li>Ne déposez que les pièces à votre nom</li>
+    </ul>
+  </div>
+  <br/>
+  <div>
+    <p>Liste des documents à transmettre</p>
+    <ul>
+      <li>1 pièce d'identité recto-verso 
+        <small>(carte nationale d’identité, passeport, permis de conduire)</small>
+      </li>
+      <li>1 justificatif de domicile 
+        <small>(3 dernières quittances de loyer, dernier avis de taxe d’habitation, dernier avis de taxes foncières, attestation d'hébergement sur l'honneur)</small>
+      </li>
+      <li>1 justificatif de situation professionnelle 
+        <small>(contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait K bis du RCS)</small>
+      </li>
+      <li>1 justificatif de ressources 
+        <small>(3 derniers bulletins de salaires ou deux derniers bilans comptables, justification de revenus fonciers ou de revenus de valeurs et capitaux mobiliers)</small>
+      </li>
+    </ul>
+    <br/>
+    <div>
+      <%= form_with model: @appointment, url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+        <div class="field">
+          <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents de votre dossier ici" %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Envoyer mon dossier", class: "btn white-btn bg-primary" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
 
 <br/>
 <hr/>

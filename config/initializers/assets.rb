@@ -20,4 +20,5 @@ Rails.application.config.assets.precompile += %w(
   property-pic.js
   datepicker.js
   clipboard.js
+  activestorage.js
 )
