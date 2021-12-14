@@ -40,6 +40,27 @@
   margin-top: 1rem;
 }
 
+.candidate-profile-details-section progress {
+  -webkit-appearance: none;
+}
+// Non compatible avec FF et IE /!\
+::-webkit-progress-bar {
+  background-color: #cecece;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+::-webkit-progress-value {
+  background-color: $primary;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
 .candidate-document i {
   margin: 0 0.5em;
 }

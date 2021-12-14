@@ -44,6 +44,8 @@
       <% else %>
       <p> Ce candidat n'a pas encore mis de document en ligne. </p>
       <% end %>
+      <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>"> </progress></p>
+      <p><small>Documents: <%= @appointment.candidate_documents.size %> / 5</small></p>
     </div>
   <% end %>
 
