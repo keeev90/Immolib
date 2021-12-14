@@ -6,3 +6,45 @@
     margin: 1rem 0;
   }
 }
+
+.slot-wrapper {
+  display: flex;
+}
+
+.slot-wrapper-right {
+  flex-grow: 1;
+}
+
+.slot-wrapper__content {
+    &__candidate {
+      padding: 0.7rem 2rem 0.7rem 0.5rem;
+
+      &:hover {
+        background-color: #eee;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+      }
+
+      &--subtitle {
+        font-size: 0.9em;
+        color: #777;
+        font-weight: normal;
+      }
+    }
+}
+.candidate-profile-details-section {
+  margin: 0.7rem 0;
+}
+
+.candidate-profile-details-wrapper {
+  background-color: #eee;
+  padding: 2rem;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
