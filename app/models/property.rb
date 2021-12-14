@@ -7,7 +7,7 @@ class Property < ApplicationRecord
   has_many :slots, dependent: :destroy
   has_many :appointments, through: :slots
   has_many :candidates, class_name: "User", through: :appointments
-  has_one_attached :property_picture
+  has_one_attached :property_picture, dependent: :destroy
   
   #Validations
   validates :title, presence: true, length: { in: 3..140 }
