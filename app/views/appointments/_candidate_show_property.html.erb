@@ -4,5 +4,7 @@
 <small><%= appointment.property.other_link%></small>
 </div>
 <%if appointment.property.property_picture.attached?%>
-  <%= image_tag appointment.property.property_picture, alt: 'property picture', class: "house-picture" %>
+  <div class="appointment-picture">
+    <%= image_tag appointment.property.property_picture, alt: 'property picture', class: "house-picture" %>
+  </div>
 <% end %>

@@ -110,8 +110,8 @@ class SlotsController < ApplicationController
   # user as potential candidate
 
   def book_candidate
-    @slots = Property.find(params[:id]).slots
     @property = Property.find(params[:id])
+    @slots = @property.slots
     @redirect_to_book_now = true
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
