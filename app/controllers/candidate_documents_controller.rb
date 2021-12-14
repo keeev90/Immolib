@@ -11,14 +11,17 @@ class CandidateDocumentsController < ApplicationController
     #end
     @appointment.candidate_documents.attach(params[:candidate_documents])
     flash[:success] = "Votre dossier de location a bien été ajouté 👌"
-    redirect_to(appointment_path(@appointment))
+    redirect_to appointment_path(@appointment)
   end
 
   def destroy
     @appointment = Appointment.find(params[:appointment_id])
-    @appointment.candidate_documents.purge
-    flash[:success] = "Votre dossier de location a bien été supprimé 👌"
-    redirect_to(appointment_path(@appointment))
+    @doc = ActiveStorage::Attachment.find(params[:id])
+    #@appointment.candidate_documents.purge
+    @doc.purge
+
+    flash[:success] = "Votre fichier a bien été supprimé 👌"
+    redirect_to appointment_path(@appointment)
   end
 
   private

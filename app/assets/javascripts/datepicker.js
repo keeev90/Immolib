@@ -1,17 +1,8 @@
 const element = document.getElementById('pickadate');
 const hiddenInput = document.getElementById('start_date');
 
-const roundDate = date => {
-
-  minutes = Math.ceil(date.getMinutes() / 15) * 15;
-
-  date.setMinutes(minutes, 0, 0);
-
-  return date;
-}
-
 const initialState = {
-  selected: roundDate(new Date()),
+  selected: new Date(hiddenInput.value),
   firstDayOfWeek: 1,
   template: 'DD MMMM YYYY - HH:mm',
   templateHookWords: {
