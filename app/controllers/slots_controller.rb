@@ -103,6 +103,7 @@ class SlotsController < ApplicationController
     slot = Slot.find(params[:id])
     property = slot.property
     slot.destroy
+    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
     redirect_to(property_path(property))
   end
 
