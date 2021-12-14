@@ -1,2 +1,8 @@
-console.log("wesh");
+// Fill right part of the page with profile detail partial
 document.querySelector(".slot-wrapper-right").innerHTML = ("<%= escape_javascript(render 'show_candidate_details', appointment: @appointment) %>");
+
+// Apply some style on active candidate name
+document.querySelectorAll(".slot-wrapper__content__candidate").forEach(candidate => {
+  candidate.classList.remove("active");
+})
+document.querySelector(".slot-wrapper__content__candidate.c<%=@appointment.candidate.id%>").classList.add("active");
