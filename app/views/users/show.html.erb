@@ -1,6 +1,8 @@
 <div class="profile-wrapper">
   <%= link_to raw("<i class='fas fa-chevron-left'></i> Retourner à l'accueil "), root_path, class: "return-link" %>
-  <h2> Mes informations personnelles </h2>
+
+    <h2> Mes informations personnelles </h2>
+    
     <div class="profile-wrapper__informations">
       <div class="profile-wrapper__informations__left">
         <p>
@@ -55,13 +57,13 @@
       </div>
 
     <% else %>
-      <p> Vous n'avez pas de logement ajouté sur Immolib. </p>
+      <p> Vous n'avez pas de logement ajouté sur immolib. </p>
     <% end %>
 
-    <h2> Mes visites </h2>
+    <h2> Mes candidatures </h2>
 
     <% if current_user.appointments.count > 0 %>
-      <h3> À venir </h3>
+      <h3> Visites à venir </h3>
       <div class="properties-wrapper">
         <% current_user.appointments.order("created_at DESC").each do |appointment| %>
           <% if appointment.slot.start_date > DateTime.now %>
@@ -70,7 +72,7 @@
         <% end %>
       </div>
 
-      <h3> Terminées </h3>
+      <h3> Visites terminées </h3>
       <div class="properties-wrapper">
         <% current_user.appointments.order("created_at DESC").each do |appointment| %>
           <% if appointment.slot.start_date <= DateTime.now %>
@@ -80,7 +82,7 @@
       </div>
       
     <% else %>
-      <p> Vous n'avez pas de visite programmée sur Immolib. </p>
+      <p> Vous n'avez pas de visite programmée sur immolib. </p>
     <% end %>
 
   <%= javascript_include_tag 'profile-pic.js' %>

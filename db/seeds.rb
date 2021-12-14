@@ -31,10 +31,12 @@ end
 
 2.times do
   property = Property.create!(
+    owner_project: "rent",
     title: Faker::DcComics.title,
     city: Faker::Address.city,
     other_link: "https://www.pap.fr/",
     instructions: Faker::Lorem.sentence(word_count: 50 + rand(1..100)),
+    is_paid: Faker::Boolean.boolean(true_ratio: 0.8),
     owner: User.all.sample
     )
     puts "Property with id #{property.id} created"
@@ -47,7 +49,7 @@ duration = [15, 30, 45, 60]
 10.times do
   slot = Slot.create!(
     property: Property.all.sample,
-    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 30),
+    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 15),
     duration: duration.sample,
     max_appointments: rand(1..10)
     )
@@ -69,7 +71,7 @@ end
   appointment = Appointment.create!(
     candidate: candidate,
     slot: Slot.all.sample,
-    candidate_message: Faker::Lorem.sentence(number: 50 + rand(1..200))
+    candidate_message: Faker::Lorem.paragraph_by_chars(number: 50 + rand(1..200))
     )
     puts "Appointment with id #{appointment.id} created"
 end
