@@ -1,11 +1,11 @@
 <div class="candidate-profile-details-wrapper">
   <div class="candidate-profile-details-section">
     <% if appointment.candidate.profile_picture.attached?%>
-      <div class="profile-wrapper__informations__right">
+      <div class="profile-wrapper__informations__right mb1">
         <%= image_tag appointment.candidate.profile_picture, alt: 'profile picture' %>
       </div>
     <% else %>
-      <div class="profile-wrapper__informations__right nopic">
+      <div class="profile-wrapper__informations__right nopic mb1">
         <p> Aucune photo de profil </p>
       </div>
     <% end %>
