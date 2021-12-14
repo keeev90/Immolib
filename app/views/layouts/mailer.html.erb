@@ -3,11 +3,98 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        font-family: arial, "helvetica neue", helvetica, sans-serif, serif,
+          EmojiFont;
+      }
+      .email {
+        height: 100%;
+        width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        height: 100%;
+        width: 100%;
+      }
+      .header {
+        background: #006bd6 none no-repeat 50% 50% / contain;
+        border-top: 0;
+        border-bottom: 0;
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      h1 {
+        font-family: Helvetica;
+        font-size: 40px;
+        color: #fff;
+      }
+      h2 {
+        font-size: 28px;
+        color: #fff;
+        margin-top: 28px;
+      }
+      .content {
+        padding: 100px;
+        max-width: 600px;
+      }
+      h3 {
+        font-size: 22px;
+        line-height: 150%;
+        margin-bottom: 22px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 150%;
+      }
+      .btn {
+        font-size: 18px;
+        padding: 1em;
+        background-color: #006bd6;
+        display: block;
+        border-collapse: separate;
+        width: fit-content;
+        border-radius: 3px;
+        text-decoration: none;
+        color: #fff;
+        margin-top: 2em;
+      }
+      .footer {
+        font-size: 16px;
+        padding: 2em;
+        background-color: #eee;
+      }
+      .footer a {
+        line-height: 200%;
+        text-decoration: none;
+        color: #006bd6;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="email">
+      <center>
+        <table align="center" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <%= render(
+              partial: 'layouts/mailer_header',
+              locals: {
+                subtitle: @subtitle
+              }
+            ) %>
+            <tr>
+              <td class='content' align='center' valign='top'>
+                <%= yield %>
+              </td>
+            </tr>
+            <%= render 'layouts/mailer_footer' %>
+          </tbody>
+        </table>
+      </center>
+    </div>
   </body>
 </html>
