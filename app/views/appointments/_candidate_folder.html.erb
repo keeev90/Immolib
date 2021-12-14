@@ -39,7 +39,7 @@
 
       <div class="candidate-document-number pt1">
         <% if @appointment.candidate_documents.size < 4 %>
-          <p> Vous avez ajouté <%= @appointment.candidate_documents.size %> documents sur les 4 demandés.</p>
+          <p> Vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 4 demandés.</p>
         <% else %>
           <p> Votre dossier semble complet. N'hésitez pas à vérifier la validité de vos documents. </p>
         <% end %>
