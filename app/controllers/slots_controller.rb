@@ -47,6 +47,13 @@ class SlotsController < ApplicationController
     @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
   end
 
+  def show_candidate_details
+    @appointment = Appointment.find(params[:appointment])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   # user as both potential owner and owner
   
   def create
@@ -103,14 +110,15 @@ class SlotsController < ApplicationController
     slot = Slot.find(params[:id])
     property = slot.property
     slot.destroy
+    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
     redirect_to(property_path(property))
   end
 
   # user as potential candidate
 
   def book_candidate
-    @slots = Property.find(params[:id]).slots
     @property = Property.find(params[:id])
+    @slots = @property.slots
     @redirect_to_book_now = true
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end

@@ -7,7 +7,7 @@
 
       <div class="field">
         <%= f.label "Email" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: params[:email] %>
       </div>
       <div class="field">
         <%= f.label "Mot de passe" %>

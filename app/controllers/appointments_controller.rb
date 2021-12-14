@@ -23,7 +23,6 @@ class AppointmentsController < ApplicationController
       end
     end
 
-
     if new_appointment.save #Si la sauvegarde du RDV fonctionne bien
       if redirect_to_book_now == "true"
         redirect_to book_now_property_path(property)
@@ -47,11 +46,11 @@ class AppointmentsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
-  def edit
+  def edit #candidate_message
     @appointment = Appointment.find(params[:id])
   end
 
-  def update
+  def update #candidate_message
     @appointment = Appointment.find(params[:id])
     @property = @appointment.slot.property.id
 
@@ -88,6 +87,7 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find(params[:id])
     user = appointment.candidate
     appointment.destroy
+    flash[:success] = "Votre candidature a bien été supprimée 👌"
     redirect_to user_path(user)
   end
 

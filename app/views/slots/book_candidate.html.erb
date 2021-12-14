@@ -7,7 +7,7 @@
     </p>
   </div>
   <div class="slot-candidate-wrapper__calendar mt2">
-    <%= render "candidate_calendar", property: @property %>
+    <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
 
     <% if !current_user %>
       <div class="slot-candidate-wrapper__calendar__title text-center"> 
