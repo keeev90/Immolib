@@ -76,14 +76,7 @@ class SlotsController < ApplicationController
     @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
     @property = @slot.property
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
-    now = DateTime.now
-    min = now.minute / 15 * 15 + 15
-    @date = now.change(
-      {
-        hour: min >= 60 ? now.hour + 1 : now.hour,
-        min: min % 60
-      }
-    )
+    @date = @slot.start_date
   end
 
   def update
