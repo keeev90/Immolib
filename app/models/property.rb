@@ -1,6 +1,7 @@
 class Property < ApplicationRecord
   #Callbacks
   before_create :randomize_property_id
+  before_validation :create_stripe_product
 
   #Associations
   belongs_to :owner, class_name: "User"
@@ -61,6 +62,15 @@ class Property < ApplicationRecord
     return true
   end
 #slot.candidates.include?(current_user)
+
+  def stripe_price
+    Stripe::Price.retrieve(self.stripe_price_id)
+  end
+
+  def stripe_product
+    Stripe::Product.retrieve(self.stripe_price.product)
+  end
+
   private
 
   def randomize_property_id
@@ -70,4 +80,50 @@ class Property < ApplicationRecord
     #self.id = 5.times.map { rand(1..9) }.join.to_i
   end
 
+  def create_stripe_product
+    unless self.stripe_price_id
+      stripe_product = Stripe::Product.create({
+        name: "#{title} - #{city}"
+      })
+
+      puts "*" * 60
+      puts Rails.application.routes.url_helpers.rails_blob_path(
+        property_picture,
+        only_path: true
+      )
+      puts '*' * 60
+
+      Stripe::Product.update(
+        stripe_product.id,
+        {description: "Lien de l'annonce : #{other_link}"},
+      ) if instructions != ''
+
+      Stripe::Product.update(
+        stripe_product.id,
+        {url: other_link},
+      ) if other_link != ''
+
+      # A changer avec url aws
+
+      # Stripe::Product.update(
+      #   stripe_product.id,
+      #   {images: [
+      #     'http://localhost:3000' + Rails.application.routes.url_helpers.rails_blob_path(
+      #       property_picture,
+      #       only_path: true
+      #     )
+      #   ]},
+      # ) if property_picture != ''
+
+      stripe_price = Stripe::Price.create({
+        product: stripe_product.id,
+        unit_amount: 4999,
+        currency: 'eur'
+      })
+
+      self.stripe_price_id = stripe_price.id
+
+      self.save
+    end
+  end
 end
