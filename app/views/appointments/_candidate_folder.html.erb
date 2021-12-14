@@ -34,12 +34,12 @@
     <p class="bolder">Votre dossier de location</p>
     <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
     <% if @appointment.candidate_documents.attached? %>
-      <div class="candidate-documents-wrapper pt1">
+      <div class="candidate-documents-wrapper mt1">
         <% @appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
-              <%= doc.filename %> - 
-              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %> - 
+              <%= doc.filename %> 
+              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
               <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
             </p>
           </div>

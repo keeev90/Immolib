@@ -34,3 +34,12 @@
   display: flex;
   justify-content: center;
 }
+
+.candidate-documents-wrapper {
+  border: 1px dashed rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.candidate-document i {
+  margin: 0 0.5em;
+}
