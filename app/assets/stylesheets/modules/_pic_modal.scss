@@ -25,6 +25,7 @@
   .modal {
     padding: 2.5rem 1.5rem 1rem;
     border-radius: 1rem;
+    min-width: 440px;
     display: block;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -44,6 +45,18 @@
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
+
+    form,
+    .field,
+    .drop-files {
+      width: 100%;
+    }
+
+    .drop-files {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .modal-close {
