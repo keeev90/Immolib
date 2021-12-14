@@ -47,6 +47,13 @@ class SlotsController < ApplicationController
     @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
   end
 
+  def show_candidate_details
+    @appointment = Appointment.find(params[:appointment])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   # user as both potential owner and owner
   
   def create
