@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   resources 'properties' do 
     resources 'property_pictures', only: [:create, :destroy]
-    resources 'slots'
+    resources 'slots' do
+      get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'
+    end
     member do
       #user new property slots process
       get 'new-slots', to: "slots#index_first"
