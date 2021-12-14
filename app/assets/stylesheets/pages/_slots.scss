@@ -27,6 +27,14 @@
         -moz-border-radius: 6px 0px 0 6px;
         -ms-border-radius: 6px 0px 0 6px;
         -o-border-radius: 6px 0px 0 6px;
+
+        &:hover {
+          border-radius: 6px 0px 0 6px;
+          -webkit-border-radius: 6px 0px 0 6px;
+          -moz-border-radius: 6px 0px 0 6px;
+          -ms-border-radius: 6px 0px 0 6px;
+          -o-border-radius: 6px 0px 0 6px;
+        }
 }
 
       &:hover {
