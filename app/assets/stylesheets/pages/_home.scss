@@ -156,7 +156,16 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+
+    &.i2 {
+      background-color: #ccc;
+    }
+
+    &.i3 {
+      background-color: #bbb;
+    }
 }
+
   
   @media screen and (max-width: 938px) {
     .benefits-section__body {
