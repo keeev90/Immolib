@@ -1,4 +1,4 @@
-<div class="slot-wrapper__content__candidate c<%= a.candidate.id %>">
+<div class="slot-wrapper__content__candidate c<%= a.candidate.id %> <%= first ? "active" : nil %>">
   <h3> 
     <%= a.candidate.first_name && a.candidate.last_name ? ("#{a.candidate.first_name} #{a.candidate.last_name}")  : "Ce candidat n'a pas encore renseigné son nom." %> 
     <span class="slot-wrapper__content__candidate--subtitle"> - Voir la fiche candidat </span>
