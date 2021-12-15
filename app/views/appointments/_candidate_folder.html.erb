@@ -105,9 +105,9 @@
     </div>
     <p class="pt1">ou</p>
     <div>
-      <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+      <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
-          <%= f.file_field :candidate_documents, direct_upload: true, is: "drop-files", label: "Envoyer votre dossier en format PDF", help: "Vous pouvez glisser-déposer le document ici" %>
+          <%= f.file_field :candidate_dossierfacile_folder, direct_upload: true, is: "drop-files", label: "Envoyer votre dossier en format PDF", help: "Vous pouvez glisser-déposer le fichier ici" %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer mon dossier au format PDF", class: "btn white-btn bg-primary" %>
