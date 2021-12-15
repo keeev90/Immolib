@@ -11,9 +11,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       line_items: [
         {
-          name: "Immolib - Fini la galère. Bonjour l'organisation de vos visites simple et efficace.",
-          amount: (@price*100).to_i,
-          currency: 'eur',
+          price: Property.find(@property).stripe_price_id,
           quantity: 1
         },
       ],
