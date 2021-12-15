@@ -16,8 +16,7 @@ Rails.application.config.assets.precompile += %w(
   typewriter.js
   home-bg.js
   navbar.js
-  profile-pic.js
-  property-pic.js
+  pic-modal.js
   datepicker.js
   clipboard.js
   activestorage.js
