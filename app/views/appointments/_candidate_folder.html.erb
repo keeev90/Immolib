@@ -67,7 +67,7 @@
       <div>
         <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
           <div class="field">
-            <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
+            <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
           </div>
           <div class="text-center">
             <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
