@@ -95,8 +95,8 @@
     <p class="bolder">Mon dossier de location</p>
     <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
     <div>
-      <% if @appointment.candidate_dossierfacile_link %>
-        <p>Mon lien DossierFacile : <%= @appointment.candidate_dossierfacile_link %></p>
+      <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
+        <p class="pt1">Mon lien DossierFacile : <%= @appointment.candidate_dossierfacile_link %></p>
         <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
       <% else %>
         <div class="candidate-document-number pt1">

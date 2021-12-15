@@ -44,8 +44,8 @@
           </div>
         <% end %>
         <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>" class="<%=appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
-        <% if @appointment.candidate_documents.size < 5 %>
-          <p><small>Documents transmis : <%= @appointment.candidate_documents.size %> / 5</small></p>
+        <% if appointment.candidate_documents.size < 5 %>
+          <p><small>Documents transmis : <%= appointment.candidate_documents.size %> / 5</small></p>
         <% else %>
           <p>Le dossier est complet.</p>
         <% end %>
