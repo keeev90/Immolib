@@ -1,17 +1,20 @@
 .property-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 1rem 4rem;
 
   &__left {
-    border-right: 1px solid $primary-light;
-    width: 40rem;
-
+    width: 100%;
     &__infos {
-      padding: 1em 2em;
+      padding: 1em 0;
     }
   }
 
   &__right {
     flex-grow: 1;
+    position: relative;
+    margin-top: 7rem;
 
     &__date {
       text-align: center;
@@ -57,8 +60,10 @@
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
-  width: 100%;
   position: relative;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
 
   img {
     border-radius: 1rem;
@@ -82,7 +87,8 @@
   &--change {
     position: absolute;
     font-size: 1.6em;
-    color: black!important;
+    color: #fff;
+    opacity: 0;
     pointer-events: none;
     top: 50%;
     left: 50%;
@@ -119,4 +125,23 @@
   color: black;
   text-align: center;
   display: block;
+}
+
+@media screen and (min-width: 1440px) {
+  .property-wrapper {
+    &__left,
+    &__right {
+      width: 50%;
+    }
+
+    &__right {
+      padding-left: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 636px) {
+  .property-wrapper {
+    padding: 1rem 2rem;
+  }
 }
