@@ -145,6 +145,18 @@
     font-size: 1.8em;
     margin-top: 1em;
   }
+
+  .last-section-icon {
+    padding: 2.5rem 4rem;
+    background-color: #ddd;
+    color: #fff;
+    font-size: 4rem;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
   
   @media screen and (max-width: 938px) {
     .benefits-section__body {
