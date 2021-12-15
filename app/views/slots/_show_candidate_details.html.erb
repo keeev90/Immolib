@@ -47,8 +47,8 @@
       <p> Ce candidat n'a pas encore mis de document en ligne. </p>
       <% end %>
       <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>" class="<%=appointment.candidate_documents.size >4 ? 'full' : nil %>"> </progress></p>
-      <% if @appointment.candidate_documents.size<5 %>
-        <p><small>Documents: <%= @appointment.candidate_documents.size %> / 5</small></p>
+      <% if appointment.candidate_documents.size<5 %>
+        <p><small>Documents: <%= appointment.candidate_documents.size %> / 5</small></p>
       <% else %>
         <p>Le dossier est complet.</p>
       <% end %>
