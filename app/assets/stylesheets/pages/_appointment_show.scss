@@ -41,6 +41,7 @@
 }
 
 .candidate-profile-details-section progress {
+  margin-top: 1rem;
   -webkit-appearance: none;
 }
 // Non compatible avec FF et IE /!\
@@ -54,12 +55,16 @@
   width: 350px;
 }
 ::-webkit-progress-value {
-  background-color: $primary;
+  background-color: orange;
   border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
+}
+
+.full::-webkit-progress-value {
+  background-color: green;
 }
 
 .candidate-document i {
