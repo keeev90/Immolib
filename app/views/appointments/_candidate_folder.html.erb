@@ -80,7 +80,7 @@
 </div>
 
 <div class="option2-wrapper pt1">
-  <h2>Option 2 : transmettez votre dossier via <a href="https://docs.dossierfacile.fr/">DossierFacile</a></h2>
+  <h2>Option 2 : transmettez votre dossier via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %></h2>
   <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small> 
 
   <div class="option2-wrapper__part1">
@@ -96,7 +96,7 @@
     <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
     <div>
       <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
-        <p class="pt1">Mon lien DossierFacile : <%= @appointment.candidate_dossierfacile_link %></p>
+        <p class="pt1">Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
         <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
       <% else %>
         <div class="candidate-document-number pt1">

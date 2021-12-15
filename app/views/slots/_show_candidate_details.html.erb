@@ -30,7 +30,27 @@
   </div>
   <% if appointment.slot.property.owner_project == "rent" %>
     <div class="candidate-profile-details-section">
-      <% if appointment.candidate_documents.attached? %>
+
+      <% if appointment.candidate_dossierfacile_folder.attached? %>
+        <p class="bolder">Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>) :</p>
+        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
+        <div class="candidate-document">
+          <p>
+            <%= appointment.candidate_dossierfacile_folder.filename %> 
+            <%# if doc.previewable? %>
+              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
+            <%# end %> 
+            <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
+          </p>
+          <% if appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
+            <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+          <% end %>
+        </div>
+      <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
+        <p class="bolder">Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>) :</p>
+        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
+        <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+      <% elsif appointment.candidate_documents.attached? %>
         <p class="bolder"> Dossier du candidat : </p>
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
@@ -49,22 +69,6 @@
         <% else %>
           <p>Le dossier est complet.</p>
         <% end %>
-      <% elsif appointment.candidate_dossierfacile_folder.attached? %>
-        <p class="bolder">Dossier du candidat (réalisé via <a href="https://docs.dossierfacile.fr/">DossierFacile</a>) :</p>
-        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
-        <div class="candidate-document">
-          <p>
-            <%= appointment.candidate_dossierfacile_folder.filename %> 
-            <%# if doc.previewable? %>
-              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
-            <%# end %> 
-            <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
-          </p>
-        </div>
-      <% elsif appointment.candidate_dossierfacile_link %>
-        <p class="bolder">Dossier du candidat (réalisé via <a href="https://docs.dossierfacile.fr/">DossierFacile</a>) :</p>
-        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
-        <p>Lien de son document DossierFacile : <%= appointment.candidate_dossierfacile_link %></p>
       <% else %>
         <p class="bolder">Dossier du candidat :</p>
         <p>Ce candidat n'a pas encore transmis de document.</p>
