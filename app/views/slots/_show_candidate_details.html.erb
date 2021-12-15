@@ -31,31 +31,33 @@
   <% if appointment.slot.property.owner_project == "rent" %>
     <div class="candidate-profile-details-section">
       <% if appointment.candidate_documents.attached? %>
-        <p class="bolder"> Les documents fournis par le candidat : </p>
+        <p class="bolder"> Dossier du candidat : </p>
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
               <%= doc.filename %> 
-              - 
               <%# if doc.previewable? %>
-                <%= link_to "Prévisualiser", rails_blob_path(doc, disposition: 'preview') %>
+                <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
               <%# end %> 
-              - 
-              <%= link_to "Télécharger", rails_blob_path(doc, disposition: 'attachment') %>
+              <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(doc, disposition: 'attachment') %>
             </p>
           </div>
         <% end %>
       <% else %>
       <p> Ce candidat n'a pas encore mis de document en ligne. </p>
       <% end %>
-      <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>"> </progress></p>
-      <p><small>Documents: <%= @appointment.candidate_documents.size %> / 5</small></p>
+      <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>" class="<%=appointment.candidate_documents.size >4 ? 'full' : nil %>"> </progress></p>
+      <% if @appointment.candidate_documents.size<5 %>
+        <p><small>Documents: <%= @appointment.candidate_documents.size %> / 5</small></p>
+      <% else %>
+        <p>Le dossier est complet.</p>
+      <% end %>
     </div>
   <% end %>
 
   <%# Insérer ici les informations relatives aux documents %>
   <div class="candidate-profile-details-section">
-    <p> Dossier incomplet ? </p>
+    <p> Ce dossier ne vous convient pas ? </p>
     <%= link_to "Refuser le rendez-vous", appointment_path(appointment), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
     <%# Modifier le redirect_to suite à la suppression de l'Appointment %>
   </div>
