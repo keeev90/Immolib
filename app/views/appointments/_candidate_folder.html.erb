@@ -3,16 +3,22 @@
 <div>
   <h2>Option 1 : téléchargez directement les documents demandés</h2>
   <small><em>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</em></small> 
-  <br/>
+
   <div class="option1-wrapper">
-    <div class="option1-wrapper__left">
+    <div class="option1-wrapper__part1">
       <p class="bolder">Conseils pour booster votre dossier de location : </p>
-        <p>✔️ Présentez un dossier complet, clair et lisible.</p>
-        <p>✔️ Assurez-vous que vos documents soient signés et datés de moins de 3 mois.</p>
-        <p>✔️ Ne déposez que les pièces à votre nom.</p>
+      <p>✔️ Présentez un dossier complet, clair et lisible.</p>
+      <p>✔️ Assurez-vous que vos documents soient signés et datés de moins de 3 mois.</p>
+      <p>✔️ Ne déposez que les pièces à votre nom.</p>
     </div>
-    <br/>
-    <div class="option1-wrapper__right">
+  </div>
+
+  <p class="bolder mt2">Mon dossier de location</p>
+  <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
+
+  <div class="option1-wrapper__part2 pt1">
+
+    <div class="option1-wrapper__part2__left">
       <p class="bolder">Liste des documents à transmettre :</p>
 
       <p>☑️ 1 pièce d'identité recto-verso</p>
@@ -22,54 +28,54 @@
       <small>3 dernières quittances de loyer, dernier avis de taxe d’habitation, dernier avis de taxes foncières, attestation d'hébergement sur l'honneur</small>
 
       <p class="pt1">☑️ 1 justificatif de situation professionnelle</p>
-      <small>contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait K bis du RCS</small>
+      <small>contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait Kbis du RCS</small>
 
       <p class="pt1">☑️ 1 justificatif de ressources</p>
       <small>3 derniers bulletins de salaires ou deux derniers bilans comptables, justification de revenus fonciers ou de revenus de valeurs et capitaux mobiliers</small>
 
       <p class="pt1">☑️ Votre dernier avis d’imposition</p>
     </div>
-  </div>
-  <br/>
-  <div>
-    <p class="bolder">Mon dossier de location</p>
-    <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
-    <% if @appointment.candidate_documents.attached? %>
-      <div class="candidate-documents-wrapper mt1">
-        <% @appointment.candidate_documents.each do |doc| %>
-          <div class="candidate-document">
-            <p>
-              <%= doc.filename %> 
-              -
-              <%# if doc.previewable? %>
-                <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
-              <%# end %>
-              -
-              <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
-            </p>
-          </div>
-        <% end %>
-      </div>
 
-      <div class="candidate-document-number pt1">
-        <% if @appointment.candidate_documents.size < 5 %>
-          <small> Vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents obligatoires demandés.</small>
-        <% else %>
-          <small> Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
+    <div class="option1-wrapper__part2__right">
+      <p class="bolder">Vos documents mis en ligne :</p>
+      <div>
+        <% if @appointment.candidate_documents.attached? %>
+          <div class="candidate-documents-wrapper mt1">
+            <% @appointment.candidate_documents.each do |doc| %>
+              <div class="candidate-document">
+                <p>
+                  <%= doc.filename %> 
+                  <%# if doc.previewable? %>
+                    <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+                  <%# end %>
+                  <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="candidate-document-number pt1">
+            <% if @appointment.candidate_documents.size < 5 %>
+              <small> Vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents obligatoires demandés.</small>
+            <% else %>
+              <small> Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
+            <% end %>
+          </div>
+          
         <% end %>
       </div>
-      
-    <% end %>
-  </div>
-  <div>
-    <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
-      <div class="field">
-        <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents de votre dossier ici" %>
+      <div>
+        <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+          <div class="field">
+            <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents de votre dossier ici" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
+          </div>
+        <%end%>
       </div>
-      <div class="text-center">
-        <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
-      </div>
-    <%end%>
+    </div>
+
   </div>
 </div>
 
