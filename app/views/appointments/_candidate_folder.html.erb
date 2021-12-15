@@ -105,6 +105,31 @@
       <%end%>
     </div>
     <p class="pt1">ou</p>
+    <p class="text-center">Votre DossierFacile en format pdf :</p>
+    <div>
+      <% if @appointment.candidate_dossierfacile_folder.attached? %>
+        <div class="candidate-documents-wrapper mt1">
+            <div class="candidate-document">
+              <p>
+                <%= @appointment.candidate_dossierfacile_folder.filename %> 
+                <%# if doc.previewable? %>
+                  <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
+                <%# end %>
+                <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment, @appointment.candidate_dossierfacile_folder), method: "delete" %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="candidate-document-number pt1">
+          <% if @appointment.candidate_dossierfacile_folder.size < 1 %>
+            <small>Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
+          <% else %>
+            <small>Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <div>
       <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
