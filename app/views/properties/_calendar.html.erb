@@ -1,0 +1,8 @@
+<%= week_calendar(events: @property.slots, attribute: :start_date) do |date, slots| %>
+  <div class="property-wrapper__right__date">
+    <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
+  </div>
+  <% slots.each do |slot| %>
+    <%= link_to render(partial: "slot-card", locals: { slot: slot }), property_slot_path(@property, slot) %>
+  <% end %>
+<% end %>

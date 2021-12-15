@@ -114,6 +114,11 @@ class SlotsController < ApplicationController
     @slots = @property.slots
     @redirect_to_book_now = true
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
