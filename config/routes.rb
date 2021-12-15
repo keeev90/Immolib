@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   get "welcome_user", to: "static_pages#welcome_user"
+  get "faq", to: "static_pages#faq"
 
   resources 'users' do
     resources 'profile_pictures', only: [:create, :destroy]
