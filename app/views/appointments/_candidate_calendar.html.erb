@@ -1,0 +1,20 @@
+<p class="bolder primary">Mon créneau de visite</p>
+<% if !property.candidates.include?(current_user) && !property.has_available_slot? %>
+  <p class="text-center">Aucun rendez-vous n'est disponible actuellement, merci de réessayer ultérieurement.</p>
+<% end %>
+<%= week_calendar(events: slots, attribute: :start_date) do |date, slots| %>
+  <div class="property-wrapper__right__date">
+    <%= date.strftime("%d") %> <%= date_arr[date.strftime("%m").to_i]%>
+  </div>
+
+  <% slots.each do |slot| %>
+    <% if slot.candidates.include?(current_user) || !slot.available?%>
+      <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
+    <% elsif @redirect_to_book_now == true %>
+      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, redirect_to_book_now: true), method: "post" %>
+    <% else %>
+        <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, redirect_to_book_now: false), method: "post" %>
+    <% end %>  
+
+  <% end %>
+<% end %>

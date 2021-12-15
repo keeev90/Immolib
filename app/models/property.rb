@@ -1,19 +1,21 @@
 class Property < ApplicationRecord
   #Callbacks
   before_create :randomize_property_id
+  before_validation :create_stripe_product
 
   #Associations
   belongs_to :owner, class_name: "User"
   has_many :slots, dependent: :destroy
   has_many :appointments, through: :slots
   has_many :candidates, class_name: "User", through: :appointments
-  has_one_attached :property_picture
+  has_one_attached :property_picture, dependent: :destroy
   
   #Validations
   validates :title, presence: true, length: { in: 3..140 }
   validates :city, presence: true
   #validates :zip_code, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "Veuillez entrer un code postal valide" } 
   validates :other_link, format: URI::regexp(%w[http https]), allow_blank: true
+  validates :owner_project, presence: true, allow_blank: false
 
 
   def go_visit_url
@@ -51,6 +53,24 @@ class Property < ApplicationRecord
     return ans
   end
 
+  def can_book?(candidate)
+    self.slots.each do |slot|
+      unless slot.is_past? 
+        slot.candidates.include?(candidate) ? (return false) : nil
+      end
+    end
+    return true
+  end
+#slot.candidates.include?(current_user)
+
+  def stripe_price
+    Stripe::Price.retrieve(self.stripe_price_id)
+  end
+
+  def stripe_product
+    Stripe::Product.retrieve(self.stripe_price.product)
+  end
+
   private
 
   def randomize_property_id
@@ -60,4 +80,50 @@ class Property < ApplicationRecord
     #self.id = 5.times.map { rand(1..9) }.join.to_i
   end
 
+  def create_stripe_product
+    unless self.stripe_price_id
+      stripe_product = Stripe::Product.create({
+        name: "#{title} - #{city}"
+      })
+
+      puts "*" * 60
+      puts Rails.application.routes.url_helpers.rails_blob_path(
+        property_picture,
+        only_path: true
+      )
+      puts '*' * 60
+
+      Stripe::Product.update(
+        stripe_product.id,
+        {description: "Lien de l'annonce : #{other_link}"},
+      ) if instructions != ''
+
+      Stripe::Product.update(
+        stripe_product.id,
+        {url: other_link},
+      ) if other_link != ''
+
+      # A changer avec url aws
+
+      # Stripe::Product.update(
+      #   stripe_product.id,
+      #   {images: [
+      #     'http://localhost:3000' + Rails.application.routes.url_helpers.rails_blob_path(
+      #       property_picture,
+      #       only_path: true
+      #     )
+      #   ]},
+      # ) if property_picture != ''
+
+      stripe_price = Stripe::Price.create({
+        product: stripe_product.id,
+        unit_amount: 4999,
+        currency: 'eur'
+      })
+
+      self.stripe_price_id = stripe_price.id
+
+      self.save
+    end
+  end
 end

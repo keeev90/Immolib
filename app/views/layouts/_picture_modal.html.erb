@@ -1,0 +1,16 @@
+<div class="picture-modal-wrapper hidden">
+  <div class='blocker'></div>
+  <div class='modal'>
+    <i class="fas fa-times modal-close primary"></i>
+    <%= form_with url: url, local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <div class="field">
+        <%= f.file_field type, is: "drop-files", label: "Déposer un fichier au format jpeg ou png", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<%= javascript_include_tag "pic-modal.js" %>

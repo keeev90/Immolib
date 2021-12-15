@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'static_pages#home'
@@ -12,7 +15,9 @@ Rails.application.routes.draw do
 
   resources 'properties' do 
     resources 'property_pictures', only: [:create, :destroy]
-    resources 'slots'
+    resources 'slots' do
+      get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'
+    end
     member do
       #user new property slots process
       get 'new-slots', to: "slots#index_first"

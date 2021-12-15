@@ -5,7 +5,7 @@ nav {
   justify-content: space-between;
   padding: 1.1em 2em;
   position: relative;
-  z-index: 200;
+  z-index: 800;
   width: 100%;
 
   p {
@@ -86,6 +86,7 @@ nav {
       -ms-transition: transform 0.3s;
       -o-transition: transform 0.3s;
       transform-origin: top;
+      z-index: 999;
     }
   }
 }

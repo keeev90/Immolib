@@ -12,6 +12,7 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.owner = current_user
     #@property.property_picture.attach(params[:property_picture])
+    #raise 'coucou'
     if @property.save
       flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
       redirect_to(new_slots_property_path(@property))
@@ -53,6 +54,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
+    flash[:success] = "Votre logement a bien été supprimé 👌"
     redirect_to user_path(current_user)
   end
 
@@ -62,15 +64,10 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  def message_candidate
-    @property = Property.find(params[:id])
-    @appointment = current_user.appointments.last
-  end
-
   private
 
   def property_params
-    params.require(:property).permit(:title, :city, :property_picture, :other_link, :instructions)
+    params.require(:property).permit(:owner_project, :title, :city, :property_picture, :other_link, :instructions)
   end
 
   def is_owner?
@@ -80,5 +77,4 @@ class PropertiesController < ApplicationController
       redirect_to root_path
     end
   end
-
 end

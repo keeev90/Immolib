@@ -16,13 +16,12 @@ class AppointmentsController < ApplicationController
     already_an_appointment = false
     new_appointment = Appointment.new(candidate: current_user, slot: slot)
     user_appointments.each do |appointment| #on parcourt les rdv du user
-      if appointment.property == property #si on en trouve un pour la meme property
+      if appointment.property == property && !appointment.slot.is_past? #si on en trouve un pour la meme property
         new_appointment =  appointment #on stock le rdv
         new_appointment.slot = slot #on update le slot
         already_an_appointment = true #on dit que le candidat avait déja un rdv sur ce logement
       end
     end
-
 
     if new_appointment.save #Si la sauvegarde du RDV fonctionne bien
       if redirect_to_book_now == "true"
@@ -47,11 +46,11 @@ class AppointmentsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
-  def edit
+  def edit #candidate_message
     @appointment = Appointment.find(params[:id])
   end
 
-  def update
+  def update #candidate_message
     @appointment = Appointment.find(params[:id])
     @property = @appointment.slot.property.id
 
@@ -88,6 +87,7 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find(params[:id])
     user = appointment.candidate
     appointment.destroy
+    flash[:success] = "Votre candidature a bien été supprimée 👌"
     redirect_to user_path(user)
   end
 

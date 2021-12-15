@@ -1,75 +1,91 @@
 <div class="profile-wrapper">
   <%= link_to raw("<i class='fas fa-chevron-left'></i> Retourner à l'accueil "), root_path, class: "return-link" %>
+
   <h2> Mes informations personnelles </h2>
-    <div class="profile-wrapper__informations">
-      <div class="profile-wrapper__informations__left">
-        <p>
-          <span class='text-muted'>Prénom&nbsp;:</span>
-          <%= @user.first_name %>
-        </p>
-        <p>
-          <span class='text-muted'>Nom&nbsp;:</span>
-          <%= @user.last_name %>
-        </p>
-        <p>
-          <span class='text-muted'>Adresse mail&nbsp;:</span>
-          <%= @user.email %>
-        </p>
-      </div>
-      <%if @user.profile_picture.attached?%>
-        <div>
-          <div class="profile-wrapper__informations__right">
-            <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
-            <p class="profile-wrapper__informations__right--change"> Modifier </p>
-          </div>
-          <%= link_to "Supprimer la photo de profil", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
-        </div>
-      <%else%>
-        <div class="profile-wrapper__informations__right nopic">
-          <p> Ajouter une photo de profil </p>
-        </div>
-      <%end%>
-      <div class="picture-profile-modal hidden">
-          <%= render "profile-picture-form" %>
-      </div>
+  
+  <div class="profile-wrapper__informations">
+    <div class="profile-wrapper__informations__left">
+      <p>
+        <span class='text-muted'>Prénom&nbsp;:</span>
+        <%= @user.first_name %>
+      </p>
+      <p>
+        <span class='text-muted'>Nom&nbsp;:</span>
+        <%= @user.last_name %>
+      </p>
+      <p>
+        <span class='text-muted'>Adresse mail&nbsp;:</span>
+        <%= @user.email %>
+      </p>
     </div>
-    <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
-
-    <h2> Mes logements </h2>
-
-    <% if current_user.properties.count > 0 %>
-      <div class="properties-wrapper">
-        <% current_user.properties.each do |p| %>
-          <% if p.is_paid %>
-            <div class="property">
-              <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
-              <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
-            </div>
-          <% else %>
-            <div class="property">
-              <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_create_path(price: 49.99, property: p), remote: true, method: :post %>
-              <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
-            </div>
-          <% end %>
-        <% end %>
+    <%if @user.profile_picture.attached?%>
+      <div>
+        <div class="pic profile-wrapper__informations__right">
+          <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
+          <p class="profile-wrapper__informations__right--change"> Modifier </p>
+        </div>
+        <%= link_to "Supprimer la photo de profil", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
       </div>
-
-    <% else %>
-      <p> Vous n'avez pas de logement ajouté sur Immolib. </p>
-    <% end %>
-
-    <h2> Mes visites </h2>
-
-    <% if current_user.appointments.count > 0 %>
-      <div class="properties-wrapper">
-        <% current_user.appointments.each do |appointment| %>
-          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment}), appointment_path(appointment) %>
-        <% end %>
+    <%else%>
+      <div class="pic profile-wrapper__informations__right nopic">
+        <p> Ajouter une photo de profil </p>
       </div>
-      
-    <% else %>
-      <p> Vous n'avez pas de visite programmée sur Immolib. </p>
-    <% end %>
+    <%end%>
+    <%= render(
+      partial: 'layouts/picture_modal',
+      locals: {
+        url: user_profile_pictures_path(@user),
+        type: :profile_picture
+      }
+    ) %>
+  </div>
+  <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
 
-  <%= javascript_include_tag 'profile-pic.js' %>
+  <h2> Mes logements </h2>
+
+  <% if current_user.properties.count > 0 %>
+    <div class="properties-wrapper">
+      <% current_user.properties.each do |p| %>
+        <% if p.is_paid %>
+          <div class="property">
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
+            <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
+          </div>
+        <% else %>
+          <div class="property">
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_create_path(price: 49.99, property: p), remote: true, method: :post %>
+            <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+  <% else %>
+    <p> Vous n'avez pas de logement ajouté sur immolib. </p>
+  <% end %>
+
+  <h2> Mes candidatures </h2>
+
+  <% if current_user.appointments.count > 0 %>
+    <h3> Visites à venir </h3>
+    <div class="properties-wrapper">
+      <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+        <% if appointment.slot.start_date > DateTime.now %>
+          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h3> Visites terminées </h3>
+    <div class="properties-wrapper">
+      <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+        <% if appointment.slot.start_date <= DateTime.now %>
+          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
+        <% end %>
+      <% end %>
+    </div>
+    
+  <% else %>
+    <p> Vous n'avez pas de visite programmée sur immolib. </p>
+  <% end %>
 </div>

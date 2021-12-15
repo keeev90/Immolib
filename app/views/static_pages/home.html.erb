@@ -2,11 +2,12 @@
   <div class="home-intro">
     <div class='home-intro__text'>
       <div class="home-intro__title">
-        <h2>Les visites immobilières&nbsp;?</h2>
-        <h2>Un jeu d'enfant&nbsp;!</h2>
+        <h2>Organiser vos visites immobilières</h2>
+        <h2>devient un jeu d'enfant.</h2>
       </div>
       <div class="home-buttons">
-        <p>Notre outil de prise de rendez-vous en ligne vous permet de rapidement organiser vos visites et collecter les dossiers des candidats.</p>
+        <p>Notre outil de prise de rendez-vous en ligne vous permet
+        d'organiser vos visites et collecter les dossiers des candidats en toute simplicité.</p>
         
         <% if user_signed_in? %>
           <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
@@ -17,7 +18,7 @@
         <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>
-    <%= video_tag 'house3.mp4' %>
+    <%= video_tag 'house.mp4', type: 'video/mp4', preload: 'auto' %>
   </div>
 
   <section class="benefits-section" id='benefits-1'>
@@ -32,15 +33,15 @@
         <%= image_tag 'approval.svg' %>
         <p class="item__title">Gardez le contrôle de votre agenda</p>
         <p class="item__content">
-          Vous déterminez les créneaux de visites et le nombre de candidats maximum par visite.
+          Vous déterminez les créneaux de visites et le nombre de candidats maximum par visite
         </p>
       </div>
 
       <div class="item">
         <%= image_tag 'alarm_clock.svg' %>
-        <p class="item__title">Accédez en un clin d'œil</p>
+        <p class="item__title">Accédez en un clin d'œil à la liste des candidats</p>
         <p class="item__content">
-          à la liste des candidats pour chaque rendez-vous
+          et découvrez le profil de chacun d'eux, leur projet d'achat ou de location et leurs motivations
         </p>
       </div>
 
@@ -48,17 +49,10 @@
         <%= image_tag 'assistant.svg' %>
         <p class="item__title">Évitez les rendez-vous manqués</p>
         <p class="item__content">
-          grâce à des relances automatiques envoyées à vos candidats
+          grâce à des relances automatiques envoyées à vos candidats à l'approche du jour J
         </p>
       </div>
 
-      <div class="item">
-        <%= image_tag 'share.svg' %>
-        <p class="item__title">Intégrez votre URL immolib directement dans vos annonces</p>
-        <p class="item__content">
-          Les candidats n'ont plus qu'à suivre un parcours simple et rapide !
-        </p>
-      </div>
     </div>
   </section>
 
@@ -98,22 +92,50 @@
   </section>
 
   <section class="benefits-section last-section">
-    <h2 class="benefits-section__title mt4 primary">
-      Une agence immobilière ? Et pourquoi faire ?!
+    <h2 class="benefits-section__title primary">
+      Une agence immobilière&nbsp;?<br/>Et pour quoi faire&nbsp;?!
     </h2>
     <h3 class="bolder text-center subtitle">
-      Economisez les frais d'agence tout en simplifiant vos démarches de vente ou location immobilière.
+      Gagnez un temps précieux et concentrez-vous sur l'essentiel<br/>
+      pour seulement 49,99€ par bien à vendre ou à louer.
     </h3>
-    <div class="text-center mt4 mb4 short">
-      <p class="last-text">Pour seulement 49,99€ par bien à vendre ou à louer, gagnez un temps précieux et concentrez-vous sur l'essentiel.</p>
+    <div class="benefits-section__body" id='last-section'>
+      <div class="item">
+        <%= image_tag 'share.svg' %>
+        <p class="item__title">1. Je renseigne les infos clés de mon logement à vendre ou à louer</p>
+        <p class="item__content">
+          Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'share.svg' %>
+        <p class="item__title">2. Je sélectionne les créneaux de visites à proposer à mes candidats</p>
+        <p class="item__content">
+          La disponibilité des créneaux est mise à jour automatiquement après chaque candidature.
+        </p>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'share.svg' %>
+        <p class="item__title">3. J'intègre mon URL immolib directement dans mes annonces en ligne</p>
+        <p class="item__content">
+          Les candidats n'ont plus qu'à suivre un parcours simple et rapide ! Vous gardez la main sur les créneaux et les dossiers.
+        </p>
+      </div>
     </div>
-    <div class="text-center mt4 mb4">
+
+    <div class="text-center mb4">
       <% if user_signed_in? %>
-        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary" %>
+        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
-          <%= link_to 'Organisez vos visites dès maintenant', new_user_session_path, class: "btn big-btn bg-primary" %>
+        <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
+          <%= f.email_field :email, placeholder: "Adresse Mail" %>
+          <%= f.submit 'Créer un compte et organiser mes visites !', class: "btn big-btn bg-primary white-btn" %>
+        <% end %>
       <% end %>
     </div>
+
   </section>
 
 </div>
