@@ -1,6 +1,6 @@
 <p class="bolder primary">Mon dossier de location</p>
 
-<div>
+<div class="candidate-folder-wrapper">
   <h2>Option 1 : téléchargez directement les documents demandés</h2>
   <small><em>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</em></small> 
 
@@ -19,7 +19,7 @@
   <div class="option1-wrapper__part2 pt1">
 
     <div class="option1-wrapper__part2__left">
-      <p class="bolder">Liste des documents à transmettre :</p>
+      <p class="text-center mb1">Liste des documents à transmettre :</p>
 
       <p>☑️ 1 pièce d'identité recto-verso</p>
       <small>carte nationale d’identité, passeport, permis de conduire</small>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="option1-wrapper__part2__right">
-      <p class="bolder">Vos documents mis en ligne :</p>
+      <p class="text-center">Vos documents mis en ligne :</p>
       <div>
         <% if @appointment.candidate_documents.attached? %>
           <div class="candidate-documents-wrapper mt1">
@@ -79,21 +79,16 @@
   </div>
 </div>
 
-<br/>
-<hr/>
-<br/>
-
-<div>
+<div class="option2-wrapper pt1">
   <h2>Option 2 : transmettez votre dossier via <a href="https://docs.dossierfacile.fr/">DossierFacile</a></h2>
   <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small> 
-  <br/>
-  <div>
-    <br/>
-    <p class="bolder">Pourquoi DossierFacile ?</p>
-      <p>👍 Transmettre aux propriétaires en moins de 24h un dossier vérifié et complet qui se veut rassurant</p>
-      <p>👍 Protéger vos données personnelles avec un filigrane sur chaque document</p>
-      <p>👍 Gérer les cas particuliers : colocation, couple, garant(s)</p>
-      <p>👍 Réunir vos documents dans un dossier accessible sous forme de lien URL ou au format PDF. Il est prêt à étre envoyé rapidement !</p>
+
+  <div class="option2-wrapper__part1">
+    <p class="bolder pt1">Pourquoi DossierFacile ?</p>
+    <p>👍 Transmettre aux propriétaires en moins de 24h un dossier vérifié et complet qui se veut rassurant</p>
+    <p>👍 Protéger vos données personnelles avec un filigrane sur chaque document</p>
+    <p>👍 Gérer les cas particuliers : colocation, couple, garant(s)</p>
+    <p>👍 Réunir vos documents dans un dossier accessible sous forme de lien URL ou au format PDF. Il est prêt à étre envoyé rapidement !</p>
   </div>
   <br/>
   <div>

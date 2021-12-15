@@ -66,6 +66,12 @@
   margin: 0 0.5em;
 }
 
+.candidate-folder-wrapper {
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $primary;
+}
+
 .option1-wrapper {
   padding-top: 1.5rem;
   display: flex;
@@ -82,7 +88,7 @@
 
     &__left {
       text-align: left;
-      border-right: 1px solid rgba(0,0,0,0.2);
+      border-right: 1px solid rgba(0,0,0,0.1);
       margin-right: 0.5rem;
       padding-right: 0.5rem;
       max-width: 500px;
@@ -90,6 +96,25 @@
       .bolder {
         text-align: center;
       }
+    }
+  }
+}
+
+.option2-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__part1 {
+    text-align: left;
+    max-width: 80%;
+
+    p:not(:first-of-type) {
+      margin-bottom: 1rem;
+    }
+
+    .bolder {
+      text-align: center;
     }
   }
 }
