@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       #user new property appointment process
       get 'go-visit', to: "properties#welcome_candidate"
       get 'book-now', to: "slots#book_candidate"
+      get 'book', to: "slots#before_book_candidate"
       get 'send-message', to: "appointments#message_candidate"
     end
   end 

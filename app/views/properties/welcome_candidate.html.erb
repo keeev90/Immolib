@@ -19,7 +19,7 @@
       <%if @property.owner.first_name?%>
         <p><%= @property.owner.first_name %></p>
       <% end %>
-      <%= link_to "C'est parti !", book_now_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+      <%= link_to "C'est parti !", book_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
     </div>
   </div>
 </div>
