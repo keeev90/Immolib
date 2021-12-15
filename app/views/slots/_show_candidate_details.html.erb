@@ -21,12 +21,12 @@
   </div>
 
   <div class="candidate-profile-details-section">
-    <%if appointment.candidate_message %>
+    <% if appointment.candidate_message %>
       <p class="bolder"> Message du candidat : </p>
       <p><em><%= appointment.candidate_message %></em></p>
-    <%else%>
+    <% else %>
       <p> Ce candidat n'a pas encore envoyé de message. </p>
-    <%end%>
+    <% end %>
   </div>
   <% if appointment.slot.property.owner_project == "rent" %>
     <div class="candidate-profile-details-section">
@@ -35,8 +35,12 @@
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
-              <%= doc.filename %> - 
-              <%= link_to "Prévisualiser", rails_blob_path(doc, disposition: 'preview') %> - 
+              <%= doc.filename %> 
+              - 
+              <%# if doc.previewable? %>
+                <%= link_to "Prévisualiser", rails_blob_path(doc, disposition: 'preview') %>
+              <%# end %> 
+              - 
               <%= link_to "Télécharger", rails_blob_path(doc, disposition: 'attachment') %>
             </p>
           </div>

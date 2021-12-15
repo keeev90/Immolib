@@ -13,26 +13,26 @@
     </div>
     <br/>
     <div class="option1-wrapper__right">
-      <p class="bolder">Liste des documents à transmettre</p>
+      <p class="bolder">Liste des documents à transmettre :</p>
 
       <p>☑️ 1 pièce d'identité recto-verso</p>
-      <small>(carte nationale d’identité, passeport, permis de conduire)</small>
+      <small>carte nationale d’identité, passeport, permis de conduire</small>
 
       <p class="pt1">☑️ 1 justificatif de domicile</p>
-      <small>(3 dernières quittances de loyer, dernier avis de taxe d’habitation, dernier avis de taxes foncières, attestation d'hébergement sur l'honneur)</small>
+      <small>3 dernières quittances de loyer, dernier avis de taxe d’habitation, dernier avis de taxes foncières, attestation d'hébergement sur l'honneur</small>
 
       <p class="pt1">☑️ 1 justificatif de situation professionnelle</p>
-      <small>(contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait K bis du RCS)</small>
+      <small>contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait K bis du RCS</small>
 
       <p class="pt1">☑️ 1 justificatif de ressources</p>
-      <small>(3 derniers bulletins de salaires ou deux derniers bilans comptables, justification de revenus fonciers ou de revenus de valeurs et capitaux mobiliers)</small>
+      <small>3 derniers bulletins de salaires ou deux derniers bilans comptables, justification de revenus fonciers ou de revenus de valeurs et capitaux mobiliers</small>
 
       <p class="pt1">☑️ Votre dernier avis d’imposition</p>
     </div>
   </div>
   <br/>
   <div>
-    <p class="bolder">Votre dossier de location</p>
+    <p class="bolder">Mon dossier de location</p>
     <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
     <% if @appointment.candidate_documents.attached? %>
       <div class="candidate-documents-wrapper mt1">
@@ -40,7 +40,11 @@
           <div class="candidate-document">
             <p>
               <%= doc.filename %> 
-              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+              -
+              <%# if doc.previewable? %>
+                <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+              <%# end %>
+              -
               <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
             </p>
           </div>
