@@ -95,7 +95,15 @@
     <p class="bolder">Mon dossier de location</p>
     <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
     <div>
-      <%= form_with url: appointment_candidate_dossierfacile_link_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+      <% if @appointment.candidate_dossierfacile_link %>
+        <p>Mon lien DossierFacile : <%= @appointment.candidate_dossierfacile_link %></p>
+        <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
+      <% else %>
+        <div class="candidate-document-number pt1">
+          <small>Aucun lien transmis. Merci de renseigner votre lien DossierFacile 🙏</small>
+        </div>
+      <% end %>
+      <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
           <%= f.label "Mon lien DossierFacile" %>
           <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
@@ -116,13 +124,13 @@
                 <%# if doc.previewable? %>
                   <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
                 <%# end %>
-                <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment, @appointment.candidate_dossierfacile_folder), method: "delete" %>
+                <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment), method: "delete" %>
               </p>
             </div>
         </div>
       <% else %>
         <div class="candidate-document-number pt1">
-          <small>Aucun fichier envoyé. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
+          <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
         </div>
       <% end %>
     </div>

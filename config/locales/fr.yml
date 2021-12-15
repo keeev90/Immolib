@@ -108,6 +108,8 @@ fr:
             slot:
               blank: "Impossible de faire une visite sans horaires !"
               required: "Impossible de faire une visite sans horaires !"
+            candidate_dossierfacile_link:
+              invalid: "Le lien de votre dossier doit commencer par 'http://' ou 'https://'"
   date:
     abbr_day_names:
     - dim

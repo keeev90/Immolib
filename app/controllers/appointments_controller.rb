@@ -71,6 +71,8 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def 
+
   # def destroy
   #   redirect_to_book_now = params[:redirect_to_book_now]
   #   @appointment = Appointment.find(params[:id])
