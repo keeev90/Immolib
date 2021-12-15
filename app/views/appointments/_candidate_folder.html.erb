@@ -37,7 +37,7 @@
     </div>
 
     <div class="option1-wrapper__part2__right">
-      <p class="text-center">Vos documents mis en ligne :</p>
+      <p class="text-center">Vos documents :</p>
       <div>
         <% if @appointment.candidate_documents.attached? %>
           <div class="candidate-documents-wrapper mt1">
@@ -56,7 +56,7 @@
 
           <div class="candidate-document-number pt1">
             <% if @appointment.candidate_documents.size < 5 %>
-              <small> Vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents obligatoires demandés.</small>
+              <small> Dossier incomplet : vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents demandés.</small>
             <% else %>
               <small> Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
             <% end %>
@@ -67,7 +67,7 @@
       <div>
         <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
           <div class="field">
-            <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents de votre dossier ici" %>
+            <%= f.file_field :candidate_documents, multiple: true, direct_upload: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
           </div>
           <div class="text-center">
             <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
@@ -95,17 +95,18 @@
     <p class="bolder">Mon dossier de location</p>
     <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
     <div>
-      <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+      <%= form_with url: appointment_candidate_dossierfacile_link_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
-          <%= f.text_field :candidate_documents, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
+          <%= f.label "Mon lien DossierFacile" %>
+          <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer le lien de mon dossier", class: "btn white-btn bg-primary" %>
         </div>
       <%end%>
     </div>
-    <p class="pt1">ou</p>
-    <p class="text-center">Votre DossierFacile en format pdf :</p>
+    <p class="pt1 mb1">ou</p>
+    <p class="text-center">Mon DossierFacile en format pdf</p>
     <div>
       <% if @appointment.candidate_dossierfacile_folder.attached? %>
         <div class="candidate-documents-wrapper mt1">
@@ -118,22 +119,17 @@
                 <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment, @appointment.candidate_dossierfacile_folder), method: "delete" %>
               </p>
             </div>
-          <% end %>
         </div>
-
+      <% else %>
         <div class="candidate-document-number pt1">
-          <% if @appointment.candidate_dossierfacile_folder.size < 1 %>
-            <small>Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
-          <% else %>
-            <small>Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
-          <% end %>
+          <small>Aucun fichier envoyé. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
         </div>
       <% end %>
     </div>
     <div>
       <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
-          <%= f.file_field :candidate_dossierfacile_folder, direct_upload: true, is: "drop-files", label: "Envoyer votre dossier en format PDF", help: "Vous pouvez glisser-déposer le fichier ici" %>
+          <%= f.file_field :candidate_dossierfacile_folder, direct_upload: true, is: "drop-files", label: "Envoyer votre dossier en format pdf", help: "Vous pouvez glisser-déposer le fichier ici" %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer mon dossier au format PDF", class: "btn white-btn bg-primary" %>
