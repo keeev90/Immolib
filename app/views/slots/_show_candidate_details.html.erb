@@ -79,7 +79,7 @@
   <%# Insérer ici les informations relatives aux documents %>
   <div class="candidate-profile-details-section">
     <p> Ce dossier ne vous convient pas ? </p>
-    <%= link_to "Refuser le rendez-vous", appointment_path(appointment), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
+    <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
     <%# Modifier le redirect_to suite à la suppression de l'Appointment %>
   </div>
 </div>
