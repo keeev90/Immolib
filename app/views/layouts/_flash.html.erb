@@ -1,8 +1,9 @@
 <% flash.each do |type, msg| %>
-  <div class="alert alert-<%=type %>" role="alert">
-    <%= msg %>
-    <%# <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button> %>
+  <div class="alert alert-<%= type %>" role="alert">
+    <% if msg.is_a? Array%>
+      <%= msg.join("<br/>").html_safe %>
+    <% else %>
+      <%= msg %>
+    <% end %>
   </div>
 <% end %>

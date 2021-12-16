@@ -1,0 +1,3 @@
+document
+  .getElementById('calendar')
+  .innerHTML = "<%= j render(partial:'candidate_calendar', locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr}) %>";

@@ -5,10 +5,10 @@
   text-align: center;
 
   .fas {
-    font-size: 10rem;
-    margin-bottom: 2rem;
+    margin-right: 1ch;
+    
     &.fa-check-circle {
-      color: darken($success, 25%);
+      color: darken($success, 40%);
     }
     &.fa-times-circle {
       color: darken($warning, 25%);
@@ -21,6 +21,10 @@
 
     &.failed {
       color: darken($warning, 25%);
+    }
+
+    &.success {
+      color: darken($success, 40%);
     }
   }
 

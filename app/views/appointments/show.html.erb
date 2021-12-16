@@ -8,6 +8,7 @@
   </div>
   <div class="container">
     <div class="appointment-section">
+      <p class="bolder primary">Mon créneau de visite</p>
       <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
     </div>
   </div>

@@ -31,6 +31,11 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end 
 
   def edit

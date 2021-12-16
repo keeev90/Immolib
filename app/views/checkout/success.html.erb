@@ -1,6 +1,5 @@
 <div class="container checkout-status">
-  
-  <p><i class="far fa-check-circle"></i> Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu. Merci pour votre confiance&nbsp;!</p>
+  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu.<br/>Merci pour votre confiance&nbsp;!</h2>
   
   <hr/>
   <h1 class="mb2">

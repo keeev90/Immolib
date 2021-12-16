@@ -1,0 +1,3 @@
+document
+  .getElementById('calendar-wrapper')
+  .innerHTML = "<%= j render partial:'appointments/candidate_calendar', locals: {property: @property, slots: @slots, date_arr: @date_arr} %>";

@@ -1,5 +1,5 @@
 <div class="slot-candidate-wrapper">
-  <div class="slot-candidate-wrapper__title pt1">
+  <div class="slot-candidate-wrapper__title pt1 section-title">
     <h1>Étape 2/3 : sélection d'un créneau disponible</h1>
     <h2>Sélectionnez un créneau de visite parmi les propositions disponibles.</h2>
     <p>Les créneaux disponibles sont mis à jour automatiquement. 
@@ -7,7 +7,9 @@
     </p>
   </div>
   <div class="slot-candidate-wrapper__calendar mt2">
-    <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
+    <div id='calendar-wrapper'>
+      <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
+    </div>
 
     <% if !current_user %>
       <div class="slot-candidate-wrapper__calendar__title text-center"> 
@@ -25,6 +27,5 @@
         <%= link_to "Merci de sélectionner un créneau", send_message_property_path(@property), class: "btn disabled center-btn"%>
       </div>
     <% end %>
-
   </div>
 </div>
