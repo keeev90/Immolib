@@ -1,7 +1,21 @@
-<% if slot.available? %>
+
+<% if !user_signed_in? %>
+    <div class="property-wrapper__right__slot slot-not-connected">
+    <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
+    <% if slot.is_past? %>
+      <p> Terminé </p>
+    <% else %>
+    <p> <%= slot.availability %> <%= slot.availability>1 ? "places" : "place" %> </p>
+    <% end %>
+  </div>
+<% elsif slot.available? %>
   <div class="property-wrapper__right__slot <%= slot.candidates && slot.candidates.include?(current_user) ? ("current") : (nil) %>">
     <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
+        <% if slot.is_past? %>
+      <p> Terminé </p>
+    <% else %>
     <p> <%= slot.availability %> <%= slot.availability>1 ? "places" : "place" %> </p>
+    <% end %>
     <% if slot.candidates && slot.candidates.include?(current_user)%>
       <p> Vous participez à cette visite. </p>
     <% end %>
