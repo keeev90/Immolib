@@ -26,8 +26,13 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:success] = "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt 👋"
-    redirect_to root_path
+    if params[:admin] 
+      flash[:success] = "Utilisateur supprimé avec succès. 💪"
+      redirect_to admin_root_path
+    else
+      flash[:success] = "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt 👋"
+      redirect_to root_path
+    end
   end
 
   private

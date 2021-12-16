@@ -15,7 +15,7 @@
     <% end %>
     <p class="user-card__informations--email"><%= user.email %></p>
     <p> Nb logements : <%= user.properties.size %>
-    <%= link_to "Supprimer", user_path(user), method: "delete", class: "user-card__informations--delete", data: {confirm: "Êtes-vous sûr ?" } %>
+    <%= link_to "Supprimer", user_path(id:user, admin:true), method: "delete", class: "user-card__informations--delete", data: {confirm: "Êtes-vous sûr ?" } %>
   </div>
 
 </div>

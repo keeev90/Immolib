@@ -43,9 +43,9 @@
 
   <h2> Mes logements </h2>
 
-  <% if current_user.properties.count > 0 %>
+  <% if @user.properties.count > 0 %>
     <div class="properties-wrapper">
-      <% current_user.properties.each do |p| %>
+      <% @user.properties.each do |p| %>
         <% if p.is_paid %>
           <div class="property">
             <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
@@ -66,10 +66,10 @@
 
   <h2> Mes candidatures </h2>
 
-  <% if current_user.appointments.count > 0 %>
+  <% if @user.appointments.count > 0 %>
     <h3> Visites à venir </h3>
     <div class="properties-wrapper">
-      <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+      <% @user.appointments.order("created_at DESC").each do |appointment| %>
         <% if appointment.slot.start_date > DateTime.now %>
           <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
         <% end %>
@@ -78,7 +78,7 @@
 
     <h3> Visites terminées </h3>
     <div class="properties-wrapper">
-      <% current_user.appointments.order("created_at DESC").each do |appointment| %>
+      <% @user.appointments.order("created_at DESC").each do |appointment| %>
         <% if appointment.slot.start_date <= DateTime.now %>
           <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
         <% end %>
