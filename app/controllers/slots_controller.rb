@@ -1,5 +1,5 @@
 class SlotsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:book_candidate]
   # user as potential owner
 
   def new_first
@@ -110,6 +110,13 @@ class SlotsController < ApplicationController
   # user as potential candidate
 
   def book_candidate
+    @property = Property.find(params[:id])
+    @slots = @property.slots
+    @redirect_to_book_now = true
+    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+  end
+
+  def before_book_candidate
     @property = Property.find(params[:id])
     @slots = @property.slots
     @redirect_to_book_now = true

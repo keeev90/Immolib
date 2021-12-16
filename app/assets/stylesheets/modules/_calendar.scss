@@ -28,7 +28,11 @@
     margin: 0 0.4rem;
   }
 }
-
+.slot-not-connected {
+  // background-color: #9b9a9a!important;
+  background-color: #d0d0d0!important;
+  cursor: default!important;
+}
 .past .property-wrapper__right__slot {
-  background-color: #d0d0d0;
+  background-color: #d0d0d0!important;
 }
