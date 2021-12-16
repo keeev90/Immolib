@@ -73,8 +73,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def 
-
   # def destroy
   #   redirect_to_book_now = params[:redirect_to_book_now]
   #   @appointment = Appointment.find(params[:id])
@@ -91,8 +89,13 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find(params[:id])
     user = appointment.candidate
     appointment.destroy
-    flash[:success] = "Votre candidature a bien été supprimée 👌"
-    redirect_to user_path(user)
+    if params[:owner]
+      flash[:success] = "Le rendez-vous a bien été supprimé 👌"
+      redirect_to property_path(appointment.slot.property)
+    else
+      flash[:success] = "Votre candidature a bien été supprimée 👌"
+      redirect_to user_path(user)
+    end
   end
 
   private
