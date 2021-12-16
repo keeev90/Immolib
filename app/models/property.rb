@@ -2,6 +2,7 @@ class Property < ApplicationRecord
   #Callbacks
   before_create :randomize_property_id
   before_validation :create_stripe_product
+  #after_create :send_new_property_validation_email
 
   #Associations
   belongs_to :owner, class_name: "User"
@@ -74,6 +75,10 @@ class Property < ApplicationRecord
   end
 
   private
+
+  def send_new_property_validation_email
+    UserMailer.new_property_validation_email(self).deliver_now
+  end
 
   def randomize_property_id
     begin
