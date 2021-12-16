@@ -38,10 +38,16 @@
     </div>
   </div>
   <div class="property-wrapper__right">
-    <%= render 'calendar' %>
+    <h2>Gérer mes rendez-vous</h2>
+    <%= render(
+      partial: 'calendar',
+      locals: { instructions: true }
+    ) %>
     <div>
-      <p> Cliquez sur un créneau pour en afficher le détail. </p>
       <%= link_to 'Ajoutez un créneau de visite', new_property_slot_path(@property) %>
     </div>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<%= javascript_include_tag 'calendar-reveal.js' %>

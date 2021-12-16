@@ -1,3 +1,3 @@
 document
   .getElementById('calendar')
-  .innerHTML = "<%= j render 'calendar' %>";
+  .innerHTML = "<%= j render(partial: 'calendar', locals: { instructions: false }) %>";

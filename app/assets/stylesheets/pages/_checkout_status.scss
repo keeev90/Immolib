@@ -5,9 +5,8 @@
   text-align: center;
 
   .fas {
-    // font-size: 5rem;
-    // margin-bottom: 2rem;
     margin-right: 1ch;
+    
     &.fa-check-circle {
       color: darken($success, 40%);
     }

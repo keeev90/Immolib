@@ -14,7 +14,32 @@
   &__right {
     flex-grow: 1;
     position: relative;
-    margin-top: 7rem;
+    margin-top: 3rem;
+
+    h2 {
+      color: $primary;
+      margin-bottom: 4rem;
+    }
+
+    .calendar-wrapper {
+      position: relative;
+
+      .instructions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, .92);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          color: $primary;
+        }
+      }
+    }
 
     &__date {
       text-align: center;
@@ -64,6 +89,9 @@
   width: fit-content;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
   img {
     border-radius: 1rem;
@@ -124,7 +152,10 @@
 .delete-property-picture {
   color: black;
   text-align: center;
-  display: block;
+
+  &:hover {
+    color: darken($warning, 35%);
+  }
 }
 
 @media screen and (min-width: 1440px) {

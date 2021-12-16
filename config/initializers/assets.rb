@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w(
   pic-modal.js
   datepicker.js
   clipboard.js
+  calendar-reveal.js
 )
