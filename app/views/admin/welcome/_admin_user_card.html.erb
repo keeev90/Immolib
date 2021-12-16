@@ -1,0 +1,21 @@
+<div class="user-card-wrapper">
+  <div class="user-card__top">
+    <% if user.profile_picture.attached? %>
+      <%= image_tag user.profile_picture, class: "user-card__top__img" %>
+    <% else %>
+      <div class="user-card__top__img"></div>
+    <% end %>
+  </div>
+
+  <div class="user-card__informations">
+    <% if user.first_name && user.last_name %>
+      <p class="user-card__informations--name"> <%= user.first_name %> <%= user.last_name %> </p>
+    <% else %>
+      <p class="user-card__informations--name"> Pas de nom </p>
+    <% end %>
+    <p class="user-card__informations--email"><%= user.email %></p>
+    <p> Nb logements : <%= user.properties.size %>
+    <%= link_to "Supprimer", user_path(user), method: "delete", class: "user-card__informations--delete", data: {confirm: "Êtes-vous sûr ?" } %>
+  </div>
+
+</div>
