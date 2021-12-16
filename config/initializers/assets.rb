@@ -22,4 +22,5 @@ Rails.application.config.assets.precompile += %w(
   calendar-reveal.js
   activestorage.js
   faq.js
+  sell-rent-toggle.js
 )
