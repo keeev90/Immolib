@@ -20,4 +20,6 @@ Rails.application.config.assets.precompile += %w(
   datepicker.js
   clipboard.js
   calendar-reveal.js
+  activestorage.js
+  faq.js
 )

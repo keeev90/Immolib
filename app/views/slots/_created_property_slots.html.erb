@@ -1,10 +1,11 @@
-<% slots.each do |slot| %>
+<% slots.order("start_date ASC").each do |slot| %>
   <div class='slot-summary'>
     <p><%= slot.start_date.strftime(
       "Le %d/%m/%Y de %H:%M à #{slot.end_date.strftime('%H:%M')}"
       ) %></p>
     <p>Durée : <%= slot.duration %> minutes</p>
     <p>Nombre de visiteurs maximum : <%= slot.max_appointments %></p>
+    <%= link_to "Supprimer ce créneau", property_slot_path(property_id: slot.property,id: slot, first: true), method: "delete" %>
   </div>
 <% end %>
 

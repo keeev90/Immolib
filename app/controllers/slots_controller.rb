@@ -1,5 +1,5 @@
 class SlotsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:book_candidate]
   # user as potential owner
 
   def new_first
@@ -104,7 +104,11 @@ class SlotsController < ApplicationController
     property = slot.property
     slot.destroy
     flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
-    redirect_to(property_path(property))
+    if params[:first]
+      redirect_to new_slots_property_path(property)
+    else
+      redirect_to(property_path(property))
+    end
   end
 
   # user as potential candidate
@@ -119,6 +123,13 @@ class SlotsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def before_book_candidate
+    @property = Property.find(params[:id])
+    @slots = @property.slots
+    @redirect_to_book_now = true
+    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
   private

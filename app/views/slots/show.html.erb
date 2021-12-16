@@ -9,8 +9,10 @@
     </div>
     <div class="slot-wrapper__content">
       <% if @slot.appointments.size > 0 %>
+        <% firstSlot = true %>
         <% @slot.appointments.each do |a| %>
-          <%= link_to render(partial: "candidate_list", locals: {a: a}), property_slot_candidate_details_path(@slot.property, @slot, appointment: a), remote: true %>
+          <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_slot_candidate_details_path(@slot.property, @slot, appointment: a), remote: true %>
+          <% firstSlot = false %>
         <% end %>
       <% else %>
         <p> Vous n'avez pas de candidat inscrit sur ce créneau. </p>
@@ -20,6 +22,8 @@
 
   <div class="slot-wrapper-right">
     <%# Ajax for candidate profile details%>
-    <%#= render "show_candidate_details", appointment: @slot.appointments.last %>
+    <% if @slot.appointments.size > 0 %>
+      <%= render "show_candidate_details", appointment: @slot.appointments.first %>
+    <% end %>
   </div>
 </div>
