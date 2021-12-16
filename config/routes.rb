@@ -29,9 +29,7 @@ Rails.application.routes.draw do
       get 'book', to: "slots#before_book_candidate"
       get 'send-message', to: "appointments#message_candidate"
     end
-  end 
-
-# get '/properties/:id/test', to: "properties#show_candidate"
+  end
 
   resources 'appointments' do
     resources 'candidate_documents', only: [:create, :destroy]
@@ -43,6 +41,10 @@ Rails.application.routes.draw do
     post 'create', to: 'checkout#create', as: 'checkout_create'
     get 'success', to: 'checkout#success', as: 'checkout_success'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  end
+
+  namespace :admin do
+    root 'welcome#index'
   end
 
 end
