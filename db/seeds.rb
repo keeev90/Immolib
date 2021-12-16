@@ -17,7 +17,7 @@ Appointment.destroy_all
 
 # users
 
-5.times do |count|
+3.times do |count|
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -26,6 +26,16 @@ Appointment.destroy_all
     )
     puts "User with id #{user.id} created"
 end
+
+# admin
+admin = User.create(
+  first_name: 'Admin',
+  last_name: 'istrateur',
+  email: "immolib-admin@yopmail.com",
+  password: "adminpwd",
+  is_admin: true,
+)
+puts "Admin with id #{admin.id} created"
 
 # properties
 
@@ -58,7 +68,7 @@ end
 
 # appointments
 
-5.times do
+2.times do
 
   # to avoid owner = candidate
   owner = User.all.sample
