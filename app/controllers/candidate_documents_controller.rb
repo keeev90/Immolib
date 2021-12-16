@@ -3,12 +3,20 @@ class CandidateDocumentsController < ApplicationController
 
   def create
     @appointment = Appointment.find(params[:appointment_id])
-    #unless params[:candidate_documents]
-    #  @appointment.errors.add(:candidate_documents, 'Fichiers non reconnus. Merci de respecter les formats autorisés 🙏')
-    #  flash[:warning] = "Fichiers non reconnus. Merci de respecter les formats autorisés 🙏"
-    #  redirect_to appointment_path(@appointment)
-    #  return
-    #end
+    unless params[:candidate_documents]
+     @appointment.errors.add(:candidate_documents, 'Fichiers non reconnus. Merci de respecter les formats autorisés 🙏')
+     flash[:warning] = "Fichiers non reconnus. Merci de respecter les formats autorisés 🙏"
+     redirect_to appointment_path(@appointment)
+     return
+    end
+    params[:candidate_documents].each do |doc|
+      if doc.size > 3000000
+        @appointment.errors.add(:candidate_document, 'Fichier trop lourd')
+        flash[:warning] = "Fichiers trop volumineux. Veuillez choisir des fichiers de moins de 3 Mo chacun."
+        redirect_to appointment_path(@appointment)
+        return
+      end
+    end
     @appointment.candidate_documents.attach(params[:candidate_documents])
     flash[:success] = "Votre fichier a bien été ajouté 👌"
     redirect_to appointment_path(@appointment)

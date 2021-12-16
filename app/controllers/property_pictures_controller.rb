@@ -9,6 +9,12 @@ class PropertyPicturesController < ApplicationController
       redirect_to property_path(@property)
       return
     end
+    if params[:property_picture] && params[:property_picture].size > 3000000
+      @property.errors.add(:property_picture, 'Fichier trop lourd')
+      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo."
+      redirect_to property_path(@property)
+      return
+    end
     @property.property_picture.attach(params[:property_picture])
     flash[:success] = "La photo a bien été ajoutée 👌"
     redirect_to(property_path(@property))
