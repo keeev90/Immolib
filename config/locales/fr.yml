@@ -58,11 +58,11 @@ fr:
   errors:
     format: "%{message}"
     messages:
-      already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"
-      confirmation_period_expired: "à confirmer dans les %{period}, merci de faire une nouvelle demande"
-      expired: "a expiré, merci d'en faire une nouvelle demande"
-      not_found: "n'a pas été trouvé(e)"
-      not_locked: "n'était pas verrouillé(e)"
+      already_confirmed: "%{attribute} a déjà été validé(e), veuillez essayer de vous connecter"
+      confirmation_period_expired: "%{attribute} à confirmer dans les %{period}, merci de faire une nouvelle demande"
+      expired: "%{attribute} a expiré, merci d'en faire une nouvelle demande"
+      not_found: "%{attribute} n'a pas été trouvé(e)"
+      not_locked: "%{attribute} n'était pas verrouillé(e)"
       not_saved:
         one: "1 erreur détectée :"
         other: "%{count} erreurs détectées :"
