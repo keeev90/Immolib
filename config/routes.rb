@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     member do
       #user new property process
       get 'new-slots', to: "slots#index_first"
-      get 'new-slot', to: "slots#new_first"
       #user new appointment process
       get 'go-visit', to: "properties#welcome_candidate"
       get 'book-now', to: "slots#book_candidate"
