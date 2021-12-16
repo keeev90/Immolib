@@ -17,7 +17,6 @@ class Property < ApplicationRecord
   validates :other_link, format: URI::regexp(%w[http https]), allow_blank: true
   validates :owner_project, presence: true, allow_blank: false
 
-
   def go_visit_url
     @id = self.id
     return "https://immolib.herokuapp.com/properties/#{@id}/go-visit"
@@ -85,13 +84,6 @@ class Property < ApplicationRecord
       stripe_product = Stripe::Product.create({
         name: "#{title} - #{city}"
       })
-
-      puts "*" * 60
-      puts Rails.application.routes.url_helpers.rails_blob_path(
-        property_picture,
-        only_path: true
-      )
-      puts '*' * 60
 
       Stripe::Product.update(
         stripe_product.id,
