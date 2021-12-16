@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Confirmation de votre visite 🎉")
   end
 
-  def candidate_folder_email(appointment)
+  def candidate_folder_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
     @subtitle = "Compléter votre dossier candidat 📋"

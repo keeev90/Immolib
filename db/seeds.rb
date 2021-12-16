@@ -17,11 +17,11 @@ Appointment.destroy_all
 
 # users
 
-3.times do |count|
+2.times do |count|
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: "user#{count}@yopmail.com",
+    email: "user#{count}-immolib@yopmail.com",
     password: "userpwd"
     )
     puts "User with id #{user.id} created"
@@ -56,10 +56,20 @@ end
 
 duration = [15, 30, 45, 60]
 
-10.times do
+2.times do
   slot = Slot.create!(
     property: Property.all.sample,
-    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 15),
+    start_date: DateTime.now + 1,
+    duration: duration.sample,
+    max_appointments: rand(1..10)
+    )
+    puts "Slot with id #{slot.id} created"
+end
+
+5.times do
+  slot = Slot.create!(
+    property: Property.all.sample,
+    start_date: Faker::Time.between(from: DateTime.now + 2, to: DateTime.now + 15),
     duration: duration.sample,
     max_appointments: rand(1..10)
     )
