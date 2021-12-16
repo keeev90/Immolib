@@ -1,30 +1,35 @@
 class SlotsController < ApplicationController
   before_action :authenticate_user!, only: [:book_candidate]
-  # user as potential owner
 
-  def new_first
-    @slot = Slot.new
-    @property = Property.find(params[:id])
-    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
-    now = DateTime.now
-    min = now.minute / 15 * 15 + 15
-    @date = now.change(
-      {
-        hour: min >= 60 ? now.hour + 1 : now.hour,
-        min: min % 60
-      }
-    )
+  # def new_first
+  #   @slot = Slot.new
+  #   @property = Property.find(params[:id])
+  #   @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+  #   now = DateTime.now
+  #   min = now.minute / 15 * 15 + 15
+  #   @date = now.change(
+  #     {
+  #       hour: min >= 60 ? now.hour + 1 : now.hour,
+  #       min: min % 60
+  #     }
+  #   )
+  # end
+
+  # def index_first
+  #   @property = Property.find(params[:id]) # for Stripe
+  #   @slots = Property.find(params[:id]).slots
+  # end
+
+  # for new property only
+
+  def index
+    @property = Property.find(params[:property_id]) # for Stripe
+    @slots = Property.find(params[:property_id]).slots
   end
 
-  def index_first
-    @property = Property.find(params[:id]) # for Stripe
-    @slots = Property.find(params[:id]).slots
-  end
-
-  # user as owner
+  # for both new property and existing property
 
   def new
-
     @redirect_path_value = redirect_path_new
     @slot = Slot.new
     @property = Property.find(params[:property_id])
@@ -38,25 +43,6 @@ class SlotsController < ApplicationController
       }
     )
   end
-
-  def index # not used (show with calendar instead)
-    @property = Property.find(params[:property_id]) # for Stripe
-    @slots = Property.find(params[:property_id]).slots
-  end
-
-  def show
-    @slot = Slot.find(params[:id])
-    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
-  end
-
-  def show_candidate_details
-    @appointment = Appointment.find(params[:appointment])
-    respond_to do |format|
-      format.js {}
-    end
-  end
-
-  # user as both potential owner and owner
   
   def create
     redirect_path_value = redirect_path_create.values.first
@@ -77,18 +63,44 @@ class SlotsController < ApplicationController
     end
     if one_is_success
       flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
-      if redirect_path_value == "false"
-          redirect_to(property_path(property))
-      else 
+      if redirect_path_value == "new_property" #when new immolib property process
         redirect_to(property_slots_path(property))
+      else #when in "mon espace immolib"
+        redirect_to(property_path(property))
       end
     else
       flash[:warning] = slot.errors.full_messages
-      if redirect_path_value == "true" #when new immolib property process
-        redirect_to(new_property_slot_path(property))
+      if redirect_path_value == "new_property" #when new immolib property process
+        redirect_to(new_property_slot_path(property, redirect_path: "new_property"))
       else #when in "mon espace immolib"
-        redirect_to(new_property_slot_path(property))
+        redirect_to(new_property_slot_path(property, redirect_path: "existing_property"))
       end
+    end
+  end
+
+  def destroy
+    slot = Slot.find(params[:id])
+    property = slot.property
+    slot.destroy
+    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
+    if params[:new_property]
+      redirect_to property_slots_path(property)
+    else
+      redirect_to(property_path(property))
+    end
+  end
+
+  # for existing property only
+
+  def show
+    @slot = Slot.find(params[:id])
+    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+  end
+
+  def show_candidate_details
+    @appointment = Appointment.find(params[:appointment])
+    respond_to do |format|
+      format.js {}
     end
   end
 
@@ -113,19 +125,7 @@ class SlotsController < ApplicationController
     end
   end
 
-  def destroy
-    slot = Slot.find(params[:id])
-    property = slot.property
-    slot.destroy
-    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
-    if params[:first]
-      redirect_to property_slots_path(property)
-    else
-      redirect_to(property_path(property))
-    end
-  end
-
-  # user as potential candidate
+  # for candidate
 
   def book_candidate
     @property = Property.find(params[:id])
@@ -141,10 +141,7 @@ class SlotsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
-
-  
   private
-
 
   def slot_params
     params.require(:slot).permit(
