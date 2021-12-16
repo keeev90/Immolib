@@ -1,7 +1,5 @@
-<% flash.each do |type, errors| %>
+<% flash.each do |type, msg| %>
   <div class="alert alert-<%= type %>" role="alert">
-    <% errors.each do |msg| %>
-      <%= msg %>
-    <% end %>
+    <%= msg.join("<br/>").html_safe %>
   </div>
 <% end %>
