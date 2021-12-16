@@ -5,6 +5,7 @@
       ) %></p>
     <p>Durée : <%= slot.duration %> minutes</p>
     <p>Nombre de visiteurs maximum : <%= slot.max_appointments %></p>
+    <%= link_to "Supprimer ce créneau", property_slot_path(property_id: slot.property,id: slot, first: true), method: "delete" %>
   </div>
 <% end %>
 
