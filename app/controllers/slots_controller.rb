@@ -1,25 +1,6 @@
 class SlotsController < ApplicationController
   before_action :authenticate_user!, only: [:book_candidate]
 
-  # def new_first
-  #   @slot = Slot.new
-  #   @property = Property.find(params[:id])
-  #   @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
-  #   now = DateTime.now
-  #   min = now.minute / 15 * 15 + 15
-  #   @date = now.change(
-  #     {
-  #       hour: min >= 60 ? now.hour + 1 : now.hour,
-  #       min: min % 60
-  #     }
-  #   )
-  # end
-
-  # def index_first
-  #   @property = Property.find(params[:id]) # for Stripe
-  #   @slots = Property.find(params[:id]).slots
-  # end
-
   # for new property only
 
   def index
