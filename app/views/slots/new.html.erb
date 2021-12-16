@@ -17,7 +17,12 @@
       <br/>
       <div class="form-group">
         <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
-        <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 0, max: 50, required: true %>
+        <%= f.number_field :max_appointments, value: 1, min: 0, max: 50, required: true %>
+      </div>
+      <br/>
+            <div class="form-group">
+        <%= f.label "Nombre de crénaux d'affileée", class: "form-label" %>
+        <%= f.number_field :nb_slots, value: 1, min: 1, max: 50, required: true %>
       </div>
       <br/>
       <div class="form-group"> 

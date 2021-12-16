@@ -127,6 +127,8 @@ class SlotsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
+
+  
   private
 
 
