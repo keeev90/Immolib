@@ -1,4 +1,8 @@
-<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(@property), class: "return-link pt1 pl4" %>
+<% if @redirect_path_value == "new_property" %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_slots_path(@property), class: "return-link pt1 pl4" %>
+<% else %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(@property), class: "return-link pt1 pl4" %>
+<% end %>
 <div class="form-page">
   <div class="form-page__form">
     <h3>Ajoutez un nouveau créneau de visite</h3>
@@ -11,17 +15,28 @@
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
-        <%= f.label "Durée (en minutes) *", class: "form-label" %>
+        <%= f.label "Durée du créneau (en minutes) *", class: "form-label" %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
-        <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 0, max: 50, required: true %>
+        <%= f.label "Nombre de visiteurs maximum par créneau *", class: "form-label" %>
+        <%= f.number_field :max_appointments, value: 1, min: 0, max: 50, required: true %>
       </div>
       <br/>
+      <div class="form-group">
+        <p>Je souhaite répéter ce créneau <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %> fois d'affilée <small><em>(laissez à "1" si vous ne souhaitez pas le répéter)</em></small></p>
+      </div>
+      
+      <% if @redirect_path_value == "new_property" %>
+        <%= f.hidden_field :redirect_path, :value => "new_property" %>
+        <% else %>
+        <%= f.hidden_field :redirect_path, :value => "existing_property" %>
+      <% end %>
+      
+      <br/>
       <div class="form-group"> 
-        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
+        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary"%>
       </div>
     <%end%>
   </div>

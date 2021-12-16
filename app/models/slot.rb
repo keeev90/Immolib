@@ -19,7 +19,7 @@ class Slot < ApplicationRecord
   end
 
   def period
-    start_date..end_date
+    start_date..(end_date-1)
   end
 
   def duration? #converts seconds into minutes
