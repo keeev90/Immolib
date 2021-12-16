@@ -9,6 +9,12 @@ class ProfilePicturesController < ApplicationController
       redirect_to user_path(@user)
       return
     end
+    if params[:profile_picture] && params[:profile_picture].size > 3000000
+      @user.errors.add(:profile_picture, 'Fichier trop lourd')
+      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo."
+      redirect_to user_path(@user)
+      return
+    end
     @user.profile_picture.attach(params[:profile_picture])
     flash[:success] = "La photo a bien été ajoutée 👌"
     redirect_to(user_path(@user))
