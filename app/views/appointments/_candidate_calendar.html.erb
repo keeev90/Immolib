@@ -8,7 +8,7 @@
   </div>
 
   <% slots.each do |slot| %>
-    <% if slot.candidates.include?(current_user) || !slot.available?%>
+    <% if slot.candidates.include?(current_user) || !slot.available? || !user_signed_in? || slot.is_past? %>
       <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
     <% elsif @redirect_to_book_now == true %>
       <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, redirect_to_book_now: true), method: "post" %>

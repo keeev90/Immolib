@@ -34,3 +34,110 @@
   display: flex;
   justify-content: center;
 }
+
+.candidate-documents-wrapper {
+  // border: 1px dashed rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.candidate-profile-details-section progress {
+  margin-top: 1rem;
+  -webkit-appearance: none;
+}
+// Non compatible avec FF et IE /!\
+::-webkit-progress-bar {
+  background-color: #cecece;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  width: 350px;
+}
+::-webkit-progress-value {
+  background-color: orange;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.full::-webkit-progress-value {
+  background-color: green;
+}
+
+.candidate-document i {
+  margin: 0 0.5em;
+}
+
+.candidate-folder-wrapper {
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $primary;
+}
+
+.option1-wrapper {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+
+  .bolder {
+    text-align: center;
+  }
+
+  &__part2 {
+    display: flex;
+
+    &__left {
+      text-align: left;
+      border-right: 1px solid rgba(0,0,0,0.1);
+      margin-right: 0.5rem;
+      padding-right: 0.5rem;
+      max-width: 500px;
+
+      .bolder {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.option2-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__part1 {
+    text-align: left;
+    max-width: 80%;
+
+    p:not(:first-of-type) {
+      margin-bottom: 1rem;
+    }
+
+    .bolder {
+      text-align: center;
+    }
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .option1-wrapper__part2 {
+    flex-direction: column;
+    
+    &__left {
+      border: none;
+      padding-right: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+
+    &__right {
+      padding-top: 1.5rem;
+    }
+  }
+}

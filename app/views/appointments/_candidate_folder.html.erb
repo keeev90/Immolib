@@ -1,15 +1,148 @@
 <p class="bolder primary">Mon dossier de location</p>
 
-<h3>Option 1 : téléchargez directement les documents demandés</h3>
-<small>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</small> 
-<p>insérer les textes et champs ici >>> cf maquette slide 26</p>
+<div class="candidate-folder-wrapper">
+  <h2>Option 1 : téléchargez directement les documents demandés</h2>
+  <small><em>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</em></small> 
 
-<br/>
-<hr/>
-<br/>
+  <div class="option1-wrapper">
+    <div class="option1-wrapper__part1">
+      <p class="bolder">Conseils pour booster votre dossier de location : </p>
+      <p>✔️ Présentez un dossier complet, clair et lisible.</p>
+      <p>✔️ Assurez-vous que vos documents soient signés et datés de moins de 3 mois.</p>
+      <p>✔️ Ne déposez que les pièces à votre nom.</p>
+    </div>
+  </div>
 
-<h3>Option 2 : transmettez votre dossier via DossierFacile</h3>
-<small>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</small> 
-<p>insérer les textes, image et champs ici >>> cf maquette slide 27</p>
+  <p class="bolder mt2">Mon dossier de location</p>
+  <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
 
-<br/>
+  <div class="option1-wrapper__part2 pt1">
+
+    <div class="option1-wrapper__part2__left">
+      <p class="text-center mb1">Liste des documents à transmettre :</p>
+
+      <p>☑️ 1 pièce d'identité recto-verso</p>
+      <small>carte nationale d’identité, passeport, permis de conduire</small>
+
+      <p class="pt1">☑️ 1 justificatif de domicile</p>
+      <small>3 dernières quittances de loyer, dernier avis de taxe d’habitation, dernier avis de taxes foncières, attestation d'hébergement sur l'honneur</small>
+
+      <p class="pt1">☑️ 1 justificatif de situation professionnelle</p>
+      <small>contrat de travail, attestation employeur, certificat de scolarité, certificat d'identification de l'Insee, extrait Kbis du RCS</small>
+
+      <p class="pt1">☑️ 1 justificatif de ressources</p>
+      <small>3 derniers bulletins de salaires ou deux derniers bilans comptables, justification de revenus fonciers ou de revenus de valeurs et capitaux mobiliers</small>
+
+      <p class="pt1">☑️ Votre dernier avis d’imposition</p>
+    </div>
+
+    <div class="option1-wrapper__part2__right">
+      <p class="text-center">Vos documents :</p>
+      <div>
+        <% if @appointment.candidate_documents.attached? %>
+          <div class="candidate-documents-wrapper mt1">
+            <% @appointment.candidate_documents.each do |doc| %>
+              <div class="candidate-document">
+                <p>
+                  <%= doc.filename %> 
+                  <%# if doc.previewable? %>
+                    <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+                  <%# end %>
+                  <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="candidate-document-number pt1">
+            <% if @appointment.candidate_documents.size < 5 %>
+              <small> Dossier incomplet : vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents demandés.</small>
+            <% else %>
+              <small> Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
+            <% end %>
+          </div>
+          
+        <% end %>
+      </div>
+      <div>
+        <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+          <div class="field">
+            <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="option2-wrapper pt1">
+  <h2>Option 2 : transmettez votre dossier via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %></h2>
+  <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small> 
+
+  <div class="option2-wrapper__part1">
+    <p class="bolder pt1">Pourquoi DossierFacile ?</p>
+    <p>👍 Transmettre aux propriétaires en moins de 24h un dossier vérifié et complet qui se veut rassurant</p>
+    <p>👍 Protéger vos données personnelles avec un filigrane sur chaque document</p>
+    <p>👍 Gérer les cas particuliers : colocation, couple, garant(s)</p>
+    <p>👍 Réunir vos documents dans un dossier accessible sous forme de lien URL ou au format PDF. Il est prêt à étre envoyé rapidement !</p>
+  </div>
+  <br/>
+  <div>
+    <p class="bolder">Mon dossier de location</p>
+    <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
+    <div>
+      <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
+        <p class="pt1">Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+        <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
+      <% else %>
+        <div class="candidate-document-number pt1">
+          <small>Aucun lien transmis. Merci de renseigner votre lien DossierFacile 🙏</small>
+        </div>
+      <% end %>
+      <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+        <div class="field">
+          <%= f.label "Mon lien DossierFacile" %>
+          <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Envoyer le lien de mon dossier", class: "btn white-btn bg-primary" %>
+        </div>
+      <%end%>
+    </div>
+    <p class="pt1 mb1">ou</p>
+    <p class="text-center">Mon DossierFacile en format pdf</p>
+    <div>
+      <% if @appointment.candidate_dossierfacile_folder.attached? %>
+        <div class="candidate-documents-wrapper mt1">
+            <div class="candidate-document">
+              <p>
+                <%= @appointment.candidate_dossierfacile_folder.filename %> 
+                <%# if doc.previewable? %>
+                  <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
+                <%# end %>
+                <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment), method: "delete" %>
+              </p>
+            </div>
+        </div>
+      <% else %>
+        <div class="candidate-document-number pt1">
+          <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
+        <div class="field">
+          <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Envoyer votre dossier en format pdf", help: "Vous pouvez glisser-déposer le fichier ici" %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Envoyer mon dossier au format PDF", class: "btn white-btn bg-primary" %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
