@@ -80,7 +80,7 @@ class SlotsController < ApplicationController
       if redirect_path_value == "false"
           redirect_to(property_path(property))
       else 
-        redirect_to(new_slots_property_path(property))
+        redirect_to(property_slots_path(property))
       end
     else
       flash[:warning] = slot.errors.full_messages
@@ -119,7 +119,7 @@ class SlotsController < ApplicationController
     slot.destroy
     flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
     if params[:first]
-      redirect_to new_slots_property_path(property)
+      redirect_to property_slots_path(property)
     else
       redirect_to(property_path(property))
     end
