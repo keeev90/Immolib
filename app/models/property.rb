@@ -86,13 +86,6 @@ class Property < ApplicationRecord
         name: "#{title} - #{city}"
       })
 
-      puts "*" * 60
-      puts Rails.application.routes.url_helpers.rails_blob_path(
-        property_picture,
-        only_path: true
-      )
-      puts '*' * 60
-
       Stripe::Product.update(
         stripe_product.id,
         {description: "Lien de l'annonce : #{other_link}"},
