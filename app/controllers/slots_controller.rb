@@ -24,6 +24,8 @@ class SlotsController < ApplicationController
   # user as owner
 
   def new
+
+    @redirect_path_value = redirect_path_new
     @slot = Slot.new
     @property = Property.find(params[:property_id])
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
@@ -57,23 +59,35 @@ class SlotsController < ApplicationController
   # user as both potential owner and owner
   
   def create
+    redirect_path_value = redirect_path_create.values.first
+    nb = nb_slots[:nb_slots].to_i
+    one_is_success = false
+    new_start_date = slot_params[:start_date].to_datetime
+    duration = slot_params[:duration].to_i
+    property = Property.find(params[:property_id])
     @property = Property.find(params[:property_id])
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
-    @slot = Slot.new(slot_params)
-    @slot.property = @property
-    if @slot.save
+    slot = ""
+    nb.times do |index|
+      slot = Slot.new(slot_params)
+      slot.property = property
+      slot.start_date = new_start_date
+      if slot.save then one_is_success = true end
+      new_start_date = new_start_date + duration.minutes
+    end
+    if one_is_success
       flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
-      if redirect_path[:redirect_path] == "check if new immolib property process" #when in new immolib property process
-        redirect_to(new_slots_property_path(@property))
-      else #when in "mon espace immolib"
-        redirect_to(property_path(@property))
+      if redirect_path_value == "false"
+          redirect_to(property_path(property))
+      else 
+        redirect_to(new_slots_property_path(property))
       end
     else
-      flash[:warning] = @slot.errors.full_messages
-      if redirect_path[:redirect_path] == "check if new immolib property process" #when new immolib property process
-        redirect_to(new_slot_property_path(@property))
+      flash[:warning] = slot.errors.full_messages
+      if redirect_path_value == "true" #when new immolib property process
+        redirect_to(new_property_slot_path(property))
       else #when in "mon espace immolib"
-        render :new
+        redirect_to(new_property_slot_path(property))
       end
     end
   end
@@ -140,7 +154,17 @@ class SlotsController < ApplicationController
     )
   end
 
-  def redirect_path
+  def nb_slots
+    params.require(:slot).permit(
+      :nb_slots
+    )
+  end
+
+  def redirect_path_new
+    params[:redirect_path]
+  end
+
+  def redirect_path_create
     params.require(:slot).permit(:redirect_path)
   end
 

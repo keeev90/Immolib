@@ -24,9 +24,16 @@
         <%= f.label "Nombre de crénaux d'affileée", class: "form-label" %>
         <%= f.number_field :nb_slots, value: 1, min: 1, max: 50, required: true %>
       </div>
+      
+      <% if @redirect_path_value == "true" %>
+        <%= f.hidden_field :redirect_path, :value => "true" %>
+        <% else %>
+        <%= f.hidden_field :redirect_path, :value => "false" %>
+      <% end %>
+      
       <br/>
       <div class="form-group"> 
-        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary" %>
+        <%= f.submit "Ajouter le créneau", class: "btn white-btn bg-primary"%>
       </div>
     <%end%>
   </div>
