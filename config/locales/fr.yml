@@ -56,6 +56,7 @@ fr:
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
       unlocked: "✔️ Votre compte a été déverrouillé avec succès, vous êtes maintenant connecté(e)."
   errors:
+    format: "%{message}"
     messages:
       already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"
       confirmation_period_expired: "à confirmer dans les %{period}, merci de faire une nouvelle demande"
