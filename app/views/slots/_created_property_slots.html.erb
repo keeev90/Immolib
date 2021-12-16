@@ -1,4 +1,4 @@
-<% slots.each do |slot| %>
+<% slots.order("start_date ASC").each do |slot| %>
   <div class='slot-summary'>
     <p><%= slot.start_date.strftime(
       "Le %d/%m/%Y de %H:%M à #{slot.end_date.strftime('%H:%M')}"
