@@ -48,7 +48,7 @@
     <% end %>
     <div>
       <p> Cliquez sur un créneau pour en afficher le détail. </p>
-      <%= link_to 'Ajoutez un créneau de visite', new_property_slot_path(@property) %>
+      <%= link_to 'Ajoutez un créneau de visite', new_property_slot_path(@property, redirect_path: "false") %>
     </div>
   </div>
 </div>
