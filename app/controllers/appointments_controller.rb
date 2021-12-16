@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_candidate?, only: [:show, :edit]
 
   # user as potential candidate
 
@@ -97,6 +99,14 @@ class AppointmentsController < ApplicationController
 
   def redirect_path
     params.require(:appointment).permit(:redirect_path)
+  end
+
+  def is_candidate?
+    @appointment = Appointment.find(params[:id])
+    if @appointment.candidate != current_user
+      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci ⛔"
+      redirect_to root_path
+    end
   end
 
 end
