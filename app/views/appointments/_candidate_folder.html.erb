@@ -96,16 +96,17 @@
     <p>Une fois votre dossier validé, il ne vous reste plus qu'à renseigner le lien de votre dossier ou d’envoyer directement votre dossier en format PDF 👌</p>
     <div>
       <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
-        <p class="pt1">Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
-        <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
+        <p class="pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %>   
+          <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
+        </p>
       <% else %>
         <div class="candidate-document-number pt1">
+          <p class="pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile</p>
           <small>Aucun lien transmis. Merci de renseigner votre lien DossierFacile 🙏</small>
         </div>
       <% end %>
       <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
-          <%= f.label "Mon lien DossierFacile" %>
           <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
         </div>
         <div class="text-center">
@@ -113,9 +114,9 @@
         </div>
       <%end%>
     </div>
-    <p class="pt1 mb1">ou</p>
-    <p class="text-center">Mon DossierFacile en format pdf</p>
+    <p>ou</p>
     <div>
+      <p class="pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format pdf</p>
       <% if @appointment.candidate_dossierfacile_folder.attached? %>
         <div class="candidate-documents-wrapper mt1">
             <div class="candidate-document">
@@ -129,7 +130,7 @@
             </div>
         </div>
       <% else %>
-        <div class="candidate-document-number pt1">
+        <div class="candidate-document-number">
           <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
         </div>
       <% end %>
