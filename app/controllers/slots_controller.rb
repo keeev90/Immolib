@@ -1,5 +1,7 @@
 class SlotsController < ApplicationController
-  before_action :authenticate_user!, only: [:book_candidate]
+  before_action :authenticate_user!, only: [:book_candidate, :new, :edit]
+  before_action :is_same_user_new, only: [:new]
+  before_action :is_same_user_edit, only: [:edit]
 
   # for new property only
 
@@ -96,13 +98,16 @@ class SlotsController < ApplicationController
   def update
     @property = Property.find(params[:property_id])
     @slot = Slot.find(params[:id])
-    @slot.update(slot_params)
-    if @slot.save
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+    @date = @slot.start_date
+    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+
+    if @slot.update(slot_params)
       flash[:success] = "Le créneau de visite a été edité avec succès. Les candidats inscrits sont automatiquement prévenus ✌️"
         redirect_to(property_path(@property))
     else
       flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      render :edit
     end
   end
 
@@ -151,4 +156,21 @@ class SlotsController < ApplicationController
     params.require(:slot).permit(:redirect_path)
   end
 
+  def is_same_user_new
+    @user = Property.find(params[:property_id]).owner
+    if @user == current_user
+    else
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
+      redirect_to root_path
+    end
+  end
+
+  def is_same_user_edit
+    @user = Slot.find(params[:id]).property.owner
+    if @user == current_user
+    else
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
+      redirect_to root_path
+    end
+  end
 end

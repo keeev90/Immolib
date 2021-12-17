@@ -3,7 +3,7 @@ class ProfilePicturesController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    unless params[:profile_picture]
+    unless params[:profile_picture] && ((params[:profile_picture] && params[:profile_picture].content_type == "image/jpeg") || ( params[:profile_picture] && params[:profile_picture].content_type == "image/png" ))
       @user.errors.add(:profile_picture, 'Fichier non reconnu')
       flash[:warning] = "Fichier non reconnu. Merci de respecter les formats autorisés 🙏"
       redirect_to user_path(@user)

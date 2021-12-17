@@ -3,7 +3,7 @@ class CandidateDossierfacileFoldersController < ApplicationController
 
   def create
     @appointment = Appointment.find(params[:appointment_id])
-    unless params[:candidate_dossierfacile_folder]
+    unless params[:candidate_dossierfacile_folder] && (params[:candidate_dossierfacile_folder] && params[:candidate_dossierfacile_folder].content_type == "application/pdf")
      @appointment.errors.add(:candidate_dossierfacile_folder, 'Fichiers non reconnus. Merci de respecter les formats autorisés 🙏')
      flash[:warning] = "Fichiers non reconnus. Merci de respecter les formats autorisés 🙏"
      redirect_to appointment_path(@appointment)
