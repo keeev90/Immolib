@@ -4,7 +4,7 @@
 
 <% if @appointment.slot.property.instructions %>
   <p> Voici les instructions du propriétaire pour votre visite : </p><br/><br/>
-  <p><%= @appointment.slot.property.instructions %></p><br/>
+  <p><%= simple_format(@appointment.slot.property.instructions) %></p><br/>
 <% end %>
 
 <p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %>. </p><br/><br/>

@@ -1,6 +1,6 @@
 <p class="bolder primary">Mon message au propriétaire</p>
 <%if appointment.candidate_message %>
-  <p><%= appointment.candidate_message %></p>
+  <p><%= simple_format(appointment.candidate_message) %></p>
 <%else%>
   <p>Vous n'avez pas encore envoyé un message au propriétaire.</p>
 <%end%>

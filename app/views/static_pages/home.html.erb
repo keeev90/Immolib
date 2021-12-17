@@ -88,7 +88,6 @@
         </p>
       </div>
     </div>
-    <!-- Manque un justify-content:center, mais pareil je ne sais pas comment toucher au sass pour le moment -->
   </section>
 
   <section class="benefits-section last-section">
@@ -130,8 +129,8 @@
         <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
-          <%= f.email_field :email, placeholder: "Adresse Mail" %>
-          <%= f.submit 'Créer un compte et organiser mes visites !', class: "btn big-btn bg-primary white-btn" %>
+          <%= f.email_field :email, placeholder: "Entrez votre adresse e-mail", class: "text-center" %>
+          <%= f.submit "M'inscrire et organiser mes visites", class: "btn big-btn bg-primary white-btn" %>
         <% end %>
       <% end %>
     </div>
