@@ -25,8 +25,8 @@ class UserMailer < ApplicationMailer
   def candidate_folder_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
-    @subtitle = "Compléter votre dossier candidat 📋"
-    mail(to: @user.email, subject: "Compléter votre dossier candidat 📋")
+    @subtitle = "Complétez votre dossier candidat 📋"
+    mail(to: @user.email, subject: "Dossier candidat incomplet 📋")
   end
 
   def appointment_reminder_email(appointment)

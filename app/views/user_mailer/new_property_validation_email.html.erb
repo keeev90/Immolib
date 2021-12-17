@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Confirmation de la création de votre logement immolib</h1>
-    <p>Bonjour,</p>
-  </body>
-</html>
+<p> Bonjour<%= @user.first_name ? @user.first_name : nil %>, </p><br/>
+<p> Nous vous confirmons l'ajout de votre logement à votre espace immolib. </p><br/>
+
+<p> Vous pouvez l'éditer ou ajouter de nouveaux créneaux de visites en cliquant <%= link_to "ici", property_path(@property) %>, ou sur <%= link_to "votre espace immolib", user_path(@user) %>, rubrique "Mes logements". </p><br/>
+
+<p> Voici votre lien immolib, que vous pouvez partager directement sur vos annonces en ligne ou sur vos réseaux sociaux :</p>
+<p> <%= link_to @property.go_visit_url, @property.go_visit_url %> </p>

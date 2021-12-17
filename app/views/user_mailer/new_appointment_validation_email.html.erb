@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Confirmation de votre visite</h1>
-    <h3>Bonjour, nous avons le plaisir de confirmer votre visite.</h3>
-    <p>A bientôt sur immolib.</p>
-  </body>
-</html>
+<p> Bonjour<%= @user.first_name ? @user.first_name : nil %>, </p><br/>
+<p> Nous vous confirmons votre visite fixée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %>. </p><br/>
+
+<% if @appointment.slot.property.owner_project == "rent" %>
+  <p> Afin de faciliter les démarches, nous vous conseillons de vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> pour mettre en ligne votre dossier candidat. </p>
+  <p> Vous pourrez également, si ce n'est pas déjà fait, y compléter vos informations personnelles. </p>
+<% else %>
+  <p> N'hésitez pas à vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> afin de compléter votre profil avec vos informations personnelles. </p>
+<% end %>
