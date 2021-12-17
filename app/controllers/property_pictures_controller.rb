@@ -23,6 +23,7 @@ class PropertyPicturesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.property_picture.purge
+    @property.add_default_picture
     flash[:success] = "La photo a bien été supprimée 👌"
     redirect_to property_path(@property)
   end

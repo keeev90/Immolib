@@ -23,6 +23,7 @@ class ProfilePicturesController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @user.profile_picture.purge
+    @user.add_default_picture
     flash[:success] = "La photo a bien été supprimée 👌"
     redirect_to user_path(@user)
   end
