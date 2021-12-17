@@ -14,11 +14,11 @@
 
 <span style='color: #006bd6;font-weight: bold'>immolib</span> is a service that **helps you organizing real estate visits** and **collecting your candidates' files**.
 
-[Pitch of the project](#pitch-of-the-project)
-[Live Site & Screenshots](#live-site--screenshots)
-[The Hacking Project](#the-hacking-project)
-[Gems & APIs](#gems--apis)
-[Team](#team)
+[Pitch of the project](#pitch-of-the-project) | 
+[Live Site & Screenshots](#live-site--screenshots) | 
+[The Hacking Project](#the-hacking-project) | 
+[Gems & APIs](#gems--apis) | 
+[Team](#team) | 
 [Acknowledgements](#acknowledgements)
 
 </div>
@@ -63,6 +63,7 @@ To know more ===> https://www.thehackingproject.org/
 - [Simple Calendar](https://github.com/excid3/simple_calendar)
 - [Active Storage Validations](https://github.com/igorkasyanchuk/active_storage_validations)
 - [GSAP](https://greensock.com/gsap/)
+- [ScrollMagic](https://scrollmagic.io/)
 - [Pickadate](https://github.com/amsul/pickadate.js)
 - [Sendgrid](https://sendgrid.com/)
 - [Drop files element](https://github.com/Grafikart/CustomElement-DropFiles#customized-built-in-elements-isdrop-files)

@@ -1,4 +1,7 @@
 class Slot < ApplicationRecord
+  #Callbacks
+  after_commit :add_default_picture, on: [:create, :update]
+  
   #Associations
   belongs_to :property
 
@@ -62,8 +65,9 @@ class Slot < ApplicationRecord
       end
       errors.add(:overlaps_with_other?, "Un créneau de visite existe déjà sur cette période") if is_overlapping
     end
-
   end
   
-  
+  def add_default_picture
+    
+  end
 end

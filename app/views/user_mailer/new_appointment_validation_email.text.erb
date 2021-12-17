@@ -1,8 +1,13 @@
-Confirmation de votre visite
-==============================================================
-    
-Bonjour,
+Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
 
-Nous avons le plaisir de confirmer votre visite.
+Nous vous confirmons votre inscription à la visite du <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>)
 
-A bientôt sur immolib.
+<% if @appointment.slot.property.owner_project == "rent" %>
+  Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_path(@appointment) %> pour compléter votre dossier de location.
+
+  N'hésitez pas à <%= link_to "compléter vos informations personnelles", user_path(@user) %> pour booster votre candidature.
+<% else %>
+  Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_path(@user) %> pour compléter votre profil.
+<% end %>
+
+A bientôt !

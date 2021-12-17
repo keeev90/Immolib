@@ -43,12 +43,10 @@
           <div class="candidate-documents-wrapper mt1">
             <% @appointment.candidate_documents.each do |doc| %>
               <div class="candidate-document">
-                <p>
+                <p data-doc-id=<%= doc.id %>>
                   <%= doc.filename %> 
-                  <%# if doc.previewable? %>
-                    <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
-                  <%# end %>
-                  <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete" %>
+                  <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+                  <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete", remote: true %>
                 </p>
               </div>
             <% end %>

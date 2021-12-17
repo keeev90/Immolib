@@ -11,8 +11,8 @@ class UserMailer < ApplicationMailer
   def new_property_validation_email(property)
     @property = property
     @user = property.owner
-    @subtitle = "Confirmation de création de votre logement immolib 🎉"
-    mail(to: @user.email, subject: "Confirmation de création de votre logement immolib 🎉")
+    @subtitle = "Confirmation de la création de votre logement immolib 🎉"
+    mail(to: @user.email, subject: "Confirmation de la création de votre logement immolib 🎉")
   end
 
   def new_appointment_validation_email(appointment)
@@ -25,8 +25,8 @@ class UserMailer < ApplicationMailer
   def candidate_folder_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
-    @subtitle = "Compléter votre dossier candidat 📋"
-    mail(to: @user.email, subject: "Compléter votre dossier candidat 📋")
+    @subtitle = "Complétez votre dossier candidat 📋"
+    mail(to: @user.email, subject: "Dossier candidat incomplet 📋")
   end
 
   def appointment_reminder_email(appointment)

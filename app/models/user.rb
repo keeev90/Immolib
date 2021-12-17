@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   #Callbacks
   #after_create :welcome_send
+  after_commit :add_default_picture, on: [:create, :update]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -26,6 +27,18 @@ class User < ApplicationRecord
     user
   end
 
+  def add_default_picture
+    unless profile_picture.attached?
+      self.profile_picture.attach(
+        io: File.open(
+          Rails.root.join('app', 'assets', 'images', 'profile_placeholder.png')
+        ),
+        filename: 'profile_placeholder.png',
+        content_type: 'image/png'
+      )
+    end
+  end
+  
   def past_appointments
     past_appointments_array = []
     self.appointments.order("created_at DESC").each do |appointment|
@@ -51,5 +64,4 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
-
 end
