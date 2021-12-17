@@ -41,7 +41,7 @@ class User < ApplicationRecord
   
   def past_appointments
     past_appointments_array = []
-    self.appointments.each do |appointment|
+    self.appointments.order("created_at DESC").each do |appointment|
       if appointment.slot.start_date < DateTime.now
         past_appointments_array << appointment
       end
@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   def future_appointments
     future_appointments_array = []
-    self.appointments.each do |appointment|
+    self.appointments.order("created_at DESC").each do |appointment|
       if appointment.slot.start_date > DateTime.now
         future_appointments_array << appointment
       end
