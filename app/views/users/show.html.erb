@@ -74,7 +74,7 @@
       <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
       <% end %>
     <% else %>
-      <p>Vous n'avez pas de visites futures</p>
+      <p><em>Vous n'avez pas de visites à venir</em></p>
     <% end %>
     </div>
 
@@ -85,7 +85,7 @@
       <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
       <% end %>
     <% else %>
-      <p>Vous n'avez pas de visites passées</p>
+      <p><em>Vous n'avez pas de visites terminées</em></p>
     <% end %>
 
     </div>
