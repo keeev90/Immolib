@@ -164,8 +164,7 @@
     &.i3 {
       background-color: #bbb;
     }
-}
-
+  }
   
   @media screen and (max-width: 938px) {
     .benefits-section__body {
@@ -189,6 +188,75 @@
         }
       }
     }
+  }
+}
+
+.arrow-up {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  color: white;
+  z-index: 800;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  background-color: $primary;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  transition: all .4s ease;
+
+  &::after {
+    content: '\f176';
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    line-height: 3rem;
+    transition: .2s ease;
+    transform-origin: 50% 0;
+    transform: translate3d(0px,105%,0px) rotateX(-90deg);
+  }
+  
+  i {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 3rem;
+    transition: all .2s;
+    transform-origin: 50% 0%;
+    transform-style: preserve-3d;
+  }
+
+  &:hover {
+    opacity: 1;
+
+    i {
+      transform: translate3d(0, 0, -1.5rem) rotateX(90deg);
+      animation: arrowmove 1s ease forwards;
+    }
+
+    &::after {
+      transform: translate3d(0,0,0) rotateX(0)
+    }
+  }
+}
+
+@keyframes arrowmove {
+  0% {
+    top: 2px;
+  }
+
+  100% {
+    top: -3px;
   }
 }
 
