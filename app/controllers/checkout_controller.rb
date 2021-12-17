@@ -21,8 +21,9 @@ class CheckoutController < ApplicationController
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url + '?session_id={CHECKOUT_SESSION_ID}',
     )
+    
     respond_to do |format|
-      format.js # renders create.js.erb
+      format.js
     end
   end
 
@@ -45,5 +46,3 @@ class CheckoutController < ApplicationController
   end
 
 end
-
-# https://stripe.com/docs/testing

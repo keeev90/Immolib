@@ -5,13 +5,13 @@ class ProfilePicturesController < ApplicationController
     @user = User.find(params[:user_id])
     unless params[:profile_picture]
       @user.errors.add(:profile_picture, 'Fichier non reconnu')
-      flash[:warning] = "Fichier non reconnu. Essayez à nouveau."
+      flash[:warning] = "Fichier non reconnu. Merci de respecter les formats autorisés 🙏"
       redirect_to user_path(@user)
       return
     end
     if params[:profile_picture] && params[:profile_picture].size > 3000000
       @user.errors.add(:profile_picture, 'Fichier trop lourd')
-      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo."
+      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo 🙏"
       redirect_to user_path(@user)
       return
     end

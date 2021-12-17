@@ -1,0 +1,25 @@
+function delDoc() {
+  const doc = document
+    .querySelector('p[data-doc-id="<%= @doc.id %>"');
+  
+  doc.remove();
+
+  const docNum = document
+      .querySelector('.candidate-document-number');
+
+  if (<%= @appointment.candidate_documents.length %> === 0) {
+    const docWrapper = document
+      .querySelector('.candidate-documents-wrapper');
+
+    docWrapper.remove();
+    docNum.remove();
+  } else {
+    if (<%= @appointment.candidate_documents.length %> < 5) {
+      docNum
+        .querySelector('small')
+        .innerText = "Dossier incomplet : vous avez ajouté <%= @appointment.candidate_documents.length %> sur les 5 documents demandés."
+    }
+  }
+}
+
+delDoc();

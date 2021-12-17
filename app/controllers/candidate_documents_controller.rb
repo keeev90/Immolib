@@ -12,24 +12,26 @@ class CandidateDocumentsController < ApplicationController
     params[:candidate_documents].each do |doc|
       if doc.size > 3000000
         @appointment.errors.add(:candidate_document, 'Fichier trop lourd')
-        flash[:warning] = "Fichiers trop volumineux. Veuillez choisir des fichiers de moins de 3 Mo chacun."
+        flash[:warning] = "Fichiers trop volumineux. Veuillez choisir des fichiers de moins de 3 Mo chacun 🙏"
         redirect_to appointment_path(@appointment)
         return
       end
     end
     @appointment.candidate_documents.attach(params[:candidate_documents])
-    flash[:success] = "Votre fichier a bien été ajouté 👌"
+    flash[:success] = "Vos fichiers ont bien été ajoutés 👌"
     redirect_to appointment_path(@appointment)
   end
 
   def destroy
     @appointment = Appointment.find(params[:appointment_id])
     @doc = ActiveStorage::Attachment.find(params[:id])
-    #@appointment.candidate_documents.purge
     @doc.purge
-
     flash[:success] = "Votre fichier a bien été supprimé 👌"
-    redirect_to appointment_path(@appointment)
+    
+    respond_to do |format|
+      format.html { redirect_to appointment_path(@appointment) }
+      format.js
+    end
   end
 
   private
