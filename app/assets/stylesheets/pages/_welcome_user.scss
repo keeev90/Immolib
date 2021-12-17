@@ -34,6 +34,10 @@
   &__left {
     border-right: 1px solid $primary;
   }
+
+  &__right {
+    align-self: center;
+  }
 }
 
 // Welcome User Candidate
