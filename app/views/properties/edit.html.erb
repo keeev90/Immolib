@@ -7,6 +7,7 @@
     
       <div class="field">
         <%= f.label 'Titre *' %><br />
+        <p><small>💡 Conseil : indiquez le même titre que celui de votre annonce en ligne (ex : PaP)</small></p>
         <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true %>
       </div>
 
@@ -22,8 +23,8 @@
 
       <div class="field">
         <%= f.label 'Instructions pour les visites' %>
-        <p><small>Ces instructions permettront de guider vos visiteurs (ex : lieu de rendez-vous, digicode, interphone, etc.). Elles ne seront transmises aux visiteurs qu'après inscription à un créneau de visite.</small></p>
-        <%= f.text_field :instructions, autofocus: true, autocomplete: "instructions" %>
+        <p><small>ℹ️  Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs (ex : lieu de rendez-vous, digicode, interphone, etc.)</small></p>
+        <%= f.text_area :instructions, autofocus: true, autocomplete: "instructions" %>
       </div>
 
       <div class="actions">

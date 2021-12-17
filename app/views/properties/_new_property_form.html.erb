@@ -20,6 +20,7 @@
       <%= f.hidden_field :owner_project %>
       <div class="form-group">
         <%= f.label "Titre du logement *", class: "form-label" %>
+        <p><small>💡 Conseil : indiquez le même titre que celui de votre annonce en ligne (ex : PaP)</small></p>
         <%= f.text_field :title, class: "form-control", placeholder: "Donnez un titre à votre logement", required: true %>
       </div>
       <br/>
@@ -39,7 +40,8 @@
       </div>
       <div class="form-group">
         <%= f.label "Instructions pour les visites", class: "form-label" %>
-        <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez des instructions pour guider vos futurs visiteurs (ex : adresse exacte ou lieu de rendez-vous, digicode, interphone, etc.). Elles ne seront transmises aux visiteurs qu'après inscription à un créneau de visite." %>
+        <p><small>ℹ️  Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs.</small></p>
+        <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez ici vos instructions pour les visites (ex : adresse exacte ou lieu de rendez-vous, digicode, interphone, etc.)." %>
       </div>
       <div>
         <%= f.submit "Valider et passer à l'étape suivante", class: "btn white-btn bg-primary" %>

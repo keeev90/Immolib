@@ -3,21 +3,27 @@
   <div class="welcome_user-wrapper">
     <div class="welcome_user-wrapper__left">
       <p class="bolder primary">Rappel de l'annonce</p>
-      <p><%= @property.title%></p>
+      <h4><%= @property.title%></h4>
       <small><p><%= @property.city%></p></small>
       <small><%= @property.other_link%></small>
       <%if @property.property_picture.attached?%>
-        <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
+        <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture pt2" %>
       <% end %>
     </div>
     <div class="welcome_user-wrapper__right">
-      <p>Je vous invite à sélectionner un créneau de visite disponible, à me transmettre les documents administratifs demandés, 
-        et à m’écrire, si vous le souhaitez, quelques lignes à propos de vous et de votre projet.</p>
-      <p>
-        A très bientôt<%=@property.owner.first_name? ? ',' : '.' %>
-      </p>
+      <p class="bolder primary">Bonjour</p>
+      <% if @property.owner_project == "rent" %>
+        <p><em>Je vous invite à sélectionner un créneau de visite disponible, à me transmettre votre dossier de location, 
+          et à m’écrire quelques lignes à propos de vous et de votre projet.</em></p>
+      <% else %>
+        <p><em>Je vous invite à sélectionner un créneau de visite disponible 
+        et à m’écrire quelques lignes à propos de vous et de votre projet.</em></p>
+      <% end %>
+      <p><em>A bientôt,</em></p>
       <%if @property.owner.first_name?%>
         <p><%= @property.owner.first_name %></p>
+      <% else %>
+        <p>Le propriétaire</p>
       <% end %>
       
       <% if user_signed_in? %>

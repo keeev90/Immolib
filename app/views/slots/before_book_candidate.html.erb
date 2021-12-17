@@ -1,16 +1,15 @@
 <div class="slot-candidate-wrapper">
   <div class="slot-candidate-wrapper__title pt1 section-title">
-    <h1>Étape 1/3 : voici les créneaux disponibles</h1>
-    <p>Les créneaux disponibles sont mis à jour automatiquement. 
-      Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de modification ou annulation de candidats.
-    </p>
+    <h1>Étape 1/3 : sélection d'un créneau disponible</h1>
+    <p>La disponibilité des créneaux est mis à jour automatiquement.</p> 
+    <p>Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de modification ou annulation de candidats.</p>
   </div>
   <div class="slot-candidate-wrapper__calendar mt2">
     <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
 
     <% if !user_signed_in? %>
       <div class=" text-center"> 
-        <%= link_to "Inscrivez-vous pour sélectionner un créneau.", book_now_property_path(@property), class:"btn white-btn bg-primary" %>
+        <%= link_to "Inscrivez-vous pour sélectionner un créneau", book_now_property_path(@property), class:"btn white-btn bg-primary" %>
       </div>
     <% end %>
 
