@@ -14,11 +14,11 @@
 
 <span style='color: #006bd6;font-weight: bold'>immolib</span> is a service that **helps you organizing real estate visits** and **collecting your candidates' files**.
 
-[Pitch of the project](#pitch-of-the-project)
-[Live Site & Screenshots](#live-site--screenshots)
-[The Hacking Project](#the-hacking-project)
-[Gems & APIs](#gems--apis)
-[Team](#team)
+[Pitch of the project](#pitch-of-the-project) | 
+[Live Site & Screenshots](#live-site--screenshots) | 
+[The Hacking Project](#the-hacking-project) | 
+[Gems & APIs](#gems--apis) | 
+[Team](#team) | 
 [Acknowledgements](#acknowledgements)
 
 </div>
