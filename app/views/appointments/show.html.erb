@@ -1,3 +1,4 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
 <div class="welcome-page candidate appointment-show">
   <h1 class="primary"> Ma candidature </h1>
 </div>
@@ -24,4 +25,4 @@
     </div>
   </div>
   <%end%>
-  <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
+  <p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
