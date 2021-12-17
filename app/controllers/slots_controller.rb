@@ -101,13 +101,13 @@ class SlotsController < ApplicationController
     @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
     @date = @slot.start_date
     @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
-    @slot.update(slot_params)
-    if @slot.save
+
+    if @slot.update(slot_params)
       flash[:success] = "Le créneau de visite a été edité avec succès. Les candidats inscrits sont automatiquement prévenus ✌️"
         redirect_to(property_path(@property))
     else
       flash.now[:warning] = @slot.errors.full_messages
-      render :new
+      render :edit
     end
   end
 

@@ -61,7 +61,9 @@ class Slot < ApplicationRecord
     if (self.property)
       other_slots = self.property.slots
       is_overlapping = other_slots.any? do |other_slot|
+        if other_slot != self
         period.overlaps?(other_slot.period)
+        end
       end
       errors.add(:overlaps_with_other?, "Un créneau de visite existe déjà sur cette période") if is_overlapping
     end
