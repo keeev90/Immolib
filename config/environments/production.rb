@@ -69,7 +69,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # Set default URL for emailing 
-  config.action_mailer.default_url_options = { :host => 'https://immolib-dev.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://immolib.herokuapp.com/' }
 
   config.action_mailer.perform_caching = false
 

@@ -3,7 +3,7 @@ class Property < ApplicationRecord
   before_create :randomize_property_id
   before_validation :create_stripe_product
   after_commit :add_default_picture, on: [:create, :update]
-  #after_create :send_new_property_validation_email
+  after_create :send_new_property_validation_email
 
   #Associations
   belongs_to :owner, class_name: "User"
