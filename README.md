@@ -14,10 +14,11 @@
 
 <span style='color: #006bd6;font-weight: bold'>immolib</span> is a service that **helps you organizing real estate visits** and **collecting your candidates' files**.
 
-[Pitch of the project](#pitch-of-the-project)
-[Live Site & Screenshots](#live-site--screenshots)
-[The Hacking Project](#the-hacking-project)
-[Team](#team)
+[Pitch of the project](#pitch-of-the-project) | 
+[Live Site & Screenshots](#live-site--screenshots) | 
+[The Hacking Project](#the-hacking-project) | 
+[Gems & APIs](#gems--apis) | 
+[Team](#team) | 
 [Acknowledgements](#acknowledgements)
 
 </div>
@@ -52,6 +53,20 @@ They just have to click on the link to <span style='color: #006bd6;font-weight: 
 
 The Hacking project is an intensive tech bootcamp that works without teacher nor school. The strength of THP is its community. Indeed, THP relies on peer-learning to pass on skills and knowledges.<br/>
 To know more ===> https://www.thehackingproject.org/
+
+## Gems & APIs
+
+- [Devise](https://github.com/heartcombo/devise)
+- [Stripe](https://stripe.com/)
+- [Omniauth](https://github.com/omniauth/omniauth)
+- [AWS](https://aws.amazon.com/)
+- [Simple Calendar](https://github.com/excid3/simple_calendar)
+- [Active Storage Validations](https://github.com/igorkasyanchuk/active_storage_validations)
+- [GSAP](https://greensock.com/gsap/)
+- [ScrollMagic](https://scrollmagic.io/)
+- [Pickadate](https://github.com/amsul/pickadate.js)
+- [Sendgrid](https://sendgrid.com/)
+- [Drop files element](https://github.com/Grafikart/CustomElement-DropFiles#customized-built-in-elements-isdrop-files)
 
 ## Team
 

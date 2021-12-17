@@ -12,9 +12,6 @@ class User < ApplicationRecord
   has_many :properties, foreign_key: 'owner_id', dependent: :destroy
   has_many :appointments, foreign_key: 'candidate_id', dependent: :destroy
   has_one_attached :profile_picture, dependent: :destroy
-  
-  #Validations
-  # validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Merci de renseigner une adresse email valide." }
 
   def self.from_omniauth(access_token)
     data = access_token.info

@@ -3,9 +3,13 @@ class CandidateDossierfacileLinksController < ApplicationController
 
   def create
     appointment = Appointment.find(params[:appointment_id])
-    appointment.update(candidate_dossierfacile_link: params[:candidate_dossierfacile_link])
-    flash[:success] = "Votre lien DossierFacile a bien été ajouté 👌"
-    redirect_to appointment_path(appointment)
+    if appointment.update(candidate_dossierfacile_link: params[:candidate_dossierfacile_link])
+      flash[:success] = "Votre lien DossierFacile a bien été ajouté 👌"
+      redirect_to appointment_path(appointment)
+    else
+      flash[:warning] = appointment.errors.full_messages
+      redirect_to appointment_path(appointment)
+    end
   end
 
   def destroy

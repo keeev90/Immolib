@@ -63,7 +63,7 @@ class SlotsController < ApplicationController
     slot = Slot.find(params[:id])
     property = slot.property
     slot.destroy
-    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible aux candidats 👌"
+    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible et les candidats inscrits sont automatiquement prévenus 👌"
     if params[:new_property]
       redirect_to property_slots_path(property)
     else
@@ -98,7 +98,7 @@ class SlotsController < ApplicationController
     @slot = Slot.find(params[:id])
     @slot.update(slot_params)
     if @slot.save
-      flash[:success] = "Le créneau de visite a été edité avec succès ✌️"
+      flash[:success] = "Le créneau de visite a été edité avec succès. Les candidats inscrits sont automatiquement prévenus ✌️"
         redirect_to(property_path(@property))
     else
       flash.now[:warning] = @slot.errors.full_messages

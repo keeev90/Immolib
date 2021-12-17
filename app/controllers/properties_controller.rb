@@ -14,7 +14,7 @@ class PropertiesController < ApplicationController
     #@property.property_picture.attach(params[:property_picture])
     #raise 'coucou'
     if @property.save
-      flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
+      flash[:success] = "La présentation de votre logement a été réalisée avec succès ✌️"
       redirect_to(property_slots_path(@property))
     else
       flash.now[:warning] = @property.errors.full_messages
@@ -63,7 +63,7 @@ class PropertiesController < ApplicationController
       flash[:success] = "Le logement a bien été supprimé 👌"
       redirect_to admin_root_path
     else  
-      flash[:success] = "Votre logement a bien été supprimé 👌"
+      flash[:success] = "Votre logement a bien été supprimé. Les candidats inscrits à une visite à venir sont automatiquement prévenus 👌"
       redirect_to user_path(current_user)
     end
   end
@@ -82,8 +82,8 @@ class PropertiesController < ApplicationController
 
   def is_owner?
     @property = Property.find(params[:id])
-    if @property.owner != current_user && !current_user.is_admin?
-      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci ⛔"
+    if @property.owner != current_user
+      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end
   end

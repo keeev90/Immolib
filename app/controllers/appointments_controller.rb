@@ -14,18 +14,18 @@ class AppointmentsController < ApplicationController
     slot = Slot.find(params[:param1])
     redirect_to_book_now = params[:redirect_to_book_now]
     property = Property.find(params[:property])
-    user_appointments = Appointment.where(candidate: current_user) # on stock les rdv du user
+    user_appointments = Appointment.where(candidate: current_user)
     already_an_appointment = false
     new_appointment = Appointment.new(candidate: current_user, slot: slot)
-    user_appointments.each do |appointment| #on parcourt les rdv du user
-      if appointment.property == property && !appointment.slot.is_past? #si on en trouve un pour la meme property
-        new_appointment =  appointment #on stock le rdv
-        new_appointment.slot = slot #on update le slot
-        already_an_appointment = true #on dit que le candidat avait déja un rdv sur ce logement
+    user_appointments.each do |appointment|
+      if appointment.property == property && !appointment.slot.is_past?
+        new_appointment =  appointment
+        new_appointment.slot = slot 
+        already_an_appointment = true
       end
     end
 
-    if new_appointment.save #Si la sauvegarde du RDV fonctionne bien
+    if new_appointment.save
       if redirect_to_book_now == "true"
         redirect_to book_now_property_path(property)
       else
@@ -57,7 +57,7 @@ class AppointmentsController < ApplicationController
     @property = @appointment.slot.property.id
 
     if @appointment.update(candidate_message: params[:appointment][:candidate_message])
-      if redirect_path[:redirect_path] == "check if new immolib appointment process" #when in new immolib appointment process
+      if redirect_path[:redirect_path] == "new_appointment" #when in new immolib appointment process
         flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
       else #when in "mon espace immolib"
         flash[:success] = "Votre message a été édité avec succès 👌"
@@ -65,7 +65,7 @@ class AppointmentsController < ApplicationController
       redirect_to appointment_path(@appointment)
     else
       flash[:warning] = @appointment.errors.full_messages
-      if redirect_path[:redirect_path] == "check if new immolib appointment process" #when in new immolib appointment process
+      if redirect_path[:redirect_path] == "new_appointment" #when in new immolib appointment process
         redirect_to send_message_property_path(@property)
       else #when in "mon espace immolib"
         render :edit
@@ -73,27 +73,19 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   redirect_to_book_now = params[:redirect_to_book_now]
-  #   @appointment = Appointment.find(params[:id])
-  #   @property = Property.find(params[:property])
-  #   @appointment.destroy
-  #   if redirect_to_book_now == "true"
-  #     redirect_to book_now_property_path(property)
-  #   else
-  #     redirect_to appointment_path(new_appointment)
-  #   end
-  # end
-
   def destroy
     appointment = Appointment.find(params[:id])
     user = appointment.candidate
     appointment.destroy
     if params[:owner]
-      flash[:success] = "Le rendez-vous a bien été supprimé 👌"
+      flash[:success] = "Le rendez-vous a bien été annulé. Le candidat est automatiquement prévenu 👌"
       redirect_to property_path(appointment.slot.property)
     else
-      flash[:success] = "Votre candidature a bien été supprimée 👌"
+      if appointment.property.owner_project == "rent" 
+        flash[:success] = "Votre candidature a bien été annulée. Les documents de votre dossier sont automatiquement supprimés 👌"
+      else
+        flash[:success] = "Votre candidature a bien été annulée 👌"
+      end
       redirect_to user_path(user)
     end
   end
@@ -107,7 +99,7 @@ class AppointmentsController < ApplicationController
   def is_candidate?
     @appointment = Appointment.find(params[:id])
     if @appointment.candidate != current_user && !current_user.is_admin?
-      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci ⛔"
+      flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end
   end
