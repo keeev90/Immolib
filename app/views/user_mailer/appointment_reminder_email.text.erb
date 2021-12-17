@@ -1,9 +1,13 @@
-Bonjour<%= @user.first_name ? @user.first_name : nil %>,
-Vous recevez cet email car vous avez une visite programmée pour demain à <%= @appointment.slot.start_date.strftime("%H:%M") %>.
+Bonjour <%= @user.first_name ? @user.first_name : nil %>,
+
+Vous recevez cet email car vous avez une visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).
 
 <% if @appointment.slot.property.instructions %>
-  Le propriétaire a indiqué sur son annonce les instructions suivantes :
+  Voici les instructions du propriétaire pour votre visite :
+
   <%= @appointment.slot.property.instructions %>
 <% end %>
 
-Retrouvez le détail de votre RDV sur <%= link_to "votre espace immolib", appointment_path(@appointment) %>.
+Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_path(@appointment) %>.
+
+Bonne visite !

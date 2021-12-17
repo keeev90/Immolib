@@ -1,6 +1,9 @@
-<p> Bonjour<%= @user.first_name ? @user.first_name : nil %>, </p><br/>
-<p> Vous recevez cet email car vous avez une visite programmée pour le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %>. </p><br/>
+<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
 
-<p> À ce jour, vous n'avez pas fourni tous les documents demandés par le propriétaire. </p> <br/>
+<p> Vous recevez cet email car vous avez une visite programmée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/>
 
-<p> Afin de faciliter les démarches, nous vous conseillons de vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> pour mettre en ligne les documents manquants. </p>
+<p> À ce jour, <span class="bolder">votre dossier de location est incomplet</span>.</p><br/>
+
+<p> Afin de booster votre candidature, rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_path(@appointment) %> pour transmettre les documents manquants. </p>
+
+<p> A vous de jouer 😉 </p>
