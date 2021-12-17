@@ -73,18 +73,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   redirect_to_book_now = params[:redirect_to_book_now]
-  #   @appointment = Appointment.find(params[:id])
-  #   @property = Property.find(params[:property])
-  #   @appointment.destroy
-  #   if redirect_to_book_now == "true"
-  #     redirect_to book_now_property_path(property)
-  #   else
-  #     redirect_to appointment_path(new_appointment)
-  #   end
-  # end
-
   def destroy
     appointment = Appointment.find(params[:id])
     user = appointment.candidate

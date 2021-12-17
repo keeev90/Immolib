@@ -1,17 +1,24 @@
 <footer class="footer">
   <div class="row">
-    <a target="_blank" href="https://github.com/Beygs" class="item"> <i class="fab fa-twitter footicon"></i> </a>
-    <a target="_blank" href="https://github.com/looping124" class="item"> <i class="fab fa-facebook-f footicon"></i> </a>
-    <a target="_blank" href="https://github.com/keeev90" class="item"> <i class="fab fa-github footicon"></i> </a>
-    <a target="_blank" href="https://github.com/pierre-pellegrino" class="item"> <i class="fab fa-youtube footicon"></i> </a>
+    <%= link_to 'https://github.com/Beygs', class: 'item', target: '_blank' do %>
+      <i class='fab fa-twitter footicon'></i>
+    <% end %>
+    <%= link_to 'https://github.com/looping124', class: 'item', target: '_blank' do %>
+      <i class="fab fa-facebook-f footicon"></i>
+    <% end %>
+    <%= link_to 'https://github.com/keeev90', class: 'item', target: '_blank' do %>
+      <i class='fab fa-github footicon'></i>
+    <% end %>
+    <%= link_to 'https://github.com/pierre-pellegrino', class: 'item', target: '_blank' do %>
+      <i class="fab fa-youtube footicon"></i>
+    <% end %>
   </div>
 
   <div class="row">
-    <a target='_blank', href='https://github.com/keeev90/Immolib', class='item'>A Propos</a>
-    <a target='_blank', href='https://lopoticha.herokuapp.com', class='item'>Nos projets</a>
+    <%= link_to 'A Propos', 'https://github.com/keeev90/Immolib', class: 'item', target: '_blank' %>
+    <%= link_to 'Nos Projets', 'https://lopoticha.herokuapp.com', class: 'item', target: '_blank' %>
     <%= link_to "FAQ", faq_path, class:"item" %>
-    <%= link_to "Nous contacter", "/404.html", class:"item" %>
-    <a target='_blank', href='https://climate.stripe.com/SBYrPT', class='item'>Nos engagements 🌳</a>
+    <%= link_to 'Nos engagements 🌳', 'https://climate.stripe.com/SBYrPT', class: 'item', target: '_blank' %>
   </div>
 
   <div class="row">
