@@ -59,8 +59,13 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
-    flash[:success] = "Votre logement a bien été supprimé 👌"
-    redirect_to user_path(current_user)
+    if current_user.is_admin?
+      flash[:success] = "Le logement a bien été supprimé 👌"
+      redirect_to admin_root_path
+    else  
+      flash[:success] = "Votre logement a bien été supprimé 👌"
+      redirect_to user_path(current_user)
+    end
   end
 
   # user as potential candidate
@@ -77,7 +82,7 @@ class PropertiesController < ApplicationController
 
   def is_owner?
     @property = Property.find(params[:id])
-    if @property.owner != current_user
+    if @property.owner != current_user && !current_user.is_admin?
       flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à ceci ⛔"
       redirect_to root_path
     end

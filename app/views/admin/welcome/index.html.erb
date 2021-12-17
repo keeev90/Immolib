@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="text-center">Bienvenue dans l'espace admin</h1>
+  <p class="bolder text-center pt4">Liste des utilisateurs</p>
+</div>
+
+<div class="users-wrapper">
+  <% @users.each do |user| %>
+    <%= link_to render(partial:"admin_user_card", locals: {user:user}), user_path(user) %>
+  <% end %>
+</div>
