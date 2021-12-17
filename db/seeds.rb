@@ -56,32 +56,10 @@ end
 
 duration = [15, 30, 45, 60]
 
-5.times do
+10.times do
   slot = Slot.create!(
     property: Property.all.sample,
-    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 15),
-    duration: duration.sample,
-    max_appointments: rand(1..10)
-    )
-    puts "Slot with id #{slot.id} created"
-end
-
-# for testing task "Send reminder email the day before visit D-day"
-2.times do
-  slot = Slot.create!(
-    property: Property.all.sample,
-    start_date: DateTime.now + 1,
-    duration: duration.sample,
-    max_appointments: rand(1..10)
-    )
-    puts "Slot with id #{slot.id} created"
-end
-
-# for testing task "Send email alert to user two days before visit when partial candidate folder"
-2.times do
-  slot = Slot.create!(
-    property: Property.all.sample,
-    start_date: DateTime.now + 2,
+    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 5),
     duration: duration.sample,
     max_appointments: rand(1..10)
     )
