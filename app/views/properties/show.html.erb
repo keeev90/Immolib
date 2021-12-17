@@ -1,7 +1,20 @@
 <div class="property-wrapper">
   <div class="property-wrapper__left">
     <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
-    <h1 class="primary pb4"> Mon logement immolib </h1>
+    <h1 class="primary"> Mon logement </h1>
+    <div class="pb4">
+      <p>💡 Partagez l'URL de votre logement immolib directement sur vos annonces en ligne</p>
+      <div class="links">
+        <p class="link">
+          <%= link_to @property.go_visit_url, @property.go_visit_url %>
+          <i class="far fa-copy">
+            <span class="copy-text">
+              Copier l'URL
+            </span>
+          </i>
+        </p>
+      </div>
+    </div>
 
     <%if @property.property_picture.attached?%>
       <div class="pic property-picture">
@@ -24,29 +37,33 @@
     <div class="property-wrapper__left__infos">
       <h2> <%= @property.title %> </h2>
       <h3 class="mb1"> <%= @property.city %> </h3>
-      <p class="mb1">Lien vers mon annonce en ligne : <%= link_to @property.other_link %> </p>
-      <p class="mb1">Mes instructions de visite : <%= @property.instructions %> </p>
-      <p class="mb1">Mon URL Immolib (à partager sur vos annonces en ligne) : <%= link_to @property.go_visit_url %></p>
-      <p class="mb1">Visualiser le parcours candidat : <%=link_to "mon parcours candidat Immolib", go_visit_property_path(@property.id)%></p>
+      <p class="mb1"><i class="far fa-arrow-alt-circle-right"></i> Lien vers mon annonce en ligne : <%= link_to @property.other_link %> </p>
+      <p class="mb1"><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : <%= @property.instructions %> </p>
+      <p class="mb1"><i class="far fa-arrow-alt-circle-right"></i> Mon URL Immolib (à partager sur vos annonces en ligne) : <%= link_to @property.go_visit_url %></p>
+      <p class="mb1"><i class="far fa-arrow-alt-circle-right"></i> Visualiser le parcours candidat : <%=link_to "mon parcours candidat Immolib", go_visit_property_path(@property.id)%></p>
       <!-- A supprimer en production -->
       <p>URL Immolib (dev) : <%= link_to @property.go_visit_url_dev %></p>
       <p>URL Immolib (local) : <%= link_to @property.go_visit_url_local %></p>
       <!-- end -->
 
-      <p><%= link_to "Éditer mon annonce", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
-      <p><%= link_to "Supprimer mon annonce", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
+      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
+      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
     </div>
   </div>
   <div class="property-wrapper__right">
-    <h2>Gérer mes rendez-vous</h2>
+    <h1 class="primary">Mes visites</h1>
+    <div class="pb4">
+      <% if @property.owner_project == "rent" %>
+        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et leur dossier de location</p>
+      <% else %>
+        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits</p>
+      <% end %>
+    </div>
     <%= render(
       partial: 'calendar',
       locals: { instructions: true }
     ) %>
-    <div>
-      <p> Cliquez sur un créneau pour en afficher le détail. </p>
-      <%= link_to 'Ajoutez un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property") %>
-    </div>
+    <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class: "btn white-btn bg-primary" %>
   </div>
 </div>
 
