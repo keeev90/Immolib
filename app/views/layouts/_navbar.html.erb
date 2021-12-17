@@ -5,6 +5,9 @@
       <h1 class='title'>immolib</h1>
     <% end %>
     <div class='navbar__items'>
+      <% if current_user && current_user.is_admin? %>
+        <%= link_to 'Administration', admin_root_path %>
+      <% end %>
       <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
       <% if user_signed_in? %>
         <%= link_to 'Mon espace immolib', user_path(current_user), class: 'item' %>
@@ -27,6 +30,9 @@
       <h1 class='title'>immolib</h1>
     <% end %>
     <div class='navbar__items'>
+      <% if current_user && current_user.is_admin? %>
+        <%= link_to 'Administration', admin_root_path %>
+      <% end %>
       <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
       <% if user_signed_in? %>
         <%= link_to 'Mon espace immolib', user_path(current_user), class: 'item' %>

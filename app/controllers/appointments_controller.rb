@@ -98,7 +98,7 @@ class AppointmentsController < ApplicationController
 
   def is_candidate?
     @appointment = Appointment.find(params[:id])
-    if @appointment.candidate != current_user
+    if @appointment.candidate != current_user && !current_user.is_admin?
       flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end
