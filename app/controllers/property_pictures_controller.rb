@@ -3,7 +3,7 @@ class PropertyPicturesController < ApplicationController
 
   def create
     @property = Property.find(params[:property_id])
-    unless params[:property_picture]
+    unless params[:property_picture] && ((params[:property_picture] && params[:property_picture].content_type == "image/jpeg") || ( params[:property_picture] && params[:property_picture].content_type == "image/png" ))
       @property.errors.add(:property_picture, 'Fichier non reconnu')
       flash[:warning] = "Fichier non reconnu. Merci de respecter les formats autorisés 🙏"
       redirect_to property_path(@property)

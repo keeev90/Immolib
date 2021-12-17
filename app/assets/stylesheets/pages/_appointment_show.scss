@@ -52,7 +52,6 @@
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
-  width: 350px;
 }
 ::-webkit-progress-value {
   background-color: orange;
@@ -114,16 +113,17 @@
     text-align: left;
     max-width: 80%;
 
-    p:not(:first-of-type) {
-      margin-bottom: 1rem;
-    }
-
     .bolder {
       text-align: center;
     }
   }
 }
 
+.mw80 {
+  max-width: 80%;
+  margin: 0 auto;
+  display: inline-block;
+}
 
 @media screen and (max-width: 800px) {
   .option1-wrapper__part2 {

@@ -1,4 +1,4 @@
-desc "Envoyer un email de rappel en cas de dossier incomplet"
+desc "Send email alert to user two days before visit when partial candidate folder"
 task candidate_folder_reminder: :environment do
   Appointment.all.each do |a|
     if ( a.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 2).strftime("%d%m%Y") ) && ( a.slot.property.owner_project == "rent" )
