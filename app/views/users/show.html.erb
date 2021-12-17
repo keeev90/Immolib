@@ -69,20 +69,25 @@
   <% if @user.appointments.count > 0 %>
     <h3> Visites à venir </h3>
     <div class="properties-wrapper">
-      <% @user.appointments.order("created_at DESC").each do |appointment| %>
-        <% if appointment.slot.start_date > DateTime.now %>
-          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
-        <% end %>
+    <% if @user.future_appointments.size > 0 %>
+      <% @user.future_appointments.each do |appointment| %>
+      <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
       <% end %>
+    <% else %>
+      <p><em>Vous n'avez pas de visites à venir</em></p>
+    <% end %>
     </div>
 
     <h3> Visites terminées </h3>
     <div class="properties-wrapper">
-      <% @user.appointments.order("created_at DESC").each do |appointment| %>
-        <% if appointment.slot.start_date <= DateTime.now %>
-          <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
-        <% end %>
+    <% if @user.past_appointments.size > 0 %>
+      <% @user.past_appointments.each do |appointment| %>
+      <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
       <% end %>
+    <% else %>
+      <p><em>Vous n'avez pas de visites terminées</em></p>
+    <% end %>
+
     </div>
     
   <% else %>
