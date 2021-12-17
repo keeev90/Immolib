@@ -62,6 +62,7 @@
 
   <% else %>
     <p><em>Vous n'avez pas de logement ajouté sur immolib.</em></p>
+    <p><%= link_to "Organiser des visites", new_property_path, class: "btn white-btn bg-primary" %></p>
   <% end %>
 
   <h2> Mes candidatures </h2>
@@ -91,6 +92,7 @@
     </div>
     
   <% else %>
-    <p class="mb2"><em>Vous n'avez pas de visite programmée sur immolib.</em></p>
+    <p><em>Vous n'avez pas de visite programmée sur immolib.</em></p>
+    <p class="mb2">Vous souhaitez répondre à une annonce ? Rendez-vous directement sur une annonce en ligne (ex : PaP) et cliquez sur l’URL immolib renseignée par le propriétaire</p>
   <% end %>
 </div>
