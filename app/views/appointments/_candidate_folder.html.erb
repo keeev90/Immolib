@@ -14,7 +14,7 @@
   </div>
 
   <p class="bolder mt2">Mon dossier de location</p>
-  <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
+  <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire 👌</p>
 
   <div class="option1-wrapper__part2 pt1">
 
@@ -54,12 +54,14 @@
 
           <div class="candidate-document-number pt1">
             <% if @appointment.candidate_documents.size < 5 %>
-              <small> Dossier incomplet : vous avez ajouté <%= @appointment.candidate_documents.size %> document<%= @appointment.candidate_documents.size <2 ? nil : "s" %> sur les 5 documents demandés.</small>
+              <small class="warning bolder"> Dossier incomplet </small>
             <% else %>
-              <small> Votre dossier semble complet. Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
+              <p><small class="primary bolder"> Votre dossier semble complet</small></p>
+              <small> Vérifiez qu'il n'y a pas de documents en doublon 🙏</small>
             <% end %>
+            <p><progress id="file" max="5" value="<%= @appointment.candidate_documents.size%>" class="<%= @appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
+            <p><small>Document(s) transmis : <%= @appointment.candidate_documents.size %> / 5</small></p>
           </div>
-          
         <% end %>
       </div>
       <div>
@@ -105,7 +107,7 @@
       <% end %>
       <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", class: "pt1", multipart: true do |f| %>
         <div class="field">
-          <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true, class: "mw80" %>
+          <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true, class: "mw80 text-center" %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer le lien de mon dossier", class: "btn white-btn bg-primary" %>
