@@ -1,1 +1,6 @@
-COMPLETE TON DOSSIER STP
+Bonjour<%= @user.first_name ? @user.first_name : nil %>,
+Vous recevez cet email car vous avez une visite programmée pour le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %>. 
+
+À ce jour, vous n'avez pas fourni tous les documents demandés par le propriétaire.
+
+Afin de faciliter les démarches, nous vous conseillons de vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> pour mettre en ligne les documents manquants.

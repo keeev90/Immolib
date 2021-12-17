@@ -1,3 +1,6 @@
-<h1>Bienvenue sur immolib !</h1>
-<p>Ton compte a bien été créé avec l'adresse email suivante : <%= @user.email %></p>
-<p>Connecte-toi dès maintenant : <%= link_to 'Me connecter', @url %> ! 😎</p>
+<p> Bonjour, </p><br/>
+<p> Nous avons le plaisir de vous confirmer la création de votre compte avec l'adresse mail : <%= @user.email %>. </p><br/>
+
+<p> Si ce n'est pas déjà fait, rendez-vous sur <%= link_to "votre espace immolib", user_path(@user) %> pour remplir votre profil. </p><br/>
+
+<p> À bientôt sur immolib ! </p>
