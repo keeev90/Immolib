@@ -4,6 +4,8 @@ const sellBtn = toggle.querySelector('.sell-btn');
 const check = toggle.querySelector('div');
 const hiddenField = document.getElementById('property_owner_project');
 
+check.classList = hiddenField.value
+
 rentBtn.addEventListener('click', () => {
   check.classList = 'rent';
   hiddenField.value = 'rent'

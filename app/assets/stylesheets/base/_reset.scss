@@ -34,10 +34,16 @@ select {
   font: inherit;
   display: block;
   outline: none;
+  width: 100%;
 
   &:focus {
     outline: none;
   }
+}
+
+input[type='submit'],
+input[type='checkbox'] {
+  width: auto;
 }
 
 p,
