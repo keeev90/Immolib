@@ -1,6 +1,6 @@
 class Appointment < ApplicationRecord
   #Callbacks
-  #after_create :send_new_appointment_validation_email
+  after_create :send_new_appointment_validation_email
 
   #Associations
   belongs_to :candidate, class_name: "User"
