@@ -104,18 +104,6 @@ class Property < ApplicationRecord
         {url: other_link},
       ) if other_link != ''
 
-      # A changer avec url aws
-
-      # Stripe::Product.update(
-      #   stripe_product.id,
-      #   {images: [
-      #     'http://localhost:3000' + Rails.application.routes.url_helpers.rails_blob_path(
-      #       property_picture,
-      #       only_path: true
-      #     )
-      #   ]},
-      # ) if property_picture != ''
-
       stripe_price = Stripe::Price.create({
         product: stripe_product.id,
         unit_amount: 4999,
