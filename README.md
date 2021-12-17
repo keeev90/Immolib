@@ -63,6 +63,7 @@ To know more ===> https://www.thehackingproject.org/
 - [Simple Calendar](https://github.com/excid3/simple_calendar)
 - [Active Storage Validations](https://github.com/igorkasyanchuk/active_storage_validations)
 - [GSAP](https://greensock.com/gsap/)
+- [ScrollMagic](https://scrollmagic.io/)
 - [Pickadate](https://github.com/amsul/pickadate.js)
 - [Sendgrid](https://sendgrid.com/)
 - [Drop files element](https://github.com/Grafikart/CustomElement-DropFiles#customized-built-in-elements-isdrop-files)
