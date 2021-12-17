@@ -30,12 +30,6 @@ class User < ApplicationRecord
     user
   end
 
-  private
-
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
-
   def add_default_picture
     unless profile_picture.attached?
       self.profile_picture.attach(
@@ -46,5 +40,11 @@ class User < ApplicationRecord
         content_type: 'image/png'
       )
     end
+  end
+  
+  private
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
   end
 end

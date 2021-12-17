@@ -75,6 +75,18 @@ class Property < ApplicationRecord
     Stripe::Product.retrieve(self.stripe_price.product)
   end
 
+  def add_default_picture
+    unless property_picture.attached?
+      self.property_picture.attach(
+        io: File.open(
+          Rails.root.join('app', 'assets', 'images', 'property_placeholder.png')
+        ),
+        filename: 'property_placeholder.png',
+        content_type: 'image/png'
+      )
+    end
+  end
+
   private
 
   def send_new_property_validation_email
@@ -113,18 +125,6 @@ class Property < ApplicationRecord
       self.stripe_price_id = stripe_price.id
 
       self.save
-    end
-  end
-
-  def add_default_picture
-    unless property_picture.attached?
-      self.property_picture.attach(
-        io: File.open(
-          Rails.root.join('app', 'assets', 'images', 'property_placeholder.png')
-        ),
-        filename: 'property_placeholder.png',
-        content_type: 'image/png'
-      )
     end
   end
 end
