@@ -1,0 +1,20 @@
+function delDoc() {
+  const doc = document
+    .querySelector('p[data-doc-id="<%= @doc.id %>"');
+  
+  doc.remove();
+
+  if (<%= @appointment.candidate_documents.length %> === 0) {
+    const docWrapper = document
+      .querySelector('.candidate-documents-wrapper');
+
+    docWrapper.remove();
+
+    const docNum = document
+      .querySelector('.candidate-document-number');
+
+    docNum.remove();
+  }
+}
+
+delDoc();

@@ -29,7 +29,11 @@ class CandidateDocumentsController < ApplicationController
     @doc.purge
 
     flash[:success] = "Votre fichier a bien été supprimé 👌"
-    redirect_to appointment_path(@appointment)
+    
+    respond_to do |format|
+      format.html { redirect_to appointment_path(@appointment) }
+      format.js
+    end
   end
 
   private
