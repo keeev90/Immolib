@@ -15,6 +15,11 @@ class CandidateDocumentsController < ApplicationController
         flash[:warning] = "Fichiers trop volumineux. Veuillez choisir des fichiers de moins de 3 Mo chacun 🙏"
         redirect_to appointment_path(@appointment)
         return
+      elsif doc.content_type != "application/pdf" && doc.content_type != "image/jpeg" && doc.content_type != "image/png" && doc.content_type != "image/bmp" 
+        @appointment.errors.add(:candidate_document, 'Fichiers non reconnus. Merci de respecter les formats autorisés 🙏')
+        flash[:warning] = "Fichiers non reconnus. Merci de respecter les formats autorisés 🙏"
+        redirect_to appointment_path(@appointment)
+        return
       end
     end
     @appointment.candidate_documents.attach(params[:candidate_documents])
