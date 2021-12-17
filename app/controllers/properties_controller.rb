@@ -54,8 +54,13 @@ class PropertiesController < ApplicationController
   def destroy
     @property = Property.find(params[:id])
     @property.destroy
-    flash[:success] = "Votre logement a bien été supprimé 👌"
-    redirect_to user_path(current_user)
+    if current_user.is_admin?
+      flash[:success] = "Le logement a bien été supprimé 👌"
+      redirect_to admin_root_path
+    else  
+      flash[:success] = "Votre logement a bien été supprimé 👌"
+      redirect_to user_path(current_user)
+    end
   end
 
   # user as potential candidate
