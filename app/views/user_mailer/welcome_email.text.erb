@@ -1,6 +1,9 @@
 Bonjour,
-Nous avons le plaisir de vous confirmer la création de votre compte avec l'adresse mail : <%= @user.email %>.
 
-Si ce n'est pas déjà fait, rendez-vous sur <%= link_to "votre espace immolib", user_path(@user) %> pour remplir votre profil.
+Nous avons le plaisir de vous confirmer la création de votre compte avec l'adresse email : <%= @user.email %>
+
+Vous souhaitez vendre ou louer un logement ? <%= link_to "Organisez dès maintenant vos visites et collectez les dossiers candidats", new_property_path %> en toute simplicité !
+
+Vous souhaitez répondre à une annonce ? Rendez-vous directement sur l’annonce en ligne (ex : PaP, Leboncoin) et cliquez sur le lien immolib renseigné par le propriétaire.
 
 À bientôt sur immolib !

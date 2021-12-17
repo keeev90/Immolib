@@ -1,9 +1,12 @@
-<p> Bonjour<%= @user.first_name ? @user.first_name : nil %>, </p><br/>
-<p> Nous vous confirmons votre visite fixée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %>. </p><br/>
+<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
+
+<p> Nous vous confirmons votre inscription à la visite du <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>) </p><br/>
 
 <% if @appointment.slot.property.owner_project == "rent" %>
-  <p> Afin de faciliter les démarches, nous vous conseillons de vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> pour mettre en ligne votre dossier candidat. </p>
-  <p> Vous pourrez également, si ce n'est pas déjà fait, y compléter vos informations personnelles. </p>
+  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_path(@appointment) %> pour compléter votre dossier de location. </p><br/>
+  <p> N'hésitez pas à <%= link_to "compléter vos informations personnelles", user_path(@user) %> pour booster votre candidature.</p><br/>
 <% else %>
-  <p> N'hésitez pas à vous rendre sur <%= link_to "votre espace immolib", appointment_path(@appointment) %> afin de compléter votre profil avec vos informations personnelles. </p>
+  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_path(@user) %> pour compléter votre profil.</p><br/>
 <% end %>
+
+<p> A bientôt ! </p>

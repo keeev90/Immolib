@@ -1,7 +1,12 @@
-Bonjour<%= @user.first_name ? @user.first_name : nil %>,
-Nous vous confirmons l'ajout de votre logement à votre espace immolib.
+Bonjour <%= @user.first_name ? @user.first_name : nil %>,
 
-Vous pouvez l'éditer ou ajouter de nouveaux créneaux de visites en cliquant <%= link_to "ici", property_path(@property) %>, ou sur <%= link_to "votre espace immolib", user_path(@user) %>, rubrique "Mes logements".
+Votre paiement a bien été reçu, merci pour votre confiance ! Nous vous confirmons la création de votre logement sur immolib.
 
-Voici votre lien immolib, que vous pouvez partager directement sur vos annonces en ligne ou sur vos réseaux sociaux :
+Dernière étape : partagez votre URL immolib dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux. Les candidats n'auront plus qu'à suivre un parcours simple et rapide.
+A vous de jouer 😉
+
 <%= link_to @property.go_visit_url, @property.go_visit_url %>
+
+Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_path(@user) %> pour compléter votre logement et accéder à la liste des candidats inscrits sur chaque créneau de visite.
+
+A bientôt !

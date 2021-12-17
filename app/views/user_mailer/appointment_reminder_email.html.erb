@@ -1,9 +1,12 @@
-<p> Bonjour<%= @user.first_name ? @user.first_name : nil %>, </p><br/>
-<p> Vous recevez cet email car vous avez une visite programmée pour demain à <%= @appointment.slot.start_date.strftime("%H:%M") %>. </p><br/>
+<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
+
+<p> Vous recevez cet email car <span class="bolder">vous avez une visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/>
 
 <% if @appointment.slot.property.instructions %>
-  <p> Le propriétaire a indiqué sur son annonce les instructions suivantes : </p>
+  <p> Voici les instructions du propriétaire pour votre visite : </p><br/>
   <p><%= @appointment.slot.property.instructions %></p><br/>
 <% end %>
 
-<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace immolib", appointment_path(@appointment) %>. </p>
+<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_path(@appointment) %>. </p><br/>
+
+<p> Bonne visite ! </p>
