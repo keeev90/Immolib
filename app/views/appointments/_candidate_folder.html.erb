@@ -45,9 +45,7 @@
               <div class="candidate-document">
                 <p data-doc-id=<%= doc.id %>>
                   <%= doc.filename %> 
-                  <%# if doc.previewable? %>
-                    <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
-                  <%# end %>
+                  <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
                   <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_document_path(@appointment, doc), method: "delete", remote: true %>
                 </p>
               </div>
