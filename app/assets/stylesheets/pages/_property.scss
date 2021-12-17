@@ -4,6 +4,14 @@
   position: relative;
   padding: 1rem 4rem;
 
+  .link {
+    padding: .5em;
+    background-color: #eee;
+    border-radius: 3px;
+    margin: .3rem;
+    max-width: 550px;
+  }
+
   &__left {
     width: 100%;
     &__infos {
@@ -156,6 +164,7 @@
     color: darken($warning, 35%);
   }
 }
+
 
 @media screen and (min-width: 1440px) {
   .property-wrapper {

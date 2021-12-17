@@ -109,6 +109,9 @@ fr:
             slot:
               blank: "Impossible de faire une visite sans horaires !"
               required: "Impossible de faire une visite sans horaires !"
+            candidate_message:
+              too_short: "Votre message semble trop court. Merci de détailler davantage 🙏"
+              too_long: "Votre message semble trop long. Merci de synthétiser davantage 🙏"
             candidate_dossierfacile_link:
               invalid: "Le lien de votre dossier doit commencer par 'http://' ou 'https://'"
   date:
