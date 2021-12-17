@@ -1,10 +1,11 @@
 <p class="bolder primary">Rappel de l'annonce</p>
 <p><%= appointment.property.title%></p>
-<small><p><%= appointment.property.city%></p></small>
-<small><%= appointment.property.other_link%></small>
-</div>
+<p><small><%= appointment.property.city%></small></p>
+<p><small><%= appointment.property.other_link%></small></p>
 <%if appointment.property.property_picture.attached?%>
   <div class="appointment-picture">
     <%= image_tag appointment.property.property_picture, alt: 'property picture', class: "house-picture" %>
   </div>
 <% end %>
+</div>
+
