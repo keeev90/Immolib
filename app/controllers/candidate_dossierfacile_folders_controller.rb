@@ -11,7 +11,7 @@ class CandidateDossierfacileFoldersController < ApplicationController
     end
     if params[:candidate_dossierfacile_folder] && params[:candidate_dossierfacile_folder].size > 3000000
       @appointment.errors.add(:candidate_dossierfacile_folder, 'Fichier trop lourd')
-      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo."
+      flash[:warning] = "Fichier trop volumineux. Veuillez choisir un fichier de moins de 3 Mo 🙏"
       redirect_to appointment_path(@appointment)
       return
     end
