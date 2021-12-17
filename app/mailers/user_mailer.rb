@@ -3,9 +3,8 @@ class UserMailer < ApplicationMailer
  
   def welcome_email(user)
     @user = user 
-    @url  = "https://immolib.herokuapp.com/users/sign_in" 
     @subtitle = "Bienvenue 👋"
-    mail(to: @user.email, subject: "Bienvenue sur immolib ! 👋") 
+    mail(to: @user.email, subject: "Bienvenue sur immolib 👋") 
   end
 
   def new_property_validation_email(property)
@@ -25,8 +24,8 @@ class UserMailer < ApplicationMailer
   def candidate_folder_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
-    @subtitle = "Complétez votre dossier candidat 📋"
-    mail(to: @user.email, subject: "Dossier candidat incomplet 📋")
+    @subtitle = "Votre dossier de location est incomplet 📋"
+    mail(to: @user.email, subject: "Votre dossier de location est incomplet 📋")
   end
 
   def appointment_reminder_email(appointment)

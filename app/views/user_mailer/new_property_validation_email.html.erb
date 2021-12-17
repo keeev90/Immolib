@@ -1,12 +1,12 @@
-<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
+<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
 
-<p> Votre paiement a bien été reçu, merci pour votre confiance ! Nous vous confirmons la création de votre logement sur immolib. </p><br/>
+<p> Votre paiement a bien été reçu, merci pour votre confiance ! Nous vous confirmons la création de votre logement sur immolib. </p><br/><br/>
 
-<p> Dernière étape : <span class="bolder">partagez votre URL immolib</span> dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux. Les candidats n'auront plus qu'à suivre un parcours simple et rapide. </p>
-<p> A vous de jouer 😉 </p><br/>
+<p> Dernière étape : <span class="bolder">partagez votre URL immolib</span> dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux. Les candidats n'auront plus qu'à suivre un parcours simple et rapide. </p><br/>
+<p> A vous de jouer 😉 </p><br/><br/>
 
-<p> <%= link_to @property.go_visit_url, @property.go_visit_url %> </p><br/>
+<p> <%= link_to @property.go_visit_url, @property.go_visit_url %> </p><br/><br/>
 
-<p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre logement et accéder à la liste des candidats inscrits sur chaque créneau de visite.</p><br/>
+<p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre logement et accéder à la liste des candidats inscrits sur chaque créneau de visite.</p><br/><br/>
 
 <p> A bientôt ! </p>
