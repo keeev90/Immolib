@@ -7,6 +7,6 @@
   <p><%= @appointment.slot.property.instructions %></p><br/>
 <% end %>
 
-<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_path(@appointment) %>. </p><br/>
+<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %>. </p><br/>
 
 <p> Bonne visite ! </p>

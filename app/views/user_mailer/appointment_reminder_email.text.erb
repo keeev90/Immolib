@@ -8,6 +8,6 @@ Vous recevez cet email car vous avez une visite programmée demain à <%= @appoi
   <%= @appointment.slot.property.instructions %>
 <% end %>
 
-Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_path(@appointment) %>.
+Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %>.
 
 Bonne visite !
