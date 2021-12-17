@@ -98,6 +98,9 @@ class SlotsController < ApplicationController
   def update
     @property = Property.find(params[:property_id])
     @slot = Slot.find(params[:id])
+    @minutes = Array.new(12).each_with_index.map { |n, i| (i + 1) * 15 }
+    @date = @slot.start_date
+    @date_arr = ["", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
     @slot.update(slot_params)
     if @slot.save
       flash[:success] = "Le créneau de visite a été edité avec succès. Les candidats inscrits sont automatiquement prévenus ✌️"
