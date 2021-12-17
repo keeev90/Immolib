@@ -12,27 +12,29 @@
     <% if appointment.candidate.first_name && appointment.candidate.last_name %>
       <h3> <%= appointment.candidate.first_name %> <%= appointment.candidate.last_name %> </h3>
     <% else %>
-      <p> Ce candidat n'a pas encore renseigné son nom. </p>
+      <p><small><em> Ce candidat n'a pas encore renseigné son nom. </em></small></p>
     <% end %>
   </div>
 
   <div class="candidate-profile-details-section">
-    <p> Email : <%= appointment.candidate.email %> </p>
+    <p class="bolder"><i class="fas fa-at"></i> Email</p>
+    <p><%= appointment.candidate.email %></p>
   </div>
 
   <div class="candidate-profile-details-section">
+    <p class="bolder"><i class="far fa-comment"></i> Message du candidat</p>
     <% if appointment.candidate_message %>
-      <p class="bolder"> Message du candidat : </p>
-      <p><em><%= appointment.candidate_message %></em></p>
+      <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p> Ce candidat ne vous a pas encore adressé de message. </p>
+      <p><em> Ce candidat ne vous a pas encore adressé de message.</em></p>
     <% end %>
   </div>
+
   <% if appointment.slot.property.owner_project == "rent" %>
     <div class="candidate-profile-details-section">
 
       <% if appointment.candidate_dossierfacile_folder.attached? %>
-        <p class="bolder">Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>) :</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
         <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
         <div class="candidate-document">
           <p>
@@ -46,12 +48,14 @@
             <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
           <% end %>
         </div>
+
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-        <p class="bolder">Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>) :</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
         <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
         <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+      
       <% elsif appointment.candidate_documents.attached? %>
-        <p class="bolder"> Dossier du candidat : </p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
@@ -63,22 +67,24 @@
             </p>
           </div>
         <% end %>
+        
         <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>" class="<%=appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
         <% if appointment.candidate_documents.size < 5 %>
           <p><small>Documents transmis : <%= appointment.candidate_documents.size %> / 5</small></p>
         <% else %>
-          <p>Le dossier est complet.</p>
+          <p>Dossier complet</p>
         <% end %>
+      
       <% else %>
-        <p class="bolder">Dossier du candidat :</p>
-        <p>Ce candidat n'a pas encore transmis de document.</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
+        <p><em>Ce candidat n'a pas encore transmis de document.</em></p>
       <% end %>
     </div>
   <% end %>
 
   <%# Insérer ici les informations relatives aux documents %>
   <div class="candidate-profile-details-section">
-    <p> Ce dossier ne vous convient pas ? </p>
+    <p class="bolder"> Ce dossier ne vous convient pas ? </p>
     <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
     <%# Modifier le redirect_to suite à la suppression de l'Appointment %>
   </div>

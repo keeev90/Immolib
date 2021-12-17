@@ -1,7 +1,9 @@
-<p>Bonjour <%= @email %>!</p>
+<p> Bonjour,</p><br/>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p>Votre adresse email a été modifiée par <%= @resource.unconfirmed_email %>.</p>
+  <p>Votre adresse email a été modifiée par <%= @resource.unconfirmed_email %>.</p><br/>
 <% else %>
-  <p>Votre adresse email a été modifiée par <%= @resource.email %>.</p>
+  <p>Votre adresse email a été modifiée par <%= @resource.email %>.</p><br/>
 <% end %>
+
+<p> À bientôt sur immolib</p>
