@@ -3,10 +3,10 @@
 <p> Nous vous confirmons votre inscription à la visite du <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>) </p><br/>
 
 <% if @appointment.slot.property.owner_project == "rent" %>
-  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_path(@appointment) %> pour compléter votre dossier de location. </p><br/>
-  <p> N'hésitez pas à <%= link_to "compléter vos informations personnelles", user_path(@user) %> pour booster votre candidature.</p><br/>
+  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour compléter votre dossier de location. </p><br/>
+  <p> N'hésitez pas à <%= link_to "compléter vos informations personnelles", user_url(@user) %> pour booster votre candidature.</p><br/>
 <% else %>
-  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_path(@user) %> pour compléter votre profil.</p><br/>
+  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre profil.</p><br/>
 <% end %>
 
 <p> A bientôt ! </p>
