@@ -103,12 +103,6 @@ fr:
               only_integer: "Veuillez indiquer un nombre entier."
         appointment:
           attributes:
-            candidate:
-              blank: "Impossible de faire une visite sans visiteur !"
-              required: "Impossible de faire une visite sans visiteur !"
-            slot:
-              blank: "Impossible de faire une visite sans horaires !"
-              required: "Impossible de faire une visite sans horaires !"
             candidate_message:
               too_short: "Votre message semble trop court. Merci de détailler davantage 🙏"
               too_long: "Votre message semble trop long. Merci de synthétiser davantage 🙏"

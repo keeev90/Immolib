@@ -56,6 +56,17 @@ end
 
 duration = [15, 30, 45, 60]
 
+5.times do
+  slot = Slot.create!(
+    property: Property.all.sample,
+    start_date: Faker::Time.between(from: DateTime.now + 1, to: DateTime.now + 15),
+    duration: duration.sample,
+    max_appointments: rand(1..10)
+    )
+    puts "Slot with id #{slot.id} created"
+end
+
+# for testing task "Send reminder email the day before visit D-day"
 2.times do
   slot = Slot.create!(
     property: Property.all.sample,
@@ -66,33 +77,34 @@ duration = [15, 30, 45, 60]
     puts "Slot with id #{slot.id} created"
 end
 
-5.times do
+# for testing task "Send email alert to user two days before visit when partial candidate folder"
+2.times do
   slot = Slot.create!(
     property: Property.all.sample,
-    start_date: Faker::Time.between(from: DateTime.now + 2, to: DateTime.now + 15),
+    start_date: DateTime.now + 2,
     duration: duration.sample,
     max_appointments: rand(1..10)
     )
     puts "Slot with id #{slot.id} created"
 end
 
-# appointments
+# appointments (uncomment to create sample appointments)
 
-2.times do
+# 2.times do
 
-  # to avoid owner = candidate
-  owner = User.all.sample
-  candidate = User.all.sample
+#   # to avoid owner = candidate
+#   owner = User.all.sample
+#   candidate = User.all.sample
 
-  while owner == candidate
-    candidate = User.all.sample
-  end
+#   while owner == candidate
+#     candidate = User.all.sample
+#   end
 
-  appointment = Appointment.create!(
-    candidate: candidate,
-    slot: Slot.all.sample,
-    candidate_message: Faker::Lorem.paragraph_by_chars(number: 50 + rand(1..200))
-    )
-    puts "Appointment with id #{appointment.id} created"
-end
+#   appointment = Appointment.create!(
+#     candidate: candidate,
+#     slot: Slot.all.sample,
+#     candidate_message: Faker::Lorem.paragraph_by_chars(number: 50 + rand(1..200))
+#     )
+#     puts "Appointment with id #{appointment.id} created"
+# end
 
