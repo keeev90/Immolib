@@ -29,6 +29,26 @@ class User < ApplicationRecord
     user
   end
 
+  def past_appointments
+    past_appointments_array = []
+    self.appointments.each do |appointment|
+      if appointment.slot.start_date < DateTime.now
+        past_appointments_array << appointment
+      end
+    end
+    return past_appointments_array
+  end
+
+  def future_appointments
+    future_appointments_array = []
+    self.appointments.each do |appointment|
+      if appointment.slot.start_date > DateTime.now
+        future_appointments_array << appointment
+      end
+    end
+    return future_appointments_array
+  end
+
   private
 
   def welcome_send
