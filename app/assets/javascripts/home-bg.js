@@ -1,3 +1,4 @@
+const doc = document.documentElement;
 const intro = document.querySelector('.home-intro');
 const video = intro.querySelector('video');
 const text = intro.querySelector('.home-intro__text');
@@ -5,6 +6,8 @@ const anchorLink = intro.querySelector('a[href="#benefits-1"]')
 
 const sections = document.querySelectorAll('.benefits-section');
 const nav = document.querySelector('.navbar');
+
+const arrowUp = document.querySelector('.arrow-up');
 
 const controller = new ScrollMagic.Controller();
 
@@ -32,6 +35,22 @@ let textScene = new ScrollMagic.Scene({
   triggerHook: 0
 })
   .setTween(textAnim)
+  .addTo(controller);
+
+const arrowAnim = gsap.fromTo(arrowUp, {
+  opacity: 0
+}, {
+  duration: .1,
+  visibility: 'visible',
+  opacity: .6
+});
+
+let arrowScene = new ScrollMagic.Scene({
+  duration: 0,
+  triggerElement: anchorLink,
+  triggerHook: 0
+})
+  .setTween(arrowAnim)
   .addTo(controller);
 
 let accelAmount = 0.3;
@@ -96,3 +115,15 @@ anchorLink.addEventListener('click', e => {
     onComplete: controller.scrollToBenefits
   });
 });
+
+function pageScroll() {
+  const YOffset = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+  if (YOffset === 0) {
+    return;
+  } else {
+    window.scrollBy(0, -50);
+    scrolldelay = setTimeout(pageScroll,10);
+  }
+};
+
+arrowUp.addEventListener('click', pageScroll);
