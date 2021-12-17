@@ -48,7 +48,7 @@ They just have to click on the link to <span style='color: #006bd6;font-weight: 
 
 ## The Hacking Project
 
-[The Hacking Project Logo](https://camo.githubusercontent.com/25158daf208594d34b24e59489a27a086a179b65b1915d9ee1c759be99fdf3e2/68747470733a2f2f69302e77702e636f6d2f6368726f6d65626f6f6b6c6976652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f31312f7468655f6861636b696e675f70726f6a6563745f6c6f676f2e706e673f726573697a653d3632302532433137312673736c3d31)
+![The Hacking Project Logo](https://camo.githubusercontent.com/25158daf208594d34b24e59489a27a086a179b65b1915d9ee1c759be99fdf3e2/68747470733a2f2f69302e77702e636f6d2f6368726f6d65626f6f6b6c6976652e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f31312f7468655f6861636b696e675f70726f6a6563745f6c6f676f2e706e673f726573697a653d3632302532433137312673736c3d31)
 
 The Hacking project is an intensive tech bootcamp that works without teacher nor school. The strength of THP is its community. Indeed, THP relies on peer-learning to pass on skills and knowledges.<br/>
 To know more ===> https://www.thehackingproject.org/
