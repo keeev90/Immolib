@@ -2,6 +2,7 @@ class Property < ApplicationRecord
   #Callbacks
   before_create :randomize_property_id
   before_validation :create_stripe_product
+  after_commit :add_default_picture, on: [:create, :update]
   #after_create :send_new_property_validation_email
 
   #Associations
@@ -124,6 +125,18 @@ class Property < ApplicationRecord
       self.stripe_price_id = stripe_price.id
 
       self.save
+    end
+  end
+
+  def add_default_picture
+    unless property_picture.attached?
+      self.property_picture.attach(
+        io: File.open(
+          Rails.root.join('app', 'assets', 'images', 'property_placeholder.png')
+        ),
+        filename: 'property_placeholder.png',
+        content_type: 'image/png'
+      )
     end
   end
 end

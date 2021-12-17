@@ -11,8 +11,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.owner = current_user
-    #@property.property_picture.attach(params[:property_picture])
-    #raise 'coucou'
+    
     if @property.save
       flash[:success] = "La présentation de votre logement a été créée avec succès ✌️"
       redirect_to(property_slots_path(@property))
