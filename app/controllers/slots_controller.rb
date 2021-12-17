@@ -1,5 +1,7 @@
 class SlotsController < ApplicationController
-  before_action :authenticate_user!, only: [:book_candidate]
+  before_action :authenticate_user!, only: [:book_candidate, :new, :edit]
+  before_action :is_same_user_new, only: [:new]
+  before_action :is_same_user_edit, only: [:edit]
 
   # for new property only
 
@@ -151,4 +153,21 @@ class SlotsController < ApplicationController
     params.require(:slot).permit(:redirect_path)
   end
 
+  def is_same_user_new
+    @user = Property.find(params[:property_id]).owner
+    if @user == current_user
+    else
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
+      redirect_to root_path
+    end
+  end
+
+  def is_same_user_edit
+    @user = Slot.find(params[:id]).property.owner
+    if @user == current_user
+    else
+      flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
+      redirect_to root_path
+    end
+  end
 end
