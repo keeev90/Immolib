@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   #Callbacks
-  #after_create :welcome_send
+  after_create :welcome_send
   after_commit :add_default_picture, on: [:create, :update]
 
   # Include default devise modules. Others available are:
