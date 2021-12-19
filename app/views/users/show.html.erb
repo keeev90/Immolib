@@ -49,7 +49,6 @@
         <% if p.is_paid %>
           <div class="property">
             <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
-            <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
           </div>
         <% else %>
           <div class="property">

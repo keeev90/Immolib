@@ -1,10 +1,10 @@
 <div class="property-wrapper">
   <div class="property-wrapper__left">
-    <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
+  <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link" %>
     <div class="appointment-section">
       <h1 class="primary mb2">Mon logement</h1>
       <div class="mb2">
-        <p>💡 Partagez l'URL de votre logement immolib directement sur vos annonces en ligne</p>
+        <p>💡 Partagez l'URL de votre logement immolib directement sur vos annonces en ligne. Les candidats n'ont plus qu'à suivre un parcours simple et rapide !</p>
         <div class="links">
           <p class="link">
             <%= link_to @property.go_visit_url, @property.go_visit_url %>
@@ -53,6 +53,7 @@
         <p class="mb1 pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon URL Immolib (à partager sur vos annonces en ligne) : <%= link_to @property.go_visit_url %></p>
         <p><%= link_to "Éditer mon logement", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
         <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
+        <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email.</em></small>
       </div>
     </div>
   </div>
@@ -62,7 +63,7 @@
       <% if @property.owner_project == "rent" %>
         <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leur dossier de location</p>
       <% else %>
-        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits</p>
+        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leur profil</p>
       <% end %>
     </div>
     <%= render(
