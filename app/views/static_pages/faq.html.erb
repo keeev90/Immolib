@@ -1,24 +1,86 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retourner à l'accueil "), root_path, class: "return-link pt1 pl4" %>
 <div class="faq-page">
-  <h1 class="text-center pt1"> Foire Aux Questions </h1>
-  <div class="faq-wrapper mt2">
+  <h1 class="text-center mt2"> Foire Aux Questions </h1>
+  <div class="faq-wrapper mt2 mb2">
+
+    <h2 class="mb1 primary"> Nos services </h2>
+
     <div class="faq-element">
-      <p class="bolder faq-element__question"> Quels services propose immolib ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <p class="bolder faq-element__question"> Pourquoi immolib ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
       <div class="faq-element__answer">
-      <p> Lorem Ipsum Lorem Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem </p>
+        <p> Notre mission est de rendre la vente et la location immobilière plus simples et accessibles à tous les propriétaires, sans passer par une agence traditionnelle.</p>
+        <p> Nous pensons que les outils numériques peuvent permettre aux propriétaires de se concentrer sur l'essentiel : créer une relation de confiance avec leurs acheteurs ou bailleurs.</p>
+      </div>
+    </div>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Quels services proposez-vous ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> Nous proposons 3 services complémentaires :</p>
+        <p><i class="fas fa-caret-right"></i> Un outil de prise de rendez-vous pour les visites immobilières</p>
+        <p><i class="fas fa-caret-right"></i> Un outil de collecte et gestion des dossiers de location </p>
+        <p><i class="fas fa-caret-right"></i> Des relances automatiques pour éviter les rendez-vous manqués et les dossiers incomplets </p>
       </div>
     </div>
 
     <div class="faq-element">
       <p class="bolder faq-element__question"> À qui s'adresse immolib ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
       <div class="faq-element__answer">
-      <p> Lorem Ipsum </p>
+        <p> Nos services s'adressent principalement aux particuliers propriétaires de biens à vendre ou à louer.</p>
+        <p> Ils s'adressent également à des professionnels indépendants du secteur de l'immobilier.</p>
       </div>
     </div>
 
     <div class="faq-element">
-      <p class="bolder faq-element__question"> Combien coûte immolib ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <p class="bolder faq-element__question"> Etes-vous une agence immobilière ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
       <div class="faq-element__answer">
-      <p> Lorem Ipsum Lorem Lorem Ipsum </p>
+        <p> Non, nous ne sommes pas une agence immobilière et nous ne comptons pas le devenir. </p>
+        <p> Au contraire, nous souhaitons donner aux propriétaires les outils nécessaires pour vendre ou louer leur logement en toute simplicité, sans passer par une agence traditionnelle. </p>
+      </div>
+    </div>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Combien coûte l'accès à vos services ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> L'accès à nos services est au tarif fixe et unique de 49,99€ par logement enregistré sur notre plateforme. </p>
+        <p> Le paiement s'effectue en ligne de manière sécurisée via la plateforme <%= link_to "Stripe", "https://stripe.com/fr" %> </p>
+        <p> Nous ne prennons pas de pourcentage sur le montant de la vente ni sur le loyer. </p>
+        <p> Aucun paiement n'est demandé à vos candidats.</p>
+      </div>
+    </div>
+
+    <h2 class="mb1 primary"> Confidentialité </h2>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Que deviennent les documents candidats téléchargés sur immolib ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> Les documents transmis via notre plateforme sont stockés temporairement de manière sécurisée et anonymisée sur <%= link_to "Amazon S3", "https://aws.amazon.com/fr/s3/" %> </p>
+        <p> Ils peuvent être modifiés ou supprimés à tout moment.</p>
+        <p> Ils sont automatiquement supprimés après chaque suppression d'un compte, d'un logement ou d'une candidature.</p>
+      </div>
+    </div>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Comment sont utilisées mes données personnelles renseignées sur immolib? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> Vos données personnelles et celles relatives aux logements sont strictement utilisées dans le cadre de nos services. </p>
+        <p> Aucune donnée n'est transmise à des tiers. </p>
+      </div>
+    </div>
+
+    <h2 class="mb1 primary"> Gestion de votre compte </h2>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Comment modifier mon mot de passe ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> Rendez-vous <%= link_to "ici", new_user_password_path %> </p>
+      </div>
+    </div>
+
+    <div class="faq-element">
+      <p class="bolder faq-element__question"> Comment supprimer mon compte ? <i class="fas fa-chevron-down primary faq-btn"></i></p>
+      <div class="faq-element__answer">
+        <p> <p> Connectez-vous et rendez-vous dans votre espace immolib.</p>
       </div>
     </div>
 

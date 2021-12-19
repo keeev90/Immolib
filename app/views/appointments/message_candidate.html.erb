@@ -18,9 +18,13 @@
     <div class="text-center pt1">
       <p><em>ℹ️  A l'approche du jour J, vous recevrez un email avec toutes les modalités logistiques pour la visite.</em></p> 
       <br/>
-      <p><em>💡 Je vous invite à <span class="bolder">compléter votre profil</span> : avec une photo c’est toujours plus sympa !
-        <span class="bolder">En cas d’imprévu, merci de bien vouloir modifier ou annuler votre inscription directement depuis votre espace en ligne.</span></em>
-      </p>
+      <% if @appointment.property.owner_project == "rent" %>
+        <p><em>💡 Je vous invite à <span class="bolder">compléter votre profil et votre dossier de location</span> depuis votre espace immolib</em></p>
+      <% else %>
+        <p><em>💡 Je vous invite à <span class="bolder">compléter votre profil</span> : avec une photo c’est toujours plus sympa !</em></p>
+      <% end %>  
+      <br/>
+      <p><em><span class="bolder">En cas d’imprévu, merci de bien vouloir modifier ou annuler votre rendez-vous directement depuis votre espace immolib</span></em></p>
     </div>
   </div>
 </div>

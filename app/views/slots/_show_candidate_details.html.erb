@@ -82,10 +82,9 @@
     </div>
   <% end %>
 
-  <%# Insérer ici les informations relatives aux documents %>
   <div class="candidate-profile-details-section">
     <p class="bolder"> Ce dossier ne vous convient pas ? </p>
     <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
-    <%# Modifier le redirect_to suite à la suppression de l'Appointment %>
+    <small><em>En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous.</em></small>
   </div>
 </div>
