@@ -13,6 +13,8 @@ const controller = new ScrollMagic.Controller();
 
 gsap.registerPlugin(ScrollToPlugin);
 
+video.pause();
+
 videoDuration = 3800;
 
 let videoScene = new ScrollMagic.Scene({
