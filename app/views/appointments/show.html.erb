@@ -15,6 +15,7 @@
   </div>
   <div class="container">
     <div class="appointment-section">
+      <p class="bolder primary">Mon message au propriétaire</p>
       <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
     </div>
   </div>
@@ -25,4 +26,4 @@
     </div>
   </div>
   <%end%>
-  <p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
+  <p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>

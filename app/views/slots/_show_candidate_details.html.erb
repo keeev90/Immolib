@@ -12,7 +12,7 @@
     <% if appointment.candidate.first_name && appointment.candidate.last_name %>
       <h3> <%= appointment.candidate.first_name %> <%= appointment.candidate.last_name %> </h3>
     <% else %>
-      <p><small><em> Ce candidat n'a pas encore renseigné son nom. </em></small></p>
+      <p><small><em> Ce candidat n'a pas encore renseigné son nom </em></small></p>
     <% end %>
   </div>
 
@@ -26,7 +26,7 @@
     <% if appointment.candidate_message %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p><em> Ce candidat ne vous a pas encore adressé de message.</em></p>
+      <p><small><em> Ce candidat ne vous a pas encore adressé de message</em></small></p>
     <% end %>
   </div>
 
@@ -35,7 +35,7 @@
 
       <% if appointment.candidate_dossierfacile_folder.attached? %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
-        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
+        <p><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires</em></small></p>
         <div class="candidate-document">
           <p>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
@@ -51,7 +51,7 @@
 
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
-        <small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small>
+        <p><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires</em></small></p>
         <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
       
       <% elsif appointment.candidate_documents.attached? %>
@@ -77,14 +77,16 @@
       
       <% else %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
-        <p><em>Ce candidat n'a pas encore transmis de document.</em></p>
+        <p><small><em>Ce candidat n'a pas encore transmis de document</em></small></p>
       <% end %>
     </div>
   <% end %>
 
-  <div class="candidate-profile-details-section">
-    <p class="bolder"> Ce dossier ne vous convient pas ? </p>
-    <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."} %>
-    <small><em>En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous.</em></small>
+  <hr class="mt2 mb2"/>
+
+  <div class="candidate-profile-details-section text-center">
+    <p> Ce dossier ne vous convient pas ? </p>
+    <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-primary small-btn" %>
+    <p><small><em>En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous</em></small></p>
   </div>
 </div>

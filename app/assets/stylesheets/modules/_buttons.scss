@@ -29,7 +29,17 @@
   padding: 1rem 1.5rem;
 }
 
+.small-btn {
+  font-size: 0.7em;
+  padding: 0.25rem 0.75rem;
+}
+
 .white-btn {
+  color: white;
+}
+
+.info-btn {
+  background-color: $grey;
   color: white;
 }
 
