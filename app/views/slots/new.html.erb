@@ -25,7 +25,9 @@
       </div>
       <br/>
       <div class="form-group">
-        <p>Je souhaite répéter ce créneau <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %> fois d'affilée <small><em>(laissez à "1" si vous ne souhaitez pas le répéter)</em></small></p>
+        <%= f.label "Nombre de répétition(s) du créneau d'affilée", class: "form-label" %>
+        <p><small><em>Laissez à "1" si vous ne souhaitez pas répéter ce créneau</em></small></p>
+        <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %> 
       </div>
       
       <% if @redirect_path_value == "new_property" %>
