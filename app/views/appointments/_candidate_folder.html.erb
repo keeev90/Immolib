@@ -70,7 +70,7 @@
             <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
           </div>
           <div class="text-center">
-            <%= f.submit "Compléter mon dossier", class: "btn white-btn bg-primary" %>
+            <%= f.submit "Envoyer mes documents", class:"btn white-btn bg-primary small-btn" %>
           </div>
         <%end%>
       </div>
@@ -110,7 +110,7 @@
           <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true, class: "mw80 text-center" %>
         </div>
         <div class="text-center">
-          <%= f.submit "Envoyer le lien de mon dossier", class: "btn white-btn bg-primary" %>
+          <%= f.submit "Envoyer le lien de mon dossier", class:"btn white-btn bg-primary small-btn" %>
         </div>
       <%end%>
     </div>
@@ -141,7 +141,7 @@
           <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Envoyer votre dossier en format pdf", help: "Vous pouvez glisser-déposer le fichier ici" %>
         </div>
         <div class="text-center">
-          <%= f.submit "Envoyer mon dossier au format PDF", class: "btn white-btn bg-primary" %>
+          <%= f.submit "Envoyer mon dossier au format PDF", class:"btn white-btn bg-primary small-btn" %>
         </div>
       <%end%>
     </div>

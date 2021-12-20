@@ -67,7 +67,7 @@
   <% if @user.appointments.count > 0 %>
     <h2> Mes candidatures </h2>
 
-    <h3> Visites à venir </h3>
+    <h3 class="mt2"> Visites à venir </h3>
     <div class="properties-wrapper">
     <% if @user.future_appointments.size > 0 %>
       <% @user.future_appointments.each do |appointment| %>

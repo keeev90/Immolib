@@ -51,8 +51,8 @@
           <p><em><%= simple_format(@property.instructions) %></em></p> 
         <% end %>
         <p class="mb1 pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon URL Immolib (à partager sur vos annonces en ligne) : <%= link_to @property.go_visit_url %></p>
-        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class: "btn white-btn bg-primary" %></p>
-        <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class: "btn white-btn bg-warning" %></p>
+        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary small-btn" %></p>
+        <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn"%></p>
         <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email.</em></small>
       </div>
     </div>
@@ -61,16 +61,16 @@
     <h1 class="primary mb2">Mes visites</h1>
     <div class="mb2">
       <% if @property.owner_project == "rent" %>
-        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leur dossier de location</p>
+        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location</p>
       <% else %>
-        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leur profil</p>
+        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs profils</p>
       <% end %>
     </div>
     <%= render(
       partial: 'calendar',
       locals: { instructions: true }
     ) %>
-    <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class: "btn white-btn bg-primary" %>
+    <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary small-btn" %>
   </div>
 </div>
 
