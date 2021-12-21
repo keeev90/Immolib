@@ -91,6 +91,12 @@ nav {
   }
 }
 
+.item-active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.1875rem;
+  padding: 0.3em 0.6em;
+}
+
 .hamburger-btn {
   position: fixed;
   top: 2rem;

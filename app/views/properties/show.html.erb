@@ -4,7 +4,8 @@
     <div class="appointment-section">
       <h1 class="primary mb2">Mon logement</h1>
       <div class="mb2">
-        <p>💡 Partagez l'URL de votre logement immolib directement sur vos annonces en ligne. Les candidats n'ont plus qu'à suivre un parcours simple et rapide !</p>
+        <p>💡 <span class="bolder">Partagez l'URL de votre logement immolib directement sur vos annonces en ligne ou réseaux sociaux.</span></p>
+        <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide !</small>
         <div class="links">
           <p class="link">
             <%= link_to @property.go_visit_url, @property.go_visit_url %>
@@ -21,7 +22,7 @@
         <div class="pic property-picture">
           <%= image_tag @property.property_picture, alt: 'property picture' %>
           <p class="property-picture--change"> Modifier </p>
-          <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture"  %>
+          <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture pt1"  %>
         </div>
       <%else%>
         <div class="pic property-picture no-picture">
@@ -40,7 +41,7 @@
         <h3 class="mb1"> <%= @property.city %> </h3>
         <p><i class="far fa-arrow-alt-circle-right"></i> Mon  annonce en ligne : </p>
         <% if @property.other_link == "" %>
-          <p class="mb1"><em>Vous n'avez pas indiqué de lien</em></p>
+          <p class="mb1"><em>Vous n'avez pas indiqué de lien vers une annonce en ligne (ex: PaP)</em></p>
         <% else %>
           <p class="mb1"><%= @property.other_link %> </p>
         <% end %>
@@ -50,30 +51,27 @@
         <% else %>
           <p><em><%= simple_format(@property.instructions) %></em></p> 
         <% end %>
-        <p class="mb1 pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon URL Immolib (à partager sur vos annonces en ligne) : <%= link_to @property.go_visit_url %></p>
-        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary small-btn" %></p>
+        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary" %></p>
         <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn"%></p>
-        <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email.</em></small>
+        <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
       </div>
     </div>
   </div>
   <div class="property-wrapper__right">
-    <h1 class="primary mb2">Mes visites</h1>
-    <div class="mb2">
-      <% if @property.owner_project == "rent" %>
-        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location</p>
-      <% else %>
-        <p>💡 Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs profils</p>
-      <% end %>
+    <div class="appointment-section">
+      <h1 class="primary mb2">Mes visites</h1>
+      <div class="mb2">
+        <% if @property.owner_project == "rent" %>
+          <p>💡 <span class="bolder">Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location<span class="bolder"></p>
+        <% else %>
+          <p>💡 <span class="bolder">Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs profils<span class="bolder"></p>
+        <% end %>
+      </div>
+      <%= render(partial: 'calendar') %>
+      <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary" %>
     </div>
-    <%= render(
-      partial: 'calendar',
-      locals: { instructions: true }
-    ) %>
-    <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary small-btn" %>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-<%= javascript_include_tag 'calendar-reveal.js' %>
 <%= javascript_include_tag 'clipboard' %>
