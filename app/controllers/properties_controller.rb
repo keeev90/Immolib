@@ -61,8 +61,11 @@ class PropertiesController < ApplicationController
     if current_user.is_admin?
       flash[:success] = "Le logement a bien été supprimé 👌"
       redirect_to admin_root_path
-    else  
+    elsif @property.is_paid
       flash[:success] = "Votre logement a bien été supprimé. Les candidats inscrits à une visite à venir sont automatiquement prévenus 👌"
+      redirect_to user_path(current_user)
+    else 
+      flash[:success] = "Votre logement a bien été supprimé 👌"
       redirect_to user_path(current_user)
     end
   end
