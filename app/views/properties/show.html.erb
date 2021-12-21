@@ -51,8 +51,8 @@
         <% else %>
           <p><em><%= simple_format(@property.instructions) %></em></p> 
         <% end %>
-        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary" %></p>
-        <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn"%></p>
+        <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
+        <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
         <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
       </div>
     </div>
@@ -68,7 +68,7 @@
         <% end %>
       </div>
       <%= render(partial: 'calendar') %>
-      <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary" %>
+      <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
     </div>
   </div>
 </div>

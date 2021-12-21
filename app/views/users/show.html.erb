@@ -53,7 +53,7 @@
           </div>
         <% else %>
           <div class="property">
-            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_index_path(price: 49.99, property: p), remote: true, method: :post %>
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_index_path(price: 29.99, property: p), remote: true, method: :post %>
             <p class="text-center pt1"> <%= link_to "Supprimer ce logement", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
           </div>
         <% end %>
