@@ -32,21 +32,21 @@
     .calendar-wrapper {
       position: relative;
 
-      .instructions {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(255, 255, 255, .92);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    //  .instructions {
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     left: 0;
+    //     background-color: rgba(255, 255, 255, 0.651);
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
 
-        p {
-          color: $primary;
-        }
-      }
+    //     p {
+    //       color: $primary;
+    //     }
+    //   }
     }
 
     &__date {

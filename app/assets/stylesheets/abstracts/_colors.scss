@@ -12,6 +12,13 @@
   background-color: $secondary!important;
 }
 
+.info {
+  color: $info!important;
+}
+.bg-info {
+  background-color: $info!important;
+}
+
 .blue {
   color: $blue!important;
 }
@@ -45,4 +52,11 @@
 }
 .bg-warning {
   background-color: $warning!important;
+}
+
+.danger {
+  color: $danger!important;
+}
+.bg-warning {
+  background-color: $danger!important;
 }

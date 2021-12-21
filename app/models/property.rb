@@ -3,7 +3,7 @@ class Property < ApplicationRecord
   before_create :randomize_property_id
   before_validation :create_stripe_product
   after_commit :add_default_picture, on: [:create, :update]
-  after_create :send_new_property_validation_email
+  #after_create :send_new_property_validation_email
 
   #Associations
   belongs_to :owner, class_name: "User"
@@ -24,17 +24,17 @@ class Property < ApplicationRecord
 
   def go_visit_url
     @id = self.id
-    return "https://immolib.herokuapp.com/properties/#{@id}/go-visit"
+    return "immolib.herokuapp.com/properties/#{@id}/go-visit"
   end
 
   def go_visit_url_dev
     @id = self.id
-    return "https://immolib-dev.herokuapp.com/properties/#{@id}/go-visit"
+    return "immolib-dev.herokuapp.com/properties/#{@id}/go-visit"
   end
 
   def go_visit_url_local
     @id = self.id
-    return "http://localhost:3000/properties/#{@id}/go-visit"
+    return "localhost:3000/properties/#{@id}/go-visit"
   end
 
   def already_has_appointment?(user)
@@ -118,7 +118,7 @@ class Property < ApplicationRecord
 
       stripe_price = Stripe::Price.create({
         product: stripe_product.id,
-        unit_amount: 4999,
+        unit_amount: 2999,
         currency: 'eur'
       })
 

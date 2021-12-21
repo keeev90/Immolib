@@ -1,8 +1,5 @@
-<p class="bolder primary">Mon dossier de location</p>
-
 <div class="candidate-folder-wrapper">
   <h2>Option 1 : téléchargez directement les documents demandés</h2>
-  <small><em>Vos documents sont strictement utilisés dans le cadre de votre réponse à cette annonce immobilière.</em></small> 
 
   <div class="option1-wrapper">
     <div class="option1-wrapper__part1">
@@ -14,12 +11,12 @@
   </div>
 
   <p class="bolder mt2">Mon dossier de location</p>
-  <p>Une fois complet, votre dossier est automatiquement transmis au propriétaire 👌</p>
+  <p class="mb1">Une fois complet, votre dossier est automatiquement transmis au propriétaire 👌</p>
 
   <div class="option1-wrapper__part2 pt1">
 
     <div class="option1-wrapper__part2__left">
-      <p class="text-center mb1">Liste des documents à transmettre :</p>
+      <p class="text-center mb1">Liste des documents à transmettre</p>
 
       <p>☑️ 1 pièce d'identité recto-verso</p>
       <small>carte nationale d’identité, passeport, permis de conduire</small>
@@ -37,7 +34,7 @@
     </div>
 
     <div class="option1-wrapper__part2__right">
-      <p class="text-center">Vos documents :</p>
+      <p class="text-center">Vos documents</p>
       <div>
         <% if @appointment.candidate_documents.attached? %>
           <div class="candidate-documents-wrapper mt1">
@@ -51,7 +48,6 @@
               </div>
             <% end %>
           </div>
-
           <div class="candidate-document-number pt1">
             <% if @appointment.candidate_documents.size < 5 %>
               <small class="warning bolder"> Dossier incomplet </small>
@@ -61,6 +57,10 @@
             <% end %>
             <p><progress id="file" max="5" value="<%= @appointment.candidate_documents.size%>" class="<%= @appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
             <p><small>Document(s) transmis : <%= @appointment.candidate_documents.size %> / 5</small></p>
+          </div>
+        <% else %>
+          <div class="candidate-document-number">
+            <small>Aucun fichier transmis. Merci d'envoyer vos documents aux formats autorisés 🙏</small>
           </div>
         <% end %>
       </div>
@@ -81,7 +81,7 @@
 
 <div class="option2-wrapper pt1">
   <h2>Option 2 : transmettez votre dossier via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %></h2>
-  <p class="mw80"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
+  <p class="mw80">DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires</p>
 
   <div class="option2-wrapper__part1">
     <p class="bolder mt2">Pourquoi DossierFacile ?</p>

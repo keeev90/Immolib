@@ -8,11 +8,11 @@
       <% if current_user && current_user.is_admin? %>
         <%= link_to 'Administration', admin_root_path %>
       <% end %>
-      <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
       <% if user_signed_in? %>
-        <%= link_to 'Mon espace immolib', user_path(current_user), class: 'item' %>
+        <%= link_to 'Mon espace immolib', user_path(current_user), class: 'item item-active' %>
         <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
       <% else %>
+        <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
         <p class="item connection-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
         <div class="navbar__items__connection__menu">
           <%= link_to 'Se connecter', new_user_session_path, class: 'item primary' %>
@@ -33,11 +33,11 @@
       <% if current_user && current_user.is_admin? %>
         <%= link_to 'Administration', admin_root_path %>
       <% end %>
-      <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
       <% if user_signed_in? %>
         <%= link_to 'Mon espace immolib', user_path(current_user), class: 'item' %>
         <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: 'item' %>
       <% else %>
+        <%= link_to 'Organiser des visites', welcome_user_path, class: 'item' %>
         <p class="item connection-btn"> Connexion <i class="fas fa-chevron-down"></i></p>
         <div class="navbar__items__connection__menu">
           <%= link_to 'Se connecter', new_user_session_path, class: 'item' %>

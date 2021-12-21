@@ -41,9 +41,10 @@
   </div>
   <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
 
-  <h2> Mes logements </h2>
-
   <% if @user.properties.count > 0 %>
+
+    <h2> Mes logements </h2>
+
     <div class="properties-wrapper">
       <% @user.properties.each do |p| %>
         <% if p.is_paid %>
@@ -52,19 +53,23 @@
           </div>
         <% else %>
           <div class="property">
-            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_index_path(price: 49.99, property: p), remote: true, method: :post %>
-            <p class="text-center"> <%= link_to "Supprimer cette annonce", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
+            <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: true}), checkout_index_path(price: 29.99, property: p), remote: true, method: :post %>
+            <p class="text-center pt1"> <%= link_to "Supprimer ce logement", property_path(p), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}%> </p>
           </div>
         <% end %>
       <% end %>
     </div>
 
+    <h2> Vous souhaitez vendre ou louer un autre logement&nbsp;? </h2>
+    <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
+
   <% else %>
-    <p><em>Vous n'avez pas de logement enregistré sur immolib.</em></p>
-    <p><%= link_to "Organiser des visites", new_property_path, class: "btn white-btn bg-primary" %></p>
+    <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
+    <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
   <% end %>
 
   <% if @user.appointments.count > 0 %>
+
     <h2> Mes candidatures </h2>
 
     <h3 class="mt2"> Visites à venir </h3>
@@ -74,7 +79,8 @@
       <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
       <% end %>
     <% else %>
-      <p><em>Vous n'avez pas de visites à venir</em></p>
+      <em>Aucune visite à venir.</em>
+      <em>Vous souhaitez répondre à une annonce&nbsp;? Rendez-vous directement sur l’annonce en ligne (Leboncoin, PaP, SeLoger, etc.) et cliquez sur l’URL immolib renseignée par le propriétaire.</p>
     <% end %>
     </div>
 
@@ -91,7 +97,7 @@
     </div>
     
   <% else %>
-    <h2> Vous souhaitez répondre à une annonce ? </h2>
-    <p class="mb2">Rendez-vous directement sur une annonce en ligne (ex : PaP) et cliquez sur l’URL immolib renseignée par le propriétaire.</p>
+    <h2> Vous souhaitez répondre à une annonce&nbsp;? </h2>
+    <p class="mb2">Rendez-vous directement sur l’annonce en ligne (Leboncoin, PaP, SeLoger, etc.) et cliquez sur l’URL immolib renseignée par le propriétaire.</p>
   <% end %>
 </div>

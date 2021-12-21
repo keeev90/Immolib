@@ -1,9 +1,4 @@
 <div class='calendar-wrapper'>
-  <% if instructions %>
-    <div class='instructions'>
-      <p>Cliquez sur un créneau pour en afficher le détail</p>
-    </div>
-  <% end %>
   <%= week_calendar(events: @property.slots, attribute: :start_date) do |date, slots| %>
     <div class="property-wrapper__right__date">
       <%= date.strftime("%d") %> <%= @date_arr[date.strftime("%m").to_i]%>
