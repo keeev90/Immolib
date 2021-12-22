@@ -1,25 +1,25 @@
 <div class="slot-candidate-wrapper">
   <div class="slot-candidate-wrapper__title pt1 section-title">
-    <h1>Étape 1/3 : sélection d'un créneau disponible</h1>
-    <h2>Sélectionnez un créneau de visite parmi les propositions disponibles.</h2>
-    <p>Si aucun d’eux ne vous convient, des créneaux peuvent se libérer en cas de modification ou annulation de candidats.</p>
+    <h1>Étape 1/2 : sélection d'un créneau disponible</h1>
+    <h2>Sélectionnez un créneau de visite parmi les propositions disponibles</h2>
+    <p>Vous pourrez le modifier à tout moment depuis votre espace immolib</p>
   </div>
-  <div class="slot-candidate-wrapper__calendar mt2">
-    <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
+  <div class="container text-center">
+    <div class="slot-candidate-wrapper__calendar mt2">
+      <%= render partial:"appointments/candidate_calendar", locals: {property: @property, slots: @slots, date_arr: @date_arr} %>
 
-    <% if !user_signed_in? %>
-      <div class=" text-center"> 
-        <%= link_to "Inscrivez-vous pour sélectionner un créneau", book_now_property_path(@property), class:"btn white-btn bg-primary" %>
-      </div>
-    <% end %>
+      <% if !user_signed_in? %>
+        <div class=" text-center"> 
+          <%= link_to "Inscrivez-vous pour sélectionner un créneau", book_now_property_path(@property), class:"btn white-btn bg-primary" %>
+        </div>
+      <% end %>
 
-    <% if user_signed_in? && @property.candidates.include?(current_user) %>
-      <div class="center-btn">
-        <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary center-btn" %>
-      </div>
-    <% else %>
+      <% if user_signed_in? && @property.candidates.include?(current_user) %>
+        <div class="center-btn">
+          <%= link_to "Valider et passer à l'étape suivante", send_message_property_path(@property), class: "btn white-btn bg-primary center-btn" %>
+        </div>
+      <% end %>
 
-    <% end %>
-
+    </div>
   </div>
 </div>

@@ -1,31 +1,45 @@
 
 <% if !user_signed_in? %>
-    <div class="property-wrapper__right__slot slot-not-connected">
+  <div class="property-wrapper__right__slot slot-not-connected">
     <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
     <% if slot.is_past? %>
       <p> Terminé </p>
+    <% elsif slot.available? %>
+      <p> <%= slot.availability %> <%= slot.availability>1 ? "places disponibles" : "place disponible" %> </p>
     <% else %>
-    <p> <%= slot.availability %> <%= slot.availability>1 ? "places disponibles" : "place disponible" %> </p>
+      <p> Complet </p>
     <% end %>
   </div>
+
 <% elsif slot.available? %>
   <div class="property-wrapper__right__slot <%= slot.candidates && slot.candidates.include?(current_user) ? ("current") : (nil) %>">
     <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
+    <% if slot.property.owner == current_user %>
+      <p class="bolder"> <%= slot.candidates.size %> <%= slot.candidates.size > 1 ? "candidats" : "candidat" %> </p>
+    <% end %>
     <% if slot.is_past? %>
       <p> Terminé </p>
+      <% if slot.candidates && slot.candidates.include?(current_user) %>
+        <p> Vous avez participé à cette visite </p>
+      <% end %>
+    <% elsif slot.candidates && slot.candidates.include?(current_user) %>
+      <p> Vous participez à cette visite </p>
     <% else %>
-    <p> <%= slot.availability %> <%= slot.availability>1 ? "places disponibles" : "place disponible" %> </p>
-    <% end %>
-    <% if slot.candidates && slot.candidates.include?(current_user)%>
-      <p> Vous participez à cette visite. </p>
+      <p> <%= slot.availability %> <%= slot.availability>1 ? "places disponibles" : "place disponible" %> </p>
     <% end %>
   </div>
+
 <% else %>
   <div class="property-wrapper__right__slot full <%= slot.candidates && slot.candidates.include?(current_user) ? ("current") : (nil) %>">
     <p> <%= slot.start_date.strftime("%H:%M") %> - <%= slot.end_date.strftime("%H:%M") %></p>
-    <p> Ce créneau est complet. </p>
+    <% if slot.property.owner == current_user %>
+      <p class="bolder"> <%= slot.candidates.size %> <%= slot.candidates.size > 1 ? "candidats" : "candidat" %> </p>
+    <% end %>
     <% if slot.candidates && slot.candidates.include?(current_user) && slot.property.owner != current_user %>
-      <p> Vous participez à cette visite. </p>
+      <p> Vous participez à cette visite </p>
+    <% else %>
+    <p> Complet </p>
     <% end %>
   </div>
+
 <% end %>
