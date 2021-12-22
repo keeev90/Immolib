@@ -5,7 +5,7 @@
 <% end %>
 <div class="form-page">
   <div class="form-page__form">
-    <h3>Ajoutez un nouveau créneau de visite</h3>
+    <h3>Ajouter un nouveau créneau de visite</h3>
     <h6><em>Vous pourrez modifier ou supprimer ce créneau à tout moment.</em></h6>
     <br/>
     <div class='form-group'>
@@ -20,14 +20,14 @@
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum par créneau *", class: "form-label" %>
+        <%= f.label "Nombre de candidats maximum *", class: "form-label" %>
         <%= f.number_field :max_appointments, value: 1, min: 1, max: 50, required: true %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de répétition(s) du créneau d'affilée", class: "form-label" %>
+        <%= f.label "Nombre de répétitions successives du créneau", class: "form-label" %>
         <p><small><em>Laissez à "1" si vous ne souhaitez pas répéter ce créneau</em></small></p>
-        <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %> 
+        <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %>
       </div>
       
       <% if @redirect_path_value == "new_property" %>

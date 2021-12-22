@@ -45,7 +45,7 @@ class SlotsController < ApplicationController
       new_start_date = new_start_date + duration.minutes
     end
     if one_is_success
-      flash[:success] = "Le créneau de visite a été ajouté avec succès ✌️"
+      flash[:success] = "Créneau(x) de visite ajouté(s) avec succès ✌️"
       if redirect_path_value == "new_property" #when new immolib property process
         redirect_to(property_slots_path(property))
       else #when in "mon espace immolib"
@@ -65,10 +65,11 @@ class SlotsController < ApplicationController
     slot = Slot.find(params[:id])
     property = slot.property
     slot.destroy
-    flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible et les candidats inscrits sont automatiquement prévenus 👌"
     if params[:new_property]
+      flash[:success] = "Le créneau a bien été supprimé 👌"
       redirect_to property_slots_path(property)
     else
+      flash[:success] = "Le créneau a bien été supprimé. Il ne sera plus accesible et les candidats inscrits sont automatiquement prévenus 👌"
       redirect_to(property_path(property))
     end
   end

@@ -6,7 +6,7 @@
 
 <div class="new-slot-wrapper pt4 pl4 pr4">
   <div class="new-slot-wrapper__content text-center">
-    <%= link_to "Ajoutez un créneau", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn white-btn bg-primary" %>
+    <%= link_to "Ajouter un créneau", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn white-btn bg-primary" %>
     <% if @slots.count > 0 %>
       <%= render( partial: 'created_property_slots', locals: { slots: @slots, property: @property } ) %>
     <% end %>

@@ -3,7 +3,7 @@
   
   <hr/>
   <h1 class="mb2">
-    Dernière étape&nbsp;: copier-coller votre URL immolib dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux
+    Dernière étape&nbsp;: partagez votre lien immolib dans vos annonces en ligne (ex : PaP) ou sur vos réseaux sociaux
   </h1>
   <h3 class="bolder">
     Les candidats n'auront plus qu'à suivre un parcours
@@ -11,13 +11,11 @@
   </h3>
   <p>A vous de jouer 😉</p>
 
-  <div class="links">
-    <p class="link">
-      <%= link_to @property.go_visit_url, @property.go_visit_url %>
+  <div class="url-container">
+    <p class="link"> 
+      <a><%= @property.go_visit_url %></a> 
       <i class="far fa-copy">
-        <span class="copy-text">
-          Copier l'URL
-        </span>
+        <span class="copy-text"> Copier le lien </span>
       </i>
     </p>
   </div>
