@@ -1,24 +1,28 @@
 <div class="welcome-page">
 
-  <h1 class="primary"> Bienvenue&nbsp;! </h1>
-  <div class="text-center">
+  <div class="container">
+    <h1 class="primary"> Bienvenue&nbsp;! </h1>
+    <div class="text-center">
       <h2 class="primary">Vous souhaitez vendre ou louer un bien immobilier&nbsp;?</h2>
       <%= link_to "Organisez vos visites dès maintenant",  new_property_path, class: "btn big-btn bg-primary white-btn" %>
+    </div>
   </div>
 
-  <div class="text-center mt2 mb2">
-    <h3 class="bolder text-center subtitle mb1"> Comment ça marche&nbsp;?</h3>
-    <div class="mb1">
-      <p class="bolder">1. Je renseigne les infos clés de mon logement à vendre ou à louer</p>
-      <small> Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce </small>
-    </div>
-    <div class="mb1">
-      <p class="bolder">2. Je sélectionne les créneaux de visites à proposer à mes candidats</p>
-      <small> La disponibilité des créneaux est mise à jour automatiquement après chaque candidature </small>
-    </div>
-    <div class="mb1">
-      <p class="bolder">3. J'intègre mon URL immolib directement dans mes annonces en ligne</p>
-      <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide ! </small>
+  <div class="container">
+    <div class="appointment-section">
+      <h2 class="bolder primary">Comment ça marche&nbsp;?</h2>
+      <div class="mb1">
+        <p class="bolder">1. Je renseigne les infos clés de mon logement à vendre ou à louer</p>
+        <small> Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce </small>
+      </div>
+      <div class="mb1">
+        <p class="bolder">2. Je sélectionne les créneaux de visites à proposer à mes candidats</p>
+        <small> La disponibilité des créneaux est mise à jour automatiquement après chaque candidature </small>
+      </div>
+      <div class="mb1">
+        <p class="bolder">3. J'intègre mon URL immolib directement dans mes annonces en ligne</p>
+        <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide ! </small>
+      </div>
     </div>
   </div>
 
