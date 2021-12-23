@@ -20,11 +20,12 @@ Rails.application.routes.draw do
       get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'
     end
     member do
-      #user new appointment process
-      get 'go-visit', to: "properties#welcome_candidate"
-      get 'book-now', to: "slots#book_candidate"
-      get 'book', to: "slots#before_book_candidate"
-      get 'send-message', to: "appointments#message_candidate"
+      #new candidate process
+      get 'go-visit', to: "new_candidates#welcome_candidate"
+      get 'step-1', to: "new_candidates#step1_login"
+      get 'step1', to: "new_candidates#step1_logout"
+      get 'step-2', to: "new_candidates#step2"
+      get 'step-3', to: "new_candidates#step3"
     end
   end
 

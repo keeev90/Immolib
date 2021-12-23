@@ -11,8 +11,6 @@
     <% end %>
     <% if appointment.candidate.first_name && appointment.candidate.last_name %>
       <h3> <%= appointment.candidate.first_name %> <%= appointment.candidate.last_name %> </h3>
-    <% else %>
-      <p><small><em> Ce candidat n'a pas encore renseigné son nom </em></small></p>
     <% end %>
   </div>
 
@@ -87,6 +85,6 @@
   <div class="candidate-profile-details-section text-center">
     <p> Ce dossier ne vous convient pas ? </p>
     <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-primary small-btn" %>
-    <p><small><em>En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous</em></small></p>
+    <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous</em></small></p>
   </div>
 </div>

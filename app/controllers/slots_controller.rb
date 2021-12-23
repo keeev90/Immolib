@@ -1,5 +1,5 @@
 class SlotsController < ApplicationController
-  before_action :authenticate_user!, only: [:book_candidate, :new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :is_same_user_new, only: [:new]
   before_action :is_same_user_edit, only: [:edit]
 
@@ -110,27 +110,6 @@ class SlotsController < ApplicationController
       flash.now[:warning] = @slot.errors.full_messages
       render :edit
     end
-  end
-
-  # for candidate
-
-  def book_candidate
-    @property = Property.find(params[:id])
-    @slots = @property.slots
-    @redirect_to_book_now = true
-    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def before_book_candidate
-    @property = Property.find(params[:id])
-    @slots = @property.slots
-    @redirect_to_book_now = true
-    @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
   private

@@ -32,7 +32,7 @@
   }
 
   &__left {
-    border-right: 1px solid $primary;
+    border-right:none;
   }
 
   &__right {
@@ -75,6 +75,7 @@
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
   justify-self: center;
+  margin: 1em 1em;
 }
 
 .slot-candidate-wrapper {
@@ -98,6 +99,23 @@
   }
 }
 
+.property-section {
+  padding: 1rem;
+  border: 1px solid $primary;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  text-align: center;
+  margin: 0 0.5rem 1rem;
+
+  .primary {
+    margin: -1.9rem auto 1.9rem;
+    background-color: #fff;
+    max-width: 350px;
+  }
+}
 
 
 @media screen and (max-width: 925px) {
@@ -113,7 +131,7 @@
 
     &__left {
       border-right:none;
-      border-bottom: 1px solid $primary;
+      border-bottom:none;
       padding-bottom: 1em;
       margin-bottom: 1em;
 
