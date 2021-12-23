@@ -27,17 +27,12 @@ class AppointmentsController < ApplicationController
 
     if new_appointment.save
       if redirect_to_book_now == "true"
-        redirect_to book_now_property_path(property)
+        redirect_to step_1_property_path(property)
       else
         redirect_to appointment_path(new_appointment)
       end
     else
     end
-  end
-
-  def message_candidate
-    @property = Property.find(params[:id])
-    @appointment = current_user.appointments.last
   end
 
   # user as candidate
@@ -57,16 +52,17 @@ class AppointmentsController < ApplicationController
     @property = @appointment.slot.property.id
 
     if @appointment.update(candidate_message: params[:appointment][:candidate_message])
-      if redirect_path[:redirect_path] == "new_appointment" #when in new immolib appointment process
-        flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
+      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
+        #flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
+        redirect_to step_3_property_path(@property)
       else #when in "mon espace immolib"
         flash[:success] = "Votre message a été édité avec succès 👌"
+        redirect_to appointment_path(@appointment)
       end
-      redirect_to appointment_path(@appointment)
     else
       flash[:warning] = @appointment.errors.full_messages
-      if redirect_path[:redirect_path] == "new_appointment" #when in new immolib appointment process
-        redirect_to send_message_property_path(@property)
+      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
+        redirect_to step_2_property_path(@property)
       else #when in "mon espace immolib"
         render :edit
       end

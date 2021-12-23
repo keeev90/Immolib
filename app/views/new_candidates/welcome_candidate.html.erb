@@ -1,0 +1,42 @@
+<div class="welcome-page candidate">
+  <h1 class="primary"> Bienvenue ! </h1>
+  <div class="welcome_user-wrapper">
+    <div class="welcome_user-wrapper__left">
+      <div class="property-section">
+        <p class="bolder primary">Rappel de l'annonce</p>
+        <h4><%= @property.title%></h4>
+        <p><%= @property.city%></p>
+        <p><small><%= link_to @property.other_link, @property.other_link%></small></p>
+        <%if @property.property_picture.attached?%>
+          <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="welcome_user-wrapper__right">
+      <p class="bolder primary"><em>Bonjour,</em></p>
+      <% if @property.owner_project == "rent" %>
+        <p><em>Je vous invite à <strong>sélectionner un créneau de visite</strong> disponible
+          et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</em></p>
+        <p><em>Vous pourrez ensuite <strong>compléter votre profil et me transmettre votre dossier de location</strong> depuis votre espace immolib.</em></p> 
+      <% else %>
+        <p><em>Je vous invite à <strong>sélectionner un créneau de visite</strong> disponible 
+        et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</em></p>
+        <p><em>Vous pourrez ensuite <strong>compléter votre profil et gérer votre candidature</strong> depuis votre espace immolib.</em></p> 
+      <% end %>
+      <p><em>A bientôt,</em></p>
+      <%if @property.owner.first_name?%>
+        <p><%= @property.owner.first_name %></p>
+      <% else %>
+        <p>Le propriétaire</p>
+      <% end %>
+      
+      <% if user_signed_in? %>
+        <%= link_to "C'est parti !", step_1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+      <% else %>
+        <%= link_to "C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+      <% end %>
+      
+      
+    </div>
+  </div>
+</div>

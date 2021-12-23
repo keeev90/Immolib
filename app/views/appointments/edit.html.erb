@@ -1,11 +1,11 @@
 <%# Allows user to edit his appointment message %>
 <div class="pt4 text-center">
   <h1>Modifier mon message</h1>
-  <p class="mb2 text-center">💡 Conseil : présentez-vous au propriétaire et détaillez votre projet</p>
 </div>
 
 <div class="form-page">
   <div class="form-page__form">
+  <p class="text-center">💡 Conseil : présentez-vous au propriétaire et détaillez votre projet pour permettre au propriétaire d'anticiper au mieux votre visite</p>
     <%= form_with model: @appointment, url: appointment_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <div class="form-group">
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message au propriétaire", maxlength: "1000" %>
