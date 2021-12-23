@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!, except: [:welcome_candidate]
+  before_action :authenticate_user!
   before_action :is_owner?, only: [:show]
 
   # user as potential ower
@@ -68,12 +68,6 @@ class PropertiesController < ApplicationController
       flash[:success] = "Votre logement a bien été supprimé 👌"
       redirect_to user_path(current_user)
     end
-  end
-
-  # user as potential candidate
-
-  def welcome_candidate
-    @property = Property.find(params[:id])
   end
 
   private

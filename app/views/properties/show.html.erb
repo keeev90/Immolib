@@ -39,19 +39,19 @@
         <h3 class="mb1"> <%= @property.city %> </h3>
         <p><i class="far fa-arrow-alt-circle-right"></i> Mon  annonce en ligne : </p>
         <% if @property.other_link == "" %>
-          <p class="mb1"><small><em>Vous n'avez pas indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
+          <p class="mb1"><small><em>Vous n'avez pas encore indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
         <% else %>
           <p class="mb1"><%= @property.other_link %> </p>
         <% end %>
         <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
         <% if @property.instructions == "" %>
-          <p class="mb1"><small><em>Vous n'avez pas indiqué d'instructions pour vos candidats</em></small></p>
+          <p class="mb1"><small><em>Vous n'avez pas encore indiqué d'instructions pour vos candidats</em></small></p>
         <% else %>
           <p><em><%= simple_format(@property.instructions) %></em></p> 
         <% end %>
         <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
         <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
-        <small><em>En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
+        <small><em><i class="fas fa-info-circle"></i> En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
       </div>
     </div>
   </div>

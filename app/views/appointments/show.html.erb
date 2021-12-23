@@ -2,30 +2,30 @@
 <div class="welcome-page candidate appointment-show">
   <h1 class="primary"> Ma candidature </h1>
 </div>
-  <div class="container">
-    <div class="appointment-section">
-      <h2 class="bolder primary">Rappel de l'annonce</h2>
-      <%= render partial:"candidate_show_property", locals: {appointment: @appointment} %>
-    </div>
+<div class="container">
+  <div class="appointment-section">
+    <h2 class="bolder primary">Rappel de l'annonce</h2>
+    <%= render partial:"candidate_show_property", locals: {appointment: @appointment} %>
   </div>
-  <div class="container">
-    <div class="appointment-section">
-      <h2 class="bolder primary">Mon créneau de visite</h2>
-      <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
-    </div>
+</div>
+<div class="container">
+  <div class="appointment-section">
+    <h2 class="bolder primary">Mon créneau de visite</h2>
+    <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
   </div>
-  <div class="container">
-    <div class="appointment-section">
-      <h2 class="bolder primary">Mon message au propriétaire</h2>
-      <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
-    </div>
+</div>
+<div class="container">
+  <div class="appointment-section">
+    <h2 class="bolder primary">Mon message au propriétaire</h2>
+    <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
   </div>
-  <%if @appointment.property.owner_project == "rent"%>
-  <div class="container">
-    <div class="appointment-section">
-      <h2 class="bolder primary">Mon dossier de location</h2>
-      <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
-    </div>
+</div>
+<%if @appointment.property.owner_project == "rent"%>
+<div class="container">
+  <div class="appointment-section">
+    <h2 class="bolder primary">Mon dossier de location</h2>
+    <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
   </div>
-  <%end%>
-  <p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
+</div>
+<%end%>
+<p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
