@@ -1,7 +1,7 @@
-<p class="text-center mb2"><small>💡 Présentez-vous afin de connaître davantage votre projet et anticiper au mieux votre visite et vos éventuelles questions </small></p>
+<p class="text-center mb2"><small>💡 Ce message est optionnel mais recommandé pour permettre au propriétaire d'anticiper au mieux votre visite </small></p>
 <%if appointment.candidate_message %>
   <p><%= simple_format(appointment.candidate_message) %></p>
 <%else%>
-  <p>Vous n'avez pas encore envoyé un message au propriétaire.</p>
+  <p>Vous n'avez pas encore envoyé un message au propriétaire</p>
 <%end%>
 <%= link_to "Modifier mon message", edit_appointment_path(params[:id]), class: "btn white-btn bg-primary small-btn" %>

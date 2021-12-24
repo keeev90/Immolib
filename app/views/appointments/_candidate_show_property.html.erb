@@ -1,5 +1,5 @@
 <p class="bolder"><%= appointment.property.title%></p>
-<p><small><%= appointment.property.city%></small></p>
+<p><%= appointment.property.city%></p>
 <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank'%></small></p>
 <%if appointment.property.property_picture.attached?%>
   <div class="appointment-picture">

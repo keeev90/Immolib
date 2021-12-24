@@ -4,14 +4,14 @@
 
     <%= form_with model: @user, url: user_path(@user), local: true, class: "form", id: "item-form", multipart: true do |f| %>
     
-      <div class="field">
-        <%= f.label 'Prénom' %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+      <div class="form-group">
+        <%= f.label 'Prénom', class: "form-label" %>
+        <%= f.text_field :first_name, class: "form-control", autofocus: true, autocomplete: "first_name" %>
       </div>
 
-      <div class="field">
-        <%= f.label 'Nom' %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+      <div class="form-group">
+        <%= f.label 'Nom', class: "form-label" %>
+        <%= f.text_field :last_name, class: "form-control", autofocus: true, autocomplete: "last_name" %>
       </div>
 
       <div class="actions">
