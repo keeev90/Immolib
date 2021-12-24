@@ -55,6 +55,7 @@ class AppointmentsController < ApplicationController
       if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
         #flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
         redirect_to step_3_property_path(@property)
+        UserMailer.new_appointment_validation_email(@appointment).deliver_now
       else #when in "mon espace immolib"
         flash[:success] = "Votre message a été édité avec succès 👌"
         redirect_to appointment_path(@appointment)

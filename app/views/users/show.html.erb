@@ -24,7 +24,7 @@
           <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
           <p class="profile-wrapper__informations__right--change"> Modifier </p>
         </div>
-        <%= link_to "Supprimer la photo de profil", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
+        <%= link_to "Supprimer la photo", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
       </div>
     <%else%>
       <div class="pic profile-wrapper__informations__right nopic">

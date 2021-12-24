@@ -41,7 +41,7 @@
         <% if @property.other_link == "" %>
           <p class="mb1"><small><em>Vous n'avez pas encore indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
         <% else %>
-          <p class="mb1"><%= @property.other_link %> </p>
+          <p class="mb1"> <%= link_to @property.other_link, @property.other_link %> </p>
         <% end %>
         <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
         <% if @property.instructions == "" %>
