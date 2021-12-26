@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources 'appointments' do
+    resources 'candidate_messages', only: [:edit, :update, :destroy]
     resources 'candidate_documents', only: [:create, :destroy]
     resources 'candidate_dossierfacile_folders', only: [:create, :destroy]
     resources 'candidate_dossierfacile_links', only: [:create, :destroy]
