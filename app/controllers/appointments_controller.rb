@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
 
   def create
     slot = Slot.find(params[:param1])
-    redirect_to_book_now = params[:redirect_to_book_now]
+    new_candidate = params[:new_candidate]
     property = Property.find(params[:property])
     user_appointments = Appointment.where(candidate: current_user)
     already_an_appointment = false
@@ -26,12 +26,11 @@ class AppointmentsController < ApplicationController
     end
 
     if new_appointment.save
-      if redirect_to_book_now == "true"
+      if new_candidate == "true"
         redirect_to step_1_property_path(property)
       else
         redirect_to appointment_path(new_appointment)
       end
-    else
     end
   end
 
@@ -43,11 +42,29 @@ class AppointmentsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
-  def edit #candidate_message
+  def edit 
+    #candidate_message
     @appointment = Appointment.find(params[:id])
   end
 
-  def update #candidate_message
+  def update 
+    #slot
+    new_candidate = params[:new_candidate]
+    if new_candidate == "false"
+      slot = Slot.find(params[:param1])
+      property = Property.find(params[:property])
+      user_appointments = Appointment.where(candidate: current_user)
+      #already_an_appointment = false
+      user_appointments.each do |appointment|
+        if appointment.property == property #&& !appointment.slot.is_past?
+          appointment.update(slot: slot)
+          redirect_to appointment_path(appointment)
+          #already_an_appointment = true
+        end
+      end
+    end
+
+    #candidate_message
     @appointment = Appointment.find(params[:id])
     @property = @appointment.slot.property.id
 

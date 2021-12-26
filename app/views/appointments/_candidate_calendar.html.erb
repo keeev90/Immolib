@@ -10,10 +10,10 @@
   <% slots.each do |slot| %>
     <% if slot.candidates.include?(current_user) || !slot.available? || !user_signed_in? || slot.is_past? %>
       <%= render(partial: "properties/slot-card", locals: { slot: slot })%>
-    <% elsif @redirect_to_book_now == true %>
-      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, redirect_to_book_now: true), method: "post" %>
+    <% elsif @new_candidate == true %>
+      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, new_candidate: true), method: "post" %>
     <% else %>
-        <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, redirect_to_book_now: false), method: "post" %>
+      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointment_path(@appointment, param1: slot.id, property: property, new_candidate: false), method: "patch" %>
     <% end %>  
 
   <% end %>

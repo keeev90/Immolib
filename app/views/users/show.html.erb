@@ -71,29 +71,11 @@
   <% if @user.appointments.count > 0 %>
 
     <h2> Mes candidatures </h2>
-
-    <h3 class="mt2"> Visites à venir </h3>
+    
     <div class="properties-wrapper">
-    <% if @user.future_appointments.size > 0 %>
-      <% @user.future_appointments.each do |appointment| %>
-      <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
+      <% @user.appointments.each do |appointment| %>
+        <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
       <% end %>
-    <% else %>
-      <em>Aucune visite à venir.</em>
-      <em>Vous souhaitez répondre à une annonce&nbsp;? Rendez-vous directement sur l’annonce en ligne (Leboncoin, PaP, SeLoger, etc.) et copiez-collez dans votre navigateur le lien immolib renseigné par le propriétaire.</p>
-    <% end %>
-    </div>
-
-    <h3> Visites terminées </h3>
-    <div class="properties-wrapper">
-    <% if @user.past_appointments.size > 0 %>
-      <% @user.past_appointments.each do |appointment| %>
-      <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: true}), appointment_path(appointment) %>
-      <% end %>
-    <% else %>
-      <p><em>Vous n'avez pas de visites terminées</em></p>
-    <% end %>
-
     </div>
     
   <% else %>
