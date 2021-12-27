@@ -11,22 +11,25 @@ class CandidateMessagesController < ApplicationController
     @property = @appointment.slot.property.id
 
     if @appointment.update(candidate_message: params[:appointment][:candidate_message])
-      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
-        #flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
+      if redirect_path[:redirect_path] == "new_candidate" #when in new candidate process
         redirect_to step_3_property_path(@property)
         UserMailer.new_appointment_validation_email(@appointment).deliver_now
-      else #when in "mon espace immolib"
+      else #when in appointment show
         flash[:success] = "Votre message a été édité avec succès 👌"
         redirect_to appointment_path(@appointment)
       end
     else
       flash[:warning] = @appointment.errors.full_messages
-      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
+      if redirect_path[:redirect_path] == "new_candidate" #when in new candidate process
         redirect_to step_2_property_path(@property)
-      else #when in "mon espace immolib"
+      else #when in appointment show
         render :edit
       end
     end
+  end
+
+  def destroy
+    #to do in appointment show only (not in new candidate)
   end
 
   private

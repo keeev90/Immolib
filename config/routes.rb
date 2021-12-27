@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources 'appointments' do
+  resources 'appointments', only: [:create, :show, :destroy] do
+    resources 'candidate_slots', only: [:update, :destroy]
     resources 'candidate_messages', only: [:edit, :update, :destroy]
     resources 'candidate_documents', only: [:create, :destroy]
     resources 'candidate_dossierfacile_folders', only: [:create, :destroy]

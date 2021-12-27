@@ -13,7 +13,7 @@
     <% elsif @new_candidate == true %>
       <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointments_path(param1: slot.id, property: property, new_candidate: true), method: "post" %>
     <% else %>
-      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointment_path(@appointment, param1: slot.id, property: property, new_candidate: false), method: "patch" %>
+      <%= link_to render(partial: "properties/slot-card", locals: { slot: slot }), appointment_candidate_slot_path(@appointment, param1: slot.id, property: property, new_candidate: false), method: "patch" %>
     <% end %>  
 
   <% end %>
