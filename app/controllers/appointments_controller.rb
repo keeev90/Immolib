@@ -1,37 +1,29 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_candidate?, only: [:show, :edit]
+  before_action :is_candidate?, only: [:show]
 
   # user as potential candidate
 
-  def index
-  end
+  def create #appointment with slot
+    new_candidate = params[:new_candidate]
+    if new_candidate == "true"
+      slot = Slot.find(params[:param1])
+      property = Property.find(params[:property])
+      user_appointments = Appointment.where(candidate: current_user)
+      already_an_appointment = false
+      new_appointment = Appointment.new(candidate: current_user, slot: slot)
 
-  def new
-  end
-
-  def create
-    slot = Slot.find(params[:param1])
-    redirect_to_book_now = params[:redirect_to_book_now]
-    property = Property.find(params[:property])
-    user_appointments = Appointment.where(candidate: current_user)
-    already_an_appointment = false
-    new_appointment = Appointment.new(candidate: current_user, slot: slot)
-    user_appointments.each do |appointment|
-      if appointment.property == property && !appointment.slot.is_past?
-        new_appointment =  appointment
-        new_appointment.slot = slot 
-        already_an_appointment = true
+      user_appointments.each do |appointment|
+        if appointment.property == property && !appointment.slot.is_past?
+          new_appointment =  appointment
+          new_appointment.slot = slot 
+          already_an_appointment = true
+        end
       end
-    end
 
-    if new_appointment.save
-      if redirect_to_book_now == "true"
+      if new_appointment.save
         redirect_to step_1_property_path(property)
-      else
-        redirect_to appointment_path(new_appointment)
       end
-    else
     end
   end
 
@@ -43,39 +35,12 @@ class AppointmentsController < ApplicationController
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
 
-  def edit #candidate_message
-    @appointment = Appointment.find(params[:id])
-  end
-
-  def update #candidate_message
-    @appointment = Appointment.find(params[:id])
-    @property = @appointment.slot.property.id
-
-    if @appointment.update(candidate_message: params[:appointment][:candidate_message])
-      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
-        #flash[:success] = "Votre candidature a été enregistrée avec succès ✌️"
-        redirect_to step_3_property_path(@property)
-        UserMailer.new_appointment_validation_email(@appointment).deliver_now
-      else #when in "mon espace immolib"
-        flash[:success] = "Votre message a été édité avec succès 👌"
-        redirect_to appointment_path(@appointment)
-      end
-    else
-      flash[:warning] = @appointment.errors.full_messages
-      if redirect_path[:redirect_path] == "new_candidate" #when in new appointment process
-        redirect_to step_2_property_path(@property)
-      else #when in "mon espace immolib"
-        render :edit
-      end
-    end
-  end
-
   def destroy
     appointment = Appointment.find(params[:id])
     user = appointment.candidate
     appointment.destroy
     if params[:owner]
-      flash[:success] = "Le rendez-vous a bien été annulé. Le candidat est automatiquement prévenu 👌"
+      flash[:success] = "La candidature a bien été refusée. Le candidat est automatiquement prévenu par email 👌"
       redirect_to property_path(appointment.slot.property)
     else
       if appointment.property.owner_project == "rent" 
@@ -88,10 +53,6 @@ class AppointmentsController < ApplicationController
   end
 
   private
-
-  def redirect_path
-    params.require(:appointment).permit(:redirect_path)
-  end
 
   def is_candidate?
     @appointment = Appointment.find(params[:id])

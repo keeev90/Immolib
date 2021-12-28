@@ -8,7 +8,7 @@ class NewCandidatesController < ApplicationController
   def step1_login #book appointement (if login)
     @property = Property.find(params[:id])
     @slots = @property.slots
-    @redirect_to_book_now = true
+    @new_candidate = true
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
 
     respond_to do |format|
@@ -20,7 +20,7 @@ class NewCandidatesController < ApplicationController
   def step1_logout #before book appointement (if logout)
     @property = Property.find(params[:id])
     @slots = @property.slots
-    @redirect_to_book_now = true
+    @new_candidate = true
     @date_arr = ["", "jan.", "fév.", "mar.", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
   end
   
