@@ -1,14 +1,14 @@
-<div class="property-card">
-  <div class="property-card__picture">
+<div class="appointment-card">
+  <div class="appointment-card__picture">
     <%if appointment.slot.property.property_picture.attached?%>
       <%= image_tag appointment.slot.property.property_picture, alt: 'property_picture' %>
     <%else%>
-      <div class="property-card__picture__no-picture">
+      <div class="appointment-card__picture__no-picture">
         <p>Pas de photo du logement</p>
       </div>
     <%end%>
   </div>
-  <div class="property-card__text">
+  <div class="appointment-card__text">
     <p><%= appointment.slot.property.title %> (<%= appointment.slot.property.city %>)</p>
     <%if appointment.slot.start_date > DateTime.now%>
       <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
