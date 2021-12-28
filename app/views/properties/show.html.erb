@@ -60,9 +60,9 @@
       <h1 class="primary mb2">Mes visites</h1>
       <div class="mb2">
         <% if @property.owner_project == "rent" %>
-          <p>💡 <span class="bolder">Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location<span class="bolder"></p>
+          <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location<span class="bolder"></p>
         <% else %>
-          <p>💡 <span class="bolder">Cliquez sur un créneau pour accéder à la liste des candidats inscrits et visualiser leurs profils<span class="bolder"></p>
+          <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs profils<span class="bolder"></p>
         <% end %>
       </div>
       <%= render(partial: 'calendar') %>

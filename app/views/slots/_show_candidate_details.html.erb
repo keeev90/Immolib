@@ -32,9 +32,9 @@
     <div class="candidate-profile-details-section">
 
       <% if appointment.candidate_dossierfacile_folder.attached? %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
-        <p><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires</em></small></p>
-        <div class="candidate-document">
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
+        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
+        <div class="candidate-document mb1">
           <p>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
             <%# if doc.previewable? %>
@@ -43,15 +43,17 @@
             <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
           </p>
           <% if appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-            <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+            <p class="mt1">Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
           <% end %>
         </div>
+        <p><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary" %>)</p>
-        <p><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires</em></small></p>
-        <p>Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
-      
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
+        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
+        <p class="mb1">Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+        <p><small> ✔️ Dossier complet</small></p>
+
       <% elsif appointment.candidate_documents.attached? %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
         <% appointment.candidate_documents.each do |doc| %>
@@ -70,12 +72,12 @@
         <% if appointment.candidate_documents.size < 5 %>
           <p><small>Documents transmis : <%= appointment.candidate_documents.size %> / 5</small></p>
         <% else %>
-          <p>Dossier complet</p>
+          <p><small> ✔️ Dossier complet</small></p>
         <% end %>
       
       <% else %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
-        <p><small><em>Ce candidat n'a pas encore transmis de document</em></small></p>
+        <p><small><em>Ce candidat n'a pas encore transmis de documents</em></small></p>
       <% end %>
     </div>
   <% end %>

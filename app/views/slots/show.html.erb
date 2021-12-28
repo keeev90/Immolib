@@ -5,7 +5,9 @@
       <h1 class="primary mb1">Mes candidats</h1>
       <p class="bolder"> Créneau du <%= @slot.start_date.strftime("%d") %> <%= @date_arr[@slot.start_date.strftime("%m").to_i] %> <%= @slot.start_date.strftime("%Y") %></p>
       <p class="bolder"> <%= @slot.start_date.strftime("%H:%M") %> - <%= @slot.end_date.strftime("%H:%M") %></p>
-      <%= link_to 'Editer le créneau', edit_property_slot_path(@slot), class:"btn white-btn bg-primary small-btn" %>
+      <%if @slot.start_date > DateTime.now%>
+        <%= link_to 'Editer le créneau', edit_property_slot_path(@slot), class:"btn white-btn bg-primary small-btn" %>
+      <%end%>
     </div>
     <div class="slot-wrapper__content">
       <% if @slot.appointments.size > 0 %>

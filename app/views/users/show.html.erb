@@ -85,8 +85,10 @@
       <% end %>
     </div>
 
-    <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
-    <p class="mb2"><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
+    <% if @user.properties.count == 0 %>
+      <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
+      <p class="mb2"><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
+    <% end %>
 
   <% end %>
 </div>
