@@ -1,4 +1,4 @@
-<div class="property-card <%= past ? "past" : nil %>">
+<div class="property-card">
   <div class="property-card__picture">
     <%if appointment.slot.property.property_picture.attached?%>
       <%= image_tag appointment.slot.property.property_picture, alt: 'property_picture' %>
@@ -9,7 +9,13 @@
     <%end%>
   </div>
   <div class="property-card__text">
-    <p>RDV : <%= appointment.slot.start_date.strftime("%d/%_m/%Y %H:%M") %></p>
-    <p>Durée : <%= appointment.slot.duration %> minutes</p>
+    <p><%= appointment.slot.property.title %> (<%= appointment.slot.property.city %>)</p>
+    <%if appointment.slot.start_date > DateTime.now%>
+      <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+    <%elsif appointment.slot.start_date < DateTime.now%>
+      <p>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %> </p>
+    <%else%>
+      <p>Vous n'avez pas de visite programmée</p>
+    <%end%>
   </div>
 </div>

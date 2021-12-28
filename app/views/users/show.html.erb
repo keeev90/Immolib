@@ -41,6 +41,16 @@
   </div>
   <p><%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn white-btn bg-primary" %></p>
 
+  <% if @user.properties.count == 0 && @user.appointments.count == 0 %>
+
+    <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
+    <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
+
+    <h2> Vous souhaitez répondre à une annonce&nbsp;? </h2>
+    <p class="mb2">Rendez-vous directement sur l’annonce en ligne (Leboncoin, PaP, SeLoger, etc.) et copiez-collez dans votre navigateur le lien immolib renseigné par le propriétaire.</p>
+
+  <% end %>
+
   <% if @user.properties.count > 0 %>
 
     <h2> Mes logements </h2>
@@ -63,9 +73,6 @@
     <h2> Vous souhaitez vendre ou louer un autre logement&nbsp;? </h2>
     <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
 
-  <% else %>
-    <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
-    <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
   <% end %>
 
   <% if @user.appointments.count > 0 %>
@@ -73,13 +80,13 @@
     <h2> Mes candidatures </h2>
     
     <div class="properties-wrapper">
-      <% @user.appointments.each do |appointment| %>
-        <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment, past: false}), appointment_path(appointment) %>
+      <% @user.appointments.order("created_at DESC").each do |appointment| %>
+        <%= link_to render(partial: 'appointment-card', locals: {appointment: appointment} ), appointment_path(appointment) %>
       <% end %>
     </div>
-    
-  <% else %>
-    <h2> Vous souhaitez répondre à une annonce&nbsp;? </h2>
-    <p class="mb2">Rendez-vous directement sur l’annonce en ligne (Leboncoin, PaP, SeLoger, etc.) et copiez-collez dans votre navigateur le lien immolib renseigné par le propriétaire.</p>
+
+    <h2> Vous souhaitez vendre ou louer un logement&nbsp;? </h2>
+    <p><%= link_to "Organisez vos visites dès maintenant", new_property_path, class: "btn white-btn bg-primary" %></p>
+
   <% end %>
 </div>
