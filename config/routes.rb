@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources 'properties' do 
+    get 'candidate_details', to: 'properties#show_candidate_details', as: 'candidate_details'
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots' do
       get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'

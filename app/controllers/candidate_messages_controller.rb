@@ -15,7 +15,7 @@ class CandidateMessagesController < ApplicationController
         redirect_to step_3_property_path(@property)
         UserMailer.new_appointment_validation_email(@appointment).deliver_now
       else #when in appointment show
-        flash[:success] = "Votre message a été édité avec succès 👌"
+        flash[:success] = "Votre message a été mis à jour avec succès 👌"
         redirect_to appointment_path(@appointment)
       end
     else
@@ -29,7 +29,11 @@ class CandidateMessagesController < ApplicationController
   end
 
   def destroy
-    #to do in appointment show only (not in new candidate)
+    appointment = Appointment.find(params[:appointment_id])
+    appointment.candidate_message = ""
+    appointment.save
+    flash[:success] = "Votre message a bien été supprimé 👌"
+    redirect_to appointment_path(appointment)
   end
 
   private

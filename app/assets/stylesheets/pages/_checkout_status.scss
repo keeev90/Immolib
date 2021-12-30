@@ -10,6 +10,7 @@
     &.fa-check-circle {
       color: darken($success, 40%);
     }
+    
     &.fa-times-circle {
       color: darken($warning, 25%);
     }
@@ -19,12 +20,12 @@
     color: $primary;
     margin: 2rem 0;
 
-    &.failed {
-      color: darken($warning, 25%);
-    }
-
     &.success {
       color: darken($success, 40%);
+    }
+
+    &.failed {
+      color: darken($warning, 25%);
     }
   }
 

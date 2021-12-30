@@ -61,6 +61,19 @@
   }
 }
 
+.outline-btn-white {
+  background-color: white;
+  border: 2px solid $primary;
+  color: $primary;
+  transition: color 0.3s, background-color 0.3s;
+
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+    opacity: 1;
+  }
+}
+
 .return-link {
   color: black;
   display: inline-block;

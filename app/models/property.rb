@@ -3,7 +3,6 @@ class Property < ApplicationRecord
   before_create :randomize_property_id
   before_validation :create_stripe_product
   after_commit :add_default_picture, on: [:create, :update]
-  #after_create :send_new_property_validation_email
 
   #Associations
   belongs_to :owner, class_name: "User"
@@ -106,15 +105,10 @@ class Property < ApplicationRecord
         name: "#{title} - #{city}"
       })
 
-      Stripe::Product.update(
-        stripe_product.id,
-        {description: "Lien de l'annonce : #{other_link}"},
-      ) if instructions != ''
-
-      Stripe::Product.update(
-        stripe_product.id,
-        {url: other_link},
-      ) if other_link != ''
+      # Stripe::Product.update(
+      #   stripe_product.id,
+      #   {images: [image_url]},
+      # ) if image_url !=""
 
       stripe_price = Stripe::Price.create({
         product: stripe_product.id,
