@@ -1,33 +1,34 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
-<div class="container">
-  <div class="appointment-section">
-    <h2 class="bolder primary">Rappel de l'annonce</h2>
-    <%= render partial:"candidate_show_property", locals: {appointment: @appointment} %>
+<div class="container text-center">
+  <h2 class="bolder primary mb2">Rappel de l'annonce</h2>
+  <%= render partial:"candidate_show_property", locals: {appointment: @appointment} %>
   </div>
 </div>
 <div class="container">
-  <div class="appointment-section">
-    <h2 class="bolder primary">Mon créneau de visite</h2>
-    <div class=" mb1">
-      <%if @appointment.slot.start_date > DateTime.now%>
-        <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
-        <p class="mt1"><small>💡 Pour modifier votre créneau de visite cliquez directement sur un autre créneau disponible </small></p>
-      <%elsif @appointment.slot.start_date < DateTime.now%>
-        <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
-        <p class="mt1"><small>💡 Pour sélectionner un nouveau créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
-      <%else%>
-        <p class="bolder">Aucune visite programmée</p>
-        <p class="mt1"><small>💡 Pour sélectionner un créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
-      <%end%>
-    </div>
-    <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
+  <hr/>
+</div>
+<div class="container text-center">
+  <h2 class="bolder primary mb2">Mon créneau de visite</h2>
+  <div class=" mb1">
+    <%if @appointment.slot.start_date > DateTime.now%>
+      <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
+      <p class="mt1"><small>💡 Pour modifier votre créneau de visite cliquez directement sur un autre créneau disponible </small></p>
+    <%elsif @appointment.slot.start_date < DateTime.now%>
+      <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
+      <p class="mt1"><small>💡 Pour sélectionner un nouveau créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+    <%else%>
+      <p class="bolder">Aucune visite programmée</p>
+      <p class="mt1"><small>💡 Pour sélectionner un créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+    <%end%>
   </div>
+  <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
 </div>
 <div class="container">
-  <div class="appointment-section">
-    <h2 class="bolder primary">Mon message au propriétaire</h2>
-    <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
-  </div>
+  <hr/>
+</div>
+<div class="container text-center">
+  <h2 class="bolder primary mb2">Mon message au propriétaire</h2>
+  <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
 </div>
 <%if @appointment.property.owner_project == "rent"%>
 <div class="container">

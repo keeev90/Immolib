@@ -1,6 +1,6 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
 <div class="container">
-  <div class="appointment-section">
+  <div class="property-section">
     <h1 class="primary mb2">Mon logement</h1>
     <div class="mb2">
       <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
@@ -47,60 +47,59 @@
       <% else %>
         <p><em><%= simple_format(@property.instructions) %></em></p> 
       <% end %>
-      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
-      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
+      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary" %></p>
+      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-warning"%></p>
       <small><em><i class="fas fa-info-circle"></i> En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="appointment-section">
-    <h1 class="primary mb2">Mes visites</h1>
-    <div class="mb2">
-      <% if @property.owner_project == "rent" %>
-        <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location<span class="bolder"></p>
-      <% else %>
-        <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs profils<span class="bolder"></p>
-      <% end %>
-    </div>
-    <%= render(partial: 'calendar') %>
-    <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
-  </div>
-</div>
-<div class="container">
-  <div class="appointment-section">
-    <h1 class="primary mb2">Mes candidats</h1>
-    <% if @property.candidates.size > 0 %>
-      <div class="slot-wrapper pl2 pr2 pb4">
-        <div class="slot-wrapper-left">
-          <div class="slot-wrapper__content">
-            <% firstSlot = true %>
-            <% @property.appointments.each do |a| %>
-              <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_candidate_details_path(@property, appointment: a), remote: true %>
-              <% firstSlot = false %>
-            <% end %>
-          </div>
-        </div>
-        <div class="slot-wrapper-right">
-          <%= render(partial: "show_candidate_details", locals: {appointment: @property.appointments.first}) %>
-        </div>
-      </div>
+<div class="container text-center">
+  <h1 class="primary mb2">Mes visites</h1>
+  <div class="mb2">
+    <% if @property.owner_project == "rent" %>
+      <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs dossiers de location<span class="bolder"></p>
     <% else %>
-      <p class="mb2"><em> Vous n'avez pas encore de candidats pour ce logement</em></p>
-      <div class="mb2">
-        <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
-        <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
-        <div class="url-container">
-          <p class="link"> 
-            <a><%= @property.go_visit_url %></a> 
-            <i class="far fa-copy">
-              <span class="copy-text"> Copier le lien </span>
-            </i>
-          </p>
-        </div>
-      </div>
+      <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour accéder à la liste des candidats inscrits et visualiser leurs profils<span class="bolder"></p>
     <% end %>
   </div>
+  <%= render(partial: 'calendar') %>
+  <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary" %>
+</div>
+<div class="container">
+  <hr/>
+</div>
+<div class="container">
+  <h1 class="primary mb2 text-center">Mes candidats</h1>
+  <% if @property.candidates.size > 0 %>
+    <div class="slot-wrapper pl2 pr2 pb2">
+      <div class="slot-wrapper-left">
+        <div class="slot-wrapper__content">
+          <% firstSlot = true %>
+          <% @property.appointments.each do |a| %>
+            <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_candidate_details_path(@property, appointment: a), remote: true %>
+            <% firstSlot = false %>
+          <% end %>
+        </div>
+      </div>
+      <div class="slot-wrapper-right">
+        <%= render(partial: "show_candidate_details", locals: {appointment: @property.appointments.first}) %>
+      </div>
+    </div>
+  <% else %>
+    <p class="mb2"><em> Vous n'avez pas encore de candidats pour ce logement</em></p>
+    <div class="mb2">
+      <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
+      <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
+      <div class="url-container">
+        <p class="link"> 
+          <a><%= @property.go_visit_url %></a> 
+          <i class="far fa-copy">
+            <span class="copy-text"> Copier le lien </span>
+          </i>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
