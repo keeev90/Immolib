@@ -165,9 +165,16 @@
   }
 }
 
+.link {
+  padding: .5em;
+  background-color: #eee;
+  border-radius: 3px;
+  margin: .3rem;
+}
+
 .url-container {
   margin: 1em auto;
-  width: 80%;
+  width: 60%;
 }
 
 
@@ -187,5 +194,10 @@
 @media screen and (max-width: 636px) {
   .property-wrapper {
     padding: 1rem 2rem;
+  }
+
+  .url-container {
+    margin: 1em auto;
+    width: 100%;
   }
 }

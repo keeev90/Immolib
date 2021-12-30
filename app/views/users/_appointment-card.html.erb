@@ -13,11 +13,11 @@
     <p class="mb1"><%= appointment.slot.property.city %></p>
     <%if appointment.property.owner_project == "rent"%>
       <% if appointment.candidate_dossierfacile_folder.attached? || appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-        <p><small>✔️ Dossier de location complet</small></p>
+        <p class="green"><small>✔️ Dossier de location complet</small></p>
       <% elsif appointment.candidate_documents.attached? && appointment.candidate_documents.size == 5 %>
-        <p><small>✔️ Dossier de location complet</small></p>
+        <p class="green"><small>✔️ Dossier de location complet</small></p>
       <%else%>
-        <p><small>⚠️ Dossier de location incomplet</small></p>
+        <p class="danger"><small>⚠️ Dossier de location incomplet</small></p>
       <%end%>
     <%end%>
     <%if appointment.slot.start_date > DateTime.now%>
