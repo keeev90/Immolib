@@ -21,7 +21,7 @@ Appointment.destroy_all
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: "user#{count}-immolib@yopmail.com",
+    email: "user#{count}@yopmail.com",
     password: "userpwd"
     )
     puts "User with id #{user.id} created"
@@ -31,7 +31,7 @@ end
 admin = User.create(
   first_name: 'Admin',
   last_name: 'istrateur',
-  email: "immolib-admin@yopmail.com",
+  email: "admin@yopmail.com",
   password: "adminpwd",
   is_admin: true,
 )

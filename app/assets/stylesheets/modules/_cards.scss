@@ -1,6 +1,6 @@
 // Property card
 .property-card {
-  height: 25em;
+  height: 35em;
   max-width: 450px;
   background-color: #fff;
   border-radius: 0.5em;
@@ -27,7 +27,7 @@
 }
 
   &__picture {
-    height: 75%;
+    height: 65%;
     position: relative;
   
     img {
@@ -116,7 +116,7 @@
 
 // Appointment card
 .appointment-card {
-  height: 30em;
+  height: 35em;
   max-width: 450px;
   background-color: #fff;
   border-radius: 0.5em;
@@ -143,7 +143,7 @@
 }
 
   &__picture {
-    height: 75%;
+    height: 65%;
     position: relative;
   
     img {
@@ -210,7 +210,6 @@
 
     p:first-of-type {
       font-weight: bolder;
-      margin-bottom: 0.5em;
     }
   }
 }

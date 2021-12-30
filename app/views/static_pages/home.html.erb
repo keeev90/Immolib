@@ -1,21 +1,18 @@
 <div class="home">
+
   <div class="home-intro">
     <div class='home-intro__text'>
       <div class="home-intro__title">
-        <h2>Organiser vos visites immobilières</h2>
-        <h2>devient un jeu d'enfant.</h2>
-      </div>
-      <div class="home-buttons">
-        <p><span class="bolder">Vous souhaitez vendre ou louer un bien immobilier&nbsp;?</span><br/>
-        Notre outil de prise de rendez-vous en ligne vous permet
+        <h2>Vendre ou louer votre logement devient un jeu d'enfant.</h2>
+        <p>Notre outil de prise de rendez-vous en ligne vous permet
         d'organiser vos visites et collecter les dossiers des candidats en toute simplicité.</p>
-        
+      </div>
+      <div class="home-buttons">  
         <% if user_signed_in? %>
           <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
         <% else %>
-            <%= link_to 'Organiser des visites', new_user_session_path, class: "btn big-btn primary" %>
+            <%= link_to 'Organisez vos visites', new_user_session_path, class: "btn big-btn primary" %>
         <% end %>
-
         <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>

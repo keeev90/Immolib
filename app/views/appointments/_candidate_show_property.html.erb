@@ -1,10 +1,4 @@
 <p class="bolder"><%= appointment.property.title%></p>
 <p><%= appointment.property.city%></p>
 <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank'%></small></p>
-<%if appointment.property.property_picture.attached?%>
-  <div class="appointment-picture">
-    <%= image_tag appointment.property.property_picture, alt: 'property picture', class: "house-picture pt1" %>
-  </div>
-<% end %>
-</div>
 
