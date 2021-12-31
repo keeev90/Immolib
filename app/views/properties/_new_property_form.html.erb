@@ -4,7 +4,7 @@
 </div>
 <div class="form-page">
   <div class="form-page__form">
-    <p class="mb2 text-center">Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce</p>
+    <p class="mb2 text-center"><em>Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce</em></p>
     <p class='toggle-label'>Je souhaite *</p>
     <div class='sell-rent-wrapper'>
       <p>Louer</p>
@@ -17,27 +17,24 @@
     </div>
     <%= form_with model: property, url: properties_path, local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <%= f.hidden_field :owner_project %>
-      <div class="form-group">
+      <div class="form-group mb2">
         <%= f.label "Titre du logement *", class: "form-label" %>
         <p><small>💡 Conseil : indiquez le même titre que celui de votre annonce en ligne (ex : PaP)</small></p>
         <%= f.text_field :title, class: "form-control", placeholder: "Donnez un titre à votre logement", required: true %>
       </div>
-      <br/>
-      <div class="form-group">
+      <div class="form-group mb2">
         <%= f.label "Ville *", class: "form-label" %>
         <%= f.text_field :city, class: "form-control", placeholder: "Indiquez la ville de votre logement", required: true %>
       </div>
-      <br/>
-      <div class="form-group text-center my-3">
-        <%= f.label "Ajouter une photo de votre logement", class: "form-label" %>
-        <%= f.file_field :property_picture, is: "drop-files", label: "Déposer la photo de votre logement", help: "Vous pouvez glisser-déposer votre photo ici", accept: 'image/png,image/gif,image/jpeg' %>
+      <div class="form-group mb2">
+        <%= f.label "Photo de votre logement", class: "form-label" %>
+        <%= f.file_field :property_picture, is: "drop-files", label: "Télécharger une photo de votre logement", help: "Vous pouvez la glisser-déposer ici", accept: 'image/png,image/gif,image/jpeg' %>
       </div>
-      <br/>
-      <div class="form-group">
+      <div class="form-group mb2">
         <%= f.label "URL d'une annonce en ligne", class: "form-label" %>
         <%= f.text_field :other_link, class: "form-control", placeholder: "Copiez-collez l'URL d'une annonce en ligne (ex : PaP.fr)" %>
       </div>
-      <div class="form-group">
+      <div class="form-group mb2">
         <%= f.label "Instructions pour les visites", class: "form-label" %>
         <p><small><i class="fas fa-info-circle"></i> Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs.</small></p>
         <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez ici vos instructions pour les visites (ex : adresse exacte ou lieu de rendez-vous, digicode, interphone, etc.)." %>
