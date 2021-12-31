@@ -1,0 +1,7 @@
+<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
+
+<p> Vous avez un nouveau candidat pour votre logement "<%= @property.title %>" à <%= @property.city %>.</p><br/><br/>
+
+<p> Rendez-vous dès maintenant sur <%= link_to "votre espace logement", property_url(@property) %> pour accéder à ses informations détaillées.</p><br/>
+
+<p> A bientôt ! </p>

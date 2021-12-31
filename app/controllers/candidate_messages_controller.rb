@@ -14,6 +14,7 @@ class CandidateMessagesController < ApplicationController
       if redirect_path[:redirect_path] == "new_candidate" #when in new candidate process
         redirect_to step_3_property_path(@property)
         UserMailer.new_appointment_validation_email(@appointment).deliver_now
+        UserMailer.new_appointment_information_email(@appointment).deliver_now
       else #when in appointment show
         flash[:success] = "Votre message a été mis à jour avec succès 👌"
         redirect_to appointment_path(@appointment)

@@ -1,9 +1,9 @@
 <div class="container checkout-status">
   <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu.<br/>Merci pour votre confiance&nbsp;!</h2>
   
-  <hr class="mb2"/>
+  <hr class="hr-black mb2"/>
   <h1 class="mb2">
-    Dernière étape&nbsp;: partagez votre lien immolib dans vos annonces en ligne (ex : PaP) ou sur vos réseaux sociaux
+    Dernière étape&nbsp;: partagez votre lien immolib sur vos annonces en ligne (ex : PaP) ou vos réseaux sociaux
   </h1>
   <h3 class="bolder">
     Les candidats n'auront plus qu'à suivre un parcours
@@ -20,11 +20,12 @@
     </p>
   </div>
 
-  <div class="profile-cta">
+  <div class="profile-cta mt2">
     <p>
-      💡 Conseil : complétez vos infos de profil et celles de votre logement pour
+      💡 Rendez-vous sur votre espace immolib pour compléter vos infos de profil et celles de votre logement 
+      <br/><small>Ces informations serviront à
       personnaliser les emails automatiques qui seront envoyés à vos candidats
-      (confirmation de prise de rendez-vous, rappel visite J-1, rappel dossier incomplet, etc.)​
+      (confirmation de visite, rappel visite J-1, rappel dossier incomplet, etc.)​</small>
     </p>
     <%= link_to "Découvrir mon espace immolib", user_path(current_user), class:
     'btn white-btn bg-primary' %>
