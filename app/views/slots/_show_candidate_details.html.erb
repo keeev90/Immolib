@@ -20,7 +20,7 @@
   </div>
 
   <div class="candidate-profile-details-section">
-    <p class="bolder"><i class="far fa-comment"></i> Message du candidat</p>
+    <p class="bolder"><i class="far fa-comment"></i> Message</p>
     <% if appointment.candidate_message %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
@@ -32,36 +32,36 @@
     <div class="candidate-profile-details-section">
 
       <% if appointment.candidate_dossierfacile_folder.attached? %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
         <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
         <div class="candidate-document mb1">
           <p>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
             <%# if doc.previewable? %>
-              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview') %>
+              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview', target: '_blank') %>
             <%# end %> 
             <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
           </p>
           <% if appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-            <p class="mt1">Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+            <p class="mt1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
           <% end %>
         </div>
         <p><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
         <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
-        <p class="mb1">Lien de son document DossierFacile : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link %></p>
+        <p class="mb1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link, target: '_blank' %></p>
         <p><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_documents.attached? %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location</p>
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
               <%= doc.filename %> 
               <%# if doc.previewable? %>
-                <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview') %>
+                <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(doc, disposition: 'preview'), target: '_blank' %>
               <%# end %> 
               <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(doc, disposition: 'attachment') %>
             </p>
@@ -76,7 +76,7 @@
         <% end %>
       
       <% else %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier du candidat</p>
+        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location</p>
         <p><small><em>Ce candidat n'a pas encore transmis de documents</em></small></p>
       <% end %>
     </div>
