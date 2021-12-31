@@ -1,12 +1,13 @@
 <div class="option-wrapper">
-  <h2>Option 1 : téléchargez directement les documents demandés</h2>
-  
-  <div class="option-wrapper__part mt2">
-    <p class="bolder">Conseils pour booster votre dossier de location</p>
-    <p>✔️ Présentez un dossier complet, clair et lisible</p>
-    <p>✔️ Assurez-vous que vos documents soient signés et datés de moins de 3 mois</p>
-    <p>✔️ Ne déposez que les pièces à votre nom</p>
+
+  <div class="option-wrapper__part mb2">
+    <p class="text-center"><small>💡 Conseils pour booster votre dossier de location</small></p>
+    <p><small>✔️ Présentez un dossier complet, clair et lisible</small></p>
+    <p><small>✔️ Assurez-vous que vos documents soient signés et datés de moins de 3 mois</small></p>
+    <p><small>✔️ Ne déposez que les pièces à votre nom</small></p>
   </div>
+
+  <h2>Option 1 : téléchargez directement les documents demandés</h2>
 
   <div class="option-wrapper__part mw80-text mt2">
     <p class="bolder">Liste des documents à transmettre</p>
@@ -61,7 +62,7 @@
     <div class="pt1">
       <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
         <div class="field">
-          <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Déposer vos documents au format pdf, jpeg ou png", help: "Vous pouvez glisser-déposer les documents ici" %>
+          <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Télécharger vos documents au format pdf, jpeg ou png", help: "Vous pouvez les glisser-déposer ici" %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer mes documents", class:"btn white-btn bg-primary small-btn" %>
@@ -71,10 +72,10 @@
   </div>
 </div>
 
-<hr/>
+<hr class="mt2 mb2"/>
 
 <div class="option-wrapper pt1">
-  <h2>Option 2 : transmettez votre dossier via <%= link_to "DossierFacile", "https://docs.dossierfacile.fr/", class:"primary", target: '_blank' %></h2>
+  <h2>Option 2 : transmettez votre dossier via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %></h2>
   <p>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location.</p> 
   <p>Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</p>
 
@@ -111,12 +112,12 @@
         </div>
       <%end%>
     </div>
-    <p class="mb1 bolder">ou</p>
+    <p class="mb1">--- ou ---</p>
     <div>
       <% if @appointment.candidate_dossierfacile_folder.attached? %>
         <div class="candidate-documents-wrapper">
             <div class="candidate-document">
-              <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format pdf :
+              <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF :
                 <a><%= @appointment.candidate_dossierfacile_folder.filename %></a>
                 <%# if doc.previewable? %>
                   <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview'), target: '_blank' %>
@@ -129,15 +130,15 @@
         <p><small class="success bolder"> Vous pouvez le modifier à tout moment </small></p>
       <% else %>
         <div class="candidate-document-number">
-          <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format pdf</p>
-          <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format pdf 🙏</small>
+          <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF</p>
+          <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format PDF 🙏</small>
         </div>
       <% end %>
     </div>
     <div class="pt1">
       <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
         <div class="field">
-          <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Envoyer votre dossier en format pdf", help: "Vous pouvez glisser-déposer le fichier ici" %>
+          <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Télécharger le fichier PDF", help: "Vous pouvez le glisser-déposer ici" %>
         </div>
         <div class="text-center">
           <%= f.submit "Envoyer mon dossier au format PDF", class:"btn white-btn bg-primary small-btn" %>

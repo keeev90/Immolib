@@ -1,12 +1,10 @@
 <div class='container checkout-status'>
-  
   <h2 class='failed'><i class="fas fa-times-circle"></i>Le paiement n'a pas été effectué</h2>
   <hr/>
-  <p>Les informations de votre logement ont été conservées.</p>
-  <p>Pour finaliser la création de votre logement immolib, nous vous invitons à <strong>finaliser le paiement</strong>&nbsp;:</p>
-  <%= link_to "Finaliser le paiement", checkout_index_path(price: 29.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
-
-  <p>En cliquant sur « Finaliser le paiement », vous serez redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong>. Vous pourrez ensuite finaliser l'organisation de vos visites.</p>
-
-  <%= link_to "Retour à l'accueil", root_path, class: "btn white-btn bg-primary" %>
+  <div class="mt2">
+    <p>Les informations de votre logement ont été conservées !</p>
+    <p>Nous vous invitons à <strong>finaliser le paiement</strong>&nbsp; afin de valider la création de votre logement immolib.</p>
+    <%= link_to "Finaliser le paiement", checkout_index_path(price: 29.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
+  </div>
+  <%= link_to "Retour à l'accueil", root_path, class: "btn outline-btn-white" %>
 </div>

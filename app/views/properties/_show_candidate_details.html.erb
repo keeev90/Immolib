@@ -20,7 +20,18 @@
   </div>
 
   <div class="candidate-profile-details-section">
-    <p class="bolder"><i class="far fa-comment"></i> Message</p>
+    <p class="bolder"><i class="far fa-calendar-check"></i></i> Rendez-vous</p>
+      <%if appointment.slot.start_date > DateTime.now%>
+      <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+    <%elsif appointment.slot.start_date < DateTime.now%>
+      <p>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+    <%else%>
+      <p>Aucune visite programmée</p>
+    <%end%>
+  </div>
+
+  <div class="candidate-profile-details-section">
+    <p class="bolder"><i class="far fa-comment"></i> Message </p>
     <% if appointment.candidate_message %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
@@ -38,7 +49,7 @@
           <p>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
             <%# if doc.previewable? %>
-              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview', target: '_blank') %>
+              <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview'), target: '_blank' %>
             <%# end %> 
             <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
           </p>
@@ -51,7 +62,7 @@
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
         <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
-        <p class="mb1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link,appointment.candidate_dossierfacile_link, target: '_blank' %></p>
+        <p class="mb1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
         <p><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_documents.attached? %>

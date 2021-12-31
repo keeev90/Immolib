@@ -165,9 +165,34 @@
   }
 }
 
+.link {
+  padding: .5em;
+  background-color: #eee;
+  border-radius: 3px;
+  margin: .3rem;
+}
+
 .url-container {
   margin: 1em auto;
-  width: 80%;
+  width: 60%;
+}
+
+.property-section {
+  padding: 1rem;
+  border: 1px solid $primary;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  text-align: center;
+  margin: 0 0.5rem 1rem;
+
+  .primary {
+    margin: -1.9rem auto 1.9rem;
+    background-color: #fff;
+    max-width: 350px;
+  }
 }
 
 
@@ -187,5 +212,10 @@
 @media screen and (max-width: 636px) {
   .property-wrapper {
     padding: 1rem 2rem;
+  }
+
+  .url-container {
+    margin: 1em auto;
+    width: 100%;
   }
 }

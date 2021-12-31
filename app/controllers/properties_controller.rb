@@ -37,6 +37,13 @@ class PropertiesController < ApplicationController
     end
   end 
 
+  def show_candidate_details
+    @appointment = Appointment.find(params[:appointment])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   def edit
     @property = Property.find(params[:id])
   end

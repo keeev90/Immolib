@@ -1,14 +1,16 @@
-<div class="pt4 text-center">
-  <h1>Etape 2/3 : sélection des créneaux de visite</h1>
-  <h3>Renseignez les créneaux de visite que vous souhaitez proposer à vos candidats</h3>
-  <p>Vous pourrez les modifier à tout moment dans votre espace immolib. La disponibilité des créneaux est mis à jour automatiquement après chaque candidature.</p>
+<div class="container">
+  <div class="slot-candidate-wrapper__title section-title">
+    <h1>Etape 2/3 : indiquez les créneaux de visite que vous souhaitez proposer à vos candidats</h1>
+    <p class="mt2">Vous pourrez les modifier à tout moment dans votre espace immolib</p>
+  </div>
 </div>
 
-<div class="new-slot-wrapper pt4 pl4 pr4">
+<div class="new-slot-wrapper pl4 pr4">
   <div class="new-slot-wrapper__content text-center">
-    <%= link_to "Ajouter un créneau", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn white-btn bg-primary" %>
     <% if @slots.count > 0 %>
       <%= render( partial: 'created_property_slots', locals: { slots: @slots, property: @property } ) %>
+    <% else %>
+      <%= link_to "Ajouter un créneau de visite", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn outline-btn-white" %>
     <% end %>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container checkout-status">
   <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu.<br/>Merci pour votre confiance&nbsp;!</h2>
   
-  <hr/>
+  <hr class="mb2"/>
   <h1 class="mb2">
     Dernière étape&nbsp;: partagez votre lien immolib dans vos annonces en ligne (ex : PaP) ou sur vos réseaux sociaux
   </h1>

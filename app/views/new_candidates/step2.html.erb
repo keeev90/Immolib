@@ -4,8 +4,8 @@
 </div>
 <div class="form-page">
   <div class="form-page__form">
-    <p class="text-center"><em>Ce message est optionnel mais recommandé pour permettre au propriétaire d'anticiper au mieux votre visite</em></p>
-    <%= form_with model: @appointment, url: appointment_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+    <p class="text-center"><em>💡 Ce message est optionnel mais recommandé pour permettre au propriétaire d'anticiper au mieux votre visite</em></p>
+    <%= form_with model: @appointment, url: appointment_candidate_message_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <div class="form-group">
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message (ex : votre projet, vos motivations pour ce logement, vos éventuelles questions)", maxlength: "1000" %>
       </div>

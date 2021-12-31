@@ -1,11 +1,10 @@
 <div class="pt4 text-center section-title">
-  <h1>Etape 1/3 : présentation de votre logement</h1>
-  <h3>Renseignez les informations clés de votre logement</h3>
+  <h1>Etape 1/3 : renseignez les informations clés de votre logement</h1>
+  <p class="mt2">Vous pourrez les modifier ou les compléter à tout moment dans votre espace immolib</p>
 </div>
 <div class="form-page">
   <div class="form-page__form">
     <p class="mb2 text-center">Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce</p>
-    <p class="mb2 text-center"><em>Vous pourrez les modifier ou les compléter à tout moment depuis votre espace immolib</em></p>
     <p class='toggle-label'>Je souhaite *</p>
     <div class='sell-rent-wrapper'>
       <p>Louer</p>
@@ -40,7 +39,7 @@
       </div>
       <div class="form-group">
         <%= f.label "Instructions pour les visites", class: "form-label" %>
-        <p><small>ℹ️  Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs.</small></p>
+        <p><small><i class="fas fa-info-circle"></i> Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs.</small></p>
         <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez ici vos instructions pour les visites (ex : adresse exacte ou lieu de rendez-vous, digicode, interphone, etc.)." %>
       </div>
       <div>

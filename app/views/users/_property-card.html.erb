@@ -10,6 +10,14 @@
   </div>
   <div class="property-card__text">
     <p><%= property.title %></p>
-    <p><%= property.city %></p>
+    <p class="mb1"><%= property.city %></p>
+    <p><small><%= property.candidates.size %> <%= property.candidates.size > 1 ? "candidats" : "candidat" %></small></p>
+    <%if property.slots.order("start_date DESC")[0].start_date > DateTime.now%>
+      <p><small>Prochaine visite prévue le <%= property.slots.order("start_date DESC")[0].start_date.strftime("%d/%m") %> à <%= property.slots.order("start_date DESC")[0].start_date.strftime("%H:%M") %></small></p>
+    <%elsif property.slots.order("start_date DESC")[0].start_date < DateTime.now%>
+      <p><small>Dernière visite réalisée le <%= property.slots.order("start_date DESC")[0].start_date.strftime("%d/%m") %> à <%= property.slots.order("start_date DESC")[0].start_date.strftime("%H:%M") %></small></p>
+    <%else%>
+      <p><small>Aucune visite programmée</small></p>
+    <%end%>
   </div>
 </div>

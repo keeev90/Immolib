@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources 'properties' do 
+    get 'candidate_details', to: 'properties#show_candidate_details', as: 'candidate_details'
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots' do
       get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'
@@ -29,7 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources 'appointments' do
+  resources 'appointments', only: [:create, :show, :destroy] do
+    resources 'candidate_slots', only: [:update, :destroy]
+    resources 'candidate_messages', only: [:edit, :update, :destroy]
     resources 'candidate_documents', only: [:create, :destroy]
     resources 'candidate_dossierfacile_folders', only: [:create, :destroy]
     resources 'candidate_dossierfacile_links', only: [:create, :destroy]

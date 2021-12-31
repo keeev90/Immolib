@@ -1,0 +1,23 @@
+<%# Allows user to edit his appointment message %>
+<div class="pt4 text-center">
+  <%if @appointment.candidate_message && @appointment.candidate_message != "" %>
+    <h1>Modifier mon message</h1>
+  <%else%>
+    <h1>Ajouter un message</h1>
+  <%end%>
+</div>
+
+<div class="form-page">
+  <div class="form-page__form">
+  <p class="text-center">💡 Présentez votre projet et vos motivations pour ce logement</p>
+    <%= form_with model: @appointment, url: appointment_candidate_message_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message au propriétaire", maxlength: "1000" %>
+      </div>
+      <div class="text-center">
+        <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+      </div>
+    <%end%>
+    <%= link_to 'Supprimer', appointment_candidate_message_path(@appointment), method: :delete, data: { confirm: "Etes-vous sûr de supprimer ce message ?" }, class: "delete mt1" %>
+  </div>
+</div>
