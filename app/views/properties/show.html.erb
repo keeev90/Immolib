@@ -47,8 +47,8 @@
       <% else %>
         <p><em><%= simple_format(@property.instructions) %></em></p> 
       <% end %>
-      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary" %></p>
-      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn white-btn bg-warning"%></p>
+      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
+      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
       <small><em><i class="fas fa-info-circle"></i> En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
     </div>
   </div>
@@ -63,7 +63,10 @@
     <% end %>
   </div>
   <%= render(partial: 'calendar') %>
-  <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary" %>
+  <% if @property.has_available_slot? == false %>
+    <p class="mt2"><small><em>⚠️  Aucun créneau de visite disponible. Vous pourriez passer à côté de nouveaux candidats...</em></small></p>
+  <% end %>  
+  <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
 </div>
 <div class="container">
   <hr/>
@@ -88,7 +91,7 @@
     </div>
   <% else %>
     <div class="text-center">
-      <p class="mb2"><em> Vous n'avez pas encore de candidats pour ce logement</em></p>
+      <p class="mb2"><small><em> Vous n'avez pas encore de candidats pour ce logement</em></small></p>
       <div class="mb2">
         <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
         <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
