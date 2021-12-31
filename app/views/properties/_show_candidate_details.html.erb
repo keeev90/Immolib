@@ -20,7 +20,7 @@
   </div>
 
   <div class="candidate-profile-details-section">
-    <p class="bolder"><i class="far fa-calendar-check"></i></i> Rendez-vous</p>
+    <p class="bolder"><i class="far fa-calendar-check"></i></i> Visite</p>
       <%if appointment.slot.start_date > DateTime.now%>
       <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
     <%elsif appointment.slot.start_date < DateTime.now%>
@@ -93,11 +93,11 @@
     </div>
   <% end %>
 
-  <hr class="mt2 mb2"/>
+  <hr class="hr-black mt2 mb2"/>
 
   <div class="candidate-profile-details-section text-center">
-    <p> Ce dossier ne vous convient pas ? </p>
-    <%= link_to "Refuser le rendez-vous", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %>
-    <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email de l'annulation de son rendez-vous</em></small></p>
+    <p> Cette candidature ne vous convient pas ? </p>
+    <%= link_to "Refuser la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %>
+    <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email</em></small></p>
   </div>
 </div>

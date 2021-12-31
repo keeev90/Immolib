@@ -88,10 +88,6 @@ class Property < ApplicationRecord
 
   private
 
-  def send_new_property_validation_email
-    UserMailer.new_property_validation_email(self).deliver_now
-  end
-
   def randomize_property_id
     begin
       self.id = SecureRandom.random_number(1_000_000)

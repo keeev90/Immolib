@@ -9,9 +9,12 @@ class CandidateSlotsController < ApplicationController
       property = Property.find(params[:property])
       user_appointments = Appointment.where(candidate: current_user)
       user_appointments.each do |appointment|
-        if appointment.property == property && !appointment.slot.is_past?
+        if appointment.property == property && !slot.is_past?
           appointment.update(slot: slot)
           flash[:success] = "Votre créneau de visite a bien été mis à jour 👌"
+          redirect_to appointment_path(appointment)
+        else 
+          flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
           redirect_to appointment_path(appointment)
         end
       end

@@ -14,6 +14,13 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Votre logement immolib a bien été créé 🎉")
   end
 
+  def new_appointment_information_email(appointment)
+    @property = appointment.property
+    @user = @property.owner
+    @subtitle = "Rendez-vous sur votre espace immolib pour accéder à ses informations détaillées"
+    mail(to: @user.email, subject: "Vous avez un nouveau candidat 🎉")
+  end
+
   def new_appointment_validation_email(appointment)
     @appointment = appointment
     @user = appointment.candidate

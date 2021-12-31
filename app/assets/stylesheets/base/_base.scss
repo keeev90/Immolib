@@ -17,6 +17,10 @@ hr {
   margin: auto;
 }
 
+.hr-black {
+  border-top: 1px solid black !important;
+}
+
 a {
   color: $primary;
 }

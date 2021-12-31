@@ -1,6 +1,6 @@
 <p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
 
-<p> Nous vous confirmons votre inscription à la visite du <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>) </p><br/><br/>
+<p> Nous vous confirmons votre candidature pour le logement "<%= @appointment.property.title %>" à <%= @appointment.property.city %>.</p><br/><br/>
 
 <% if @appointment.slot.property.owner_project == "rent" %>
   <p> Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour compléter votre dossier de location. </p><br/>
