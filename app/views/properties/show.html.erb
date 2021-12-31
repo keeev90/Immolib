@@ -39,7 +39,7 @@
       <% if @property.other_link == "" %>
         <p class="mb1"><small><em>Vous n'avez pas encore indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
       <% else %>
-        <p class="mb1"> <%= link_to @property.other_link, @property.other_link %> </p>
+        <p class="mb1"> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
       <% end %>
       <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
       <% if @property.instructions == "" %>
@@ -71,6 +71,7 @@
 <div class="container">
   <h1 class="primary mb2 text-center">Mes candidats</h1>
   <% if @property.candidates.size > 0 %>
+    <p class="mb2 text-center">💡 <span class="bolder">Cliquez sur un candidat pour afficher sa fiche détaillée</span></p>
     <div class="slot-wrapper pl2 pr2 pb2">
       <div class="slot-wrapper-left">
         <div class="slot-wrapper__content">
@@ -86,17 +87,19 @@
       </div>
     </div>
   <% else %>
-    <p class="mb2"><em> Vous n'avez pas encore de candidats pour ce logement</em></p>
-    <div class="mb2">
-      <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
-      <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
-      <div class="url-container">
-        <p class="link"> 
-          <a><%= @property.go_visit_url %></a> 
-          <i class="far fa-copy">
-            <span class="copy-text"> Copier le lien </span>
-          </i>
-        </p>
+    <div class="text-center">
+      <p class="mb2"><em> Vous n'avez pas encore de candidats pour ce logement</em></p>
+      <div class="mb2">
+        <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
+        <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
+        <div class="url-container">
+          <p class="link"> 
+            <a><%= @property.go_visit_url %></a> 
+            <i class="far fa-copy">
+              <span class="copy-text"> Copier le lien </span>
+            </i>
+          </p>
+        </div>
       </div>
     </div>
   <% end %>
