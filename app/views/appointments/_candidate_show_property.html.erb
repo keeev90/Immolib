@@ -1,4 +1,46 @@
 <p class="bolder"><%= appointment.property.title%></p>
 <p><%= appointment.property.city%></p>
 <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank' %></small></p>
-
+<% if appointment.slot.is_past? %>
+  <div class="form-page">
+    <div class="form-page__form">
+      <%if appointment.is_interested == true %>
+        <%if appointment.property.owner_project == "rent"%>
+          <p class="text-center"> 👍 <span class="bolder">Vous avez confirmé votre intérêt pour ce logement</span></p>
+          <p><small><em>Votre confirmation a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre candidature.</em></small></p>
+        <%else%>
+          <p class="text-center">👍 <span class="bolder">Vous avez fait une offre d'achat pour ce logement</span></p>
+          <p><small><em>Votre offre a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre proposition.</em></small></p>
+        <%end%>
+      <%elsif appointment.is_interested == false %>
+          <p class="text-center">⚠️ <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
+          <p><small><em>Merci pour votre retour, votre décision a été transmise au propriétaire.</em></small></p>
+      <%else%>
+        <%if appointment.property.owner_project == "rent"%>
+          <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
+          <p><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
+        <%else%>
+          <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
+          <p><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
+        <%end%>
+        <div class='candidate-decision-wrapper'>
+          <p>Oui</p>
+          <div class='yes-no-toggle'>
+            <button class='yes-btn'></button>
+            <button class='no-btn'></button>
+            <div></div>
+          </div>
+          <p>Non</p>
+        </div>
+        <%= form_with model: appointment, url: appointment_candidate_decision_path(appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+          <%= f.hidden_field :is_interested %>
+          <div>
+            <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+  <%= javascript_include_tag 'yes-no-toggle' %>
+<%end%>
+<p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>

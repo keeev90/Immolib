@@ -8,7 +8,7 @@
   <hr/>
 </div>
 <div class="container text-center">
-  <h1 class="bolder primary mb2">Ma visite</h1>
+  <h1 class="bolder primary mb2">Mes visites</h1>
   <div class=" mb1">
     <%if @appointment.slot.start_date > DateTime.now%>
       <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
@@ -46,4 +46,3 @@
   <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
 </div>
 <%end%>
-<p class="text-center mb2"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
