@@ -1,57 +1,58 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
-<div class="container">
-  <div class="property-section">
-    <h1 class="primary mb2">Mon logement</h1>
-    <div class="mb2">
-      <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
-      <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
-      <div class="url-container">
-        <p class="link"> 
-          <a><%= @property.go_visit_url %></a> 
-          <i class="far fa-copy">
-            <span class="copy-text"> Copier le lien </span>
-          </i>
-        </p>
-      </div>
-    </div>
-    <%if @property.property_picture.attached?%>
-      <div class="pic property-picture">
-        <%= image_tag @property.property_picture, alt: 'property picture' %>
-        <p class="property-picture--change"> Modifier </p>
-        <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture pt1"  %>
-      </div>
-    <%else%>
-      <div class="pic property-picture no-picture">
-        <p>Ajouter une photo à mon logement</p>
-      </div>
-    <%end%>
-    <%= render(
-      partial: 'layouts/picture_modal',
-      locals: {
-        url: property_property_pictures_path(@property),
-        type: :property_picture
-      }
-    ) %>
-    <div class="property-wrapper__left__infos">
-      <h2> <%= @property.title %> </h2>
-      <h3 class="mb1"> <%= @property.city %> </h3>
-      <p><i class="far fa-arrow-alt-circle-right"></i> Mon  annonce en ligne : </p>
-      <% if @property.other_link == "" %>
-        <p class="mb1"><small><em>Vous n'avez pas encore indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
-      <% else %>
-        <p class="mb1"> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
-      <% end %>
-      <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
-      <% if @property.instructions == "" %>
-        <p class="mb1"><small><em>Vous n'avez pas encore indiqué d'instructions pour vos candidats</em></small></p>
-      <% else %>
-        <p><em><%= simple_format(@property.instructions) %></em></p> 
-      <% end %>
-      <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
-      <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
-      <small><em><i class="fas fa-info-circle"></i> En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
+<div class="container text-center">
+  <h1 class="primary mb2">Mon logement</h1>
+  <div class="mb2">
+    <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
+    <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
+    <div class="url-container">
+      <p class="link"> 
+        <a><%= @property.go_visit_url %></a> 
+        <i class="far fa-copy">
+          <span class="copy-text"> Copier le lien </span>
+        </i>
+      </p>
     </div>
   </div>
+  <%if @property.property_picture.attached?%>
+    <div class="pic property-picture">
+      <%= image_tag @property.property_picture, alt: 'property picture' %>
+      <p class="property-picture--change"> Modifier </p>
+      <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture pt1"  %>
+    </div>
+  <%else%>
+    <div class="pic property-picture no-picture">
+      <p>Ajouter une photo à mon logement</p>
+    </div>
+  <%end%>
+  <%= render(
+    partial: 'layouts/picture_modal',
+    locals: {
+      url: property_property_pictures_path(@property),
+      type: :property_picture
+    }
+  ) %>
+  <div class="property-wrapper__left__infos">
+    <h2> <%= @property.title %> </h2>
+    <h3 class="mb1"> <%= @property.city %> </h3>
+    <p><i class="far fa-arrow-alt-circle-right"></i> Mon  annonce en ligne : </p>
+    <% if @property.other_link == "" %>
+      <p class="mb1"><small><em>Vous n'avez pas encore indiqué de lien vers une annonce en ligne (ex : PaP)</em></small></p>
+    <% else %>
+      <p class="mb1"> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
+    <% end %>
+    <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
+    <% if @property.instructions == "" %>
+      <p class="mb1"><small><em>⚠️  Vous n'avez pas encore indiqué d'instructions pour vos candidats (adresse, digicode, interphone, etc.)</em></small></p>
+    <% else %>
+      <p><em><%= simple_format(@property.instructions) %></em></p> 
+    <% end %>
+    <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
+    <p><%= link_to "Supprimer mon logement", property_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
+    <small><em><i class="fas fa-info-circle"></i> En cas de suppression de votre logement, toutes les visites prévues seront annulées et les candidats seront automatiquement prévenus par email</em></small>
+  </div>
+</div>
+<div class="container">
+  <hr/>
 </div>
 <div class="container text-center">
   <h1 class="primary mb2">Mes visites</h1>
