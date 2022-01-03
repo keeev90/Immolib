@@ -42,7 +42,7 @@
     <% end %>
     <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite : </p>
     <% if @property.instructions == "" %>
-      <p class="mb1"><small><em>⚠️  Vous n'avez pas encore indiqué d'instructions pour vos candidats (adresse, digicode, interphone, etc.)</em></small></p>
+      <p class="mb1"><small><em>⚠️  Vous n'avez pas encore indiqué d'instructions pour vos candidats (adresse, digicode, interphone, etc.) <br/> Ces instructions seront envoyées automatiquement aux candidats à l'approche d'une visite</em></small></p>
     <% else %>
       <p><em><%= simple_format(@property.instructions) %></em></p> 
     <% end %>
@@ -105,6 +105,7 @@
           </p>
         </div>
       </div>
+      <p class="mb2"><small><em>⚠️  Vérifiez que vous proposez des créneaux de visite pour ce logement</em></small></p>
     </div>
   <% end %>
 </div>

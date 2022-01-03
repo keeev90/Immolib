@@ -181,8 +181,7 @@ input[type='submit'] {
   }
 }
 
-
-.candidate-decision-wrapper {
+.decision-wrapper {
   display: flex;
   align-items: center;
   margin: 1rem 0;
@@ -237,6 +236,12 @@ input[type='submit'] {
   p {
     margin: 2ch;
   }
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
 }
 
 @media screen and (max-width: 424px) {

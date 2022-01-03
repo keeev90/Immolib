@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources 'candidate_dossierfacile_folders', only: [:create, :destroy]
     resources 'candidate_dossierfacile_links', only: [:create, :destroy]
     resources 'candidate_decisions', only: [:update]
+    resources 'owner_decisions', only: [:update]
   end
 
   scope '/checkout' do
