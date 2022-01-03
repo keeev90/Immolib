@@ -8,9 +8,12 @@
         <%if appointment.property.owner_project == "rent"%>
           <p class="text-center"> 👍 <span class="bolder">Vous avez confirmé votre intérêt pour ce logement</span></p>
           <p><small><em>Votre confirmation a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre candidature.</em></small></p>
+          <p class="mt2"><small>💡 Accompagnez votre réponse de précisions écrites en modifiant votre message au propriétaire : vos motivations, les atouts de votre candidature...</small></p>
         <%else%>
           <p class="text-center">👍 <span class="bolder">Vous avez fait une offre d'achat pour ce logement</span></p>
           <p><small><em>Votre offre a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre proposition.</em></small></p>
+          <p><small><i class="fas fa-info-circle"></i> Contrairement à la signature d'un compromis de vente, votre offre d'achat ne vous engage pas : vous pouvez vous retracter à tout moment.</small></p>
+          <p class="mt2"><small>⚠️ Accompagnez votre offre de précisions écrites en modifiant votre message au propriétaire : rappel de votre identité complète, date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
         <%end%>
       <%elsif appointment.is_interested == false %>
           <p class="text-center">⚠️ <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
@@ -19,9 +22,11 @@
         <%if appointment.property.owner_project == "rent"%>
           <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
           <p><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
+          <p><small><em>Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</em></small></p>
         <%else%>
           <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
           <p><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
+          <p><small><em>Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</em></small></p>
         <%end%>
         <div class='candidate-decision-wrapper'>
           <p>Oui</p>
@@ -44,3 +49,8 @@
   <%= javascript_include_tag 'yes-no-toggle' %>
 <%end%>
 <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
+<%if appointment.property.owner_project == "rent"%>
+  <p><small><em><i class="fas fa-info-circle"></i> Les documents de votre dossier seront automatiquement supprimés <br/>En cas de visite prévue, votre rendez-vous sera automatiquement annulé</em></small></p>
+<%else%>
+  <p><small><em><i class="fas fa-info-circle"></i> En cas de visite prévue, votre rendez-vous sera automatiquement annulé</em></small></p>
+<%end%>
