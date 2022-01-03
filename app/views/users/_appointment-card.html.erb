@@ -11,21 +11,25 @@
   <div class="appointment-card__text">
     <p><%= appointment.slot.property.title %></p>
     <p class="mb1"><%= appointment.slot.property.city %></p>
-    <%if appointment.property.owner_project == "rent"%>
-      <% if appointment.candidate_dossierfacile_folder.attached? || appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-        <p class="green"><small>✔️ Dossier de location complet</small></p>
-      <% elsif appointment.candidate_documents.attached? && appointment.candidate_documents.size == 5 %>
-        <p class="green"><small>✔️ Dossier de location complet</small></p>
-      <%else%>
-        <p class="danger"><small>⚠️ Dossier de location incomplet</small></p>
-      <%end%>
-    <%end%>
-    <%if appointment.slot.start_date > DateTime.now%>
-      <p><small>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></small></p>
-    <%elsif appointment.slot.start_date < DateTime.now%>
-      <p><small>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %></small></p>
+    <%if appointment.is_interested == false %>
+      <p><small>⚠️ Vous avez indiqué ne pas être intéressé(e) par ce logement</small></p>
     <%else%>
-      <p><small>Aucune visite programmée</small></p>
+      <%if appointment.property.owner_project == "rent"%>
+        <% if appointment.candidate_dossierfacile_folder.attached? || appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
+          <p class="green"><small>✔️ Dossier de location complet</small></p>
+        <% elsif appointment.candidate_documents.attached? && appointment.candidate_documents.size == 5 %>
+          <p class="green"><small>✔️ Dossier de location complet</small></p>
+        <%else%>
+          <p class="danger"><small>⚠️ Dossier de location incomplet</small></p>
+        <%end%>
+      <%end%>
+      <%if appointment.slot.start_date > DateTime.now%>
+        <p><small>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></small></p>
+      <%elsif appointment.slot.start_date < DateTime.now%>
+        <p><small>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %></small></p>
+      <%else%>
+        <p><small>Aucune visite programmée</small></p>
+      <%end%>
     <%end%>
   </div>
 </div>

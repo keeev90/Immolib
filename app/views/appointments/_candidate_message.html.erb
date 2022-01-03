@@ -1,8 +1,8 @@
-<p class="text-center mb2"><small>💡 Ce message permettra au propriétaire d'anticiper au mieux votre visite </small></p>
+<p class="text-center mb2"><small>💡 Ce message permettra d'appuyer votre candidature </small></p>
 <%if appointment.candidate_message && appointment.candidate_message != "" %>
   <p><em><%= simple_format(appointment.candidate_message) %></em></p>
   <%= link_to "Modifier mon message", edit_appointment_candidate_message_path(appointment), class: "btn white-btn bg-primary small-btn" %>
 <%else%>
-  <p><em>Vous n'avez pas encore envoyé un message au propriétaire</em></p>
+  <p><small><em>⚠️ Vous n'avez pas encore envoyé un message au propriétaire</em></small></p>
   <%= link_to "Ajouter un message", edit_appointment_candidate_message_path(appointment), class: "btn white-btn bg-primary small-btn" %>
 <%end%>

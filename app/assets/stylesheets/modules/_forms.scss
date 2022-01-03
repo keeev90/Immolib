@@ -181,6 +181,64 @@ input[type='submit'] {
   }
 }
 
+
+.candidate-decision-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+
+  .yes-no-toggle {
+    position: relative;
+    background-color: #ccc;
+    border-radius: 50px;
+    padding: 4px;
+    display: flex;
+    
+    div {
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      background-color: #999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: all .4s ease;
+      
+      &.yes {
+        left: 6px;
+        transform: translate(0, -50%);
+        background-color: #006bd6;
+      }
+      
+      &.no {
+        left: calc(3rem - 6px);
+        transform: translate(0, -50%);
+        background-color: #006bd6;
+      }
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+      height: 1.5rem;
+      width: 2rem;
+      cursor: pointer;
+      opacity: 0;
+      &:nth-child(1) {
+        border-radius: 50px 0 0 50px;
+      }
+      &:nth-child(2) {
+        border-radius: 0 50px 50px 0;
+      }
+    }
+  }
+
+  p {
+    margin: 2ch;
+  }
+}
+
 @media screen and (max-width: 424px) {
   .form-page__form {
     em,
