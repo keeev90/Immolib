@@ -4,8 +4,7 @@ class Slot < ApplicationRecord
   
   #Associations
   belongs_to :property
-
-  has_many :appointments, dependent: :destroy
+  has_many :appointments
   has_many :candidates, through: :appointments
   
   #Validations
@@ -15,7 +14,6 @@ class Slot < ApplicationRecord
   validates :start_date, presence: true
   validates :duration, presence: true
   validates :max_appointments, presence: true, numericality: { only_integer: true }
-
 
   def end_date
     start_date + duration.minutes

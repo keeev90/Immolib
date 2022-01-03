@@ -23,5 +23,5 @@ Rails.application.config.assets.precompile += %w(
   activestorage.js
   faq.js
   sell-rent-toggle.js
-  yes-no-toggle.js
+  candidate-yes-no-toggle.js
 )

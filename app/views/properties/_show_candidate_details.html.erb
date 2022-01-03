@@ -93,11 +93,83 @@
     </div>
   <% end %>
 
-  <hr class="hr-black mt2 mb2"/>
-
-  <div class="candidate-profile-details-section text-center">
-    <p> Cette candidature ne vous convient pas ? </p>
-    <%= link_to "Refuser la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %>
-    <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email</em></small></p>
+  <div class="form-page">
+    <div class="form-page__form">
+      <%if appointment.is_interested == true %>
+        <%if appointment.is_accepted == true %>
+          <%if appointment.property.owner_project == "rent"%>
+            <div class="text-center">
+              <p>✔️ <span class="bolder green">Vous avez validé cette candidature !</span></p>
+              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+              <p class="mb1">⚠️ Pour la <span class="bolder">signature du bail de location</span>, prenez contact avec le candidat directement par email</p>
+              <p class="mb1 bg-success"> <%= appointment.candidate.email%></p>
+              <p><small><em><i class="fas fa-info-circle"></i> Les visistes à venir ont été automatiquement annulées et les candidats concernés on été prévenus</em></small></p>
+            </div>
+          <%else%>
+            <div class="text-center">
+              <p>✔️ <span class="bolder green">Vous avez validé cette offre !</span></p>
+              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+              <p class="mb1">⚠️ Pour la <span class="bolder">signature du compromis de vente</span>, prenez contact avec le candidat directement par email</p>
+              <p class="mb1 bg-success"> <%= appointment.candidate.email%></p>
+              <p><small><em><i class="fas fa-info-circle"></i> Les visistes à venir ont été automatiquement annulées et les candidats concernés on été prévenus</em></small></p>
+            </div>
+          <%end%>
+        <%elsif appointment.is_accepted == false %>
+          <%if appointment.property.owner_project == "rent"%>
+            <div class="text-center">
+              <p>❌ <span class="bolder danger">Vous n'avez pas souhaité valider cette candidature</span></p>
+              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+            </div>
+          <%else%>
+            <div class="text-center">
+              <p>❌ <span class="bolder danger">Vous n'avez pas souhaité valider cette offre d'achat</span></p>
+              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+            </div>
+          <%end%>
+        <%else%>
+          <%if appointment.property.owner_project == "rent"%>
+            <div class="text-center">
+              <p> 👍 <span class="bolder">Le candidat a confirmé son intérêt pour votre logement</span></p>
+              <p class="mt2">Souhaitez-vous valider cette candidature ?</p>
+              <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au candidat</em></small></p>
+              <p class="mb1"><small>💡 Appuyez-vous sur le dossier de location et le message du candidat</small></p>
+              <p><small>⚠️ Si votre réponse est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du bail. Les visistes à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
+            </div>
+          <%else%>
+            <div class="text-center">
+              <p>👍 <span class="bolder">Le candidat a fait une offre d'achat pour votre logement</span></p>
+              <p class="mt2">Souhaitez-vous valider cette offre d'achat ?</p>
+              <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au candidat</em></small></p>
+              <p class="mb1"><small>💡 Appuyez-vous sur le message du candidat qui accompagne sa proposition</small></p>
+              <p><small>⚠️ Si votre réponse est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du compromis de vente. Les visites à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
+            </div>
+          <%end%>
+          <%= form_with model: appointment, url: appointment_owner_decision_path(appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+            <div class="radio-button">
+              <%= f.label "Oui" %>
+              <%= f.radio_button :is_accepted, true %>
+            </div>
+            <br/>
+            <div class="radio-button">
+              <%= f.label "Non" %>
+              <%= f.radio_button :is_accepted, false %>
+            </div>
+            <div>
+              <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+            </div>
+          <%end%>
+        <%end%>
+      <%elsif appointment.is_interested == false %>
+        <p class="text-center">⚠️ <span class="bolder">Le candidat a indiqué ne pas être intéressé par votre logement</span></p>
+        <%= link_to "Supprimer la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning text-center" %>
+      <%else%>
+        <div class="candidate-profile-details-section text-center">
+          <p> Cette candidature ne vous convient pas ? </p>
+          <%= link_to "Refuser la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %>
+          <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email</em></small></p>
+        </div>
+      <%end%>
+    </div>
   </div>
 </div>
+

@@ -16,19 +16,19 @@
           <p class="mt2"><small>⚠️ Accompagnez votre offre de précisions écrites en modifiant votre message au propriétaire : rappel de votre identité complète, date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
         <%end%>
       <%elsif appointment.is_interested == false %>
-          <p class="text-center">⚠️ <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
-          <p><small><em>Merci pour votre retour, votre décision a été transmise au propriétaire.</em></small></p>
+        <p class="text-center">⚠️ <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
+        <p><small><em>Merci pour votre retour, votre décision a été transmise au propriétaire.</em></small></p>
       <%else%>
         <%if appointment.property.owner_project == "rent"%>
           <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
-          <p><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
-          <p><small><em>Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</em></small></p>
+          <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
+          <p><small><em>💡 Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</em></small></p>
         <%else%>
           <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
-          <p><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
-          <p><small><em>Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</em></small></p>
+          <p class="mb1"><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
+          <p><small><em>💡 Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</em></small></p>
         <%end%>
-        <div class='candidate-decision-wrapper'>
+        <div class='decision-wrapper'>
           <p>Oui</p>
           <div class='yes-no-toggle'>
             <button class='yes-btn'></button>
@@ -46,7 +46,7 @@
       <%end%>
     </div>
   </div>
-  <%= javascript_include_tag 'yes-no-toggle' %>
+  <%= javascript_include_tag 'candidate-yes-no-toggle' %>
 <%end%>
 <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
 <%if appointment.property.owner_project == "rent"%>

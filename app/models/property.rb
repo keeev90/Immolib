@@ -17,9 +17,7 @@ class Property < ApplicationRecord
   #validates :zip_code, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "Veuillez entrer un code postal valide" } 
   validates :other_link, format: URI::regexp(%w[http https]), allow_blank: true
   validates :owner_project, presence: true, allow_blank: false
-
   validates :property_picture, size: {less_than: 3.megabytes, message: 'must be less than 3MB'}
-
 
   def go_visit_url
     @id = self.id
