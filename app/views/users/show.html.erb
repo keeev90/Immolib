@@ -18,17 +18,15 @@
         <%= @user.email %>
       </p>
     </div>
-    <%if @user.profile_picture.attached?%>
+    <%if @user.profile_picture.attached? %>
       <div>
         <div class="pic profile-wrapper__informations__right">
           <%= image_tag @user.profile_picture, alt: 'profile_picture' %>
           <p class="profile-wrapper__informations__right--change"> Modifier </p>
         </div>
-        <%= link_to "Supprimer la photo", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
-      </div>
-    <%else%>
-      <div class="pic profile-wrapper__informations__right nopic">
-        <p> Ajouter une photo de profil </p>
+        <%if @user.profile_picture.filename != 'profile_placeholder.png' %>
+          <%= link_to "Supprimer la photo", user_profile_picture_path(current_user), method: "delete", class: "delete-profile-picture"  %>
+        <%end%>
       </div>
     <%end%>
     <%= render(

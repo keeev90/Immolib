@@ -1,7 +1,7 @@
 <div class="form-page">
   <div class="form-page__form">
     <h2>Éditer mon logement</h2>
-    <p class="mb2 text-center">Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce en ligne.</p>
+    <p class="mb2 text-center"><em>Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce en ligne</em></p>
 
     <%= form_with model: @property, url: property_path(@property), local: true, class: "form", id: "item-form", multipart: true do |f| %>
     
@@ -17,7 +17,7 @@
       </div>
 
       <div class="field">
-        <%= f.label 'Lien vers l\'annonce en ligne' %><br />
+        <%= f.label 'Lien vers une annonce en ligne' %><br />
         <%= f.text_field :other_link, autofocus: true, autocomplete: "other_link" %>
       </div>
 
@@ -27,7 +27,7 @@
         <%= f.text_area :instructions, autofocus: true, autocomplete: "instructions" %>
       </div>
 
-      <div class="actions">
+      <div class="actions mb1">
         <%= f.submit "Enregistrer les changements", class:"btn white-btn bg-primary" %>
       </div>
     <% end %>

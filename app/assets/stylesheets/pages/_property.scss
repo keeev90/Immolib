@@ -121,17 +121,11 @@
 
   &--change {
     position: absolute;
+    bottom: 50%;
     font-size: 1.6em;
     color: #fff;
     opacity: 0;
     pointer-events: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
   }
 
   &.no-picture {

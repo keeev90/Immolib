@@ -53,7 +53,7 @@
         </div>
       <% else %>
         <div class="candidate-document-number">
-          <small>Aucun fichier transmis. Merci d'envoyer vos documents aux formats autorisés 🙏</small>
+          <small>⚠️ Aucun fichier transmis. Merci d'envoyer vos documents aux formats autorisés.</small>
         </div>
       <% end %>
     </div>
@@ -101,7 +101,7 @@
       <% else %>
         <div class="candidate-document-number pt1">
           <p><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile</p>
-          <small>Aucun lien transmis. Merci de renseigner votre lien DossierFacile 🙏</small>
+          <small>⚠️ Aucun lien transmis. Merci de renseigner votre lien DossierFacile.</small>
         </div>
       <% end %>
       <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
@@ -133,7 +133,7 @@
       <% else %>
         <div class="candidate-document-number mt2">
           <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF</p>
-          <small>Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format PDF 🙏</small>
+          <small>⚠️ Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format PDF.</small>
         </div>
       <% end %>
     </div>
