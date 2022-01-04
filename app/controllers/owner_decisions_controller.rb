@@ -6,7 +6,7 @@ class OwnerDecisionsController < ApplicationController
     appointment = Appointment.find(params[:appointment_id])
     property = appointment.property
     if appointment.update(is_accepted: params[:appointment][:is_accepted])
-      if params[:appointment][:is_accepted] == ( "true" || "false")
+      if (params[:appointment][:is_accepted] == "true") || (params[:appointment][:is_accepted] == "false")
         flash[:success] = "Votre réponse a été enregistrée avec succès 👌"
       else 
         flash[:warning] = "Vous n'avez pas sélectionné une réponse, merci de rééssayer 🙏"

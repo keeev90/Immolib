@@ -35,7 +35,7 @@
     <% if appointment.candidate_message %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p><small><em> Ce candidat ne vous a pas encore adressé de message</em></small></p>
+      <p><small><em>⚠️ Ce candidat ne vous a pas encore adressé de message</em></small></p>
     <% end %>
   </div>
 
@@ -46,7 +46,7 @@
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
         <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
         <div class="candidate-document mb1">
-          <p>
+          <p><span class="text-muted">Dossier&nbsp;:</span>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
             <%# if doc.previewable? %>
               <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'preview'), target: '_blank' %>
@@ -54,19 +54,28 @@
             <%= link_to raw("<i class='fas fa-download'></i>"), rails_blob_path(appointment.candidate_dossierfacile_folder, disposition: 'attachment') %>
           </p>
           <% if appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
-            <p class="mt1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
+            <p><span class="text-muted">Lien du dossier&nbsp;:</span> <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
           <% end %>
         </div>
-        <p><small> ✔️ Dossier complet</small></p>
+        <p class="green"><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
         <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
-        <p class="mb1">Lien de son dossier : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
-        <p><small> ✔️ Dossier complet</small></p>
+        <p class="mb1"><span class="text-muted">Lien du dossier&nbsp;:</span> <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
+        <p class="green"><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_documents.attached? %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location</p>
+        <p class="bolder mb1"><i class="far fa-folder-open"></i> Dossier de location</p>
+        <div class="mb1">
+          <p class="text-muted">Liste des documents demandés&nbsp;:</p>
+          <p><i class="fas fa-caret-right"></i> 1 pièce d'identité recto-verso</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de domicile</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de situation professionnelle</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de ressources</p>
+          <p><i class="fas fa-caret-right"></i> Dernier avis d’imposition</p>
+        </div>
+        <p class="text-muted">Documents transmis&nbsp;:</p>
         <% appointment.candidate_documents.each do |doc| %>
           <div class="candidate-document">
             <p>
@@ -78,17 +87,24 @@
             </p>
           </div>
         <% end %>
-        
         <p><progress id="file" max="5" value="<%=appointment.candidate_documents.size%>" class="<%=appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
         <% if appointment.candidate_documents.size < 5 %>
-          <p><small>Documents transmis : <%= appointment.candidate_documents.size %> / 5</small></p>
+          <p><small><em>⚠️ Dossier incomplet. Nombre de document(s) transmis : <%= appointment.candidate_documents.size %> / 5</em></small></p>
         <% else %>
-          <p><small> ✔️ Dossier complet</small></p>
+          <p class="green"><small> ✔️ Dossier complet</small></p>
         <% end %>
-      
+        
       <% else %>
-        <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location</p>
-        <p><small><em>Ce candidat n'a pas encore transmis de documents</em></small></p>
+        <p class="bolder mb1"><i class="far fa-folder-open"></i> Dossier de location</p>
+        <div class="mb1">
+          <p class="text-muted">Liste des documents demandés&nbsp;:</p>
+          <p><i class="fas fa-caret-right"></i> 1 pièce d'identité recto-verso</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de domicile</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de situation professionnelle</p>
+          <p><i class="fas fa-caret-right"></i> 1 justificatif de ressources</p>
+          <p><i class="fas fa-caret-right"></i> Dernier avis d’imposition</p>
+        </div>
+        <small><p><em>⚠️ Ce candidat n'a pas encore transmis de documents</em></p></small>
       <% end %>
     </div>
   <% end %>
@@ -100,15 +116,15 @@
           <%if appointment.property.owner_project == "rent"%>
             <div class="text-center">
               <p>✔️ <span class="bolder green">Vous avez validé cette candidature !</span></p>
-              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+              <p class="mb1"><small><em>Votre décision a été transmise au candidat</em></small></p>
               <p class="mb1">⚠️ Pour la <span class="bolder">signature du bail de location</span>, prenez contact avec le candidat directement par email</p>
               <p class="mb1 bg-success"> <%= appointment.candidate.email%></p>
               <p><small><em><i class="fas fa-info-circle"></i> Les visistes à venir ont été automatiquement annulées et les candidats concernés on été prévenus</em></small></p>
             </div>
           <%else%>
             <div class="text-center">
-              <p>✔️ <span class="bolder green">Vous avez validé cette offre !</span></p>
-              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+              <p>✔️ <span class="bolder green">Vous avez accepté cette offre !</span></p>
+              <p class="mb1"><small><em>Votre décision a été transmise au candidat</em></small></p>
               <p class="mb1">⚠️ Pour la <span class="bolder">signature du compromis de vente</span>, prenez contact avec le candidat directement par email</p>
               <p class="mb1 bg-success"> <%= appointment.candidate.email%></p>
               <p><small><em><i class="fas fa-info-circle"></i> Les visistes à venir ont été automatiquement annulées et les candidats concernés on été prévenus</em></small></p>
@@ -116,35 +132,35 @@
           <%end%>
         <%elsif appointment.is_accepted == false %>
           <%if appointment.property.owner_project == "rent"%>
-            <div class="text-center">
-              <p>❌ <span class="bolder danger">Vous n'avez pas souhaité valider cette candidature</span></p>
-              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
-            </div>
+          <div class="text-center">
+            <p>❌ <span class="bolder danger">Vous n'avez pas retenu cette candidature</span></p>
+            <p><small><em>Le candidat a été prévenu de votre décision et de l'annulation sa visite en cas de rendez-vous à venir</em></small></p>
+          </div>
           <%else%>
             <div class="text-center">
-              <p>❌ <span class="bolder danger">Vous n'avez pas souhaité valider cette offre d'achat</span></p>
-              <p class="mb1"><small><em>Votre réponse a été transmise au candidat</em></small></p>
+              <p>❌ <span class="bolder danger">Vous avez décliné cette offre d'achat</span></p>
+              <p><small><em>Votre décision a été transmise au candidat</em></small></p>
             </div>
           <%end%>
         <%else%>
           <%if appointment.property.owner_project == "rent"%>
             <div class="text-center">
-              <p> 👍 <span class="bolder">Le candidat a confirmé son intérêt pour votre logement</span></p>
+              <p>👍 <span class="bolder">Le candidat a confirmé son intérêt pour votre logement</span></p>
               <p class="mt2">Souhaitez-vous valider cette candidature ?</p>
-              <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au candidat</em></small></p>
+              <p class="mb1"><small><em>Votre décision sera automatiquement transmise au candidat</em></small></p>
               <p class="mb1"><small>💡 Appuyez-vous sur le dossier de location et le message du candidat</small></p>
-              <p><small>⚠️ Si votre réponse est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du bail. Les visistes à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
+              <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du bail. Les visistes à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
             </div>
           <%else%>
             <div class="text-center">
               <p>👍 <span class="bolder">Le candidat a fait une offre d'achat pour votre logement</span></p>
               <p class="mt2">Souhaitez-vous valider cette offre d'achat ?</p>
-              <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au candidat</em></small></p>
+              <p class="mb1"><small><em>Votre décision sera automatiquement transmise au candidat</em></small></p>
               <p class="mb1"><small>💡 Appuyez-vous sur le message du candidat qui accompagne sa proposition</small></p>
-              <p><small>⚠️ Si votre réponse est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du compromis de vente. Les visites à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
+              <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du compromis de vente. Les visites à venir seront automatiquement annulées et les candidats concernés seront prévenus.</small></p>
             </div>
           <%end%>
-          <%= form_with model: appointment, url: appointment_owner_decision_path(appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+          <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
             <div class="radio-button">
               <%= f.label "Oui" %>
               <%= f.radio_button :is_accepted, true %>
@@ -161,13 +177,24 @@
         <%end%>
       <%elsif appointment.is_interested == false %>
         <p class="text-center">⚠️ <span class="bolder">Le candidat a indiqué ne pas être intéressé par votre logement</span></p>
-        <%= link_to "Supprimer la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning text-center" %>
       <%else%>
-        <div class="candidate-profile-details-section text-center">
-          <p> Cette candidature ne vous convient pas ? </p>
-          <%= link_to "Refuser la candidature", appointment_path(id: appointment, owner: true), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %>
-          <p><small><em><i class="fas fa-info-circle"></i> En cas de refus, le candidat sera automatiquement prévenu par email</em></small></p>
-        </div>
+        <%if appointment.is_accepted == false %>
+          <div class="text-center">
+            <p>❌ <span class="bolder danger">Vous n'avez pas retenu cette candidature</span></p>
+            <p><small><em>Le candidat a été prévenu de votre décision et de l'annulation sa visite en cas de rendez-vous à venir</em></small></p>
+          </div>
+        <%else%>
+          <div class="candidate-profile-details-section text-center">
+            <p><i class="fas fa-info"></i> <span class="bolder">Ce candidat n'a pas encore confirmé son intérêt pour votre logement</span></p>
+            <hr class="hr-black mw80 mb2 mt2">
+            <p> Cette candidature ne vous convient pas ? </p>
+            <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+              <%= f.hidden_field(:is_accepted, value:"false") %>
+              <%= f.submit "Refuser la candidature", data: {confirm: "Êtes-vous sûr ?"}, class:"btn small-btn white-btn bg-warning" %>
+            <%end%>
+            <p><small><em><i class="fas fa-info-circle"></i> Le candidat sera automatiquement prévenu de votre décision et de l'annulation sa visite en cas de rendez-vous à venir</em></small></p>
+          </div>
+        <%end%>
       <%end%>
     </div>
   </div>
