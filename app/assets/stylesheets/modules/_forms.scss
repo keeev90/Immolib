@@ -7,7 +7,7 @@
 }
 
 .form-page__form {
-  margin: 4rem 0;
+  margin: 2rem 0;
   background-color: #F7F7F7;
   width: 80%;
   max-width: 650px;
@@ -244,6 +244,15 @@ input[type='submit'] {
   margin: 1rem 0;
 }
 
+@media screen and (max-width: 925px) {
+  .form-page__form {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 650px;
+    padding: 1em;
+  }
+}
+
 @media screen and (max-width: 424px) {
   .form-page__form {
     em,
@@ -263,6 +272,7 @@ input[type='submit'] {
 
 @media screen and (max-width: 356px) {
   .form-page__form {
-    padding: 3em 2em;
+    padding: 2em 1em;
+    width: 100%;
   }
 }

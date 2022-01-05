@@ -7,25 +7,34 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center">
+<div class="container text-center" id='candidate-section-1'>
   <h1 class="bolder primary mb2">Mes visites</h1>
-  <div class=" mb1">
+  <div class="mb1">
     <%if @appointment.slot.start_date > DateTime.now%>
       <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
-      <%if @appointment.slot.property.instructions && ( @appointment.slot.start_date.strftime("%d%m%Y") == ( (DateTime.now + 1).strftime("%d%m%Y") || DateTime.now.strftime("%d%m%Y") ) ) %>
+      <%if @appointment.property.instructions && ( @appointment.slot.start_date.strftime("%d%m%Y") == ( (DateTime.now + 1).strftime("%d%m%Y") || DateTime.now.strftime("%d%m%Y") ) ) %>
         <div class="mt1 link">
-          <p><em><%= simple_format(@appointment.slot.property.instructions) %></em></p>
+          <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
         </div>
       <%else%>
         <p class="mt1"><small><em><i class="fas fa-info-circle"></i> A l'approche du jour J, vous recevrez les instructions du propriétaire pour la visite (adresse, digicode, interphone, etc.)</em></small></p> 
       <%end%>
       <p class="mt2"><small>💡 Pour modifier votre créneau de visite cliquez directement sur un autre créneau disponible </small></p>
+      <%if !@appointment.property.has_available_slot?%>
+        <p class="mt2"><small>⚠️ Aucun autre créneau de visite disponible actuellement</small></p>
+      <%end%>
     <%elsif @appointment.slot.start_date < DateTime.now%>
       <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
       <p class="mt1"><small>💡 Pour sélectionner un nouveau créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+      <%if !@appointment.property.has_available_slot?%>
+        <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
+      <%end%>
     <%else%>
       <p class="bolder">Aucune visite programmée</p>
       <p class="mt1"><small>💡 Pour sélectionner un créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+      <%if !@appointment.property.has_available_slot?%>
+        <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
+      <%end%>
     <%end%>
   </div>
   <%= render partial:"candidate_calendar", locals: {property: @appointment.property, slots: @slots, date_arr: @date_arr} %>
@@ -33,7 +42,7 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center">
+<div class="container text-center" id='candidate-section-2'>
   <h1 class="bolder primary mb2">Mon message</h1>
   <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
 </div>
@@ -41,7 +50,7 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container">
+<div class="container" id='candidate-section-3'>
   <h1 class="bolder primary text-center mb2">Mon dossier de location</h1>
   <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
 </div>
