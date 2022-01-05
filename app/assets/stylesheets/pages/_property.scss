@@ -159,16 +159,16 @@
   }
 }
 
+.url-container {
+  margin: 1em auto;
+  width: 100%;
+}
+
 .link {
   padding: .5em;
   background-color: rgb(250, 250, 250);
   border-radius: 3px;
   margin: .3rem;
-}
-
-.url-container {
-  margin: 1em auto;
-  width: 60%;
 }
 
 .property-section {
@@ -206,10 +206,5 @@
 @media screen and (max-width: 636px) {
   .property-wrapper {
     padding: 1rem 2rem;
-  }
-
-  .url-container {
-    margin: 1em auto;
-    width: 100%;
   }
 }

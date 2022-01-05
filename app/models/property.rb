@@ -21,12 +21,17 @@ class Property < ApplicationRecord
 
   def go_visit_url
     @id = self.id
+    return "https://immolib.herokuapp.com/properties/#{@id}/go-visit"
+  end
+  
+  def go_visit_url_short
+    @id = self.id
     return "immolib.herokuapp.com/properties/#{@id}/go-visit"
   end
 
   def go_visit_url_dev
     @id = self.id
-    return "immolib-dev.herokuapp.com/properties/#{@id}/go-visit"
+    return "https://immolib-dev.herokuapp.com/properties/#{@id}/go-visit"
   end
 
   def go_visit_url_local

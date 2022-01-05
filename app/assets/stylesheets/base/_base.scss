@@ -21,6 +21,10 @@ hr {
   border-top: 1px solid black !important;
 }
 
+.hr-grey {
+  border-top: 1px solid $info !important;
+}
+
 a {
   color: $primary;
 }

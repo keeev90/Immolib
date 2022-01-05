@@ -81,3 +81,14 @@
   flex-direction: column;
   text-align: left;
 }
+
+.candidate-section-title {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1em;
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+}
