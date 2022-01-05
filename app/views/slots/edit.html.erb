@@ -1,31 +1,33 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_slot_path(@property, @slot), class: "return-link pt1 pl4" %>
-<div class="form-page">
-  <div class="form-page__form">
-    <h3>Editez ce créneau de visite</h3>
-    <br/>
-    <div class='form-group'>
-      <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
+<div class="container">
+  <div class="form-page">
+    <div class="form-page__form">
+      <h3>Editez ce créneau de visite</h3>
+      <br/>
+      <div class='form-group'>
+        <%= text_field_tag :start_date, '', id:'pickadate', class: 'form-control' %> 
+      </div>
+      <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
+        <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
+        <br/>
+        <div class="form-group">
+          <%= f.label "Durée (en minutes) *", class: "form-label" %>
+          <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
+        </div>
+        <br/>
+        <div class="form-group">
+          <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
+          <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 1, max: 50, required: true %>
+        </div>
+        <br/>
+        <%= f.hidden_field :redirect_path, :value => true %>
+        <div class="form-group text-center"> 
+          <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
+          <%= link_to 'Supprimer', property_slot_path(@slot), method: :delete, data: { confirm: "Etes-vous sûr de supprimer ce créneau ?" }, class: "delete" %>
+        </div>
+      <%end%>
+      <p class="text-center mt2"><small><em><i class="fas fa-info-circle"></i> En cas de modification ou d'annulation, les candidats inscrits à ce créneau seront automatiquement prévenus par email</em></small></p>
     </div>
-    <%= form_with model: @slot, url: [@property, @slot], local: true, class: "form", id: "item-form" do |f| %>
-      <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
-      <br/>
-      <div class="form-group">
-        <%= f.label "Durée (en minutes) *", class: "form-label" %>
-        <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
-      </div>
-      <br/>
-      <div class="form-group">
-        <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
-        <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 1, max: 50, required: true %>
-      </div>
-      <br/>
-      <%= f.hidden_field :redirect_path, :value => true %>
-      <div class="form-group text-center"> 
-        <%= f.submit "Editer le créneau", class: "btn white-btn bg-primary" %>
-        <%= link_to 'Supprimer', property_slot_path(@slot), method: :delete, data: { confirm: "Etes-vous sûr de supprimer ce créneau ?" }, class: "delete" %>
-      </div>
-    <%end%>
-    <p class="text-center mt2"><small><em><i class="fas fa-info-circle"></i> En cas de modification ou d'annulation, les candidats inscrits à ce créneau seront automatiquement prévenus par email</em></small></p>
   </div>
 </div>
 
