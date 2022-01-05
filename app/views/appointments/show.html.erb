@@ -1,7 +1,6 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
 <div class="container text-center">
-  <h1 class="bolder primary mb2">Rappel de l'annonce</h1>
-  <%= render partial:"candidate_show_property", locals: {appointment: @appointment} %>
+  <%= render partial:"candidate_intro", locals: {appointment: @appointment} %>
   </div>
 </div>
 <div class="container">

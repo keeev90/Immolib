@@ -75,3 +75,9 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 415px) {
+  .candidate-profile-details-wrapper {
+    padding: 1em;
+  }
+}
