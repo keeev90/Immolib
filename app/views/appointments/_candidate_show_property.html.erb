@@ -81,6 +81,13 @@
         <p><i class="fas fa-info"></i> <span class="bolder">Après une visite, vous pourrez confirmer ou non votre intérêt pour ce logement</span></p>
       <%end%>
     <%end%>
+    <div class="mt2">
+      <%= link_to "Mes visites", "#candidate-section-1", class: "btn outline-btn-white" %>
+      <%= link_to "Mon message", "#candidate-section-2", class: "btn outline-btn-white" %>
+      <%if appointment.property.owner_project == "rent"%>
+        <%= link_to "Mon dossier", "#candidate-section-3", class: "btn outline-btn-white" %>
+      <%end%>
+    </div>
     <hr class="hr-black mw80 mb1 mt2">
     <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
     <%if appointment.property.owner_project == "rent"%>

@@ -6,7 +6,7 @@
   h1 {
     font-size: 3rem;
     text-align: center;
-    margin: 2rem 0;
+    margin: 4rem 0;
   }
 }
 
@@ -14,12 +14,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 
   &__left, &__right {
     text-align: center;
-    padding: 0 2em;
     width: 100%;
+    padding: 0 2em;
 
     p {
       font-size: 1.2rem;
@@ -53,11 +53,12 @@
     font-size: 1.4em;
 
     &__right p, &__left p {
-      max-width: 60em;
+      max-width: 650px;
+      margin-bottom: 0.8rem;
     }
 
-    &__right p {
-      margin-bottom: 0.8rem;
+    &__right {
+      margin-bottom: 2rem;
     }
   }
 
@@ -119,10 +120,19 @@
   }
 }
 
-
 @media screen and (max-width: 925px) {
-  .welcome_user-wrapper {
-    font-size: 1.4em;
+  .welcome-page {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
   }
 }
 
@@ -130,6 +140,7 @@
   .welcome_user-wrapper {
     flex-direction: column;
     align-items: center;
+    font-size: 1.4em;
 
     &__left {
       border-right:none;
@@ -141,23 +152,6 @@
         min-height: auto;
         margin-bottom: 1em;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 925px) {
-  .welcome-page {
-    justify-content: center;
-    text-align: center;
-    margin: 0 auto;
-    padding: 2rem;
-    width: 100%;
-    max-width: 1200px;
-
-    h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin: 2rem 0;
     }
   }
 }

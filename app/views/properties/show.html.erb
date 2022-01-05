@@ -42,7 +42,7 @@
     <% end %>
     <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite</p>
     <% if @property.instructions == "" %>
-      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, etc.) <br/> Ces instructions seront communiquées automatiquement aux candidats à l'approche d'une visite</em></small></p>
+      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, etc.) : elles seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
     <% else %>
       <p><em><%= simple_format(@property.instructions) %></em></p> 
     <% end %>
