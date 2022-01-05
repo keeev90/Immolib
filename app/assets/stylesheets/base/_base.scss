@@ -13,12 +13,16 @@ main {
 
 hr {
   border-top: 1px solid $primary;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 .hr-black {
   border-top: 1px solid black !important;
+}
+
+.hr-grey {
+  border-top: 1px solid $info !important;
 }
 
 a {

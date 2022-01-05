@@ -76,62 +76,19 @@
   border-bottom: 1px solid $primary;
 }
 
-.option1-wrapper {
-  padding-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-
-  .bolder {
-    text-align: center;
-  }
-
-  &__part2 {
-    display: flex;
-
-    &__left {
-      text-align: left;
-      border-right: 1px solid rgba(0,0,0,0.1);
-      margin-right: 0.5rem;
-      padding-right: 0.5rem;
-      max-width: 500px;
-
-      .bolder {
-        text-align: center;
-      }
-    }
-  }
-}
-
 .option-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  &__part {
-    text-align: left;
-    max-width: 80%;
-
-    .bolder {
-      text-align: center;
-    }
-  }
+  text-align: left;
 }
 
-@media screen and (max-width: 800px) {
-  .option1-wrapper__part2 {
-    flex-direction: column;
-    
-    &__left {
-      border: none;
-      padding-right: 0;
-      margin-right: 0;
-      max-width: 100%;
-    }
+.candidate-section-title {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1em;
 
-    &__right {
-      padding-top: 1.5rem;
-    }
+  h1 {
+    font-size: 3rem;
+    text-align: center;
   }
 }

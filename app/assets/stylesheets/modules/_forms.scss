@@ -7,7 +7,7 @@
 }
 
 .form-page__form {
-  margin: 4rem 0;
+  margin: 2rem auto;
   background-color: #F7F7F7;
   width: 80%;
   max-width: 650px;
@@ -58,7 +58,7 @@
   .btn {
     width: 100%;
     max-width: 400px;
-    margin: 1.5rem auto 0.5rem;
+    margin: 1rem auto;
     position: relative;
     display: block;
   } 
@@ -181,6 +181,78 @@ input[type='submit'] {
   }
 }
 
+.decision-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+
+  .yes-no-toggle {
+    position: relative;
+    background-color: #ccc;
+    border-radius: 50px;
+    padding: 4px;
+    display: flex;
+    
+    div {
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      background-color: #999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: all .4s ease;
+      
+      &.yes {
+        left: 6px;
+        transform: translate(0, -50%);
+        background-color: #006bd6;
+      }
+      
+      &.no {
+        left: calc(3rem - 6px);
+        transform: translate(0, -50%);
+        background-color: #006bd6;
+      }
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+      height: 1.5rem;
+      width: 2rem;
+      cursor: pointer;
+      opacity: 0;
+      &:nth-child(1) {
+        border-radius: 50px 0 0 50px;
+      }
+      &:nth-child(2) {
+        border-radius: 0 50px 50px 0;
+      }
+    }
+  }
+
+  p {
+    margin: 2ch;
+  }
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 925px) {
+  .form-page__form {
+    width: 100%;
+    max-width: 650px;
+    padding: 1.5em 1.5em;
+    margin: 2em 2em;
+  }
+}
+
 @media screen and (max-width: 424px) {
   .form-page__form {
     em,
@@ -195,11 +267,5 @@ input[type='submit'] {
   textarea,
   select {
     font-size: .8rem;
-  }
-}
-
-@media screen and (max-width: 356px) {
-  .form-page__form {
-    padding: 3em 2em;
   }
 }

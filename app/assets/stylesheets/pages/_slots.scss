@@ -56,7 +56,7 @@
     }
 }
 .candidate-profile-details-section {
-  margin: 0.7rem 0;
+  margin: 1.3rem 1rem;
 }
 
 .candidate-profile-details-wrapper {
@@ -73,5 +73,11 @@
 @media screen and (max-width: 750px) {
   .slot-wrapper {
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .candidate-profile-details-wrapper {
+    padding: 1em;
   }
 }
