@@ -19,7 +19,6 @@
   &__left, &__right {
     text-align: center;
     width: 100%;
-    padding: 0 2em;
 
     p {
       font-size: 1.2rem;
@@ -57,15 +56,16 @@
       margin-bottom: 0.8rem;
     }
 
+    &__left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2em;
+    }
+
     &__right {
       margin-bottom: 2rem;
     }
-  }
-
-  .welcome_user-wrapper__left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -145,8 +145,6 @@
     &__left {
       border-right:none;
       border-bottom:none;
-      padding-bottom: 1em;
-      margin-bottom: 1em;
 
       p {
         min-height: auto;
