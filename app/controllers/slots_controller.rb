@@ -139,6 +139,7 @@ class SlotsController < ApplicationController
   def is_same_user_new
     @user = Property.find(params[:property_id]).owner
     if @user == current_user
+    elsif current_user.is_admin?
     else
       flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
       redirect_to root_path
@@ -148,6 +149,7 @@ class SlotsController < ApplicationController
   def is_same_user_edit
     @user = Slot.find(params[:id]).property.owner
     if @user == current_user
+    elsif current_user.is_admin?
     else
       flash[:warning] = "Vous n'êtes pas autorisé à accéder à cette page ⛔"
       redirect_to root_path

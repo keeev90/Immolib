@@ -29,7 +29,9 @@ class CandidateSlotsController < ApplicationController
 
   def is_candidate?
     @appointment = Appointment.find(params[:appointment_id])
-    if @appointment.candidate != current_user && !current_user.is_admin?
+    if @appointment.candidate == current_user
+    elsif current_user.is_admin?
+    else
       flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end

@@ -11,7 +11,7 @@
   <div class="mb1">
     <%if @appointment.slot.start_date > DateTime.now%>
       <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
-      <%if @appointment.property.instructions && ( @appointment.slot.start_date.strftime("%d%m%Y") == ( (DateTime.now + 1).strftime("%d%m%Y") || DateTime.now.strftime("%d%m%Y") ) ) %>
+      <%if @appointment.property.instructions && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
         <div class="mt1 link">
           <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
         </div>

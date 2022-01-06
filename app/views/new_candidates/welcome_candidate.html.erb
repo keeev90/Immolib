@@ -31,9 +31,9 @@
               <p>Le propriétaire</p>
             <% end %>
             <% if user_signed_in? %>
-              <%= link_to "C'est parti !", step_1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+              <%= link_to "👉 C'est parti !", step_1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
             <% else %>
-              <%= link_to "C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+              <%= link_to "👉 C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
             <% end %>
           <%else%>
             <p class="bolder primary"><em>Bonjour,</em></p>
