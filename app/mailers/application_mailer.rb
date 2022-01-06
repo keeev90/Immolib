@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['EMAIL_FROM']
+  default from: 'Immolib <immolib@yopmail.com>'
   layout 'mailer'
 end

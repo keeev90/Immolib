@@ -18,19 +18,19 @@
       <%else%>
         <p class="mt1"><small><em><i class="fas fa-info-circle"></i> A l'approche du jour J, vous recevrez les instructions du propriétaire pour la visite (adresse, digicode, interphone, etc.)</em></small></p> 
       <%end%>
-      <p class="mt2"><small>💡 Pour modifier votre créneau de visite cliquez directement sur un autre créneau disponible </small></p>
+      <p class="mt2"><small>💡 Pour déplacer votre rendez-vous cliquez directement sur un autre créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun autre créneau de visite disponible actuellement</small></p>
       <%end%>
     <%elsif @appointment.slot.start_date < DateTime.now%>
       <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
-      <p class="mt1"><small>💡 Pour sélectionner un nouveau créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+      <p class="mt1"><small>💡 Pour prendre un nouveau rendez-vous cliquez directement sur un créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
       <%end%>
     <%else%>
       <p class="bolder">Aucune visite programmée</p>
-      <p class="mt1"><small>💡 Pour sélectionner un créneau de visite cliquez directement sur un des créneaux disponibles </small></p>
+      <p class="mt1"><small>💡 Pour prendre rendez-vous cliquez directement sur un créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
       <%end%>
@@ -46,11 +46,11 @@
   <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
 </div>
 <%if @appointment.property.owner_project == "rent"%>
-<div class="container">
-  <hr/>
-</div>
-<div class="container" id='candidate-section-3'>
-  <h1 class="bolder primary text-center mb2">Mon dossier de location</h1>
-  <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
-</div>
+  <div class="container">
+    <hr/>
+  </div>
+  <div class="container" id='candidate-section-3'>
+    <h1 class="bolder primary text-center mb2">Mon dossier de location</h1>
+    <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
+  </div>
 <%end%>

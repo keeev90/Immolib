@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: ENV['EMAIL_FROM']
+  default from: 'Immolib <immolib@yopmail.com>'
  
   def welcome_email(user)
     @user = user 
@@ -11,13 +11,14 @@ class UserMailer < ApplicationMailer
     @property = property
     @user = property.owner
     @subtitle = "Merci pour votre confiance"
-    mail(to: @user.email, subject: "Votre logement immolib a bien été créé 🎉")
+    mail(to: @user.email, subject: "Votre logement est enregistré 🎉")
   end
 
   def new_appointment_information_email(appointment)
+    @appointment = appointment
     @property = appointment.property
     @user = @property.owner
-    @subtitle = "Rendez-vous sur votre espace immolib pour accéder à ses informations détaillées"
+    @subtitle = "Rendez-vous sur votre espace immolib pour découvrir ses informations détaillées"
     mail(to: @user.email, subject: "Vous avez un nouveau candidat 🎉")
   end
 
@@ -25,20 +26,20 @@ class UserMailer < ApplicationMailer
     @appointment = appointment
     @user = appointment.candidate
     @subtitle = "Rendez-vous sur votre espace immolib pour compléter vos informations"
-    mail(to: @user.email, subject: "Votre candidature est bien enregistrée 🎉")
+    mail(to: @user.email, subject: "Votre candidature est enregistrée 🎉")
   end
 
   def candidate_folder_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
     @subtitle = "Rendez-vous sur votre espace immolib pour finaliser votre dossier"
-    mail(to: @user.email, subject: "Votre dossier de location est incomplet 📋")
+    mail(to: @user.email, subject: "Votre dossier est incomplet 📋")
   end
 
   def appointment_reminder_email(appointment)
     @appointment = appointment
     @user = appointment.candidate
-    @subtitle = "Consultez les instructions logistiques pour votre visite"
+    @subtitle = "Consultez les informations logistiques pour votre visite"
     mail(to: @user.email, subject: "J-1 avant votre visite ⏰")
   end
 
