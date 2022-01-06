@@ -22,7 +22,9 @@ class OwnerDecisionsController < ApplicationController
 
   def is_owner?
     property = Appointment.find(params[:appointment_id]).property
-    if property.owner != current_user
+    if property.candidate == current_user
+    elsif current_user.is_admin?
+    else
       flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end

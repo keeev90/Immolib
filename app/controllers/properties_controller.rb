@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_owner?, only: [:show]
+  before_action :is_owner?, only: [:show, :edit, :update, :destroy]
 
   # user as potential ower
 
@@ -85,7 +85,9 @@ class PropertiesController < ApplicationController
 
   def is_owner?
     @property = Property.find(params[:id])
-    if @property.owner != current_user
+    if @property.owner == current_user
+    elsif current_user.is_admin?
+    else
       flash[:warning] = "Vous n'avez pas l'autorisation d'accéder à cette page ⛔"
       redirect_to root_path
     end

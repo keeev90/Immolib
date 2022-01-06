@@ -1,3 +1,4 @@
+<%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), property_path(@property), class: "return-link pt1 pl4" %>
 <div class="form-page">
   <div class="form-page__form">
     <h2>Éditer mon logement</h2>
@@ -32,8 +33,5 @@
       </div>
     <% end %>
 
-    <div class="form-page__form--links">
-      <p><%= link_to 'Retour', property_path(@property) %></p>
-    </div>
   </div>
 </div>
