@@ -1,12 +1,20 @@
 <p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
 
-<p> Vous recevez cet email car <span class="bolder">vous avez une visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/><br/>
+<p> Vous avez une <span class="bolder">visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/><br/>
 
-<% if @appointment.slot.property.instructions %>
-  <p> Voici les instructions du propriétaire pour votre visite : </p><br/><br/>
-  <p><%= simple_format(@appointment.slot.property.instructions) %></p><br/>
+<% if @appointment.property.instructions %>
+  <p> Voici les <span class="bolder">instructions du propriétaire pour votre visite</span> : </p><br/><br/>
+  <p><%= simple_format(@appointment.property.instructions) %></p><br/><br/>
 <% end %>
 
-<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %>. </p><br/><br/>
+<% if @appointment.property.owner_project == "rent" %>
+  <% unless @appointment.candidate_dossierfacile_link || @appointment.candidate_dossierfacile_folder.attached? || @appointment.candidate_documents.size >= 5 %>
+    <p>⚠️ Votre <span class="bolder">dossier de location est incomplet</span>, veuillez transmettre les pièces manquantes depuis votre espace candidat. </p><br/><br/>
+  <% end %>
+<% end %>
+
+<p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p>
+
+<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> </p><br/><br/>
 
 <p> Bonne visite ! </p>
