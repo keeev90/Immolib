@@ -1,9 +1,9 @@
 Bonjour <%= @user.first_name ? @user.first_name : nil %>,
 
-Vous recevez cet email car vous avez une visite programmée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).
+Vous avez une visite programmée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).
 
 À ce jour, votre dossier de location est incomplet.
 
-Afin de booster votre candidature, rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour transmettre les documents manquants.
+Afin de booster votre candidature, rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour transmettre les pièces manquantes.
 
 A vous de jouer 😉
