@@ -10,13 +10,13 @@ Vous avez une visite programmée demain à <%= @appointment.slot.start_date.strf
 
 <% if @appointment.property.owner_project == "rent" %>
   <% unless @appointment.candidate_dossierfacile_link || @appointment.candidate_dossierfacile_folder.attached? || @appointment.candidate_documents.size >= 5 %>
-    Votre dossier de location est incomplet, veuillez transmettre les pièces manquantes depuis votre espace candidat.
+    Votre dossier de location est incomplet, veuillez transmettre les pièces manquantes depuis votre espace immolib.
   <% end %>
 <% end %>
 
-En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.
+Retrouvez le détail de votre RDV sur <%= link_to "votre espace immolib", appointment_url(@appointment) %>
 
-Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %>
+En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.
 
 Bonne visite !
 

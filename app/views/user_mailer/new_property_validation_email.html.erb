@@ -1,6 +1,6 @@
 <p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
 
-<p> Votre paiement a bien été reçu, merci pour votre confiance ! Nous vous confirmons la création de votre logement sur immolib. </p><br/><br/>
+<p> Votre paiement a bien été reçu, merci pour votre confiance 🙏 </p><br/><br/>
 
 <p> Dernière étape : <span class="bolder">partagez votre lien immolib</span> dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux.</p><br/>
 <p> Les candidats n'auront plus qu'à suivre un parcours simple et rapide. </p><br/>
@@ -8,6 +8,8 @@
 
 <p class="bolder"><a> <%= @property.go_visit_url %> </a></p><br/><br/>
 
-<p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre logement, gérer vos visites et vos candidats.</p><br/><br/>
+<p> Rendez-vous sur votre espace immolib pour compléter votre logement, gérer vos visites et vos candidats.</p><br/>
 
-<p> A bientôt ! </p>
+<p><%= link_to "Gérer votre logement", property_url(@property), class: "btn" %></p><br/><br/>
+
+<p> A bientôt 👋 </p>

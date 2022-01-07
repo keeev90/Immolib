@@ -4,6 +4,8 @@
 
 <p class="bolder"><%= @appointment.candidate.email %></p><br/><br/>
 
-<p> Rendez-vous dès maintenant sur <%= link_to "votre espace logement", property_url(@property) %> pour découvrir ses informations détaillées.</p><br/><br/>
+<p> Rendez-vous dès maintenant sur votre espace immolib pour découvrir ses informations détaillées.</p><br/>
 
-<p> A bientôt ! </p>
+<p><%= link_to "Gérer vos candidats", property_url(@property), class: "btn" %></p><br/><br/>
+
+<p> A bientôt 👋 </p>

@@ -1,9 +1,11 @@
-<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
+<p>Bonjour <%= @user.first_name ? @user.first_name : nil %>,</p><br/><br/>
 
-<p> Vous avez une visite programmée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/><br/>
+<p>Vous avez une visite programmée le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).</p><br/><br/>
 
-<p> ⚠️ À ce jour, <span class="bolder">votre dossier de location est incomplet</span>.</p><br/><br/>
+<p>⚠️ À ce jour, <span class="bolder">votre dossier de location est incomplet</span>.</p><br/><br/>
 
-<p> Afin de booster votre candidature, rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour transmettre les pièces manquantes. </p><br/>
+<p>Afin de booster votre candidature, rendez-vous dès maintenant sur votre espace candidat pour <span class="bolder">transmettre les pièces manquantes</span>.</p><br/>
 
-<p> A vous de jouer 😉 </p>
+<p><%= link_to "Compléter votre dossier", appointment_url(@appointment), class: "btn" %></p><br/><br/>
+
+<p>A vous de jouer 😉</p>

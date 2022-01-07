@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
     @appointment = appointment
     @property = appointment.property
     @user = @property.owner
-    @subtitle = "Rendez-vous sur votre espace immolib pour découvrir ses informations détaillées"
+    @subtitle = "Rendez-vous sur votre espace immolib pour gérer les candidatures"
     mail(to: @user.email, subject: "Vous avez un nouveau candidat 🎉")
   end
 

@@ -101,13 +101,14 @@ class Property < ApplicationRecord
   def create_stripe_product
     unless self.stripe_price_id
       stripe_product = Stripe::Product.create({
-        name: "#{title} - #{city}"
+        name: "1 logement immolib",
+        description: "#{title} - #{city}"
       })
 
       # Stripe::Product.update(
       #   stripe_product.id,
       #   {images: [image_url]},
-      # ) if image_url !=""
+      # ) if self.image_url !=""
 
       stripe_price = Stripe::Price.create({
         product: stripe_product.id,
