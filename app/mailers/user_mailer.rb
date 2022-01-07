@@ -26,6 +26,17 @@ class UserMailer < ApplicationMailer
     @appointment = appointment
     @user = appointment.candidate
     @subtitle = "Rendez-vous sur votre espace immolib pour compléter vos informations"
+
+    # Create a calendar with an event
+    cal = Icalendar::Calendar.new
+    cal.event do |e|
+      e.dtstart     = Icalendar::Values::DateTime.new(appointment.slot.start_date)
+      e.dtend       = Icalendar::Values::DateTime.new(appointment.slot.end_date)
+      e.summary     = "Visite du logement '#{appointment.property.title}' à #{appointment.property.city}"
+    end
+    cal.publish
+    attachments['event.ics'] = { mime_type: 'text/calendar', content: cal.to_s }
+
     mail(to: @user.email, subject: "Votre candidature est enregistrée 🎉")
   end
 

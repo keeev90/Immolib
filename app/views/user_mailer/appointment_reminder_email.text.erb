@@ -3,7 +3,7 @@ Bonjour <%= @user.first_name ? @user.first_name : nil %>,
 Vous avez une visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).
 
 <% if @appointment.slot.property.instructions %>
-  Voici les instructions du propriétaire pour votre visite :
+Voici les instructions du propriétaire pour votre visite :
 
   <%= simple_format(@appointment.slot.property.instructions) %>
 <% end %>

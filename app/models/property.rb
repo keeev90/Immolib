@@ -67,7 +67,9 @@ class Property < ApplicationRecord
     end
     return true
   end
-#slot.candidates.include?(current_user)
+  #slot.candidates.include?(current_user)
+
+  private
 
   def stripe_price
     Stripe::Price.retrieve(self.stripe_price_id)
@@ -88,8 +90,6 @@ class Property < ApplicationRecord
       )
     end
   end
-
-  private
 
   def randomize_property_id
     begin

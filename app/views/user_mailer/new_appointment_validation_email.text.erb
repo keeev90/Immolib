@@ -3,11 +3,11 @@ Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
 Nous vous confirmons votre candidature pour le logement "<%= @appointment.property.title %>" à <%= @appointment.property.city %>.
 
 <% if @appointment.slot.property.owner_project == "rent" %>
-  Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", appointment_url(@appointment) %> pour compléter votre dossier de location.
+Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", appointment_url(@appointment) %> pour compléter votre dossier de location.
 
-  Afin de booster votre candidature, pensez à rédiger un message au propriétaire et à compléter vos informations personnelles.
+Afin de booster votre candidature, pensez à rédiger un message au propriétaire et à compléter vos informations personnelles.
 <% else %>
-  Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre profil.
+Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre profil.
 <% end %>
 
 En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.

@@ -1,11 +1,11 @@
-<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
+<p>Bonjour <%= @user.first_name ? @user.first_name : nil %>,</p><br/><br/>
 
-<p> Vous avez un nouveau candidat pour votre logement "<%= @property.title %>" à <%= @property.city %> : </p><br/><br/>
+<p>Vous avez un nouveau candidat pour votre logement "<%= @property.title %>" à <%= @property.city %> :</p><br/><br/>
 
 <p class="bolder"><%= @appointment.candidate.email %></p><br/><br/>
 
-<p> Rendez-vous dès maintenant sur votre espace immolib pour découvrir ses informations détaillées.</p><br/>
+<p>Rendez-vous dès maintenant sur votre espace immolib pour découvrir ses informations détaillées.</p><br/>
 
 <p><%= link_to "Gérer vos candidats", property_url(@property), class: "btn" %></p><br/><br/>
 
-<p> A bientôt 👋 </p>
+<p>A bientôt 👋</p>
