@@ -1,6 +1,5 @@
 class Slot < ApplicationRecord
   #Callbacks
-  after_commit :add_default_picture, on: [:create, :update]
   
   #Associations
   belongs_to :property
@@ -66,8 +65,16 @@ class Slot < ApplicationRecord
       errors.add(:overlaps_with_other?, "Un créneau de visite existe déjà sur cette période") if is_overlapping
     end
   end
+
+  # def add_to_calendar 
+  #   # Create a calendar with an event
+  #   cal = Icalendar::Calendar.new
+  #   cal.event do |e|
+  #     e.dtstart     = Icalendar::Values::DateTime.new(self.start_date)
+  #     e.dtend       = Icalendar::Values::DateTime.new(self.end_date)
+  #     e.summary     = "Visite du logement '#{self.property.title}' à #{self.property.city}"
+  #   end
+  #   cal.publish
+  # end
   
-  def add_default_picture
-    
-  end
 end

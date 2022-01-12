@@ -13,6 +13,28 @@ class User < ApplicationRecord
   has_many :properties, foreign_key: 'owner_id', dependent: :destroy
   has_many :appointments, foreign_key: 'candidate_id', dependent: :destroy
   has_one_attached :profile_picture, dependent: :destroy
+  
+  def past_appointments
+    past_appointments_array = []
+    self.appointments.order("created_at DESC").each do |appointment|
+      if appointment.slot.start_date < DateTime.now
+        past_appointments_array << appointment
+      end
+    end
+    return past_appointments_array
+  end
+
+  def future_appointments
+    future_appointments_array = []
+    self.appointments.order("created_at DESC").each do |appointment|
+      if appointment.slot.start_date > DateTime.now
+        future_appointments_array << appointment
+      end
+    end
+    return future_appointments_array
+  end
+
+  private
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -38,30 +60,9 @@ class User < ApplicationRecord
       )
     end
   end
-  
-  def past_appointments
-    past_appointments_array = []
-    self.appointments.order("created_at DESC").each do |appointment|
-      if appointment.slot.start_date < DateTime.now
-        past_appointments_array << appointment
-      end
-    end
-    return past_appointments_array
-  end
-
-  def future_appointments
-    future_appointments_array = []
-    self.appointments.order("created_at DESC").each do |appointment|
-      if appointment.slot.start_date > DateTime.now
-        future_appointments_array << appointment
-      end
-    end
-    return future_appointments_array
-  end
-
-  private
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
+  
 end

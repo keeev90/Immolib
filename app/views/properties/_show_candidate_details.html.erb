@@ -32,7 +32,7 @@
 
   <div class="candidate-profile-details-section">
     <p class="bolder"><i class="far fa-comment"></i> Message </p>
-    <% if appointment.candidate_message %>
+    <% if appointment.candidate_message && appointment.candidate_message != "" %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
       <p><small><em>⚠️ Ce candidat ne vous a pas encore adressé de message</em></small></p>
@@ -44,7 +44,7 @@
 
       <% if appointment.candidate_dossierfacile_folder.attached? %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
-        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
+        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location 100% conforme à la loi. <br/>Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
         <div class="candidate-document mb1">
           <p><span class="text-muted">Dossier&nbsp;:</span>
             <%= appointment.candidate_dossierfacile_folder.filename %> 
@@ -61,14 +61,14 @@
 
       <% elsif appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
         <p class="bolder"><i class="far fa-folder-open"></i> Dossier de location (réalisé via <%= link_to "DossierFacile", "https://www.dossierfacile.fr/", class:"primary", target: '_blank' %>)</p>
-        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location. Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
+        <p class="mb1"><small><em>DossierFacile est une plateforme publique gratuite d'aide à la création de dossier de location 100% conforme à la loi. <br/>Elle joue le rôle de tiers de confiance entre locataires et propriétaires.</em></small></p>
         <p class="mb1"><span class="text-muted">Lien du dossier&nbsp;:</span> <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %></p>
         <p class="green"><small> ✔️ Dossier complet</small></p>
 
       <% elsif appointment.candidate_documents.attached? %>
         <p class="bolder mb1"><i class="far fa-folder-open"></i> Dossier de location</p>
         <div class="mb1">
-          <p class="text-muted">Liste des documents demandés&nbsp;:</p>
+          <p class="text-muted">Liste des documents demandés pour un dossier 100% conforme à la loi&nbsp;:</p>
           <p><i class="fas fa-caret-right"></i> 1 pièce d'identité recto-verso</p>
           <p><i class="fas fa-caret-right"></i> 1 justificatif de domicile</p>
           <p><i class="fas fa-caret-right"></i> 1 justificatif de situation professionnelle</p>
@@ -97,7 +97,7 @@
       <% else %>
         <p class="bolder mb1"><i class="far fa-folder-open"></i> Dossier de location</p>
         <div class="mb1">
-          <p class="text-muted">Liste des documents demandés&nbsp;:</p>
+          <p class="text-muted">Liste des documents demandés pour un dossier 100% conforme à la loi&nbsp;:</p>
           <p><i class="fas fa-caret-right"></i> 1 pièce d'identité recto-verso</p>
           <p><i class="fas fa-caret-right"></i> 1 justificatif de domicile</p>
           <p><i class="fas fa-caret-right"></i> 1 justificatif de situation professionnelle</p>

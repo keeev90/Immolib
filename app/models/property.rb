@@ -67,7 +67,9 @@ class Property < ApplicationRecord
     end
     return true
   end
-#slot.candidates.include?(current_user)
+  #slot.candidates.include?(current_user)
+
+  private
 
   def stripe_price
     Stripe::Price.retrieve(self.stripe_price_id)
@@ -89,8 +91,6 @@ class Property < ApplicationRecord
     end
   end
 
-  private
-
   def randomize_property_id
     begin
       self.id = SecureRandom.random_number(1_000_000)
@@ -101,13 +101,14 @@ class Property < ApplicationRecord
   def create_stripe_product
     unless self.stripe_price_id
       stripe_product = Stripe::Product.create({
-        name: "#{title} - #{city}"
+        name: "1 logement immolib",
+        description: "#{title} - #{city}"
       })
 
       # Stripe::Product.update(
       #   stripe_product.id,
       #   {images: [image_url]},
-      # ) if image_url !=""
+      # ) if self.image_url !=""
 
       stripe_price = Stripe::Price.create({
         product: stripe_product.id,
