@@ -1,20 +1,24 @@
-<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
+<p>Bonjour <%= @user.first_name ? @user.first_name : nil %>,</p><br/><br/>
 
-<p> Vous avez une <span class="bolder">visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>). </p><br/><br/>
+<p>Vous avez une <span class="bolder">visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).</p><br/><br/>
 
-<% if @appointment.property.instructions %>
-  <p> Voici les <span class="bolder">instructions du propriétaire pour votre visite</span> : </p><br/><br/>
+<% if @appointment.property.instructions && @appointment.property.instructions != "" %>
+  <p> Voici les <span class="bolder">instructions du propriétaire pour votre visite</span> :</p><br/><br/>
   <p><%= simple_format(@appointment.property.instructions) %></p><br/><br/>
+<% else %>
+  <p> Le propriétaire n'a pas encore indiqué les <span class="bolder">instructions pour votre visite</span>. Surveillez votre espace immolib ! </p><br/><br/>
 <% end %>
 
 <% if @appointment.property.owner_project == "rent" %>
   <% unless @appointment.candidate_dossierfacile_link || @appointment.candidate_dossierfacile_folder.attached? || @appointment.candidate_documents.size >= 5 %>
-    <p>⚠️ Votre <span class="bolder">dossier de location est incomplet</span>, veuillez transmettre les pièces manquantes depuis votre espace candidat. </p><br/><br/>
+    <p>⚠️ Votre <span class="bolder">dossier de location est incomplet</span>, veuillez transmettre les pièces manquantes depuis votre espace immolib.</p><br/><br/>
   <% end %>
 <% end %>
 
-<p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p>
+<p>Retrouvez le détail de votre candidature sur votre espace immolib.</p><br/>
 
-<p> Retrouvez le détail de votre RDV sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> </p><br/><br/>
+<p><%= link_to "Gérer votre candidature", appointment_url(@appointment), class: "btn" %></p><br/><br/>
 
-<p> Bonne visite ! </p>
+<p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p><br/><br/>
+
+<p>Bonne visite 🤗</p>

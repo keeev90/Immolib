@@ -7,7 +7,6 @@ class CheckoutController < ApplicationController
     customer = Stripe::Customer.create
 
     @session = Stripe::Checkout::Session.create(
-      customer: customer.id,
       payment_method_types: ['card'],
       line_items: [
         {
@@ -35,7 +34,7 @@ class CheckoutController < ApplicationController
     if @session.payment_status = "paid"
       Property.find(@session.metadata["0"].to_i).update(is_paid: true) 
       UserMailer.new_property_validation_email(@property).deliver_now
-      #TO UNCOMMENT AFTER ADDING "stripe_customer_id" ATTRIBUTE IN USER MODEL :
+      #TO UNCOMMENT AFTER ADDING "stripe_customer_id" ATTRIBUTE IN USER MODEL (and customer.id into session stripe object) :
       #User.find(current_user).update(stripe_customer_id: @session.customer) if @session.payment_status = "paid"
     end
 

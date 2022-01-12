@@ -1,14 +1,16 @@
-<p> Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/><br/>
+<p>Bonjour <%= @user.first_name ? @user.first_name : nil %>,</p><br/><br/>
 
-<p> Nous vous confirmons votre candidature pour le logement "<%= @appointment.property.title %>" à <%= @appointment.property.city %>.</p><br/><br/>
-
-<p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p>
+<p>Nous vous confirmons votre candidature pour le logement "<%= @appointment.property.title %>" à <%= @appointment.property.city %>.</p><br/><br/>
 
 <% if @appointment.slot.property.owner_project == "rent" %>
-  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace candidat", appointment_url(@appointment) %> pour compléter votre dossier de location. </p><br/>
-  <p> Afin de booster votre candidature, pensez à <%= link_to "compléter vos informations personnelles", user_url(@user) %>.</p><br/><br/>
+  <p>Rendez-vous dès maintenant sur votre espace immolib pour transmettre votre dossier de location.</p><br/>
+  <p><%= link_to "Transmettre votre dossier", appointment_url(@appointment), class: "btn" %></p><br/><br/>
+  <p>Afin de booster votre candidature, pensez à rédiger un message au propriétaire et à compléter vos informations personnelles 😉</p><br/><br/>
 <% else %>
-  <p> Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", user_url(@user) %> pour compléter votre profil.</p><br/><br/>
+  <p>Rendez-vous dès maintenant sur votre espace immolib pour compléter vos informations personnelles 😉</p><br/>
+  <p><%= link_to "Compléter votre profil", user_url(@user), class: "btn" %></p><br/><br/>
 <% end %>
 
-<p> A bientôt ! </p>
+<p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p><br/><br/>
+
+<p>A bientôt 👋</p>
