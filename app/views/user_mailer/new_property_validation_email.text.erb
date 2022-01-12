@@ -2,11 +2,14 @@ Bonjour <%= @user.first_name ? @user.first_name : nil %>,
 
 Votre paiement a bien été reçu, merci pour votre confiance ! Nous vous confirmons la création de votre logement sur immolib.
 
-Dernière étape : partagez votre lien immolib dans vos annonces en ligne (PaP, Leboncoin…) ou sur vos réseaux sociaux. 
-Les candidats n'auront plus qu'à suivre un parcours simple et rapide.
+Dernière étape : partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours simple et rapide !
 A vous de jouer 😉
 
+Lien à partager par email, SMS ou sur vos réseaux sociaux :
 <%= @property.go_visit_url %>
+
+Lien à partager directement sur vos annonces en ligne (ex: PaP) :
+<%= @property.go_visit_url_short %>
 
 Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", property_url(@property) %> pour compléter votre logement, gérer vos visites et vos candidats.
 

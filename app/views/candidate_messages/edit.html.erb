@@ -9,7 +9,7 @@
 
 <div class="form-page">
   <div class="form-page__form">
-  <p class="text-center">💡 Présentez votre projet et vos motivations pour ce logement</p>
+  <p class="text-center mb1">💡 Présentez votre projet et vos motivations pour ce logement</p>
     <%= form_with model: @appointment, url: appointment_candidate_message_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
       <div class="form-group">
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message au propriétaire", maxlength: "1000" %>

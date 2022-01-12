@@ -86,9 +86,9 @@
     <div class="text-center">
       <p class="mb2"><small><em> Vous n'avez pas encore de candidats pour ce logement</em></small></p>
       <div class="mb2">
-        <p>💡 <span class="bolder">Partagez votre lien immolib sur vos annonces en ligne ou vos réseaux sociaux</span></p>
-        <small> Les candidats n'ont plus qu'à suivre un parcours simple et rapide&nbsp;!</small>
+        <p>💡 <span class="bolder">Partagez votre lien immolib : les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</span></p>
         <div class="url-container">
+          Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
           <p class="link"> 
             <a><%= @property.go_visit_url %></a> 
             <i class="far fa-copy">
@@ -96,8 +96,21 @@
             </i>
           </p>
         </div>
+        <div class="url-container mb1">
+          Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
+          <p class="link">
+            <a><%= @property.go_visit_url_short %></a> 
+            <i class="far fa-copy">
+              <span class="copy-text"> Copier le lien </span>
+            </i>
+          </p>
+        </div>
       </div>
-      <p class="mb2"><small><em>⚠️  Vérifiez que vous proposez des créneaux de visite pour ce logement</em></small></p>
+      <% if @property.has_available_slot? == false %>
+        <p class="mb2"><small><em>⚠️  Pensez à proposer des créneaux de visite pour ce logement</em></small></p>
+      <% else %>
+        <p class="mb2"><small><em>⚠️  Ajoutez de nouveaux créneaux de visites pour optimiser le nombre de candidats </em></small></p>
+      <% end %>
     </div>
   <% end %>
 </div>

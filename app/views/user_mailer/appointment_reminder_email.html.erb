@@ -2,9 +2,11 @@
 
 <p>Vous avez une <span class="bolder">visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %></span> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).</p><br/><br/>
 
-<% if @appointment.property.instructions %>
+<% if @appointment.property.instructions && @appointment.property.instructions != "" %>
   <p> Voici les <span class="bolder">instructions du propriétaire pour votre visite</span> :</p><br/><br/>
   <p><%= simple_format(@appointment.property.instructions) %></p><br/><br/>
+<% else %>
+  <p> Le propriétaire n'a pas encore indiqué les <span class="bolder">instructions pour votre visite</span>. Surveillez votre espace immolib ! </p><br/><br/>
 <% end %>
 
 <% if @appointment.property.owner_project == "rent" %>
