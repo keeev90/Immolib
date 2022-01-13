@@ -8,8 +8,8 @@
         d'organiser vos visites et gérer les candidatures en toute simplicité</p>
       </div>
       <div class="home-buttons">  
-        <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
-        <%= link_to "Pourquoi immolib ?", "#benefits-1", class: "btn outline-btn big-btn" %>
+        <%= link_to "Enregistrez votre logement", welcome_user_path, class: "btn big-btn primary" %>
+        <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>
     <%= video_tag 'house.mp4#t=0.001', type: 'video/mp4', preload: 'auto', autoplay: 'true' %>
@@ -86,11 +86,10 @@
 
   <section class="benefits-section last-section">
     <h2 class="benefits-section__title primary">
-      Une agence immobilière&nbsp;? Et pour quoi faire&nbsp;?!
+      L'agent immobilier, c'est vous&nbsp;!
     </h2>
     <h3 class="benefits-section__subtitle bolder text-center">
-      Gagnez un temps précieux et concentrez-vous sur l'essentiel<br/>
-      pour seulement 29,99€ par bien à vendre ou à louer
+      Gardez la main et gagnez un temps précieux
     </h3>
     <div class="benefits-section__body" id='last-section'>
       <div class="item-background">
@@ -111,9 +110,9 @@
 
       <div class="item-background">
         <p class="last-section-icon i3"> 3 </p>
-        <p class="item-background__title">Je partage mon lien immolib</p>
+        <p class="item-background__title">Je partage mon lien immolib sur mes annonces en ligne et réseaux sociaux</p>
         <p class="item-background__content">
-          Les candidats suivent un parcours simple et guidé de la prise de RDV à la validation de leur dossier ou de leur offre
+          Les candidats suivent un parcours simple et guidé !
         </p>
       </div>
 
@@ -121,18 +120,18 @@
         <p class="last-section-icon i4"> 4 </p>
         <p class="item-background__title">Je réalise mes visites et gère les candidatures</p>
         <p class="item-background__content">
-          Vous gardez la main sur les créneaux de visites et les candidats
+          Vous gardez la main sur les créneaux de visites et les candidats jusqu'à la validation d'un dossier ou d'une offre
         </p>
       </div>
     </div>
 
     <div class="text-center mb4">
       <% if user_signed_in? %>
-        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
+        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
           <%= f.email_field :email, placeholder: "Entrez votre adresse e-mail", class: "text-center" %>
-          <%= f.submit "S'inscrire et organiser des visites", class: "btn big-btn bg-primary white-btn" %>
+          <%= f.submit "M'inscrire et enregistrer mon logement", class: "btn big-btn bg-primary white-btn" %>
         <% end %>
       <% end %>
     </div>
