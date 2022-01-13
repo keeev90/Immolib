@@ -9,7 +9,7 @@
       </div>
       <div class="home-buttons">  
         <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
-        <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
+        <%= link_to "Pourquoi immolib ?", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>
     <%= video_tag 'house.mp4#t=0.001', type: 'video/mp4', preload: 'auto', autoplay: 'true' %>
@@ -19,7 +19,7 @@
     <h2 class="benefits-section__title primary">
       Organisez vos visites en toute simplicité
     </h2>
-    <h3 class="bolder text-center subtitle">
+    <h3 class="benefits-section__subtitle bolder text-center">
       Fini les échanges d'emails et appels téléphoniques fastidieux
     </h3>
     <div class="benefits-section__body">
@@ -54,7 +54,7 @@
     <h2 class="benefits-section__title">
       Collectez les dossiers en quelques clics
     </h2>
-    <h3 class="bolder text-center subtitle">
+    <h3 class="benefits-section__subtitle bolder text-center">
       Fini l'archivage chaotique et les dossiers incomplets
     </h3>
     <div class="benefits-section__body" id='benefits-2'>
@@ -88,32 +88,40 @@
     <h2 class="benefits-section__title primary">
       Une agence immobilière&nbsp;? Et pour quoi faire&nbsp;?!
     </h2>
-    <h3 class="bolder text-center subtitle">
+    <h3 class="benefits-section__subtitle bolder text-center">
       Gagnez un temps précieux et concentrez-vous sur l'essentiel<br/>
       pour seulement 29,99€ par bien à vendre ou à louer
     </h3>
     <div class="benefits-section__body" id='last-section'>
-      <div class="item">
+      <div class="item-background">
         <p class="last-section-icon i1"> 1 </p>
-        <p class="item__title">Je renseigne les infos clés de mon logement à vendre ou à louer</p>
-        <p class="item__content">
-          Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce
+        <p class="item-background__title">Je renseigne les infos clés de mon logement</p>
+        <p class="item-background__content">
+          Ces informations permettront aux candidats de s’assurer qu’ils répondent bien à votre annonce
         </p>
       </div>
 
-      <div class="item">
+      <div class="item-background">
         <p class="last-section-icon i2"> 2 </p>
-        <p class="item__title">Je sélectionne les créneaux de visites à proposer à mes candidats</p>
-        <p class="item__content">
+        <p class="item-background__title">Je sélectionne mes créneaux de visites</p>
+        <p class="item-background__content">
           La disponibilité des créneaux est mise à jour automatiquement après chaque candidature
         </p>
       </div>
 
-      <div class="item">
+      <div class="item-background">
         <p class="last-section-icon i3"> 3 </p>
-        <p class="item__title">Je partage mon URL immolib directement dans mes annonces en ligne</p>
-        <p class="item__content">
-          Les candidats n'ont plus qu'à suivre un parcours simple et rapide ! Vous gardez la main sur les visites et les candidats.
+        <p class="item-background__title">Je partage mon lien immolib</p>
+        <p class="item-background__content">
+          Les candidats suivent un parcours simple et guidé de la prise de RDV à la validation de leur dossier ou de leur offre
+        </p>
+      </div>
+
+      <div class="item-background">
+        <p class="last-section-icon i4"> 4 </p>
+        <p class="item-background__title">Je réalise mes visites et gère les candidatures</p>
+        <p class="item-background__content">
+          Vous gardez la main sur les créneaux de visites et les candidats
         </p>
       </div>
     </div>

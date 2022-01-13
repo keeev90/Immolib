@@ -11,7 +11,7 @@ class AppointmentsController < ApplicationController
       property = Property.find(params[:property])
       user_appointments = Appointment.where(candidate: current_user)
       already_an_appointment = false
-      new_appointment = Appointment.new(candidate: current_user, slot: slot)
+      new_appointment = Appointment.new(candidate: current_user, slot: slot, property: property)
 
       user_appointments.each do |appointment|
         if appointment.property == property && !appointment.slot.is_past?
@@ -41,7 +41,7 @@ class AppointmentsController < ApplicationController
     appointment.destroy
     if params[:owner]
       flash[:success] = "La candidature a bien été refusée. Le candidat est automatiquement prévenu par email 👌"
-      redirect_to property_path(appointment.slot.property)
+      redirect_to property_path(appointment.property)
     else
       if appointment.property.owner_project == "rent" 
         flash[:success] = "Votre candidature a bien été annulée. Les documents de votre dossier sont automatiquement supprimés 👌"

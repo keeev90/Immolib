@@ -1,13 +1,11 @@
 <div class="candidate-section-title">
   <h1 class="primary">Ma candidature</h1>
 </div>
-<div class="mb1">
-  <p class="bolder"><%= appointment.property.title%></p>
-  <p><%= appointment.property.city%></p>
-  <%if appointment.property.other_link%>
-    <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank' %></small></p>
-  <%end%>
-</div>
+<p class="bolder"><%= appointment.property.title%></p>
+<p><%= appointment.property.city%></p>
+<%if appointment.property.other_link%>
+  <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank' %></small></p>
+<%end%>
 <div class="form-page">
   <div class="form-page__form">
     <div class="mb2">
@@ -86,7 +84,7 @@
             <p>Bon courage dans vos recherches !</p>
           </div>
         <%else%>
-          <p><i class="fas fa-info"></i> <span class="bolder">Après une visite, vous pourrez confirmer ou non votre intérêt pour ce logement</span></p>
+          <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue d'une visite</span></p>
         <%end%>
       <%end%>
     </div>
@@ -99,9 +97,9 @@
     <hr class="hr-grey mw80 mb2 mt2">
     <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
     <%if appointment.property.owner_project == "rent"%>
-      <p><small><em><i class="fas fa-info-circle"></i> Les documents de votre dossier seront automatiquement supprimés <br/>En cas de visite à venir, votre rendez-vous sera automatiquement annulé</em></small></p>
+      <p><small><em><i class="fas fa-info-circle"></i> Les documents de votre dossier seront automatiquement supprimés <br/>Votre rendez-vous sera automatiquement annulé en cas de visite à venir</em></small></p>
     <%else%>
-      <p><small><em><i class="fas fa-info-circle"></i> En cas de visite à venir, votre rendez-vous sera automatiquement annulé</em></small></p>
+      <p><small><em><i class="fas fa-info-circle"></i> Votre rendez-vous sera automatiquement annulé en cas de visite à venir</em></small></p>
     <%end%>
   </div>
 </div>

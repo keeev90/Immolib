@@ -1,18 +1,13 @@
 <div class="container text-center">
   <h1 class="mb1">Étape 2/3 : parlez-moi de vous et de votre projet</h1>
-  <p>Vous pourrez modifier votre message à tout moment depuis votre espace immolib</p>
-</div>
-<div class="form-page">
-  <div class="form-page__form">
-    <p class="text-center mb1">💡 <em>Ce message est optionnel mais recommandé pour permettre au propriétaire d'anticiper au mieux votre visite</em></p>
-    <%= form_with model: @appointment, url: appointment_candidate_message_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
-      <div class="form-group">
+  <p>💡 Ce message est optionnel mais recommandé pour me permettre d'anticiper au mieux votre visite</p>
+  <%= form_with model: @appointment, url: appointment_candidate_message_path(@appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+    <div class="form-page">
+      <div class="form-page__form">
         <%= f.text_area :candidate_message, class: "form-control", placeholder: "Rédigez ici votre message (ex : votre projet, vos motivations pour ce logement, vos éventuelles questions)", maxlength: "1000" %>
+        <%= f.hidden_field :redirect_path, :value => "new_candidate" %>
       </div>
-      <%= f.hidden_field :redirect_path, :value => "new_candidate" %>
-      <div>
-        <%= f.submit "Valider et passer à l'étape suivante", class: "btn white-btn bg-primary" %>
-      </div>
-    <%end%>
-  </div>
+    </div>
+    <%= f.submit "Valider et passer à l'étape suivante", class: "btn white-btn bg-primary" %>
+  <%end%>
 </div>

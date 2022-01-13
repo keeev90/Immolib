@@ -8,7 +8,7 @@ class CandidateMessagesController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:appointment_id])
-    @property = @appointment.slot.property.id
+    @property = @appointment.property.id
 
     if @appointment.update(candidate_message: params[:appointment][:candidate_message])
       if redirect_path[:redirect_path] == "new_candidate" #when in new candidate process

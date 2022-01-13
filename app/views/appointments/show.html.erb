@@ -11,12 +11,12 @@
   <div class="mb1">
     <%if @appointment.slot.start_date > DateTime.now%>
       <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
-      <%if @appointment.property.instructions && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
+      <%if @appointment.property.instructions && @appointment.property.instructions != "" && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
         <div class="mt1 link">
           <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
         </div>
       <%else%>
-        <p class="mt1"><small><em><i class="fas fa-info-circle"></i> A l'approche du jour J, vous recevrez les instructions du propriétaire pour la visite (adresse, digicode, interphone, etc.)</em></small></p> 
+        <p class="mt1"><small><em><i class="fas fa-info-circle"></i> Vous recevrez les modalités logistiques (adresse, digicode, interphone, etc.) à l'approche de la visite</em></small></p> 
       <%end%>
       <p class="mt2"><small>💡 Pour déplacer votre rendez-vous cliquez directement sur un autre créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>

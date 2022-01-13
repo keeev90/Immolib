@@ -1,8 +1,8 @@
 <div class="container checkout-status">
-  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu.<br/>Merci pour votre confiance&nbsp;!</h2>
-  <hr class="hr-black mb2"/>
+  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu. Merci pour votre confiance&nbsp;!</h2>
+  <hr class="hr-black mt2 mb2"/>
   <h1 class="mb2">Dernière étape&nbsp;: partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</h1>
-  <p>A vous de jouer 😉</p>
+  <p class="mb1">A vous de jouer 😉</p>
   <div class="url-container">
     Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
     <p class="link"> 
