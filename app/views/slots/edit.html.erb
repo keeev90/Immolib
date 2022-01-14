@@ -17,6 +17,7 @@
         <br/>
         <div class="form-group">
           <%= f.label "Nombre de visiteurs maximum *", class: "form-label" %>
+          <p><small><i class="fas fa-info-circle"></i> La disponibilité du créneau est automatiquement mise à jour après chaque prise de RDV</small></p>
           <%= f.number_field :max_appointments, placeholder: "Indiquez un nombre maximum de visiteurs pour ce créneau", min: 1, max: 50, required: true %>
         </div>
         <br/>

@@ -124,3 +124,9 @@
   text-align: right;
   margin-top: 0.5em;
 }
+
+@media screen and (max-width: 415px) {
+  .profile-wrapper {
+    width: 100%;
+  }
+}

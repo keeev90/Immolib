@@ -120,7 +120,7 @@
         align-items: center;
         text-align: center;
         padding: 2rem;
-        width: 20%;
+        width: 23%;
         flex: 0 0 auto;
         background-color: #ffffff;
         border-radius: 4px;
@@ -131,7 +131,7 @@
         box-shadow: 0 6px 12px 2px rgba(0,0,0,0.1);
 
         &__title {
-          font-size: 1.1rem;
+          font-size: 1rem;
           padding: .5em 0;
         }
   
@@ -187,6 +187,10 @@
     }
 
     &.i4 {
+      background-color: #aaa;
+    }
+
+    &.i5 {
       background-color: #aaa;
     }
   }
