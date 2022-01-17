@@ -5,7 +5,7 @@ Vous avez une visite programmée demain à <%= @appointment.slot.start_date.strf
 <% if @appointment.property.instructions && @appointment.property.instructions != "" %>
 Voici les instructions du propriétaire pour votre visite :
 
-  <%= simple_format(@appointment.slot.property.instructions) %>
+  <%= simple_format(@appointment.property.instructions) %>
 <% end %>
 
 <% if @appointment.property.owner_project == "rent" %>

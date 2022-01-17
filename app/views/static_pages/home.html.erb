@@ -8,7 +8,7 @@
         d'organiser vos visites et gérer les candidatures en toute simplicité</p>
       </div>
       <div class="home-buttons">  
-        <%= link_to "Organisez vos visites", welcome_user_path, class: "btn big-btn primary" %>
+        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn primary" %>
         <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>
@@ -19,7 +19,7 @@
     <h2 class="benefits-section__title primary">
       Organisez vos visites en toute simplicité
     </h2>
-    <h3 class="bolder text-center subtitle">
+    <h3 class="benefits-section__subtitle bolder text-center">
       Fini les échanges d'emails et appels téléphoniques fastidieux
     </h3>
     <div class="benefits-section__body">
@@ -54,7 +54,7 @@
     <h2 class="benefits-section__title">
       Collectez les dossiers en quelques clics
     </h2>
-    <h3 class="bolder text-center subtitle">
+    <h3 class="benefits-section__subtitle bolder text-center">
       Fini l'archivage chaotique et les dossiers incomplets
     </h3>
     <div class="benefits-section__body" id='benefits-2'>
@@ -84,47 +84,54 @@
     </div>
   </section>
 
-  <section class="benefits-section last-section">
+  <section class="benefits-section last-section"  id='last-section'>
     <h2 class="benefits-section__title primary">
-      Une agence immobilière&nbsp;? Et pour quoi faire&nbsp;?!
+      Gardez le contrôle et gagnez un temps précieux
     </h2>
-    <h3 class="bolder text-center subtitle">
-      Gagnez un temps précieux et concentrez-vous sur l'essentiel<br/>
-      pour seulement 29,99€ par bien à vendre ou à louer
+    <h3 class="benefits-section__subtitle bolder text-center">
+      Fini les agences, les commissions, les engagements. L'agent immobilier, c'est vous&nbsp;!
     </h3>
-    <div class="benefits-section__body" id='last-section'>
-      <div class="item">
+    <div class="benefits-section__body">
+      <div class="item-background">
         <p class="last-section-icon i1"> 1 </p>
-        <p class="item__title">Je renseigne les infos clés de mon logement à vendre ou à louer</p>
-        <p class="item__content">
-          Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce
+        <p class="item-background__title">Je renseigne les infos clés de mon logement</p>
+        <p class="item-background__content">
+          Titre, photo, liens de vos annonces en ligne, instructions pour les visites... les candidats seront guidés et assurés d'avoir toutes les informations nécessaires.
         </p>
       </div>
 
-      <div class="item">
+      <div class="item-background">
         <p class="last-section-icon i2"> 2 </p>
-        <p class="item__title">Je sélectionne les créneaux de visites à proposer à mes candidats</p>
-        <p class="item__content">
-          La disponibilité des créneaux est mise à jour automatiquement après chaque candidature
+        <p class="item-background__title">Je sélectionne mes créneaux de visites</p>
+        <p class="item-background__content">
+          Vous fixez le nombre de candidats maximum par créneau. Leur disponibilité est mise à jour automatiquement après chaque prise de RDV.
         </p>
       </div>
 
-      <div class="item">
+      <div class="item-background">
         <p class="last-section-icon i3"> 3 </p>
-        <p class="item__title">Je partage mon URL immolib directement dans mes annonces en ligne</p>
-        <p class="item__content">
-          Les candidats n'ont plus qu'à suivre un parcours simple et rapide ! Vous gardez la main sur les visites et les candidats.
+        <p class="item-background__title">Je partage mon lien immolib sur mes annonces en ligne</p>
+        <p class="item-background__content">
+          Les candidats suivent un parcours rapide et guidé : prise de RDV, dépôt du dossier, confirmation d'intêret ou offre d'achat... vous centralisez toutes les réponses !
+        </p>
+      </div>
+
+      <div class="item-background">
+        <p class="last-section-icon i4"> 4 </p>
+        <p class="item-background__title">Je réalise mes visites et analyse les candidatures</p>
+        <p class="item-background__content">
+          Les candidats sont automatiquement relancés avant une visite et en cas de dossier incomplet. Vous gardez la main jusqu'à la validation d'un dossier ou d'une offre.
         </p>
       </div>
     </div>
 
     <div class="text-center mb4">
       <% if user_signed_in? %>
-        <%= link_to "Organisez vos visites dès maintenant", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
+        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
           <%= f.email_field :email, placeholder: "Entrez votre adresse e-mail", class: "text-center" %>
-          <%= f.submit "S'inscrire et organiser des visites", class: "btn big-btn bg-primary white-btn" %>
+          <%= f.submit "M'inscrire et enregistrer mon logement", class: "btn big-btn bg-primary white-btn" %>
         <% end %>
       <% end %>
     </div>

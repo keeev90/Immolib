@@ -76,7 +76,12 @@
     &__title {
       text-align: center;
       padding: 5rem 0 0.5rem;
-      font-size: 4rem;
+      font-size: 3rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+      margin-top: 1em;
     }
   
     &__body {
@@ -95,17 +100,43 @@
         flex: 0 0 auto;
   
         img {
-          width: 50%;
-          margin-bottom: 1rem;
+          width: 25%;
+          margin-bottom: 0.5rem;
         }
   
         &__title {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           padding: .5em 0;
         }
   
         &__content {
+          font-size: 0.9rem;
+        }
+      }
+
+      .item-background {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        width: 23%;
+        flex: 0 0 auto;
+        background-color: #ffffff;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        box-shadow: 0 6px 12px 2px rgba(0,0,0,0.1);
+
+        &__title {
           font-size: 1rem;
+          padding: .5em 0;
+        }
+  
+        &__content {
+          font-size: 0.8rem;
         }
       }
     }
@@ -135,16 +166,12 @@
     }
   }
 
-  .subtitle {
-    font-size: 1.8em;
-    margin-top: 1em;
-  }
-
   .last-section-icon {
-    padding: 1.5rem 2.5rem;
+    padding: 0.8rem 1.5rem;
+    margin-bottom: 0.5rem;
     background-color: #ddd;
     color: #fff;
-    font-size: 3rem;
+    font-size: 1.5rem;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -158,6 +185,14 @@
     &.i3 {
       background-color: #bbb;
     }
+
+    &.i4 {
+      background-color: #aaa;
+    }
+
+    &.i5 {
+      background-color: #aaa;
+    }
   }
   
   @media screen and (max-width: 938px) {
@@ -168,6 +203,11 @@
         img {
           width: 40%;
         }
+      }
+
+      .item-background {
+        width: 50%;
+        margin: 1rem;
       }
     }
   }
@@ -180,6 +220,11 @@
         img {
           width: 30%;
         }
+      }
+
+      .item-background {
+        width: 100%;
+        margin-bottom: 2rem;
       }
     }
   }

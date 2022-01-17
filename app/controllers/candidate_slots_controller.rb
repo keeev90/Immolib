@@ -4,20 +4,15 @@ class CandidateSlotsController < ApplicationController
 
   def update
     new_candidate = params[:new_candidate]
-    if new_candidate == "false"
-      slot = Slot.find(params[:param1])
-      property = Property.find(params[:property])
-      user_appointments = Appointment.where(candidate: current_user)
-      user_appointments.each do |appointment|
-        if appointment.property == property && !slot.is_past?
-          appointment.update(slot: slot)
-          flash[:success] = "Votre créneau de visite a bien été mis à jour 👌"
-          redirect_to appointment_path(appointment)
-        else 
-          flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
-          redirect_to appointment_path(appointment)
-        end
-      end
+    slot = Slot.find(params[:new_slot])
+    appointment = Appointment.find(params[:appointment_id])
+    if new_candidate == "false" && !slot.is_past?
+      appointment.update(slot: slot)
+      flash[:success] = "Votre créneau de visite a bien été mis à jour 👌"
+      redirect_to appointment_path(appointment)
+    else 
+      flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
+      redirect_to appointment_path(appointment)
     end
   end
 

@@ -262,3 +262,36 @@
     font-weight: bolder;
   }
 }
+
+// Other basic cards
+.card-white {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 650px;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  box-shadow: 0 6px 12px 2px rgba(0,0,0,0.1);
+
+  .btn {
+    width: 100%;
+    margin: 1rem auto;
+    position: relative;
+    display: block;
+  } 
+}
+
+@media screen and (max-width: 415px) {
+  .card-white {
+    padding: 2rem;
+  }
+}

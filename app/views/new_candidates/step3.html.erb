@@ -1,17 +1,12 @@
-<div class="container">
-  <div class="slot-candidate-wrapper__title section-title">
-    <% if @appointment.property.owner_project == "rent" %>
-      <h1>Étape 3/3 : complétez votre profil et transmettez votre dossier depuis votre espace immolib</h1>
-    <% else %>
-      <h1>Étape 3/3 : complétez votre profil depuis votre espace immolib</h1>
-    <% end %> 
-  </div>
-</div>
-
-<div class="container">
-  <div class="text-center">
-    <%= link_to "👉 Découvrir mon espace immolib", user_path(current_user), class: "btn big-btn white-btn bg-primary" %>
-    <p class="mt4 mb1"><em><i class="fas fa-info-circle"></i> A l'approche du jour J, vous recevrez toutes les modalités logistiques pour la visite</em></p> 
+<div class="container text-center">
+  <% if @appointment.property.owner_project == "rent" %>
+    <h1>Étape 3/3 : complétez votre profil et transmettez-moi votre dossier depuis votre espace immolib</h1>
+  <% else %>
+    <h1>Étape 3/3 : complétez votre profil depuis votre espace immolib</h1>
+  <% end %> 
+  <div class="mt2">
+    <%= link_to "👉 Découvrir votre espace immolib", user_path(current_user), class: "btn big-btn white-btn bg-primary" %>
+    <p class="mt2 mb1"><em><i class="fas fa-info-circle"></i> A l'approche de votre visite, vous recevrez toutes les modalités logistiques (adresse, digicode, interphone, etc.)</em></p> 
     <p><em><span class="bolder warning">En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible</span></em></p>
   </div>
 </div>

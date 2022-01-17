@@ -1,32 +1,34 @@
 <div class="container checkout-status">
-  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu.<br/>Merci pour votre confiance&nbsp;!</h2>
-  <hr class="hr-black mb2"/>
-  <h1 class="mb2">Dernière étape&nbsp;: partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</h1>
-  <p>A vous de jouer 😉</p>
-  <div class="url-container">
-    Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
-    <p class="link"> 
-      <a><%= @property.go_visit_url %></a> 
-      <i class="far fa-copy">
-        <span class="copy-text"> Copier le lien </span>
-      </i>
-    </p>
-  </div>
-  <div class="url-container mb1">
-    Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
-    <p class="link">
-      <a><%= @property.go_visit_url_short %></a> 
-      <i class="far fa-copy">
-        <span class="copy-text"> Copier le lien </span>
-      </i>
-    </p>
+  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu. Merci pour votre confiance&nbsp;!</h2>
+  <hr class="hr-black mt2 mb2"/>
+  <h1 class="mb2">Dernière étape&nbsp;: partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours rapide et guidé&nbsp;!</h1>
+  <p class="mb1">A vous de jouer 😉</p>
+  <div class="card-white">
+    <div class="url-container mb1">
+      Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
+      <p class="link"> 
+        <a><%= @property.go_visit_url %></a> 
+        <i class="far fa-copy">
+          <span class="copy-text"> Copier le lien </span>
+        </i>
+      </p>
+    </div>
+    <div class="url-container">
+      Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
+      <p class="link">
+        <a><%= @property.go_visit_url_short %></a> 
+        <i class="far fa-copy">
+          <span class="copy-text"> Copier le lien </span>
+        </i>
+      </p>
+    </div>
   </div>
   <div class="profile-cta mt2">
     <p>
       💡 Rendez-vous sur votre espace immolib pour compléter vos infos de profil et celles de votre logement 
       <br/><small>Ces informations serviront à
-      personnaliser les emails automatiques qui seront envoyés à vos candidats
-      (confirmation de visite, rappel visite J-1, rappel dossier incomplet, etc.)​</small>
+      personnaliser les emails automatiques envoyés aux candidats
+      (confirmation de RDV, rappel visite J-1, rappel dossier incomplet, etc.)​</small>
     </p>
     <%= link_to "Découvrir mon espace immolib", user_path(current_user), class:
     'btn white-btn bg-primary' %>
