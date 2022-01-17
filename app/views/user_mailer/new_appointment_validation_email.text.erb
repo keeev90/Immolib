@@ -2,7 +2,7 @@ Bonjour <%= @user.first_name ? @user.first_name : nil %>, </p><br/>
 
 Nous vous confirmons votre candidature pour le logement "<%= @appointment.property.title %>" à <%= @appointment.property.city %>.
 
-<% if @appointment.slot.property.owner_project == "rent" %>
+<% if @appointment.property.owner_project == "rent" %>
 Rendez-vous dès maintenant sur <%= link_to "votre espace immolib", appointment_url(@appointment) %> pour compléter votre dossier de location.
 
 Afin de booster votre candidature, pensez à rédiger un message au propriétaire et à compléter vos informations personnelles.

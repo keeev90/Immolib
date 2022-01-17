@@ -1,5 +1,5 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), appointment_path(@appointment), class: "return-link pt1 pl4" %>
-<div class="container text-center">
+<div class="container-small text-center">
   <%if @appointment.candidate_message && @appointment.candidate_message != "" %>
     <h1>Modifier mon message</h1>
   <%else%>

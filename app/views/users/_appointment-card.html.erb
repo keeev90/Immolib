@@ -1,7 +1,7 @@
 <div class="appointment-card">
   <div class="appointment-card__picture">
-    <%if appointment.slot.property.property_picture.attached?%>
-      <%= image_tag appointment.slot.property.property_picture, alt: 'property_picture' %>
+    <%if appointment.property.property_picture.attached?%>
+      <%= image_tag appointment.property.property_picture, alt: 'property_picture' %>
     <%else%>
       <div class="appointment-card__picture__no-picture">
         <p>Pas de photo du logement</p>
@@ -9,8 +9,8 @@
     <%end%>
   </div>
   <div class="appointment-card__text">
-    <p><%= appointment.slot.property.title %></p>
-    <p class="mb1"><%= appointment.slot.property.city %></p>
+    <p><%= appointment.property.title %></p>
+    <p class="mb1"><%= appointment.property.city %></p>
     <%if appointment.is_interested == false %>
       <p><small>⚠️ Vous avez indiqué ne pas être intéressé(e) par ce logement</small></p>
     <%else%>

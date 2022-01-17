@@ -6,8 +6,6 @@
 <div class="form-page">
   <div class="form-page__form">
     <h2>Ajouter un créneau de visite</h2>
-    <h5><em>Vous pourrez le modifier ou le supprimer à tout moment</em></h5>
-    <br/>
     <div class='form-group'>
       <input type='text' id='pickadate', class='form-control'>
     </div>
@@ -21,12 +19,13 @@
       <br/>
       <div class="form-group">
         <%= f.label "Nombre de candidats maximum *", class: "form-label" %>
+        <p><small><i class="fas fa-info-circle"></i> La disponibilité du créneau est automatiquement mise à jour après chaque prise de RDV</small></p>
         <%= f.number_field :max_appointments, value: 1, min: 1, max: 50, required: true %>
       </div>
       <br/>
       <div class="form-group">
         <%= f.label "Nombre de répétitions successives du créneau", class: "form-label" %>
-        <p><small><em>Laissez à "1" si vous ne souhaitez pas répéter ce créneau</em></small></p>
+        <p><small><i class="fas fa-info-circle"></i> Laissez à "1" si vous ne souhaitez pas répéter ce créneau</small></p>
         <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %>
       </div>
       

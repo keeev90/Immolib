@@ -3,7 +3,8 @@ class Appointment < ApplicationRecord
   #Associations
   belongs_to :candidate, class_name: "User"
   belongs_to :slot
-  has_one :property, through: :slot
+  #has_one :property, through: :slot
+  belongs_to :property
   has_many_attached :candidate_documents, dependent: :destroy
   has_one_attached :candidate_dossierfacile_folder, dependent: :destroy
 

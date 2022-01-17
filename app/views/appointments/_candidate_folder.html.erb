@@ -9,7 +9,7 @@
 
 <div class="option-wrapper">
   <div class="mt2">
-    <p class="bolder">Liste des documents à transmettre</p>
+    <p class="bolder text-center">Liste des documents à transmettre</p>
     <p>☑️ 1 pièce d'identité recto-verso
       <small>(carte nationale d’identité, passeport, permis de conduire)</small>
     </p>
@@ -24,11 +24,9 @@
     </p>
     <p>☑️ Votre dernier avis d’imposition</p>
   </div>
-  <div class="mt2">
-    <p class="bolder">Mon dossier de location</p>
-    <p class="mb1">Une fois complet, votre dossier est automatiquement transmis au propriétaire</p>
+  <div class="card-white">
     <div>
-      <p><i class="far fa-arrow-alt-circle-right"></i> Mes documents</p>
+      <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Mes documents</p>
       <% if @appointment.candidate_documents.attached? %>
         <div class="candidate-documents-wrapper">
           <% @appointment.candidate_documents.each do |doc| %>
@@ -45,28 +43,24 @@
           <% if @appointment.candidate_documents.size < 5 %>
             <p><small class="warning bolder"> Dossier incomplet </small></p>
           <% else %>
-            <p><small class="success bolder"> Votre dossier est complet, il a été transmis au propriétaire</small> 👌</p>
-            <p><small class="success bolder"> Vous pouvez le modifier à tout moment </small></p>
+            <p><small class="green bolder"> Votre dossier est complet, il a été transmis au propriétaire</small> 👌</p>
+            <p><small class="green bolder"> Vous pouvez le modifier à tout moment </small></p>
           <% end %>
           <p><progress id="file" max="5" value="<%= @appointment.candidate_documents.size%>" class="<%= @appointment.candidate_documents.size > 4 ? 'full' : nil %>"> </progress></p>
           <p><small>Document(s) transmis : <%= @appointment.candidate_documents.size %> / 5</small></p>
         </div>
       <% else %>
-        <div class="candidate-document-number">
-          <small>⚠️ Aucun fichier transmis. Merci d'envoyer vos documents aux formats autorisés.</small>
-        </div>
+        <small>⚠️ Aucun fichier transmis. Merci d'envoyer vos documents aux formats autorisés.</small>
       <% end %>
     </div>
-    <div class="pt1">
-      <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
-        <div class="field">
-          <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Télécharger vos documents au format pdf, jpeg ou png", help: "Vous pouvez les glisser-déposer ici" %>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Envoyer mes documents", class:"btn white-btn bg-primary small-btn" %>
-        </div>
-      <%end%>
-    </div>
+  </div>
+  <div class="upload-section">
+    <%= form_with url: appointment_candidate_documents_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <div class="field">
+        <%= f.file_field :candidate_documents, multiple: true, is: "drop-files", label: "Télécharger vos documents au format pdf, jpeg ou png", help: "Vous pouvez les glisser-déposer ici" %>
+      </div>
+      <%= f.submit "Envoyer mes documents", class:"btn white-btn bg-primary small-btn" %>
+    <%end%>
   </div>
 </div>
 
@@ -79,73 +73,53 @@
 </div>
 
 <div class="option-wrapper">
-  <div class="mt2 mb2">
-    <p class="bolder">Pourquoi DossierFacile ?</p>
+  <div class="mt2">
+    <p class="bolder text-center">Pourquoi DossierFacile ?</p>
     <p>👍 Transmettre aux propriétaires en moins de 24h un dossier vérifié et complet qui se veut rassurant</p>
     <p>👍 Protéger vos données personnelles avec un filigrane sur chaque document</p>
     <p>👍 Gérer les cas particuliers : colocation, couple, garant(s)</p>
     <p>👍 Réunir vos documents dans un dossier accessible sous forme de lien URL ou au format PDF</p>
   </div>
-  <div>
-    <p class="bolder">Mon dossier de location</p>
-    <p>Après validation, il ne vous reste plus qu'à renseigner le lien de votre dossier ou l’envoyer directement au format PDF</p>
-    <div>
-      <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
-        <p class="pt1"><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %>   
-          <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
-        </p>
-        <div class="text-center">
-          <p class="pt1"><small class="success bolder"> Votre lien DossierFacile a été transmis au propriétaire</small> 👌</p>
-          <p><small class="success bolder"> Vous pouvez le modifier à tout moment </small></p>
-        </div>
-      <% else %>
-        <div class="candidate-document-number pt1">
-          <p><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile</p>
-          <small>⚠️ Aucun lien transmis. Merci de renseigner votre lien DossierFacile.</small>
-        </div>
-      <% end %>
-      <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
-        <div class="field">
-          <%= f.text_field :candidate_dossierfacile_link, class: "form-control", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true, class: "text-center" %>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Envoyer le lien de mon dossier", class:"btn white-btn bg-primary small-btn" %>
-        </div>
-      <%end%>
-    </div>
-    <div>
-      <% if @appointment.candidate_dossierfacile_folder.attached? %>
-        <div class="candidate-documents-wrapper mt2">
-            <div class="candidate-document">
-              <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF :
-                <a><%= @appointment.candidate_dossierfacile_folder.filename %></a>
-                <%# if doc.previewable? %>
-                  <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview'), target: '_blank' %>
-                <%# end %>
-                <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment), method: "delete" %>
-              </p>
-            </div>
-        </div>
-        <div class="text-center">
-          <p class="pt1"><small class="success bolder"> Votre document DossierFacile a bien été transmis au propriétaire</small> 👌</p>
-          <p><small class="success bolder"> Vous pouvez le modifier à tout moment </small></p>
-        </div>
-      <% else %>
-        <div class="candidate-document-number mt2">
-          <p><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF</p>
-          <small>⚠️ Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format PDF.</small>
-        </div>
-      <% end %>
-    </div>
-    <div class="pt1">
-      <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
-        <div class="field">
-          <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Télécharger le fichier PDF", help: "Vous pouvez le glisser-déposer ici" %>
-        </div>
-        <div class="text-center">
-          <%= f.submit "Envoyer mon dossier au format PDF", class:"btn white-btn bg-primary small-btn" %>
-        </div>
-      <%end%>
-    </div>
+  <div class="card-white">
+    <% if @appointment.candidate_dossierfacile_link && @appointment.candidate_dossierfacile_link != "" %>
+      <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile : <%= link_to appointment.candidate_dossierfacile_link, appointment.candidate_dossierfacile_link, target: '_blank' %>   
+        <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_link_path(@appointment), method: "delete" %>
+      </p>
+      <p><small class="green bolder"> Votre lien DossierFacile a été transmis au propriétaire</small> 👌</p>
+      <p><small class="green bolder"> Vous pouvez le modifier à tout moment </small></p>
+    <% else %>
+      <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Mon lien DossierFacile</p>
+      <small>⚠️ Aucun lien transmis. Merci de renseigner votre lien DossierFacile.</small>
+    <% end %>
+  </div>
+  <div class="upload-section">
+    <%= form_with url: appointment_candidate_dossierfacile_links_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <%= f.text_field :candidate_dossierfacile_link, class: "form-control text-center", placeholder: "Copiez-collez ici l’URL de votre DossierFacile", required: true %>
+      <%= f.submit "Envoyer le lien de mon dossier", class:"btn white-btn bg-primary small-btn" %>
+    <%end%>
+  </div>
+  <div class="card-white">
+    <% if @appointment.candidate_dossierfacile_folder.attached? %>
+      <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF :
+        <a><%= @appointment.candidate_dossierfacile_folder.filename %></a>
+        <%# if doc.previewable? %>
+          <%= link_to raw("<i class='far fa-eye'></i>"), rails_blob_path(@appointment.candidate_dossierfacile_folder, disposition: 'preview'), target: '_blank' %>
+        <%# end %>
+        <%= link_to raw("<i class='far fa-trash-alt'></i>"), appointment_candidate_dossierfacile_folder_path(@appointment), method: "delete" %>
+      </p>
+      <p><small class="green bolder"> Votre document DossierFacile a bien été transmis au propriétaire</small> 👌</p>
+      <p><small class="green bolder"> Vous pouvez le modifier à tout moment </small></p>
+    <% else %>
+      <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Mon DossierFacile en format PDF</p>
+      <small>⚠️ Aucun fichier transmis. Merci d'envoyer votre document DossierFacile au format PDF.</small>
+    <% end %>
+  </div>
+  <div class="upload-section">
+    <%= form_with url: appointment_candidate_dossierfacile_folders_path(@appointment), local: true, class: "form", id: "item-form", multipart: true do |f| %>
+      <div class="field">
+        <%= f.file_field :candidate_dossierfacile_folder, is: "drop-files", label: "Télécharger le fichier PDF", help: "Vous pouvez le glisser-déposer ici" %>
+      </div>
+      <%= f.submit "Envoyer mon dossier au format PDF", class:"btn white-btn bg-primary small-btn" %>
+    <%end%>
   </div>
 </div>

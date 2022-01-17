@@ -34,8 +34,6 @@ class User < ApplicationRecord
     return future_appointments_array
   end
 
-  private
-
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
@@ -60,6 +58,8 @@ class User < ApplicationRecord
       )
     end
   end
+
+  private
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
