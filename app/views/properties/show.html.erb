@@ -1,11 +1,11 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
-<div class="container text-center">
+<div class="container-small text-center">
   <%= render partial:"property_intro", locals: {property: @property} %>
 </div>
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center" id='property-section-1'>
+<div class="container-small text-center" id='property-section-1'>
   <h1 class="primary mb2">Mon logement</h1>
   <%if @property.property_picture.attached? %>
     <div class="pic property-picture">
@@ -36,7 +36,7 @@
     <% end %>
     <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite</p>
     <% if @property.instructions == "" %>
-      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
+      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, téléphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
     <% else %>
       <p><em><%= simple_format(@property.instructions) %></em></p> 
     <% end %>
@@ -46,7 +46,7 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center" id='property-section-2'>
+<div class="container-small text-center" id='property-section-2'>
   <h1 class="primary mb2">Mes visites</h1>
   <div class="mb2">
     <% if @property.owner_project == "rent" %>
@@ -64,13 +64,13 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container" id='property-section-3'>
+<div class="container-small" id='property-section-3'>
   <h1 class="primary mb2 text-center">Mes candidats</h1>
   <% if @property.candidates.size > 0 %>
-    <p class="mb2 text-center">💡 <span class="bolder">Cliquez sur un candidat pour voir sa fiche détaillée</span></p>
-    <div class="slot-wrapper pl2 pr2">
-      <div class="slot-wrapper-left">
-        <div class="slot-wrapper__content">
+    <p class="mb1 text-center">💡 <span class="bolder">Cliquez sur un candidat pour voir sa fiche détaillée</span></p>
+    <div class="candidates-wrapper pl2 pr2">
+      <div class="candidates-wrapper-left">
+        <div class="candidates-wrapper__content">
           <% firstSlot = true %>
           <% @property.appointments.each do |a| %>
             <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_candidate_details_path(@property, appointment: a), remote: true %>
@@ -78,7 +78,7 @@
           <% end %>
         </div>
       </div>
-      <div class="slot-wrapper-right">
+      <div class="candidates-wrapper-right">
         <%= render(partial: "show_candidate_details", locals: {appointment: @property.appointments.first}) %>
       </div>
     </div>
