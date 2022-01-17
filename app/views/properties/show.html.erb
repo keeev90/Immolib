@@ -7,39 +7,50 @@
 </div>
 <div class="container-small text-center" id='property-section-1'>
   <h1 class="primary mb2">Mon logement</h1>
-  <%if @property.property_picture.attached? %>
-    <div class="pic property-picture">
-      <div>
-        <%= image_tag @property.property_picture, alt: 'property picture' %>
-        <p class="property-picture--change"> Modifier </p>
+    <%if @property.property_picture.attached? %>
+      <div class="pic property-picture">
+        <div>
+          <%= image_tag @property.property_picture, alt: 'property picture' %>
+          <p class="property-picture--change"> Modifier </p>
+        </div>
+        <%if @property.property_picture.filename != 'property_placeholder.png' %>
+          <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture pt1"  %>
+        <%end%>
       </div>
-      <%if @property.property_picture.filename != 'property_placeholder.png' %>
-        <%= link_to "Supprimer la photo", property_property_picture_path(@property), method: "delete", class: "delete-property-picture pt1"  %>
-      <%end%>
+    <%end%>
+    <%= render(
+      partial: 'layouts/picture_modal',
+      locals: {
+        url: property_property_pictures_path(@property),
+        type: :property_picture
+      }
+    ) %>
+    <div class="mt2">
+      <div class="card-white">
+        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Titre</p>
+        <p><%= @property.title %></p>
+      </div>
+      <div class="card-white">
+        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Ville</p>
+        <p><%= @property.city %></p>
+      </div>
+      <div class="card-white">
+        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Lien d'une annonce en ligne</p>
+        <% if @property.other_link == "" %>
+          <p><small><em>⚠️  Editez votre logement pour indiquer le lien vers une annonce en ligne (ex : PaP)</em></small></p>
+        <% else %>
+          <p> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
+        <% end %>
+      </div>
+      <div class="card-white">
+        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Instructions pour la visite</p>
+        <% if @property.instructions == "" %>
+          <p><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, téléphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
+        <% else %>
+          <p><em><%= simple_format(@property.instructions) %></em></p> 
+        <% end %>
+      </div>
     </div>
-  <%end%>
-  <%= render(
-    partial: 'layouts/picture_modal',
-    locals: {
-      url: property_property_pictures_path(@property),
-      type: :property_picture
-    }
-  ) %>
-  <div class="mt2">
-    <h3> <%= @property.title %> </h3>
-    <p class="mb1"> <%= @property.city %> </p>
-    <p><i class="far fa-arrow-alt-circle-right"></i> Mon  annonce en ligne</p>
-    <% if @property.other_link == "" %>
-      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer le lien vers une annonce en ligne (ex : PaP)</em></small></p>
-    <% else %>
-      <p class="mb1"> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
-    <% end %>
-    <p><i class="far fa-arrow-alt-circle-right"></i> Mes instructions de visite</p>
-    <% if @property.instructions == "" %>
-      <p class="mb1"><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, téléphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
-    <% else %>
-      <p><em><%= simple_format(@property.instructions) %></em></p> 
-    <% end %>
     <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
   </div>
 </div>
@@ -71,10 +82,10 @@
     <div class="candidates-wrapper pl2 pr2">
       <div class="candidates-wrapper-left">
         <div class="candidates-wrapper__content">
-          <% firstSlot = true %>
+          <% firstCandidate = true %>
           <% @property.appointments.each do |a| %>
-            <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_candidate_details_path(@property, appointment: a), remote: true %>
-            <% firstSlot = false %>
+            <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstCandidate}), property_candidate_details_path(@property, appointment: a), remote: true %>
+            <% firstCandidate = false %>
           <% end %>
         </div>
       </div>

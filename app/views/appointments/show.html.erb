@@ -1,35 +1,41 @@
 <%= link_to raw("<i class='fas fa-chevron-left'></i> Retour"), user_path(current_user), class: "return-link ml4 pt1" %>
-<div class="container text-center">
+<div class="container-small text-center">
   <%= render partial:"candidate_intro", locals: {appointment: @appointment} %>
   </div>
 </div>
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center" id='candidate-section-1'>
+<div class="container-small text-center" id='candidate-section-1'>
   <h1 class="bolder primary mb2">Mes visites</h1>
   <div class="mb1">
     <%if @appointment.slot.start_date > DateTime.now%>
-      <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
-      <%if @appointment.property.instructions && @appointment.property.instructions != "" && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
-        <div class="mt1 link">
-          <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
-        </div>
-      <%else%>
-        <p class="mt1"><small><em><i class="fas fa-info-circle"></i> Vous recevrez les modalités logistiques (adresse, digicode, interphone, etc.) à l'approche de la visite</em></small></p> 
-      <%end%>
+      <div class="card-white">
+        <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
+        <%if @appointment.property.instructions && @appointment.property.instructions != "" && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
+          <div class="mt1 link">
+            <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
+          </div>
+        <%else%>
+          <p class="mt1"><small><em><i class="fas fa-info-circle"></i> Vous recevrez les modalités logistiques (adresse, digicode, interphone, etc.) à l'approche de la visite</em></small></p> 
+        <%end%>
+      </div>
       <p class="mt2"><small>💡 Pour déplacer votre rendez-vous cliquez directement sur un autre créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun autre créneau de visite disponible actuellement</small></p>
       <%end%>
     <%elsif @appointment.slot.start_date < DateTime.now%>
-      <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
+      <div class="card-white">
+        <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
+      </div>
       <p class="mt1"><small>💡 Pour prendre un nouveau rendez-vous cliquez directement sur un créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
       <%end%>
     <%else%>
-      <p class="bolder">Aucune visite programmée</p>
+      <div class="card-white">
+        <p class="bolder">Aucune visite programmée</p>
+      </div>
       <p class="mt1"><small>💡 Pour prendre rendez-vous cliquez directement sur un créneau disponible </small></p>
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun créneau de visite disponible actuellement</small></p>
@@ -41,7 +47,7 @@
 <div class="container">
   <hr/>
 </div>
-<div class="container text-center" id='candidate-section-2'>
+<div class="container-small text-center" id='candidate-section-2'>
   <h1 class="bolder primary mb2">Mon message</h1>
   <%= render partial:"candidate_message", locals: {appointment: @appointment} %>
 </div>
@@ -49,7 +55,7 @@
   <div class="container">
     <hr/>
   </div>
-  <div class="container" id='candidate-section-3'>
+  <div class="container-small" id='candidate-section-3'>
     <h1 class="bolder primary text-center mb2">Mon dossier de location</h1>
     <%= render partial:"candidate_folder", locals: {appointment: @appointment} %>
   </div>

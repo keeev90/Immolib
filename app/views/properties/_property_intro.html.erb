@@ -23,11 +23,9 @@
       </i>
     </p>
   </div>
-  <hr class="hr-grey mw80 mb2 mt2">
   <%= link_to "Mon logement", "#property-section-1", class: "btn outline-btn-white" %>
   <%= link_to "Mes visites", "#property-section-2", class: "btn outline-btn-white" %>
   <%= link_to "Mes candidats", "#property-section-3", class: "btn outline-btn-white" %>
-  <hr class="hr-grey mw80 mb2 mt2">
-  <p class="mt1"><%= link_to "Supprimer mon logement", property_path(property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
-  <small><em><i class="fas fa-info-circle"></i> En cas de visites prévues elles seront automatiquement annulées<br/> Les candidats seront automatiquement prévenus par email</em></small>
 </div>
+<p class="mt1"><%= link_to "Supprimer mon logement", property_path(property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
+<small><em><i class="fas fa-info-circle"></i> En cas de visites prévues elles seront automatiquement annulées<br/> Les candidats seront automatiquement prévenus par email</em></small>
