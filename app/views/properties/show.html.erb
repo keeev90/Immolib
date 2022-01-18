@@ -99,13 +99,13 @@
       <div class="card-white">
         <p class="mb1">💡 <span class="bolder">Partagez votre lien immolib : les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</span></p>
         <div class="url-container mb1">
-          Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
-          <p class="link"> 
+          Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
+          <p class="link">
             <em>
             <% if @property.owner_project == "rent" %>
-              <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
             <%else%> 
-              <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
             <%end%> 
             </em>
             <i class="far fa-copy">
@@ -114,13 +114,13 @@
           </p>
         </div>
         <div class="url-container">
-          Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
-          <p class="link">
+          Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
+          <p class="link"> 
             <em>
             <% if @property.owner_project == "rent" %>
-              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
+              <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
             <%else%> 
-              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
+              <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
             <%end%> 
             </em>
             <i class="far fa-copy">

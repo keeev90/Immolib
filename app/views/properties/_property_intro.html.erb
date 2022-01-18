@@ -6,21 +6,6 @@
 <div class="card-white">
   <p class="mb1">💡 <span class="bolder">Partagez votre lien immolib : les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</span></p>
   <div class="url-container mb1">
-    Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
-    <p class="link"> 
-      <em>
-      <% if property.owner_project == "rent" %>
-        <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= property.go_visit_url %></a>
-      <%else%> 
-        <a>Suivez ce lien pour réserver un créneau de visite : <%= property.go_visit_url %></a>
-      <%end%> 
-      </em>
-      <i class="far fa-copy">
-        <span class="copy-text"> Copier </span>
-      </i>
-    </p>
-  </div>
-  <div class="url-container mb1">
     Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
     <p class="link">
       <em>
@@ -35,9 +20,26 @@
       </i>
     </p>
   </div>
+  <div class="url-container mb1">
+    Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
+    <p class="link"> 
+      <em>
+      <% if property.owner_project == "rent" %>
+        <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= property.go_visit_url %></a>
+      <%else%> 
+        <a>Suivez ce lien pour réserver un créneau de visite : <%= property.go_visit_url %></a>
+      <%end%> 
+      </em>
+      <i class="far fa-copy">
+        <span class="copy-text"> Copier </span>
+      </i>
+    </p>
+  </div>
+  <hr class="hr-grey mw80 mt2 mb2">
   <%= link_to "Mon logement", "#property-section-1", class: "btn outline-btn-white" %>
   <%= link_to "Mes visites", "#property-section-2", class: "btn outline-btn-white" %>
   <%= link_to "Mes candidats", "#property-section-3", class: "btn outline-btn-white" %>
 </div>
-<p class="mt1"><%= link_to "Supprimer mon logement", property_path(property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
-<small><em><i class="fas fa-info-circle"></i> En cas de visites prévues elles seront automatiquement annulées<br/> Les candidats seront automatiquement prévenus par email</em></small>
+<% unless property.candidates.size > 0 %>
+  <p class="mt1"><%= link_to "Supprimer mon logement", property_path(property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning"%></p>
+<%end%>

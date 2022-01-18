@@ -103,12 +103,16 @@
       <div class="candidate-profile-details-section text-center">
         <p><i class="fas fa-info"></i> <span class="bolder">Après la visite, le candidat pourra confirmer ou non son intérêt pour votre logement</span></p>
         <hr class="hr-black mw80 mb2 mt2">
-        <p> Cette candidature ne vous convient pas ? </p>
-          <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
-            <%= f.hidden_field(:is_accepted, value:"false") %>
-            <%= f.submit "Refuser la candidature", data: {confirm: "Êtes-vous sûr ?"}, class:"btn small-btn white-btn bg-warning" %>
-          <%end%>
-          <p><small><em><i class="fas fa-info-circle"></i> Le candidat sera automatiquement prévenu de votre décision et de l'annulation sa visite</em></small></p>
+        <%if appointment.property.owner_project == "rent"%>
+          <p> Cette candidature ne vous convient pas ? Vous avez validé une autre candidature ?</p>
+        <%else%>
+          <p> Cette candidature ne vous convient pas ? Vous avez validé une offre d'achat ?</p>
+        <%end%>
+        <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+          <%= f.hidden_field(:is_accepted, value:"false") %>
+          <%= f.submit "Refuser la candidature", data: {confirm: "Êtes-vous sûr ?"}, class:"btn small-btn white-btn bg-warning" %>
+        <%end%>
+        <p><small><em><i class="fas fa-info-circle"></i> Le candidat sera automatiquement prévenu de votre décision et de l'annulation sa visite</em></small></p>
       </div>
     </div>
   </div>

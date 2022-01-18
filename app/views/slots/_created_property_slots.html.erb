@@ -5,13 +5,11 @@
       ) %></p>
     <p>Durée : <%= slot.duration %> minutes</p>
     <p>Nombre de candidats maximum : <%= slot.max_appointments %></p>
-    <%= link_to "Supprimer ce créneau", property_slot_path(property_id: slot.property,id: slot, new_property: true), method: "delete" %>
+    <%= link_to "Supprimer ce créneau", property_slot_path(property_id: slot.property, id: slot, new_property: true), method: "delete" %>
   </div>
 <% end %>
 
-<%= link_to "Ajouter un créneau de visite", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn outline-btn-white" %>
+<%= link_to "Ajouter un créneau de visite", new_property_slot_path(property, redirect_path: "new_property"), class: "btn outline-btn-white" %>
 
-<%= link_to "Valider et passer à l'étape suivante", checkout_index_path(price: 29.99, property: @property), class: "btn big-btn white-btn bg-primary", remote: true, method: :post %>
+<%= link_to "Valider et passer à l'étape suivante", property_share_path(property), class: "btn big-btn white-btn bg-primary" %>
 
-<small>En cliquant sur « valider et passer à l’étape suivante », vous allez être redirigé(e) vers un <strong>formulaire de paiement sécurisé</strong> afin de finaliser votre enregistrement.</small>
-<small class="pb4">L’accès à notre service est au tarif fixe de 29,99€ par bien immobilier.</small>
