@@ -13,18 +13,18 @@
       <%= f.hidden_field :start_date, value: @date, id: 'start_date' %>
       <br/>
       <div class="form-group">
-        <%= f.label "Durée du créneau (en minutes) *", class: "form-label" %>
+        <%= f.label "Durée du créneau (en minutes) *", class: "form-label bolder" %>
         <%= f.select :duration, @minutes.collect { |m| [m, m] }, { include_blank: false } %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de candidats maximum *", class: "form-label" %>
+        <%= f.label "Nombre de candidats maximum *", class: "form-label bolder" %>
         <p><small><i class="fas fa-info-circle"></i> La disponibilité du créneau est automatiquement mise à jour après chaque prise de RDV</small></p>
         <%= f.number_field :max_appointments, value: 1, min: 1, max: 50, required: true %>
       </div>
       <br/>
       <div class="form-group">
-        <%= f.label "Nombre de répétitions successives du créneau", class: "form-label" %>
+        <%= f.label "Nombre de répétitions successives du créneau", class: "form-label bolder" %>
         <p><small><i class="fas fa-info-circle"></i> Laissez à "1" si vous ne souhaitez pas répéter ce créneau</small></p>
         <%= f.number_field :nb_slots, value: 1, min: 1, max: 20, required: true %>
       </div>

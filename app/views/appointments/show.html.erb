@@ -9,7 +9,7 @@
 <div class="container-small text-center" id='candidate-section-1'>
   <h1 class="bolder primary mb2">Mes visites</h1>
   <div class="mb1">
-    <%if @appointment.slot.start_date > DateTime.now%>
+    <%if @appointment.slot.start_date > DateTime.now %>
       <div class="card-white">
         <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
         <%if @appointment.property.instructions && @appointment.property.instructions != "" && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
@@ -24,7 +24,7 @@
       <%if !@appointment.property.has_available_slot?%>
         <p class="mt2"><small>⚠️ Aucun autre créneau de visite disponible actuellement</small></p>
       <%end%>
-    <%elsif @appointment.slot.start_date < DateTime.now%>
+    <%elsif @appointment.slot.start_date < DateTime.now %>
       <div class="card-white">
         <p class="bolder">Dernière visite réalisée le <%= @appointment.slot.start_date.strftime("%d/%m") %> </p>
       </div>

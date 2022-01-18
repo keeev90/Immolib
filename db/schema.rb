@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_100422) do
+ActiveRecord::Schema.define(version: 2022_01_18_100132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_100422) do
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_paid", default: false
+    t.boolean "is_paid", default: true
     t.string "owner_project"
     t.string "stripe_price_id"
     t.index ["owner_id"], name: "index_properties_on_owner_id"

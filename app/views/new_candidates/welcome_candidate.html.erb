@@ -1,20 +1,22 @@
 <div class="welcome-page candidate">
-  <h1 class="primary"> Bienvenue ! </h1>
-  <div class="welcome_user-wrapper">
-    <div class="welcome_user-wrapper__left">
-      <p class="bolder primary">Rappel de l'annonce</p>
-      <h4><%= @property.title%></h4>
-      <p><%= @property.city%></p>
-      <p><small><%= link_to @property.other_link, @property.other_link%></small></p>
-      <%if @property.property_picture.attached?%>
-        <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
-      <% end %>
+  <div class="container">
+    <div class="mb2">
+      <h2 class="primary"> <%= @property.title%> </h2>
+      <h3><%= @property.city%></h3>
+      <%if @property.other_link != "" %>
+        <p class="mt2">Voir les détails de l'annonce : <%= link_to @property.other_link, @property.other_link, target: '_blank' %></p>
+      <%end%>
     </div>
-    <div class="welcome_user-wrapper__right">
-      <div class="form-page">
-        <div class="form-page__form">
+    <div class="welcome_user-wrapper">
+      <div class="welcome_user-wrapper__left">
+        <%if @property.property_picture.attached?%>
+          <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
+        <% end %>
+      </div>
+      <div class="welcome_user-wrapper__right">
+        <div class="card-white">
           <% if @property.has_available_slot? %>
-            <p class="bolder primary"><em>Bonjour,</em></p>
+            <p><em>Bonjour,</em></p>
             <% if @property.owner_project == "rent" %>
               <p><em>Je vous invite à <strong>sélectionner un créneau de visite</strong> disponible
                 et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</em></p>
@@ -36,8 +38,8 @@
               <%= link_to "👉 C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
             <% end %>
           <%else%>
-            <p class="bolder primary"><em>Bonjour,</em></p>
-            <p><em>Désolé, il n'y a <strong>aucune visite disponible</strong> actuellement.</em></p>
+            <p><em>Bonjour,</em></p>
+            <p><em>Il n'y a <strong>aucune visite disponible</strong> actuellement.</em></p>
             <p><em>Je vous invite à <strong>revenir ultérieurement</strong>, des créneaux peuvent se libérer en cas de désistements.</em></p>
             <p><em>Bon courage dans vos recherches,</em></p>
             <%if @property.owner.first_name?%>

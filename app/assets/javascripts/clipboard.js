@@ -7,6 +7,6 @@ copyIcons.forEach(icon => {
   });
 
   icon.addEventListener('mouseleave', () => {
-    icon.querySelector('.copy-text').innerText = "Copier le lien";
+    icon.querySelector('.copy-text').innerText = "Copier";
   })
 });

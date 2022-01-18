@@ -1,8 +1,8 @@
-<div class="container checkout-status">
-  <h2 class='success'><i class="fas fa-check-circle"></i>Votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> a bien été reçu. Merci pour votre confiance&nbsp;!</h2>
-  <hr class="hr-black mt2 mb2"/>
-  <h1 class="mb2">Dernière étape&nbsp;: partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours rapide et guidé&nbsp;!</h1>
-  <p class="mb1">A vous de jouer 😉</p>
+<div class="container  text-center">
+  <div class="section-title">
+    <h1 class="mb2">Dernière étape&nbsp;: partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours rapide et guidé&nbsp;!</h1>
+    <p class="mb1">A vous de jouer 😉</p>
+  </div>
   <div class="card-white">
     <div class="url-container mb1">
       Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
@@ -35,7 +35,7 @@
       </p>
     </div>
   </div>
-  <div class="profile-cta mt2">
+  <div class="profile-cta mt4">
     <p>
       💡 Rendez-vous sur votre espace immolib pour compléter vos infos de profil et celles de votre logement 
       <br/><small>Ces informations serviront à
