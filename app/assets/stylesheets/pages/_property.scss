@@ -160,7 +160,6 @@
 }
 
 .url-container {
-  margin-top: 1em;
   width: 100%;
 }
 
@@ -198,6 +197,7 @@
 .candidates-wrapper-left {
   flex-grow: 1;
   margin-bottom: 1rem;
+  min-width: 350px;
 }
 
 .candidates-wrapper-right {
@@ -269,7 +269,11 @@
 
 @media screen and (max-width: 415px) {
   .candidates-wrapper {
-    padding: 2em;
+    padding: 0em;
+  }
+
+  .candidates-wrapper-left {
+    min-width: 0px;
   }
 
   .candidate-profile-details-wrapper {

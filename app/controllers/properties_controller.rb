@@ -19,7 +19,12 @@ class PropertiesController < ApplicationController
       flash.now[:warning] = @property.errors.full_messages
       render :new
     end
-  end 
+  end
+  
+  def share
+    @property = Property.find(params[:property_id])
+    UserMailer.new_property_validation_email(@property).deliver_now
+  end
 
   # user as owner
 

@@ -16,9 +16,18 @@ class CandidateSlotsController < ApplicationController
     end
   end
 
-  def destroy
-    #to do with delete icon on slot card
-  end
+  # def destroy
+  #   appointment = Appointment.find(params[:appointment_id])
+  #   slot = appointment.slot
+  #   if !slot.is_past?
+  #     appointment.update(slot_id: nil)
+  #     flash[:success] = "Votre RDV a bien été annulé 👌"
+  #     redirect_to appointment_path(appointment)
+  #   else 
+  #     flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
+  #     redirect_to appointment_path(appointment)
+  #   end
+  # end
 
   private
 

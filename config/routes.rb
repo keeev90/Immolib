@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources 'profile_pictures', only: [:create, :destroy]
   end
 
-  resources 'properties' do 
+  resources 'properties' do
+    get 'share', to: "properties#share" 
     get 'candidate_details', to: 'properties#show_candidate_details', as: 'candidate_details'
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots' do
@@ -40,11 +41,11 @@ Rails.application.routes.draw do
     resources 'owner_decisions', only: [:update]
   end
 
-  scope '/checkout' do
-    resources 'checkout', only: [:create]
-    get 'success', to: 'checkout#success', as: 'checkout_success'
-    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
-  end
+  # scope '/checkout' do
+  #   resources 'checkout', only: [:create]
+  #   get 'success', to: 'checkout#success', as: 'checkout_success'
+  #   get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  # end
 
   namespace :admin do
     root 'welcome#index'

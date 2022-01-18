@@ -3,8 +3,8 @@
 </div>
 <p class="bolder"><%= appointment.property.title%></p>
 <p><%= appointment.property.city%></p>
-<%if appointment.property.other_link%>
-  <p><small><%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank' %></small></p>
+<%if appointment.property.other_link != ""%>
+  <p class="mt2"><small>Voir les détails de l'annonce : <%= link_to appointment.property.other_link, appointment.property.other_link, target: '_blank' %></small></p>
 <%end%>
 <div class="card-white">
   <div class="mb2">
@@ -52,11 +52,11 @@
           <%if appointment.property.owner_project == "rent"%>
             <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
             <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
-            <p><small>💡 Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</small></p>
+            <p><small>💡 Accompagnez votre réponse de quelques précisions en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</small></p>
           <%else%>
             <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
             <p class="mb1"><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
-            <p><small>💡 Vous pourrez l'accompagner de précisions écrites en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
+            <p><small>💡 Accompagnez votre réponse de quelques précisions en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
           <%end%>
           <div class='decision-wrapper'>
             <p>Oui</p>
@@ -83,11 +83,7 @@
           <p>Bon courage dans vos recherches !</p>
         </div>
       <%else%>
-        <%if appointment.slot == nil %>
-          <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue d'une visite</span></p>
-        <%else%>
-          <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue de votre visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %></span></p>
-        <%end%>
+        <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue de votre visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %></span></p>
       <%end%>
     <%end%>
   </div>

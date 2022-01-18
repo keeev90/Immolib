@@ -26,24 +26,24 @@
       }
     ) %>
     <div class="mt2">
-      <div class="card-white">
-        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Titre</p>
+      <div class="card-white-small">
+        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Titre</p>
         <p><%= @property.title %></p>
       </div>
-      <div class="card-white">
-        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Ville</p>
+      <div class="card-white-small">
+        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Ville</p>
         <p><%= @property.city %></p>
       </div>
-      <div class="card-white">
-        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Lien d'une annonce en ligne</p>
+      <div class="card-white-small">
+        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Lien d'une annonce en ligne</p>
         <% if @property.other_link == "" %>
           <p><small><em>⚠️  Editez votre logement pour indiquer le lien vers une annonce en ligne (ex : PaP)</em></small></p>
         <% else %>
           <p> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
         <% end %>
       </div>
-      <div class="card-white">
-        <p class="bolder mb1"><i class="far fa-arrow-alt-circle-right"></i> Instructions pour la visite</p>
+      <div class="card-white-small">
+        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Instructions pour la visite</p>
         <% if @property.instructions == "" %>
           <p><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, téléphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
         <% else %>
@@ -96,23 +96,35 @@
   <% else %>
     <div class="text-center">
       <p class="mb2"><small><em> Vous n'avez pas encore de candidats pour ce logement</em></small></p>
-      <div class="mb2">
-        <p>💡 <span class="bolder">Partagez votre lien immolib : les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</span></p>
-        <div class="url-container">
-          Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
-          <p class="link"> 
-            <a><%= @property.go_visit_url %></a> 
+      <div class="card-white">
+        <p class="mb1">💡 <span class="bolder">Partagez votre lien immolib : les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</span></p>
+        <div class="url-container mb1">
+          Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
+          <p class="link">
+            <em>
+            <% if @property.owner_project == "rent" %>
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
+            <%else%> 
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
+            <%end%> 
+            </em>
             <i class="far fa-copy">
-              <span class="copy-text"> Copier le lien </span>
+              <span class="copy-text"> Copier </span>
             </i>
           </p>
         </div>
-        <div class="url-container mb1">
-          Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
-          <p class="link">
-            <a><%= @property.go_visit_url_short %></a> 
+        <div class="url-container">
+          Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
+          <p class="link"> 
+            <em>
+            <% if @property.owner_project == "rent" %>
+              <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
+            <%else%> 
+              <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
+            <%end%> 
+            </em>
             <i class="far fa-copy">
-              <span class="copy-text"> Copier le lien </span>
+              <span class="copy-text"> Copier </span>
             </i>
           </p>
         </div>

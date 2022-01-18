@@ -4,8 +4,7 @@
     <p class="mt2">Vous pourrez les modifier à tout moment dans votre espace immolib</p>
   </div>
 </div>
-
-<div class="new-slot-wrapper pl4 pr4">
+<div class="new-slot-wrapper pl4 pr4 pb4">
   <div class="new-slot-wrapper__content text-center">
     <% if @slots.count > 0 %>
       <%= render( partial: 'created_property_slots', locals: { slots: @slots, property: @property } ) %>
