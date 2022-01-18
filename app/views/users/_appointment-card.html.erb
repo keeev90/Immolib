@@ -23,9 +23,9 @@
           <p class="danger"><small>⚠️ Dossier de location incomplet</small></p>
         <%end%>
       <%end%>
-      <%if ( appointment.slot != nil ) && ( appointment.slot.start_date > DateTime.now )%>
+      <%if appointment.slot.start_date > DateTime.now %>
         <p><small>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></small></p>
-      <%elsif ( appointment.slot != nil ) && ( appointment.slot.start_date < DateTime.now )%>
+      <%elsif appointment.slot.start_date < DateTime.now %>
         <p><small>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %></small></p>
       <%else%>
         <p><small>Aucune visite programmée</small></p>
