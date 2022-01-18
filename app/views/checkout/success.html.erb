@@ -5,20 +5,32 @@
   <p class="mb1">A vous de jouer 😉</p>
   <div class="card-white">
     <div class="url-container mb1">
-      Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
+      Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :
       <p class="link"> 
-        <a><%= @property.go_visit_url %></a> 
+        <em>
+        <% if @property.owner_project == "rent" %>
+          <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
+        <%else%> 
+          <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
+        <%end%> 
+        </em>
         <i class="far fa-copy">
-          <span class="copy-text"> Copier le lien </span>
+          <span class="copy-text"> Copier </span>
         </i>
       </p>
     </div>
     <div class="url-container">
-      Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
+      Message à partager sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :
       <p class="link">
-        <a><%= @property.go_visit_url_short %></a> 
+        <em>
+        <% if @property.owner_project == "rent" %>
+          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
+        <%else%> 
+          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
+        <%end%> 
+        </em>
         <i class="far fa-copy">
-          <span class="copy-text"> Copier le lien </span>
+          <span class="copy-text"> Copier </span>
         </i>
       </p>
     </div>
@@ -30,8 +42,8 @@
       personnaliser les emails automatiques envoyés aux candidats
       (confirmation de RDV, rappel visite J-1, rappel dossier incomplet, etc.)​</small>
     </p>
-    <%= link_to "Découvrir mon espace immolib", user_path(current_user), class:
-    'btn white-btn bg-primary' %>
+    <%= link_to "👉 Découvrir mon espace immolib", user_path(current_user), class:
+    'btn big-btn white-btn bg-primary' %>
   </div>
 </div>
 
