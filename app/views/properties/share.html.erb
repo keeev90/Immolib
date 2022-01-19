@@ -9,9 +9,9 @@
       <p class="link">
         <em>
         <% if @property.owner_project == "rent" %>
-          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
+          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
         <%else%> 
-          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
+          <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
         <%end%> 
         </em>
         <i class="far fa-copy">
@@ -24,9 +24,9 @@
       <p class="link"> 
         <em>
         <% if @property.owner_project == "rent" %>
-          <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
+          <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url %></span></a>
         <%else%> 
-          <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
+          <a>Suivez ce lien pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url %></span></a>
         <%end%> 
         </em>
         <i class="far fa-copy">

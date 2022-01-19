@@ -99,20 +99,21 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  cursor: pointer;
 
   img {
+    object-fit: cover;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
-    object-fit: cover;
     transition: opacity 0.3s;
     -webkit-transition: opacity 0.3s;
     -moz-transition: opacity 0.3s;
     -ms-transition: opacity 0.3s;
     -o-transition: opacity 0.3s;
-    cursor: pointer;
 
     &:hover {
       opacity: 0.5;
@@ -121,11 +122,23 @@
 
   &--change {
     position: absolute;
-    bottom: 50%;
+    bottom: 40%;
     font-size: 1.6em;
     color: #fff;
     opacity: 0;
     pointer-events: none;
+  }
+
+  &:hover {
+    background-color: #000;
+
+    img {
+      filter: blur(1px);
+    }
+
+    .property-picture--change {
+      opacity: 1
+    }
   }
 
   &.no-picture {

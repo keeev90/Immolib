@@ -1,27 +1,39 @@
 <p>Bonjour <%= @user.first_name ? @user.first_name : nil %>,</p>
 <br/>
-<p>Votre paiement a bien été reçu, merci pour votre confiance 🙏</p>
+<p>Votre logement a bien été enregistré, merci pour votre confiance 🙏</p>
 <br/>
 <p>Dernière étape : <span class="bolder">partagez votre lien immolib, les candidats n'auront plus qu'à suivre un parcours simple et rapide&nbsp;!</p>
 <br/>
 <p>A vous de jouer 😉</p>
 <br/>
-<p>Lien à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :</p>
+<p>Message à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :</p>
 <div class="url-container">
-  <p class="link"> 
-    <a><%= @property.go_visit_url %></a> 
+  <p class="link">
+    <em>
+    <% if @property.owner_project == "rent" %>
+      <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
+    <%else%> 
+      <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
+    <%end%> 
+    </em>
   </p>
 </div>
 <br/>
-<p>Lien à partager directement sur vos <span class="text-muted">annonces en ligne</span> (ex: PaP) :</p>
+<p>Message à partager par <span class="text-muted">email</span>, <span class="text-muted">SMS</span> ou sur vos <span class="text-muted">réseaux sociaux</span> :</p>
 <div class="url-container">
-  <p class="link">
-    <a><%= @property.go_visit_url_short %></a> 
+  <p class="link"> 
+    <em>
+    <% if property.owner_project == "rent" %>
+      <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= property.go_visit_url %></span></a>
+    <%else%> 
+      <a>Suivez ce lien pour réserver un créneau de visite : <span class="bolder"><%= property.go_visit_url %></span></a>
+    <%end%> 
+    </em>
   </p>
 </div>
 <br/>
 <p>Rendez-vous sur votre espace immolib pour compléter votre logement, gérer vos visites et vos candidats.</p>
 <br/>
-<p><%= link_to "Gérer votre logement", property_url(@property), class: "btn" %></p>
+<p><%= link_to "Gérer mon logement", property_url(@property), class: "btn" %></p>
 <br/>
 <p>A bientôt 👋</p>
