@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :properties, foreign_key: 'owner_id', dependent: :destroy
   has_many :appointments, foreign_key: 'candidate_id', dependent: :destroy
   has_one_attached :profile_picture, dependent: :destroy
+
+  #Validations
+  validates :phone_number, format: { with: /\A(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})\z/, message: "Merci de renseigner un numéro de téléphone valide" }
   
   def past_appointments
     past_appointments_array = []

@@ -20,6 +20,15 @@
   </div>
 
   <div class="candidate-profile-details-section">
+    <p class="bolder"><i class="fas fa-phone-square-alt"></i> Tél</p>
+    <%if appointment.candidate.phone_number %>
+      <p><%= appointment.candidate.phone_number %></p>
+    <% else %>
+      <p><small><em>Ce candidat n'a pas encore renseigné de n° de téléphone</em></small></p>
+    <% end %>
+  </div>
+
+  <div class="candidate-profile-details-section">
     <p class="bolder"><i class="far fa-calendar-check"></i></i> Visite</p>
     <%if appointment.slot.start_date > DateTime.now %>
       <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
@@ -35,7 +44,7 @@
     <% if appointment.candidate_message && appointment.candidate_message != "" %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p><small><em>⚠️ Ce candidat ne vous a pas encore adressé de message</em></small></p>
+      <p><small><em>Ce candidat ne vous a pas encore adressé de message</em></small></p>
     <% end %>
   </div>
 

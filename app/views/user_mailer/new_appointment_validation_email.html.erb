@@ -5,14 +5,14 @@
 <% if @appointment.property.owner_project == "rent" %>
   <p>Rendez-vous dès maintenant sur votre espace immolib pour transmettre votre dossier de location.</p>
   <br/>
-  <p><%= link_to "Transmettre votre dossier", appointment_url(@appointment), class: "btn" %></p>
+  <p><%= link_to "Transmettre mon dossier", appointment_url(@appointment), class: "btn" %></p>
   <br/>
   <p>Afin de booster votre candidature, pensez à rédiger un message au propriétaire et à compléter vos informations personnelles 😉</p>
   <br/>
 <% else %>
   <p>Rendez-vous dès maintenant sur votre espace immolib pour compléter vos informations personnelles 😉</p>
   <br/>
-  <p><%= link_to "Compléter votre profil", user_url(@user), class: "btn" %></p><br/>
+  <p><%= link_to "Compléter mon profil", user_url(@user), class: "btn" %></p><br/>
 <% end %>
 <p>En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible.</p>
 <br/>
