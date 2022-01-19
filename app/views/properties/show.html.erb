@@ -7,9 +7,10 @@
 </div>
 <div class="container-small text-center" id='property-section-1'>
   <h1 class="primary mb2">Mon logement</h1>
+    <p class="mb2">💡 <span class="bolder">Complétez vos <%= link_to "informations personnelles", user_path(@property.owner) %> (prénom, nom, tél) et celles de votre logement pour personnaliser et faciliter les échanges avec les candidats <span class="bolder"></p>
     <%if @property.property_picture.attached? %>
-      <div class="pic property-picture">
-        <div>
+      <div>
+        <div class="pic property-picture">
           <%= image_tag @property.property_picture, alt: 'property picture' %>
           <p class="property-picture--change"> Modifier </p>
         </div>
@@ -36,6 +37,7 @@
       </div>
       <div class="card-white-small">
         <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Lien d'une annonce en ligne</p>
+        <p class="mb1"><small><i class="fas fa-info"></i> Ce lien permet aux candidats d'accéder facilement aux détails de votre annonce</small></p>
         <% if @property.other_link == "" %>
           <p><small><em>⚠️  Editez votre logement pour indiquer le lien vers une annonce en ligne (ex : PaP)</em></small></p>
         <% else %>
@@ -44,8 +46,9 @@
       </div>
       <div class="card-white-small">
         <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Instructions pour la visite</p>
+        <p class="mb1"><small><i class="fas fa-info"></i> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</small></p>
         <% if @property.instructions == "" %>
-          <p><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, téléphone, etc.)<br/> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</em></small></p>
+          <p><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, etc.)</em></small></p>
         <% else %>
           <p><em><%= simple_format(@property.instructions) %></em></p> 
         <% end %>
@@ -103,9 +106,9 @@
           <p class="link">
             <em>
             <% if @property.owner_project == "rent" %>
-              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url_short %></a>
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
             <%else%> 
-              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <%= @property.go_visit_url_short %></a>
+              <a>Copiez-collez ce lien dans votre navigateur pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url_short %></span></a>
             <%end%> 
             </em>
             <i class="far fa-copy">
@@ -118,9 +121,9 @@
           <p class="link"> 
             <em>
             <% if @property.owner_project == "rent" %>
-              <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <%= @property.go_visit_url %></a>
+              <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url %></span></a>
             <%else%> 
-              <a>Suivez ce lien pour réserver un créneau de visite : <%= @property.go_visit_url %></a>
+              <a>Suivez ce lien pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url %></span></a>
             <%end%> 
             </em>
             <i class="far fa-copy">
@@ -130,9 +133,11 @@
         </div>
       </div>
       <% if @property.has_available_slot? == false %>
-        <p class="mb2"><small><em>⚠️  Pensez à proposer des créneaux de visite pour ce logement</em></small></p>
+        <p><small><em>⚠️  Vous n'avez pas indiqué de créneaux de visite pour ce logement</em></small></p>
+        <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
       <% else %>
-        <p class="mb2"><small><em>⚠️  Ajoutez de nouveaux créneaux de visites pour optimiser le nombre de candidats </em></small></p>
+        <p><small><em>💡  Ajoutez de nouveaux créneaux de visites pour optimiser le nombre de candidats </em></small></p>
+        <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
       <% end %>
     </div>
   <% end %>

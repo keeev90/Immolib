@@ -76,6 +76,8 @@ fr:
               taken: "Cette adresse mail est déjà prise, veuillez en renseigner une autre 🙏"
             password:
               blank: "Merci de renseigner un mot de passe valide (6 caractères minimum) 🙏"
+            phone_number: 
+              invalid: "Merci de renseigner un numéro de téléphone valide 🙏"
         property:
           attributes:
             owner_project:

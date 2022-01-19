@@ -13,9 +13,13 @@
       <div class="card-white">
         <p class="bolder">Prochaine visite prévue le <%= @appointment.slot.start_date.strftime("%d/%m") %> à <%= @appointment.slot.start_date.strftime("%H:%M") %></p>
         <%if @appointment.property.instructions && @appointment.property.instructions != "" && ( @appointment.slot.start_date.strftime("%d%m%Y") == (DateTime.now + 1).strftime("%d%m%Y") || @appointment.slot.start_date.strftime("%d%m%Y") == DateTime.now.strftime("%d%m%Y") ) %>
+          <p class="mt2">Voici les précisions du propriétaire pour votre visite :</p>
           <div class="mt1 link">
             <p><em><%= simple_format(@appointment.property.instructions) %></em></p>
           </div>
+          <%if @appointment.property.owner.phone_number %>
+            <p class="mt2">En cas de problème, contactez le propriétaire au <span class="primary"><%= @appointment.property.owner.phone_number %></span></p>
+          <%end%>
         <%else%>
           <p class="mt1"><small><em><i class="fas fa-info-circle"></i> Vous recevrez les modalités logistiques (adresse, digicode, interphone, etc.) à l'approche de la visite</em></small></p> 
         <%end%>

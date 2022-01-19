@@ -3,10 +3,16 @@ Bonjour <%= @user.first_name ? @user.first_name : nil %>,
 Vous avez une visite programmée demain à <%= @appointment.slot.start_date.strftime("%H:%M") %> pour le logement "<%= @appointment.property.title %>" (<%= @appointment.property.city %>).
 
 <% if @appointment.property.instructions && @appointment.property.instructions != "" %>
-Voici les instructions du propriétaire pour votre visite :
+Voici les précisions du propriétaire pour votre visite :
 
-  <%= simple_format(@appointment.property.instructions) %>
+<%= simple_format(@appointment.property.instructions) %>
+<% else %>
+Le propriétaire n'a pas encore indiqué de précisions pour votre visite(adresse, digicode, interphone, etc.). Surveillez votre espace immolib, elles ne devraient pas tarder à s'afficher.
 <% end %>
+
+<%if @appointment.property.owner.phone_number %>
+En cas de problème, contactez le propriétaire au <%= @appointment.property.owner.phone_number %>
+<%end%>
 
 <% if @appointment.property.owner_project == "rent" %>
   <% unless @appointment.candidate_dossierfacile_link || @appointment.candidate_dossierfacile_folder.attached? || @appointment.candidate_documents.size >= 5 %>

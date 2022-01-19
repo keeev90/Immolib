@@ -8,23 +8,25 @@
     
       <div class="field">
         <%= f.label 'Titre *' %><br />
-        <p><small>💡 Conseil : indiquez le même titre que celui de votre annonce en ligne (ex : PaP)</small></p>
+        <p><small>💡 Uniformisez le titre avec celui de vos annonces en ligne (ex : PaP)</small></p>
         <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Ville *' %><br />
+        <%= f.label 'Ville *' %>
+        <p><small>💡 Précisez le code postal entre parenthèses</small></p>
         <%= f.text_field :city, autofocus: true, autocomplete: "city", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Lien vers une annonce en ligne' %><br />
+        <%= f.label 'Lien vers une annonce en ligne' %>
+        <p><small><i class="fas fa-info"></i> Ce lien permet aux candidats d'accéder facilement aux détails de votre annonce</small></p>
         <%= f.text_field :other_link, autofocus: true, autocomplete: "other_link" %>
       </div>
 
       <div class="field">
         <%= f.label 'Instructions pour les visites' %>
-        <p><small>ℹ️  Ces instructions ne seront transmises qu'à l'approche du jour J pour guider vos visiteurs (ex : lieu de rendez-vous, digicode, interphone, téléphone, etc.)</small></p>
+        <p><small><i class="fas fa-info"></i> Ces instructions seront automatiquement communiquées aux candidats à l'approche d'une visite (ex : adresse, digicode, interphone, etc.)</small></p>
         <%= f.text_area :instructions, autofocus: true, autocomplete: "instructions" %>
       </div>
 

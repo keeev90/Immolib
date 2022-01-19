@@ -34,13 +34,13 @@
         </div>
         <div class="form-group mb2">
           <%= f.label "Lien d'une de vos annonces en ligne", class: "form-label bolder" %>
-          <p><small><i class="fas fa-info-circle"></i> Ce lien permettra aux candidats d'accéder facilement à une annonce en ligne détaillée</small></p>
+          <p><small><i class="fas fa-info-circle"></i> Ce lien permettra aux candidats d'accéder facilement aux détails de votre annonce</small></p>
           <%= f.text_field :other_link, class: "form-control", placeholder: "Copiez-collez l'URL d'une annonce en ligne (ex : PaP)" %>
         </div>
         <div class="form-group mb2">
           <%= f.label "Instructions pour les visites", class: "form-label bolder" %>
-          <p><small><i class="fas fa-info-circle"></i> Ces instructions seront automatiquement transmises aux candidats à l'approche d'une visite</small></p>
-          <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez ici les modalités logistiques pour les visites : adresse exacte ou lieu de rendez-vous, digicode, interphone, téléphone..." %>
+          <p><small><i class="fas fa-info-circle"></i> Ces instructions seront automatiquement communiquées aux candidats à l'approche d'une visite</small></p>
+          <%= f.text_area :instructions, class: "form-control", placeholder: "Indiquez ici les modalités logistiques pour les visites : adresse, digicode, interphone, etc." %>
         </div>
         <div>
           <%= f.submit "Valider et passer à l'étape suivante", class: "btn white-btn bg-primary" %>
