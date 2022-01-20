@@ -58,7 +58,7 @@
     <h2> Mes logements </h2>
 
     <div class="properties-wrapper">
-      <% @user.properties.each do |p| %>
+      <% @user.properties.order("created_at DESC").each do |p| %>
         <div class="property">
           <%= link_to render(partial: 'property-card', locals: {property: p, unpaid: false}), property_path(p) %>
         </div>

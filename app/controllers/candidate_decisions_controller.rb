@@ -4,17 +4,20 @@ class CandidateDecisionsController < ApplicationController
 
   def update
     appointment = Appointment.find(params[:appointment_id])
-    if appointment.update(is_interested: params[:appointment][:is_interested])
-      if params[:appointment][:is_interested] == ( "true" || "false")
-        flash[:success] = "Votre choix a été enregistré avec succès 👌"
-      else 
-        flash[:warning] = "Vous n'avez pas sélectionné une réponse, merci de rééssayer 🙏"
+    if params[:appointment][:is_interested] == "true"
+      appointment.update(is_interested: params[:appointment][:is_interested])
+      flash[:success] = "Votre choix a été enregistré avec succès 👌"
+    elsif params[:appointment][:is_interested] == "false"
+      if appointment.slot.is_past?
+        appointment.update(is_interested: params[:appointment][:is_interested])
+      else
+        appointment.update(is_interested: params[:appointment][:is_interested], slot_id: nil)
       end
-      redirect_to appointment_path(appointment)
+      flash[:success] = "Votre choix a été enregistré avec succès 👌"
     else 
-      flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
-      redirect_to appointment_path(appointment)
+      flash[:warning] = "Merci de sélectionner une réponse 🙏"
     end
+    redirect_to appointment_path(appointment)
   end
 
   private
