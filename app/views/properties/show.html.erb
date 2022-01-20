@@ -7,7 +7,7 @@
 </div>
 <div class="container-small text-center" id='property-section-1'>
   <h1 class="primary mb2">Mon logement</h1>
-    <p class="mb2">💡 <span class="bolder">Complétez vos <%= link_to "informations personnelles", user_path(@property.owner) %> (prénom, nom, tél) et celles de votre logement pour personnaliser et faciliter les échanges avec les candidats <span class="bolder"></p>
+    <p class="mb2">💡 <span class="bolder">Complétez les informations sur votre logement pour faciliter le parcours d'inscription des candidats <span class="bolder"></p>
     <%if @property.property_picture.attached? %>
       <div>
         <div class="pic property-picture">
@@ -29,32 +29,37 @@
     <div class="mt2">
       <div class="card-white-small">
         <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Titre</p>
-        <p><%= @property.title %></p>
+        <p><%= @property.title %> <%= link_to raw("<i class='fas fa-edit'></i>"), edit_property_path(@property) %></p>
       </div>
       <div class="card-white-small">
         <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Ville</p>
-        <p><%= @property.city %></p>
+        <p><%= @property.city %> <%= link_to raw("<i class='fas fa-edit'></i>"), edit_property_path(@property) %></p>
       </div>
       <div class="card-white-small">
         <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Lien d'une annonce en ligne</p>
-        <p class="mb1"><small><i class="fas fa-info"></i> Ce lien permet aux candidats d'accéder facilement aux détails de votre annonce</small></p>
+        <p class="mb1"><small><i class="fas fa-info"></i> Ce lien permettra aux candidats d'accéder facilement aux détails de votre annonce</small></p>
         <% if @property.other_link == "" %>
           <p><small><em>⚠️  Editez votre logement pour indiquer le lien vers une annonce en ligne (ex : PaP)</em></small></p>
         <% else %>
-          <p> <%= link_to @property.other_link, @property.other_link, target: '_blank' %> </p>
+          <p><%= link_to @property.other_link, @property.other_link, target: '_blank' %> <%= link_to raw("<i class='fas fa-edit'></i>"), edit_property_path(@property) %></p>
         <% end %>
       </div>
       <div class="card-white-small">
-        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Instructions pour la visite</p>
+        <p class="bolder"><i class="far fa-arrow-alt-circle-right"></i> Indications pour les visites</p>
         <p class="mb1"><small><i class="fas fa-info"></i> Ces informations seront automatiquement communiquées aux candidats à l'approche d'une visite</small></p>
         <% if @property.instructions == "" %>
-          <p><small><em>⚠️  Editez votre logement pour indiquer vos instructions aux candidats (adresse, digicode, interphone, etc.)</em></small></p>
+          <p><small><em>⚠️  Editez votre logement pour renseigner vos indications aux candidats (adresse, digicode, interphone, etc.) </em></small></p>
         <% else %>
-          <p><em><%= simple_format(@property.instructions) %></em></p> 
+          <p><em><%= simple_format(@property.instructions) %></em> <%= link_to raw("<i class='fas fa-edit'></i>"), edit_property_path(@property) %></p> 
+        <% end %>
+        <% if @property.owner.phone_number %>
+          <p class="mt2">En cas de problème, les candidats pourront vous contacter sur le n° suivant : <span class="primary"><%= @property.owner.phone_number %></span> <%= link_to raw("<i class='fas fa-edit'></i>"), edit_user_path(@property.owner) %></p>
+        <% else %>
+          <p class="mt2">💡 Pour faciliter les échanges avec les candidats, indiquez un numéro de téléphone en complétant vos <%= link_to "informations personnelles", edit_user_path(@property.owner) %></p>
         <% end %>
       </div>
     </div>
-    <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn small-btn white-btn bg-primary" %></p>
+    <p><%= link_to "Éditer mon logement", edit_property_path(@property), class:"btn white-btn bg-primary" %></p>
   </div>
 </div>
 <div class="container">
@@ -68,12 +73,16 @@
     <% else %>
       <p>💡 <span class="bolder">Cliquez sur un créneau à venir pour voir la liste des candidats inscrits et leur profil<span class="bolder"></p>
     <% end %>
+    <% if @property.has_available_slot? == false %>
+      <p class="mt2 danger"><small><em>⚠️  Aucun créneau de visite disponible <br/> Pour éviter de passer à côté de nouveaux candidats, ajoutez des créneaux et/ou augmentez le nombre de places maximum des créneaux à venir</em></small><p>
+    <% end %>  
   </div>
   <%= render(partial: 'calendar') %>
-  <% if @property.has_available_slot? == false %>
-    <p class="mt2"><small><em>⚠️  Aucun créneau de visite disponible. Vous pourriez passer à côté de nouveaux candidats...</em></small></p>
-  <% end %>  
-  <%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn small-btn white-btn bg-primary" %>
+  <p class="mt2"><%= link_to 'Ajouter un créneau de visite', new_property_slot_path(@property, redirect_path: "existing_property"), class:"btn white-btn bg-primary" %><p>
+  <% if @property.has_future_slots? %>
+    <p><%= link_to 'Supprimer tous les créneaux à venir', property_delete_visits_path(@property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %><p>
+    <p><small><em><i class="fas fa-info-circle"></i> Les candidats inscrits à un créneau à venir seront automatiquement prévenus par email</em></small></p>
+  <% end %> 
 </div>
 <div class="container">
   <hr/>
@@ -86,7 +95,7 @@
       <div class="candidates-wrapper-left">
         <div class="candidates-wrapper__content">
           <% firstCandidate = true %>
-          <% @property.appointments.each do |a| %>
+          <% @property.appointments.order("created_at DESC").each do |a| %>
             <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstCandidate}), property_candidate_details_path(@property, appointment: a), remote: true %>
             <% firstCandidate = false %>
           <% end %>

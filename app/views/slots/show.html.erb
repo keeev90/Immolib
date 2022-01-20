@@ -12,7 +12,7 @@
     <div class="slot-wrapper__content">
       <% if @slot.appointments.size > 0 %>
         <% firstSlot = true %>
-        <% @slot.appointments.each do |a| %>
+        <% @slot.appointments.order("created_at DESC").each do |a| %>
           <%= link_to render(partial: "candidate_list", locals: {a: a, first: firstSlot}), property_slot_candidate_details_path(@slot.property, @slot, appointment: a), remote: true %>
           <% firstSlot = false %>
         <% end %>

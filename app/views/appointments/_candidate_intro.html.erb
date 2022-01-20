@@ -8,82 +8,104 @@
 <%end%>
 <div class="card-white">
   <div class="mb2">
-    <%if appointment.slot.is_past? %>
-      <%if appointment.is_accepted == true %>
-        <%if appointment.property.owner_project == "rent" %>
-          <div class="text-center">
-            <p class="mb1">🥳 <span class="bolder green">Félicitations, votre candidature a été retenue !</span></p>
-            <p>Surveillez vos emails : le propriétaire prendra contact directement avec vous pour la <span class="bolder">signature du contrat de location</span></p>
-          </div>
-        <%else%>
-          <div class="text-center">
-            <p class="mb1">🥳 <span class="bolder green">Félicitations, votre offre a été acceptée !</span></p>
-            <p>Surveillez vos emails : le propriétaire prendra contact directement avec vous pour la <span class="bolder">signature de la promesse de vente</span></p>
-          </div>
-        <%end%>
-      <%elsif appointment.is_accepted == false %>
-        <%if appointment.property.owner_project == "rent"%>
-          <div class="text-center">
-            <p class="mb1">⚠️ <span class="bolder danger">Désolé, votre candidature n'a pas été retenue</span></p>
-            <p>Bon courage dans vos recherches !</p>
-          </div>
-        <%else%>
-          <div class="text-center">
-            <p class="mb1">⚠️ <span class="bolder danger">Désolé, votre offre n'a pas été acceptée</span></p>
-            <p>Bon courage dans vos recherches !</p>
-          </div>
-        <%end%>
-      <%else%>
-        <%if appointment.is_interested == true %>
-          <%if appointment.property.owner_project == "rent"%>
-            <p class="text-center"> 👍 <span class="bolder">Vous avez confirmé votre intérêt pour ce logement</span></p>
-            <p><small><em>Votre confirmation a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre candidature.</em></small></p>
-            <p class="mt2"><small>💡 Accompagnez votre réponse de précisions écrites en modifiant votre message au propriétaire : vos motivations, les atouts de votre candidature...</small></p>
-          <%else%>
-            <p class="text-center">👍 <span class="bolder">Vous avez fait une offre d'achat pour ce logement</span></p>
-            <p><small><em>Votre offre a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre proposition.</em></small></p>
-            <p><small><i class="fas fa-info-circle"></i> Contrairement à la signature d'un compromis de vente, votre offre d'achat ne vous engage pas : vous pouvez vous retracter à tout moment.</small></p>
-            <p class="mt2"><small>⚠️ Accompagnez votre offre de précisions écrites en modifiant votre message au propriétaire : rappel de votre identité complète, date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
-          <%end%>
-        <%elsif appointment.is_interested == false %>
-          <p class="text-center">👎 <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
-          <p><small><em>Merci pour votre retour, votre décision a été transmise au propriétaire.</em></small></p>
-        <%else%>
-          <%if appointment.property.owner_project == "rent"%>
-            <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
-            <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
-            <p><small>💡 Accompagnez votre réponse de quelques précisions en modifiant votre message au propriétaire : vos motivations, atouts de votre candidature...</small></p>
-          <%else%>
-            <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
-            <p class="mb1"><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
-            <p><small>💡 Accompagnez votre réponse de quelques précisions en modifiant votre message au propriétaire : date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
-          <%end%>
-          <div class='decision-wrapper'>
-            <p>Oui</p>
-            <div class='yes-no-toggle'>
-              <button class='yes-btn'></button>
-              <button class='no-btn'></button>
-              <div></div>
-            </div>
-            <p>Non</p>
-          </div>
-          <%= form_with model: appointment, url: appointment_candidate_decision_path(appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
-            <%= f.hidden_field :is_interested %>
-            <div>
-              <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
-            </div>
-          <%end%>
-        <%end%>
-        <%= javascript_include_tag 'candidate-yes-no-toggle' %>
-      <%end%>
-    <%else%>
-      <%if appointment.is_accepted == false %>
+    <%if appointment.is_accepted == false %>
+      <%if appointment.property.owner_project == "rent" %>
         <div class="text-center">
           <p class ="mb1">⚠️ <span class="bolder danger">Désolé, votre candidature n'a pas été retenue</span></p>
           <p>Bon courage dans vos recherches !</p>
         </div>
       <%else%>
-        <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue de votre visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %></span></p>
+        <%if appointment.is_interested == true %>
+          <div class="text-center">
+            <p class="mb1">⚠️ <span class="bolder danger">Désolé, votre offre n'a pas été acceptée</span></p>
+            <p>Bon courage dans vos recherches !</p>
+          </div>
+        <%else%>
+          <div class="text-center">
+            <p class ="mb1">⚠️ <span class="bolder danger">Désolé, votre candidature n'a pas été retenue</span></p>
+            <p>Bon courage dans vos recherches !</p>
+          </div>
+        <%end%>
+      <%end%>
+    <%elsif appointment.is_accepted == true %>
+      <%if appointment.property.owner_project == "rent" %>
+        <div class="text-center">
+          <p class="mb1">🥳 <span class="bolder green">Félicitations, votre candidature a été retenue !</span></p>
+          <p>Surveillez vos emails et votre téléphone : le propriétaire prendra contact directement avec vous pour la <span class="bolder">signature du contrat de location</span></p>
+          <% if !appointment.candidate.phone_number %>
+            <p class="mt2">💡 Pour faciliter les échanges, pensez à <%= link_to "renseigner un numéro de téléphone", edit_user_path(appointment.candidate)%></p>
+          <%end%>
+        </div>
+      <%else%>
+        <div class="text-center">
+          <p class="mb1">🥳 <span class="bolder green">Félicitations, votre offre a été acceptée !</span></p>
+          <p>Surveillez vos emails et votre téléphone : le propriétaire prendra contact directement avec vous pour la <span class="bolder">signature de la promesse de vente</span></p>
+          <% if !appointment.candidate.phone_number %>
+            <p class="mt2">💡 Pour faciliter les échanges, pensez à <%= link_to "renseigner un numéro de téléphone", edit_user_path(appointment.candidate)%></p>
+          <%end%>
+        </div>
+      <%end%>
+    <%else%>
+      <%if appointment.is_interested == true %>
+        <%if appointment.property.owner_project == "rent"%>
+          <p class="text-center"> 👍 <span class="bolder">Vous avez confirmé votre intérêt pour ce logement</span></p>
+          <p><small><em>Votre confirmation a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre candidature.</em></small></p>
+          <p class="mt2"><small>💡 Pour accompagner votre réponse de quelques précisions, pensez à <%= link_to "modifier votre message au propriétaire", edit_appointment_candidate_message_path(appointment) %> : vos motivations, les atouts de votre candidature...</small></p>
+          <% if !appointment.candidate.phone_number %>
+            <p class="mt2"><small>💡 Pour faciliter les échanges, pensez à <%= link_to "renseigner un numéro de téléphone", edit_user_path(appointment.candidate)%></small></p>
+          <%end%>
+          <% if appointment.candidate_dossierfacile_folder.attached? || appointment.candidate_dossierfacile_link && appointment.candidate_dossierfacile_link != "" %>
+            <p class="green mt2"><small>✔️ Votre dossier de location est complet</small></p>
+          <% elsif appointment.candidate_documents.attached? && appointment.candidate_documents.size == 5 %>
+            <p class="green mt2"><small>✔️ Votre dossier de location est complet</small></p>
+          <%else%>
+            <p class="danger mt2"><small>⚠️ Votre dossier de location est incomplet: <%= link_to "voir mon dossier", "#candidate-section-3" %></small></p>
+          <%end%>
+        <%else%>
+          <p class="text-center">👍 <span class="bolder">Vous avez fait une offre d'achat pour ce logement</span></p>
+          <p><small><em>Votre offre a été transmise au propriétaire. Il reviendra vers vous dès que possible pour donner suite à votre proposition.</em></small></p>
+          <p><small><i class="fas fa-info-circle"></i> Contrairement à la signature d'un compromis de vente, votre offre d'achat ne vous engage pas : vous pouvez vous retracter à tout moment.</small></p>
+          <p class="mt2"><small>⚠️ Pour accompagner votre réponse de précisions, pensez à <%= link_to "modifier votre message au propriétaire", edit_appointment_candidate_message_path(appointment) %> : rappel de votre identité complète, date et durée de validité de l'offre, moyen(s) de financement utilisé(s), justifications en cas de négociation du prix...</small></p>
+          <% if !appointment.candidate.phone_number %>
+            <p class="mt2"><small>💡 Pour faciliter les échanges, pensez à <%= link_to "renseigner un numéro de téléphone", edit_user_path(appointment.candidate)%></small></p>
+          <%end%>
+        <%end%>
+      <%elsif appointment.is_interested == false %>
+        <p class="text-center">👎 <span class="bolder">Vous avez indiqué ne pas être intéressé(e) par ce logement</span></p>
+        <p><small><em>Merci pour votre retour, votre décision a été transmise au propriétaire.</em></small></p>
+      <%else%>
+        <%if appointment.slot_id != nil %>
+          <%if appointment.slot.is_past? %>
+            <%if appointment.property.owner_project == "rent"%>
+              <p class="text-center bolder">Souhaitez-vous louer ce logement ?</p>
+              <p class="mb1"><small><em>Votre réponse sera automatiquement transmise au propriétaire</em></small></p>
+            <%else%>
+              <p class="text-center bolder">Souhaitez-vous faire une offre d'achat pour ce logement ?</p>
+              <p class="mb1"><small><em>Votre offre sera automatiquement transmise au propriétaire</em></small></p>
+            <%end%>
+            <div class='decision-wrapper'>
+              <p>Oui</p>
+              <div class='yes-no-toggle'>
+                <button class='yes-btn'></button>
+                <button class='no-btn'></button>
+                <div></div>
+              </div>
+              <p>Non</p>
+            </div>
+            <%= form_with model: appointment, url: appointment_candidate_decision_path(appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
+              <%= f.hidden_field :is_interested %>
+              <div>
+                <%= f.submit "Valider", class: "btn white-btn bg-primary" %>
+              </div>
+            <%end%>
+            <%= javascript_include_tag 'candidate-yes-no-toggle' %>
+          <%else%>
+            <p><i class="fas fa-info"></i> <span class="bolder">Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue de votre visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %></span></p>
+          <%end%>
+        <%else%>
+          <p><i class="fas fa-info"></i> <span class="bolder">Aucune visite programmée</p>
+          <p>Vous pourrez confirmer ou non votre intérêt pour ce logement à l'issue d'une visite</p>
+        <%end%>
       <%end%>
     <%end%>
   </div>
@@ -97,7 +119,7 @@
 <p class="text-center"><%= link_to "Supprimer ma candidature", appointment_path(@appointment), method: "delete", data: {confirm: "Êtes-vous sûr de supprimer cette candidature ? Cette action est irréversible."}, class:"btn white-btn bg-warning small-btn" %></p>
 <%if appointment.property.owner_project == "rent"%>
   <p><small><em><i class="fas fa-info-circle"></i> Les documents de votre dossier seront automatiquement supprimés
-  <%if appointment.slot.start_date > DateTime.now%> 
+  <%if ( appointment.slot_id != nil ) && ( appointment.slot.start_date > DateTime.now ) %>
     <br/>Votre visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> sera automatiquement annulée
   <%end%>
   </em></small></p>

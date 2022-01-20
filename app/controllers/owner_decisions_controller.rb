@@ -5,17 +5,16 @@ class OwnerDecisionsController < ApplicationController
   def update
     appointment = Appointment.find(params[:appointment_id])
     property = appointment.property
-    if appointment.update(is_accepted: params[:appointment][:is_accepted])
-      if (params[:appointment][:is_accepted] == "true") || (params[:appointment][:is_accepted] == "false")
-        flash[:success] = "Votre réponse a été enregistrée avec succès 👌"
-      else 
-        flash[:warning] = "Vous n'avez pas sélectionné une réponse, merci de rééssayer 🙏"
-      end
-      redirect_to property_path(property)
+    if params[:appointment][:is_accepted] == "true"
+      appointment.update(is_accepted: params[:appointment][:is_accepted])
+      flash[:success] = "Votre réponse a été enregistrée avec succès 👌"
+    elsif params[:appointment][:is_accepted] == "false"
+      appointment.update(is_accepted: params[:appointment][:is_accepted], slot_id: nil)
+      flash[:success] = "Votre réponse a été enregistrée avec succès 👌"
     else 
-      flash[:warning] = "Une erreur s'est produite, merci de rééssayer 🙏"
-      redirect_to property_path(property)
+      flash[:warning] = "Merci de sélectionner une réponse 🙏"
     end
+    redirect_to property_path(property)
   end
 
   private

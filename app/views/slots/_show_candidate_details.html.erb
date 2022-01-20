@@ -20,11 +20,20 @@
   </div>
 
   <div class="candidate-profile-details-section">
+    <p class="bolder"><i class="fas fa-phone-square-alt"></i> Tél</p>
+    <%if appointment.candidate.phone_number %>
+      <p><%= appointment.candidate.phone_number %></p>
+    <% else %>
+      <p><small><em>Non renseigné</em></small></p>
+    <% end %>
+  </div>
+
+  <div class="candidate-profile-details-section">
     <p class="bolder"><i class="far fa-comment"></i> Message</p>
     <% if appointment.candidate_message && appointment.candidate_message != "" %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p><small><em>⚠️ Ce candidat ne vous a pas encore adressé de message</em></small></p>
+      <p><small><em>Aucun message</em></small></p>
     <% end %>
   </div>
 
@@ -104,9 +113,9 @@
         <p><i class="fas fa-info"></i> <span class="bolder">Après la visite, le candidat pourra confirmer ou non son intérêt pour votre logement</span></p>
         <hr class="hr-black mw80 mb2 mt2">
         <%if appointment.property.owner_project == "rent"%>
-          <p> Cette candidature ne vous convient pas ? Vous avez validé une autre candidature ?</p>
+          <p> Cette candidature ne vous convient pas ? Le dossier est incomplet ? Vous avez déjà validé une autre candidature ?</p>
         <%else%>
-          <p> Cette candidature ne vous convient pas ? Vous avez validé une offre d'achat ?</p>
+          <p> Cette candidature ne vous convient pas ? Vous avez déjà validé une offre d'achat ?</p>
         <%end%>
         <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
           <%= f.hidden_field(:is_accepted, value:"false") %>

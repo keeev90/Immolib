@@ -64,7 +64,17 @@ class SlotsController < ApplicationController
   def destroy
     slot = Slot.find(params[:id])
     property = slot.property
+    
+    #update apts slot to nil
+    property.appointments.each do |appointment|
+      if appointment.slot_id != nil && !appointment.slot.is_past?
+        appointment.update(slot_id: nil)
+      end
+    end
+
+    #destroy slot
     slot.destroy
+
     if params[:new_property]
       flash[:success] = "Le créneau a bien été supprimé 👌"
       redirect_to property_slots_path(property)
