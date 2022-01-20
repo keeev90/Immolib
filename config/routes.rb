@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources 'properties' do
     get 'share', to: "properties#share" 
     get 'candidate_details', to: 'properties#show_candidate_details', as: 'candidate_details'
+    delete 'delete-visits', to: "properties#destroy_all_slots" 
     resources 'property_pictures', only: [:create, :destroy]
     resources 'slots' do
       get 'candidate_details', to: 'slots#show_candidate_details', as: 'candidate_details'

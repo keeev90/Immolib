@@ -24,18 +24,20 @@
     <%if appointment.candidate.phone_number %>
       <p><%= appointment.candidate.phone_number %></p>
     <% else %>
-      <p><small><em>Ce candidat n'a pas encore renseigné de n° de téléphone</em></small></p>
+      <p><small><em>Non renseigné</em></small></p>
     <% end %>
   </div>
 
   <div class="candidate-profile-details-section">
     <p class="bolder"><i class="far fa-calendar-check"></i></i> Visite</p>
-    <%if appointment.slot.start_date > DateTime.now %>
-      <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
-    <%elsif appointment.slot.start_date < DateTime.now %>
-      <p>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+    <%if appointment.slot_id != nil %>
+      <%if appointment.slot.start_date > DateTime.now %>
+        <p>Prochaine visite prévue le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+      <%else %>
+        <p>Dernière visite réalisée le <%= appointment.slot.start_date.strftime("%d/%m") %> à <%= appointment.slot.start_date.strftime("%H:%M") %></p>
+      <%end%>
     <%else%>
-      <p>Aucune visite programmée</p>
+      <p><small><em>Aucune visite programmée</em></small></p>
     <%end%>
   </div>
 
@@ -44,7 +46,7 @@
     <% if appointment.candidate_message && appointment.candidate_message != "" %>
       <p><em><%= simple_format(appointment.candidate_message) %></em></p>
     <% else %>
-      <p><small><em>Ce candidat ne vous a pas encore adressé de message</em></small></p>
+      <p><small><em>Aucun message</em></small></p>
     <% end %>
   </div>
 
@@ -125,15 +127,29 @@
           <div class="text-center">
             <p>✔️ <span class="bolder green">Vous avez validé cette candidature !</span></p>
             <p class="mb1"><small><em>Votre décision a été transmise au candidat</em></small></p>
-            <p class="mb1">⚠️ Pour la <span class="bolder">signature du bail de location</span>, prenez contact avec le candidat directement par email</p>
-            <p class="bg-success"> <%= appointment.candidate.email%></p>
+            <p class="mb1">⚠️ Pour la <span class="bolder">signature du bail de location</span>, prenez contact directement avec le candidat</p>
+            <p><i class="fas fa-at"></i> Email : <span class="bolder bg-success"><%= appointment.candidate.email %></span></p>    
+            <%if appointment.candidate.phone_number %>
+              <p><i class="fas fa-phone-square-alt"></i> Tél : <span class="bolder bg-success"><%= appointment.candidate.phone_number %></span></p>
+            <%end%>
+            <% if appointment.property.has_future_slots? %>
+              <p class="mt2"><%= link_to 'Supprimer tous les créneaux à venir', property_delete_visits_path(appointment.property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %><p>
+              <p><small><em><i class="fas fa-info-circle"></i> Les candidats inscrits à un créneau à venir seront automatiquement prévenus par email</em></small></p>
+            <% end %> 
           </div>
         <%else%>
           <div class="text-center">
             <p>✔️ <span class="bolder green">Vous avez accepté cette offre !</span></p>
             <p class="mb1"><small><em>Votre décision a été transmise au candidat</em></small></p>
-            <p class="mb1">⚠️ Pour la <span class="bolder">signature du compromis de vente</span>, prenez contact avec le candidat directement par email</p>
-            <p class="bg-success"> <%= appointment.candidate.email%></p>
+            <p class="mb1">⚠️ Pour la <span class="bolder">signature du compromis de vente</span>, prenez contact directement avec le candidat</p>
+            <p><i class="fas fa-at"></i> Email : <span class="bolder bg-success"><%= appointment.candidate.email %></span></p>    
+            <%if appointment.candidate.phone_number %>
+              <p><i class="fas fa-phone-square-alt"></i> Tél : <span class="bolder bg-success"><%= appointment.candidate.phone_number %></span></p>
+            <%end%>
+            <% if appointment.property.has_future_slots? %>
+              <p class="mt2"><%= link_to 'Supprimer tous les créneaux à venir', property_delete_visits_path(appointment.property), method: "delete", data: {confirm: "Êtes-vous sûr ? Cette action est irréversible."}, class:"btn small-btn white-btn bg-warning" %><p>
+              <p><small><em><i class="fas fa-info-circle"></i> Les candidats inscrits à un créneau à venir seront automatiquement prévenus par email</em></small></p>
+            <% end %> 
           </div>
         <%end%>
       <%elsif appointment.is_accepted == false %>
@@ -155,7 +171,7 @@
             <p class="mt2">Souhaitez-vous valider cette candidature ?</p>
             <p class="mb1"><small><em>Votre décision sera automatiquement transmise au candidat</em></small></p>
             <p class="mb1"><small>💡 Appuyez-vous sur le dossier de location et le message du candidat</small></p>
-            <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du bail.</small></p>
+            <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact directement avec le candidat pour la signature du bail.</small></p>
           </div>
         <%else%>
           <div class="text-center">
@@ -163,7 +179,7 @@
             <p class="mt2">Souhaitez-vous valider cette offre d'achat ?</p>
             <p class="mb1"><small><em>Votre décision sera automatiquement transmise au candidat</em></small></p>
             <p class="mb1"><small>💡 Appuyez-vous sur le message du candidat qui accompagne sa proposition</small></p>
-            <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact avec le candidat directement par email pour la signature du compromis de vente.</small></p>
+            <p><small>⚠️ Si votre décision est positive, vous pourrez prendre contact directement avec le candidat pour la signature du compromis de vente.</small></p>
           </div>
         <%end%>
         <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
@@ -194,9 +210,9 @@
           <p><i class="fas fa-info"></i> <span class="bolder">Ce candidat n'a pas encore confirmé son intérêt pour votre logement</span></p>
           <hr class="hr-black mw80 mb2 mt2">
           <%if appointment.property.owner_project == "rent"%>
-            <p> Cette candidature ne vous convient pas ? Vous avez validé une autre candidature ?</p>
+            <p> Cette candidature ne vous convient pas ? Le dossier est incomplet ? Vous avez déjà validé une autre candidature ?</p>
           <%else%>
-            <p> Cette candidature ne vous convient pas ? Vous avez validé une offre d'achat ?</p>
+            <p> Cette candidature ne vous convient pas ? Vous avez déjà validé une offre d'achat ?</p>
           <%end%>
           <%= form_with model: appointment, url: appointment_owner_decision_path(appointment_id: appointment, id: appointment), method: "patch", local: true, class: "form", id: "item-form", multipart: true do |f| %>
             <%= f.hidden_field(:is_accepted, value:"false") %>

@@ -69,6 +69,24 @@ class Property < ApplicationRecord
   end
   #slot.candidates.include?(current_user)
 
+  def future_slots
+    future_slots_array = []
+    self.slots.each do |slot|
+      if slot.start_date > DateTime.now
+        future_slots_array << slot
+      end
+    end
+    return future_slots_array
+  end
+
+  def has_future_slots?
+    result = false
+    if self.future_slots.size > 0
+      return result = true
+    end
+    return result
+  end
+
   private
 
   def stripe_price

@@ -82,6 +82,23 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def destroy_all_slots
+    property = Property.find(params[:property_id])
+
+    #update apt with future slots to nil
+    property.appointments.each do |appointment|
+      if appointment.slot_id != nil && !appointment.slot.is_past?
+        appointment.update(slot_id: nil)
+      end
+    end
+
+    #delete slots
+    future_slots = property.future_slots
+    Slot.destroy(future_slots.map(&:id))
+    flash[:success] = "Les créneaux de visite à venir ont été supprimés avec succès 👌"
+    redirect_to property_path(property)
+  end
+
   private
 
   def property_params

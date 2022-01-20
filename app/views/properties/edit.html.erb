@@ -2,30 +2,29 @@
 <div class="form-page">
   <div class="form-page__form">
     <h2>Éditer mon logement</h2>
-    <p class="mb2 text-center"><em>Ces informations permettront à vos candidats de s’assurer qu’ils répondent bien à votre annonce en ligne</em></p>
 
     <%= form_with model: @property, url: property_path(@property), local: true, class: "form", id: "item-form", multipart: true do |f| %>
     
       <div class="field">
-        <%= f.label 'Titre *' %><br />
+        <%= f.label 'Titre *', class: "form-label bolder" %><br />
         <p><small>💡 Uniformisez le titre avec celui de vos annonces en ligne (ex : PaP)</small></p>
         <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Ville *' %>
+        <%= f.label 'Ville *', class: "form-label bolder" %>
         <p><small>💡 Précisez le code postal entre parenthèses</small></p>
         <%= f.text_field :city, autofocus: true, autocomplete: "city", required: true %>
       </div>
 
       <div class="field">
-        <%= f.label 'Lien vers une annonce en ligne' %>
+        <%= f.label 'Lien vers une annonce en ligne', class: "form-label bolder" %>
         <p><small><i class="fas fa-info"></i> Ce lien permet aux candidats d'accéder facilement aux détails de votre annonce</small></p>
         <%= f.text_field :other_link, autofocus: true, autocomplete: "other_link" %>
       </div>
 
       <div class="field">
-        <%= f.label 'Instructions pour les visites' %>
+        <%= f.label 'Instructions pour les visites', class: "form-label bolder" %>
         <p><small><i class="fas fa-info"></i> Ces instructions seront automatiquement communiquées aux candidats à l'approche d'une visite (ex : adresse, digicode, interphone, etc.)</small></p>
         <%= f.text_area :instructions, autofocus: true, autocomplete: "instructions" %>
       </div>
