@@ -1,12 +1,13 @@
 <div class="container text-center">
+  <p class="green mb2"><i class="fas fa-check-circle"></i> Merci pour votre candidature, un email de confirmation a été envoyé sur votre adresse <%=current_user.email%> </p>
   <% if @appointment.property.owner_project == "rent" %>
     <h1>Étape 3/3 : complétez votre profil et transmettez votre dossier depuis votre espace immolib</h1>
   <% else %>
     <h1>Étape 3/3 : complétez votre profil depuis votre espace immolib</h1>
   <% end %> 
-  <div class="mt2">
-    <%= link_to "👉 Découvrir mon espace immolib", user_path(current_user), class: "btn big-btn white-btn bg-primary" %>
-    <p class="mt2 mb1"><em><i class="fas fa-info-circle"></i> A l'approche de votre visite, vous recevrez toutes les modalités logistiques (adresse, digicode, interphone, etc.)</em></p> 
-    <p><em><span class="bolder warning">En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible</span></em></p>
+  <div class="card-white">
+    <p class="mb1"><i class="fas fa-info-circle"></i> A l'approche de votre visite, vous recevrez toutes les modalités logistiques (adresse, digicode, interphone, etc.)</p> 
+    <p><span class="bolder">En cas d’imprévu, pensez à déplacer ou annuler votre rendez-vous le plus tôt possible</span></p>
   </div>
+  <%= link_to "👉 Découvrir mon espace immolib", user_path(current_user), class: "btn big-btn white-btn bg-primary" %>
 </div>

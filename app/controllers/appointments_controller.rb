@@ -6,16 +6,17 @@ class AppointmentsController < ApplicationController
 
   def create #appointment with slot
     new_candidate = params[:new_candidate]
+    slot = Slot.find(params[:param1])
+    property = Property.find(params[:property])
+
     if new_candidate == "true"
-      slot = Slot.find(params[:param1])
-      property = Property.find(params[:property])
       user_appointments = Appointment.where(candidate: current_user)
       already_an_appointment = false
       new_appointment = Appointment.new(candidate: current_user, slot: slot, property: property)
 
       user_appointments.each do |appointment|
         if appointment.property == property && !appointment.slot.is_past?
-          new_appointment =  appointment
+          new_appointment = appointment
           new_appointment.slot = slot 
           already_an_appointment = true
         end
@@ -24,6 +25,10 @@ class AppointmentsController < ApplicationController
       if new_appointment.save
         redirect_to step_1_property_path(property)
       end
+      
+    else
+      flash[:warning] = "Vous avez déjà répondu à cette annonce. Merci de gérer votre candidature depuis votre espace immolib 🙏"
+      redirect_to user_path(current_user)
     end
   end
 

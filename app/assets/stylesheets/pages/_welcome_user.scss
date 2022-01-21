@@ -8,74 +8,87 @@
     text-align: center;
     margin: 4rem 0;
   }
+
+  .btn {
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+  }
 }
 
 .welcome_user-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  align-self: center;
   margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
 
-  &__left, &__right {
-    text-align: center;
-    width: 100%;
-
-    p {
-      font-size: 1.2rem;
-    }
-
-    .bolder {
-      color: $primary;
-      font-size: 1.6rem;
-      margin-bottom: 1em;
-      min-height: auto;
-    }
+  p {
+    font-size: 1rem;
+    margin-bottom: 0.5em;
   }
 
-  &__left {
-    border-right:none;
+  .btn {
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
   }
 
-  &__right {
-    align-self: center;
-  }
-}
-
-// Welcome User Candidate
-.welcome-page.candidate {
-
-  h1 {
-    margin-bottom: 4rem;
-  }
-
-  .welcome_user-wrapper {
-    font-size: 1.4em;
-
-    &__right p, &__left p {
-      max-width: 650px;
-      margin-bottom: 0.8rem;
-    }
-
-    &__left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 2em;
-    }
-
+  .bolder {
+    color: $primary;
+    font-size: 1.2rem;
+    min-height: auto;
   }
 }
 
 .house-picture {
-  max-width: 100%;
-  object-fit: cover;
-  border-radius: 1rem;
-  -webkit-border-radius: 1rem;
-  -moz-border-radius: 1rem;
-  -ms-border-radius: 1rem;
-  -o-border-radius: 1rem;
-  justify-self: center;
-  margin: 1em 1em;
+  border-radius: 1rem !important;
+  -webkit-border-radius: 1rem !important;
+  -moz-border-radius: 1rem !important;
+  -ms-border-radius: 1rem !important;
+  -o-border-radius: 1rem !important;
+  width: 20rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .img {
+    object-fit: cover;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem !important;
+    -webkit-border-radius: 1rem !important;
+    -moz-border-radius: 1rem !important;
+    -ms-border-radius: 1rem !important;
+    -o-border-radius: 1rem !important;
+  }
+}
+
+.profile-picture-circle {
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  img {
+    object-fit: cover;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
 }
 
 .slot-candidate-wrapper {
@@ -151,6 +164,10 @@
       font-size: 2rem;
       text-align: center;
     }
+
+    .btn {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -158,15 +175,14 @@
   .welcome_user-wrapper {
     flex-direction: column;
     align-items: center;
-    font-size: 1.4em;
 
     &__left {
       border-right:none;
       border-bottom:none;
+      margin-right: 0rem;
 
       p {
         min-height: auto;
-        margin-bottom: 1em;
       }
     }
   }
@@ -177,5 +193,11 @@
     margin: 4rem auto;
     width: 100%;
     padding: 2em;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .house-picture {
+    width: 15rem;
   }
 }

@@ -59,6 +59,18 @@ class Property < ApplicationRecord
     return ans
   end
 
+  def available_slots
+    count = 0
+    self.slots.each do |slot|
+      unless slot.is_past?
+        if slot.available?
+          count += 1
+        end
+      end
+    end
+    return count
+  end
+
   def can_book?(candidate)
     self.slots.each do |slot|
       unless slot.is_past? 
