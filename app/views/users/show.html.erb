@@ -15,7 +15,9 @@
       </p>
       <p>
         <span class='text-muted'>Tél&nbsp;:</span>
-        <%= @user.phone_number %>
+        <%if @user.phone_number %>
+          <%= @user.phone_number %>
+        <%end%>
       </p>
       <p>
         <span class='text-muted'>Adresse e-mail&nbsp;:</span>
