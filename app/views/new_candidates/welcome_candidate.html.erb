@@ -1,55 +1,64 @@
 <div class="welcome-page candidate">
   <div class="container">
     <div class="mb2">
-      <h2 class="primary"> <%= @property.title%> </h2>
+      <h2 class="primary mb1"> <%= @property.title%> </h2>
       <h3><%= @property.city%></h3>
+      <%if @property.property_picture.filename && @property.property_picture.filename != 'property_placeholder.png' %>
+        <div class="house-picture">
+          <%= image_tag @property.property_picture, alt: 'property picture' %>
+        </div>
+      <%end%>
       <%if @property.other_link != "" %>
         <p class="mt2">Voir les détails de l'annonce : <%= link_to @property.other_link, @property.other_link, target: '_blank' %></p>
       <%end%>
+      <p class="mt2">📅 Il y a actuellement <span class="bolder"><%= @property.available_slots %></span> <%= @property.available_slots > 1 ? "créneaux de visite disponibles" : "créneau de visite disponible" %></p>
     </div>
     <div class="welcome_user-wrapper">
-      <div class="welcome_user-wrapper__left">
-        <%if @property.property_picture.attached?%>
-          <%= image_tag @property.property_picture, alt: 'property picture', class: "house-picture" %>
+      <div class="card-white">
+        <% if @property.has_available_slot? %>
+          <p>Bonjour,</p>
+          <% if @property.owner_project == "rent" %>
+            <p>Je vous invite à <strong>réserver un créneau de visite</strong>
+              et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</p>
+            <p>Vous pourrez ensuite <strong>compléter votre profil et me transmettre votre dossier de location</strong> depuis votre espace immolib.</p> 
+          <% else %>
+            <p>Je vous invite à <strong>réserver un créneau de visite</strong> 
+            et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</p>
+            <p>Vous pourrez ensuite <strong>compléter votre profil et gérer votre candidature</strong> depuis votre espace immolib.</p> 
+          <% end %>
+          <p>A bientôt,</p>
+          <%if @property.owner.profile_picture.attached? && @property.owner.profile_picture.filename != 'profile_placeholder.png' %>
+            <div class="profile-picture-circle">
+              <%= image_tag @property.owner.profile_picture, alt: 'profile_picture' %>
+            </div>
+          <% end %>
+          <%if @property.owner.first_name?%>
+            <p class="bolder"><%= @property.owner.first_name %></p>
+          <% else %>
+            <p class="bolder">Le propriétaire</p>
+          <% end %>
+        <%else%>
+          <p>Bonjour,</p>
+          <p>Il n'y a <strong>aucune visite disponible</strong> actuellement.</p>
+          <p>Je vous invite à <strong>revenir ultérieurement</strong>, des créneaux peuvent se libérer en cas de désistements.</p>
+          <p>Bon courage dans vos recherches,</p>
+          <%if @property.owner.profile_picture.attached? && @property.owner.profile_picture.filename != 'profile_placeholder.png' %>
+              <%= image_tag @property.owner.profile_picture, alt: 'profile_picture' %>
+          <% end %>
+          <%if @property.owner.first_name?%>
+            <p class="bolder"><%= @property.owner.first_name %></p>
+          <% else %>
+            <p class="bolder">Le propriétaire</p>
+          <% end %>
         <% end %>
       </div>
-      <div class="welcome_user-wrapper__right">
-        <div class="card-white">
-          <% if @property.has_available_slot? %>
-            <p><em>Bonjour,</em></p>
-            <% if @property.owner_project == "rent" %>
-              <p><em>Je vous invite à <strong>sélectionner un créneau de visite</strong> disponible
-                et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</em></p>
-              <p><em>Vous pourrez ensuite <strong>compléter votre profil et me transmettre votre dossier de location</strong> depuis votre espace immolib.</em></p> 
-            <% else %>
-              <p><em>Je vous invite à <strong>sélectionner un créneau de visite</strong> disponible 
-              et à <strong>m’écrire quelques lignes</strong> à propos de vous et de votre projet.</em></p>
-              <p><em>Vous pourrez ensuite <strong>compléter votre profil et gérer votre candidature</strong> depuis votre espace immolib.</em></p> 
-            <% end %>
-            <p><em>A bientôt,</em></p>
-            <%if @property.owner.first_name?%>
-              <p><%= @property.owner.first_name %></p>
-            <% else %>
-              <p>Le propriétaire</p>
-            <% end %>
-            <% if user_signed_in? %>
-              <%= link_to "👉 C'est parti !", step_1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
-            <% else %>
-              <%= link_to "👉 C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
-            <% end %>
-          <%else%>
-            <p><em>Bonjour,</em></p>
-            <p><em>Il n'y a <strong>aucune visite disponible</strong> actuellement.</em></p>
-            <p><em>Je vous invite à <strong>revenir ultérieurement</strong>, des créneaux peuvent se libérer en cas de désistements.</em></p>
-            <p><em>Bon courage dans vos recherches,</em></p>
-            <%if @property.owner.first_name?%>
-              <p><%= @property.owner.first_name %></p>
-            <% else %>
-              <p>Le propriétaire</p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
     </div>
+    <% if @property.has_available_slot? %>
+      <% if user_signed_in? %>
+        <%= link_to "👉 C'est parti !", step_1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+      <% else %>
+        <%= link_to "👉 C'est parti !", step1_property_path(@property), class: "btn big-btn bg-primary white-btn" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
