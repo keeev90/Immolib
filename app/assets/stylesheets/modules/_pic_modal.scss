@@ -60,3 +60,26 @@
     display: none;
   }
 }
+
+.profile-picture-circle {
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  img {
+    object-fit: cover;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+}
