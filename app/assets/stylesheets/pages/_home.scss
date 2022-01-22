@@ -1,10 +1,10 @@
 .home {
-  background-color: #fff;
   min-height: 100%;
   user-select: none;
   overflow-x: hidden;
 
   .home-intro {
+    background-color: $primary;
     position: relative;
     z-index: 110;
     height: 100vh;
@@ -22,10 +22,10 @@
     &__title {
       h2 {
         color: white;
-        font-size: 3.2rem;
-        line-height: 4rem;
-        margin-bottom: 3rem !important;
-        max-width: 60%;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        margin-bottom: 4rem !important;
+        max-width: 75%;
       }
       
       p {
@@ -38,18 +38,19 @@
       }
     }
 
-    video {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: 50% 100%;
+    .typewriter-container {
+      .typewriter .wrapper {
+        border-right: .15em solid white;
+        animation: blink 1s .1s step-end infinite;
+        -webkit-animation: blink 1s .1s step-end infinite;
+      }
     }
   }
 
   .home-buttons {
     position: relative;
     z-index: 110;
-    margin-top: 3rem;
+    margin-top: 4rem;
 
     a {
       margin-right: 1em;
@@ -67,7 +68,7 @@
     min-height: 100vh;
     padding: 3rem 4rem;
     background-color: $primary;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .4s ease;
     z-index: 200;
 
@@ -133,12 +134,13 @@
         box-shadow: 0 6px 12px 2px rgba(0,0,0,0.1);
 
         &__title {
-          font-size: 1rem;
+          font-size: 1.1rem;
           padding: .5em 0;
         }
   
         &__content {
           font-size: 0.8rem;
+          color: #212530;
         }
       }
     }
@@ -169,10 +171,10 @@
   }
 
   .last-section-icon {
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1.2rem;
     margin-bottom: 0.5rem;
-    background-color: #ddd;
-    color: #fff;
+    background-color: #f2eee3;
+    color: #f59331;
     font-size: 1.5rem;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -181,15 +183,18 @@
     -o-border-radius: 50%;
 
     &.i2 {
-      background-color: #ccc;
+      background-color: #f1e0e3!important;
+      color: #e81500!important;
     }
 
     &.i3 {
-      background-color: #bbb;
+      background-color: #daefed!important;
+      color: #00ac69!important;
     }
 
     &.i4 {
-      background-color: #aaa;
+      background-color: $primary-light!important;
+      color: $primary!important;
     }
 
     &.i5 {
@@ -301,6 +306,8 @@
   }
 }
 
+// Home-intro
+
 @media screen and (max-width: 1200px) {
   .home {
     .home-intro__text {
@@ -325,14 +332,6 @@
   .home-buttons {
     a {
       margin-top: 0;
-    }
-  }
-}
-
-@media screen and (max-width: 512px) {
-  .home {
-    .benefits-section {
-      padding: 3rem;
     }
   }
 }
@@ -394,7 +393,7 @@
         }
 
         p {
-          font-size: 1.25rem !important;
+          font-size: 1rem !important;
           line-height: 2rem !important;
           max-width: 100% !important;
         }
@@ -412,37 +411,55 @@
     .home-intro__text {
       .home-intro__title {
         h2 {
-          font-size: 2rem !important;
-          line-height: 3rem !important;
+          font-size: 1.6rem !important;
+          line-height: 2rem !important;
           max-width: 100% !important;
+          margin-bottom: 2rem !important;
         }
 
         p {
           font-size: 1rem !important;
-          line-height: 1.5rem !important;
-          max-width: 100% !important;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 365px) {
-  .home {
-    .home-intro__text {
-      .home-intro__title {
-        h2 {
-          font-size: 1.5rem !important;
-          line-height: 2rem !important;
-          max-width: 100% !important;
-        }
-
-        p {
-          font-size: 0.9rem !important;
           line-height: 1.2rem !important;
           max-width: 100% !important;
         }
       }
+    }
+    .home-buttons {
+      margin-top: 2rem !important;
+    }
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .home {
+    .home-intro__text {
+      .home-intro__title {
+        h2 {
+          font-size: 1.3rem !important;
+          line-height: 2rem !important;
+          max-width: 100% !important;
+          margin-bottom: 2rem !important;
+        }
+
+        p {
+          font-size: 0.8rem !important;
+          line-height: 1.2rem !important;
+          max-width: 100% !important;
+        }
+      }
+    }
+    .home-buttons {
+      margin-top: 2rem !important;
+    }
+  }
+}
+
+// Benefits sections
+
+@media screen and (max-width: 512px) {
+  .home {
+    .benefits-section {
+      padding: 3rem;
     }
   }
 }
@@ -451,11 +468,11 @@
   .home {
     .benefits-section {
       &__title {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
       }
 
       .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
     }
   }
@@ -468,3 +485,4 @@
     }
   }
 }
+

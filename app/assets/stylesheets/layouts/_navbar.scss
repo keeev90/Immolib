@@ -3,7 +3,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1em 2em;
+  padding: 1.1em 3.5em;
   position: relative;
   z-index: 800;
   width: 100%;
@@ -252,7 +252,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 415px) {
   .navbar {
     padding: 1em;
     .navbar__brand {
