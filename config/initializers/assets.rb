@@ -14,7 +14,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(
   typewriter.js
-  home-bg.js
   navbar.js
   pic-modal.js
   datepicker.js

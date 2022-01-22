@@ -3,19 +3,26 @@
   <div class="home-intro">
     <div class='home-intro__text'>
       <div class="home-intro__title">
-        <h2>Vendre ou louer votre logement devient un jeu d'enfant</h2>
-        <p><i class="fas fa-check-circle"></i> Prise de rendez-vous en ligne et centralisation des candidats</p>
+        <h2 class="typewriter-container">
+          Vendez ou louez votre logement
+          <span
+            class="typewriter"
+            data-type='["en toute simplicité", "sans agence", "sans commissions"]'
+          >
+            <span class="wrapper"></span>
+          </span>
+        </h2>
+        <p><i class="fas fa-check-circle"></i> Prise de rendez-vous en ligne et centralisation des candidatures</p>
         <p><i class="fas fa-check-circle"></i> Collecte de dossiers de location 100% conformes à la loi</p>
         <p><i class="fas fa-check-circle"></i> Relances emails automatiques avant chaque visite et en cas de dossiers incomplets</p>
         <p><i class="fas fa-check-circle"></i> Validation en ligne d'un dossier de location ou d'une offre d'achat</p>
-        <p class="bolder"><i class="fas fa-check-circle"></i> Aucune commission, aucun engagement. L'agent immobilier, c'est vous&nbsp;!</p>
+        <p><i class="fas fa-check-circle"></i> Aucune commission, aucun engagement. <span class="bolder">L'agent immobilier, c'est vous&nbsp;!</span></p>
       </div>
       <div class="home-buttons">  
         <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn primary" %>
         <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
       </div>
     </div>
-    <%= video_tag 'house.mp4#t=0.001', type: 'video/mp4', preload: 'auto', autoplay: 'true' %>
   </div>
 
   <section class="benefits-section" id='benefits-1'>
@@ -89,7 +96,7 @@
 
   <section class="benefits-section last-section"  id='last-section'>
     <h2 class="benefits-section__title primary">
-      Gardez le contrôle et gagnez un temps précieux
+      Gardez le contrôle
     </h2>
     <h3 class="benefits-section__subtitle bolder text-center">
       Fini les agences, les commissions, les engagements. L'agent immobilier, c'est vous&nbsp;!
@@ -113,7 +120,7 @@
 
       <div class="item-background">
         <p class="last-section-icon i3"> 3 </p>
-        <p class="item-background__title">Je partage mon lien immolib sur mes annonces en ligne</p>
+        <p class="item-background__title">Je partage le lien immolib de mon logement</p>
         <p class="item-background__content">
           Les candidats suivent un parcours rapide et guidé : prise de RDV, dépôt du dossier, confirmation d'intêret ou offre d'achat... vous centralisez toutes les réponses !
         </p>
@@ -134,20 +141,11 @@
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
           <%= f.email_field :email, placeholder: "Entrez votre adresse e-mail", class: "text-center" %>
-          <%= f.submit "M'inscrire et enregistrer mon logement", class: "btn big-btn bg-primary white-btn" %>
+          <%= f.submit "Enregistrer mon logement", class: "btn big-btn bg-primary white-btn" %>
         <% end %>
       <% end %>
     </div>
   </section>
 </div>
 
-<div class='arrow-up'>
-  <i class="fas fa-long-arrow-alt-up"></i>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js" integrity="sha512-5/OHwmQzDSBS0Ous4/hlYoWLHd06/d2r7LdKZQVBXOA6PvOqWVXtdboiLTU7lQTGyVoKVTNkwi0ol4gHGlw5ww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js" integrity="sha512-RvUydNGlqYJapy0t4AH8hDv/It+zKsv4wOQGb+iOnEfa6NnF2fzjXgRy+FDjSpMfC3sjokNUzsfYZaZ8QAwIxg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollToPlugin.min.js" integrity="sha512-eI+25yMAnyrpomQoYCqvHBmY4dLfqKWPnD4j8y0E3Js+yqpF26xncL4t81M1zxC+ISYfRoCN52rN/n0q2UIBZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<%= javascript_include_tag 'home-bg.js' %>
+<%= javascript_include_tag 'typewriter.js' %>

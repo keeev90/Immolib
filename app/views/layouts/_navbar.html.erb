@@ -26,8 +26,7 @@
   </div>
   <nav class='hamburger-menu'>
     <%= link_to root_path, class: 'navbar__brand' do %>
-      <div class='logo'></div>
-      <h1 class='title'>immolib</h1>
+      <p class="text-center mt2"><span class="bolder">Bienvenue</span> ✌️</p>
     <% end %>
     <div class='navbar__items'>
       <% if current_user && current_user.is_admin? %>
