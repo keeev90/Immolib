@@ -23,10 +23,10 @@
 <div class="url-container">
   <p class="link"> 
     <em>
-    <% if property.owner_project == "rent" %>
-      <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= property.go_visit_url %></span></a>
+    <% if @property.owner_project == "rent" %>
+      <a>Suivez ce lien pour réserver un créneau de visite et transmettre votre dossier de location : <span class="bolder"><%= @property.go_visit_url %></span></a>
     <%else%> 
-      <a>Suivez ce lien pour réserver un créneau de visite : <span class="bolder"><%= property.go_visit_url %></span></a>
+      <a>Suivez ce lien pour réserver un créneau de visite : <span class="bolder"><%= @property.go_visit_url %></span></a>
     <%end%> 
     </em>
   </p>

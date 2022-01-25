@@ -10,9 +10,10 @@
   -o-border-radius: 6px;
   border: 2px solid white;
   background-color: white;
-  color: $secondary;
+  color: white;
   cursor: pointer;
   position: relative;
+  
 
   &:hover {
     opacity: 0.8;
@@ -117,6 +118,10 @@
 @media screen and (max-width: 442px) {
   .btn {
     font-size: 18px;
+  }
+
+  .big-btn {
+    padding: 0.8rem 1.2rem;
   }
 }
 

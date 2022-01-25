@@ -22,7 +22,7 @@
   <hr class="hr-black mb2 mt2">
   <%- resource_class.omniauth_providers.each do |provider| %>
     <% if OmniAuth::Utils.camelize(provider) == 'GoogleOauth2' %>
-      <%= link_to omniauth_authorize_path(resource_name, provider), method: :post, class: "btn icon-btn" do %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), method: :post, class: "btn icon-btn bolder" do %>
         <%= image_tag 'google_logo.png' %> Continuer avec Google
       <% end %>
     <% else %>
