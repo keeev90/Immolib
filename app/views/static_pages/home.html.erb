@@ -1,27 +1,28 @@
 <div class="home">
 
   <div class="home-intro">
-    <div class='home-intro__text'>
-      <div class="home-intro__title">
-        <h2 class="typewriter-container">
-          Vendez ou louez votre logement
-          <span
-            class="typewriter"
-            data-type='["en toute simplicité", "sans agence", "sans commissions"]'
-          >
-            <span class="wrapper"></span>
-          </span>
-        </h2>
-        <p><i class="fas fa-check-circle"></i> Prise de rendez-vous en ligne et centralisation des candidatures</p>
-        <p><i class="fas fa-check-circle"></i> Collecte de dossiers de location 100% conformes à la loi</p>
-        <p><i class="fas fa-check-circle"></i> Relances emails automatiques avant chaque visite et en cas de dossiers incomplets</p>
-        <p><i class="fas fa-check-circle"></i> Validation en ligne d'un dossier de location ou d'une offre d'achat</p>
-        <p><i class="fas fa-check-circle"></i> Aucune commission, aucun engagement. <span class="bolder">L'agent immobilier, c'est vous&nbsp;!</span></p>
-      </div>
+    <div class="home-intro__left">
+      <h2 class="typewriter-container">
+        Vendez ou louez votre logement <br/>
+        <span
+          class="typewriter"
+          data-type='["en toute simplicité", "sans agence", "sans commissions"]'
+        >
+          <span class="wrapper"></span>
+        </span>
+      </h2>
+      <p><i class="fas fa-check-circle"></i> Prise de rendez-vous en ligne et centralisation des candidatures</p>
+      <p><i class="fas fa-check-circle"></i> Collecte de dossiers de location 100% conformes à la loi</p>
+      <p><i class="fas fa-check-circle"></i> Relances emails automatiques avant chaque visite et en cas de dossiers incomplets</p>
+      <p><i class="fas fa-check-circle"></i> Validation en ligne d'un dossier de location ou d'une offre d'achat</p>
+      <p><i class="fas fa-check-circle"></i> Aucune commission, aucun engagement. <span class="bolder">L'agent immobilier, c'est vous&nbsp;!</span></p>
       <div class="home-buttons">  
-        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn primary" %>
-        <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn" %>
+        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn primary bolder" %>
+        <%= link_to "En savoir plus", "#benefits-1", class: "btn outline-btn big-btn bolder" %>
       </div>
+    </div>
+    <div class="home-intro__right">
+      <%= image_tag 'hero_bis.svg' %>
     </div>
   </div>
 
@@ -137,11 +138,11 @@
 
     <div class="text-center mb4">
       <% if user_signed_in? %>
-        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn bg-primary white-btn" %>
+        <%= link_to "Enregistrer mon logement", welcome_user_path, class: "btn big-btn bg-primary white-btn bolder" %>
       <% else %>
         <%= form_with url: new_user_registration_path, local: true, method: :get, class: "form", id: "item-form" do |f| %>
           <%= f.email_field :email, placeholder: "Entrez votre adresse e-mail", class: "text-center" %>
-          <%= f.submit "Enregistrer mon logement", class: "btn big-btn bg-primary white-btn" %>
+          <%= f.submit "Enregistrer mon logement", class: "btn big-btn bg-primary white-btn bolder" %>
         <% end %>
       <% end %>
     </div>

@@ -117,3 +117,11 @@
   } 
 }
 
+@media screen and (max-width: 420px) {
+  .candidate-section-title {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
