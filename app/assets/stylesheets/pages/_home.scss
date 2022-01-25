@@ -1,31 +1,26 @@
 .home {
   min-height: 100%;
-  user-select: none;
   overflow-x: hidden;
 
   .home-intro {
     background-color: $primary;
     position: relative;
     z-index: 110;
-    height: 100vh;
     text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
 
-    &__text {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100%;
-      padding: 4rem;
-    }
+    &__left {
+      width: 100%;
+      margin-right: 2rem;
 
-    &__title {
       h2 {
         color: white;
         font-size: 2.5rem;
         line-height: 3rem;
-        margin-bottom: 4rem !important;
-        max-width: 75%;
+        margin-bottom: 3rem !important;
       }
       
       p {
@@ -34,26 +29,34 @@
         line-height: 2rem;
         margin-top: 0rem !important;
         margin-bottom: 0.2rem !important;
-        max-width: 75%;
+      }
+
+      .home-buttons {
+        position: relative;
+        z-index: 110;
+        margin-top: 3rem;
+    
+        a {
+          margin-right: 1em;
+        }
+      }
+
+      .typewriter-container {
+        .typewriter .wrapper {
+          border-right: .15em solid white;
+          animation: blink 1s .1s step-end infinite;
+          -webkit-animation: blink 1s .1s step-end infinite;
+        }
       }
     }
 
-    .typewriter-container {
-      .typewriter .wrapper {
-        border-right: .15em solid white;
-        animation: blink 1s .1s step-end infinite;
-        -webkit-animation: blink 1s .1s step-end infinite;
+    &__right {
+      width: 75%;
+  
+      img {
+        width: 100%;
+        justify-self: center;
       }
-    }
-  }
-
-  .home-buttons {
-    position: relative;
-    z-index: 110;
-    margin-top: 4rem;
-
-    a {
-      margin-right: 1em;
     }
   }
 
@@ -310,146 +313,142 @@
 
 @media screen and (max-width: 1200px) {
   .home {
-    .home-intro__text {
-      .home-intro__title {
+    .home-intro {
+      flex-wrap: wrap;
+
+      &__left {
         h2 {
           font-size: 2.5rem !important;
           line-height: 3rem !important;
-          max-width: 100% !important;
         }
 
         p {
           font-size: 1rem !important;
           line-height: 2rem !important;
-          max-width: 100% !important;
         }
       }
-    }
-  }
-}
 
-@media screen and (max-width: 539px) {
-  .home-buttons {
-    a {
-      margin-top: 0;
+      &__right {
+        margin: 4rem 0;
+        width: 75%;
+      }
     }
   }
 }
 
 @media screen and (max-width: 483px) {
   .home {
-    .home-intro__text {
-      padding: 3rem 4rem;
+    .home-intro {
+      flex-wrap: wrap;
+      padding: 2rem;
 
-      .home-intro__title {
+      &__left {
         h2 {
           font-size: 2rem !important;
           line-height: 2.5rem !important;
-          max-width: 100% !important;
+          margin-bottom: 2rem !important;
         }
 
         p {
           font-size: 1rem !important;
           line-height: 1.5rem !important;
-          max-width: 100% !important;
           margin-bottom: 0.5rem !important;
         }
-      }
 
-      .home-buttons {
-        margin-top: 3rem;
+        .home-buttons {
+          margin-top: 2rem !important;
+          a {
+            margin-right: 0 !important;
+          }
+        }
       }
     }
+  }
 
-    .benefits-section {
-      &__title {
-        font-size: 3rem;
-      }
+  .benefits-section {
+    &__title {
+      font-size: 3rem;
+    }
 
-      .subtitle {
-        font-size: 1.5rem;
-      }
+    .subtitle {
+      font-size: 1.5rem;
     }
   }
 }
 
 @media screen and (max-width: 442px) {
   .home {
-    .home-intro__text {
-      padding: 2rem 3rem;
+    .home-intro {
+      flex-wrap: wrap;
+      padding: 2rem;
     }
   }
 }
 
 @media screen and (max-width: 410px) {
   .home {
-    .home-intro__text {
+    .home-intro {
+      flex-wrap: wrap;
       padding: 2rem;
-      .home-intro__title {
+
+      &__left {
         h2 {
           font-size: 2.5rem !important;
           line-height: 3rem !important;
-          max-width: 100% !important;
         }
-
         p {
           font-size: 1rem !important;
           line-height: 2rem !important;
-          max-width: 100% !important;
         }
       }
     }
 
-    .home-buttons p {
-      font-size: 1.2rem;
+    .home-buttons {
+      p {
+        font-size: 1.2rem;
+      }
     }
   }
 }
 
 @media screen and (max-width: 380px) {
   .home {
-    .home-intro__text {
-      .home-intro__title {
+    .home-intro {
+      flex-wrap: wrap;
+      padding: 2rem;
+
+      &__left {
         h2 {
           font-size: 1.6rem !important;
           line-height: 2rem !important;
-          max-width: 100% !important;
-          margin-bottom: 2rem !important;
         }
 
         p {
           font-size: 1rem !important;
           line-height: 1.2rem !important;
-          max-width: 100% !important;
         }
       }
-    }
-    .home-buttons {
-      margin-top: 2rem !important;
     }
   }
 }
 
 @media screen and (max-width: 325px) {
   .home {
-    .home-intro__text {
-      .home-intro__title {
+    .home-intro {
+      flex-wrap: wrap;
+      padding: 2rem;
+
+      &__left {
         h2 {
           font-size: 1.3rem !important;
           line-height: 2rem !important;
-          max-width: 100% !important;
-          margin-bottom: 2rem !important;
         }
 
         p {
           font-size: 0.8rem !important;
           line-height: 1.2rem !important;
-          max-width: 100% !important;
         }
       }
-    }
-    .home-buttons {
-      margin-top: 2rem !important;
     }
   }
 }
@@ -468,11 +467,30 @@
   .home {
     .benefits-section {
       &__title {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
 
-      .subtitle {
-        font-size: 1.5rem;
+      &__subtitle {
+        font-size: 1.3rem;
+      }
+
+      &__body {
+        width: 100%;
+        padding: 2rem 0rem;
+
+        .item {
+          img {
+            width: 20%;
+          }
+    
+          &__title {
+            font-size: 1.1rem;
+          }
+    
+          &__content {
+            font-size: 0.8rem;
+          }
+        }
       }
     }
   }

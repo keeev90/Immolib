@@ -9,7 +9,7 @@
     <% if @slots.count > 0 %>
       <%= render( partial: 'created_property_slots', locals: { slots: @slots, property: @property } ) %>
     <% else %>
-      <%= link_to "Ajouter un créneau de visite", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn outline-btn-white" %>
+      <%= link_to "Ajouter un créneau de visite", new_property_slot_path(@property, redirect_path: "new_property"), class: "btn big-btn outline-btn-white bolder" %>
     <% end %>
   </div>
 </div>
